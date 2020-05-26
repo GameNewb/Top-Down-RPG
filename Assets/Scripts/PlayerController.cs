@@ -12,6 +12,9 @@ public class PlayerController : MonoBehaviour
     public static PlayerController instance;
     public string sceneTransitionName = "";
 
+    private Vector3 bottomLeftLimit;
+    private Vector3 topRightLimit;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -56,6 +59,20 @@ public class PlayerController : MonoBehaviour
             animator.SetFloat("lastMoveX", xAxis);
             animator.SetFloat("lastMoveY", yAxis);
         }
-        
+
+        // Keep Player within tilemap bounds
+        float xCameraClamp = Mathf.Clamp(transform.position.x, bottomLeftLimit.x, topRightLimit.x);
+        float yCameraClamp = Mathf.Clamp(transform.position.y, bottomLeftLimit.y, topRightLimit.y);
+        transform.position = new Vector3(xCameraClamp, yCameraClamp, transform.position.z);
+    }
+
+    // Restrict player movement based on Tilemap boundaries
+    public void SetBounds(Vector3 bottomLeft, Vector3 topRight)
+    {
+        Vector3 leftBoundaryReduction = new Vector3(0.5f, 1f, 0f);
+        Vector3 rightBoundaryReduction = new Vector3(-0.5f, -1f, 0f);
+
+        bottomLeftLimit = bottomLeft + leftBoundaryReduction;
+        topRightLimit = topRight + rightBoundaryReduction;
     }
 }
