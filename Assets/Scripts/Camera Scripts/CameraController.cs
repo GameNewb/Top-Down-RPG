@@ -26,15 +26,21 @@ public class CameraController : MonoBehaviour
         // Get current ratio of Camera
         this.CalculateCameraClamp();
 
+        /*
         // Set Camera Limits when moving camera
         bottomLeftLimit = tileMap.localBounds.min + bottomLeftAspectRatio;
-        topRightLimit = tileMap.localBounds.max + topRightAspectRatio;
+        topRightLimit = tileMap.localBounds.max + topRightAspectRatio;*/
 
         PlayerController.instance.SetBounds(tileMap.localBounds.min, tileMap.localBounds.max);
     }
 
     // LateUpdate is called once per frame after Update
     void LateUpdate()
+    {
+        // this.MoveCamera();
+    }
+
+    private void MoveCamera()
     {
         // Move Camera based on player position
         transform.position = new Vector3(targetObject.position.x, targetObject.position.y, transform.position.z);
