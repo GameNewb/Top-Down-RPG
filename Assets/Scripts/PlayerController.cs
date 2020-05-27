@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour
     private Vector3 bottomLeftLimit;
     private Vector3 topRightLimit;
 
+    public bool isLoading = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -45,25 +47,29 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float xAxis = Input.GetAxisRaw("Horizontal");
-        float yAxis = Input.GetAxisRaw("Vertical");
-
-        playerRigidBody2D.velocity = (new Vector2(xAxis, yAxis)) * moveSpeed;
-
-        animator.SetFloat("moveX", playerRigidBody2D.velocity.x);
-        animator.SetFloat("moveY", playerRigidBody2D.velocity.y);
-        
-        // Stop left/right motion
-        if (xAxis == 1f || xAxis == -1f || yAxis == 1f || yAxis == -1f)
+        // Disable controls when loading
+        if (isLoading == false)
         {
-            animator.SetFloat("lastMoveX", xAxis);
-            animator.SetFloat("lastMoveY", yAxis);
-        }
+            float xAxis = Input.GetAxisRaw("Horizontal");
+            float yAxis = Input.GetAxisRaw("Vertical");
 
-        // Keep Player within tilemap bounds
-        /*float xCameraClamp = Mathf.Clamp(transform.position.x, bottomLeftLimit.x, topRightLimit.x);
-        float yCameraClamp = Mathf.Clamp(transform.position.y, bottomLeftLimit.y, topRightLimit.y);
-        transform.position = new Vector3(xCameraClamp, yCameraClamp, transform.position.z);*/
+            playerRigidBody2D.velocity = (new Vector2(xAxis, yAxis)) * moveSpeed;
+
+            animator.SetFloat("moveX", playerRigidBody2D.velocity.x);
+            animator.SetFloat("moveY", playerRigidBody2D.velocity.y);
+
+            // Stop left/right motion
+            if (xAxis == 1f || xAxis == -1f || yAxis == 1f || yAxis == -1f)
+            {
+                animator.SetFloat("lastMoveX", xAxis);
+                animator.SetFloat("lastMoveY", yAxis);
+            }
+
+            // Keep Player within tilemap bounds
+            /*float xCameraClamp = Mathf.Clamp(transform.position.x, bottomLeftLimit.x, topRightLimit.x);
+            float yCameraClamp = Mathf.Clamp(transform.position.y, bottomLeftLimit.y, topRightLimit.y);
+            transform.position = new Vector3(xCameraClamp, yCameraClamp, transform.position.z);*/
+        }
     }
 
     // Restrict player movement based on Tilemap boundaries
