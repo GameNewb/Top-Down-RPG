@@ -61,16 +61,16 @@ public class PlayerController : MonoBehaviour
         }
 
         // Keep Player within tilemap bounds
-        float xCameraClamp = Mathf.Clamp(transform.position.x, bottomLeftLimit.x, topRightLimit.x);
+        /*float xCameraClamp = Mathf.Clamp(transform.position.x, bottomLeftLimit.x, topRightLimit.x);
         float yCameraClamp = Mathf.Clamp(transform.position.y, bottomLeftLimit.y, topRightLimit.y);
-        transform.position = new Vector3(xCameraClamp, yCameraClamp, transform.position.z);
+        transform.position = new Vector3(xCameraClamp, yCameraClamp, transform.position.z);*/
     }
 
     // Restrict player movement based on Tilemap boundaries
     public void SetBounds(Vector3 bottomLeft, Vector3 topRight)
     {
-        Vector3 leftBoundaryReduction = new Vector3(0.5f, 1f, 0f);
-        Vector3 rightBoundaryReduction = new Vector3(-0.5f, -1f, 0f);
+        Vector3 leftBoundaryReduction = new Vector3(0.3f, 0.5f, 0f);
+        Vector3 rightBoundaryReduction = new Vector3(-0.3f, -0.5f, 0f);
 
         bottomLeftLimit = bottomLeft + leftBoundaryReduction;
         topRightLimit = topRight + rightBoundaryReduction;
