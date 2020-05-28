@@ -27,7 +27,11 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            Destroy(gameObject);
+            // Make sure we're deleting a "copy" and not a newly loaded "Player" object (i.e. if Player obj exists in 2 scenes, delete the one in the new scene we transitioned to)
+            if (instance != this)
+            {
+                Destroy(gameObject);
+            }
         }
 
         if (playerRigidBody2D == null)

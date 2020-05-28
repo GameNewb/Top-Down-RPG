@@ -21,7 +21,7 @@ public class CameraController : MonoBehaviour
     void Start()
     {
         // Set to Player obj
-        targetObject = PlayerController.instance.transform;
+        targetObject = FindObjectOfType<PlayerController>().transform;
 
         // Get current ratio of Camera
         this.CalculateCameraClamp();
@@ -40,6 +40,7 @@ public class CameraController : MonoBehaviour
         // this.MoveCamera();
     }
 
+    // LEGACY CODE
     private void MoveCamera()
     {
         // Move Camera based on player position
