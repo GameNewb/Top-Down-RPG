@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 topRightLimit;
 
     public bool isLoading = false;
+    public bool canMove = true;
 
     // Start is called before the first frame update
     void Start()
@@ -57,7 +58,20 @@ public class PlayerController : MonoBehaviour
             float xAxis = Input.GetAxisRaw("Horizontal");
             float yAxis = Input.GetAxisRaw("Vertical");
 
-            playerRigidBody2D.velocity = (new Vector2(xAxis, yAxis)) * moveSpeed;
+            // Movement lock for dialog box
+            if (canMove)
+            {
+                playerRigidBody2D.velocity = (new Vector2(xAxis, yAxis)) * moveSpeed;
+
+                // Keep Player within tilemap bounds
+                /*float xCameraClamp = Mathf.Clamp(transform.position.x, bottomLeftLimit.x, topRightLimit.x);
+                float yCameraClamp = Mathf.Clamp(transform.position.y, bottomLeftLimit.y, topRightLimit.y);
+                transform.position = new Vector3(xCameraClamp, yCameraClamp, transform.position.z);*/
+            }
+            else
+            {
+                playerRigidBody2D.velocity = Vector2.zero;
+            }
 
             animator.SetFloat("moveX", playerRigidBody2D.velocity.x);
             animator.SetFloat("moveY", playerRigidBody2D.velocity.y);
@@ -65,14 +79,13 @@ public class PlayerController : MonoBehaviour
             // Stop left/right motion
             if (xAxis == 1f || xAxis == -1f || yAxis == 1f || yAxis == -1f)
             {
-                animator.SetFloat("lastMoveX", xAxis);
-                animator.SetFloat("lastMoveY", yAxis);
+                // Only activate the animator when we're allowed to move
+                if (canMove)
+                {
+                    animator.SetFloat("lastMoveX", xAxis);
+                    animator.SetFloat("lastMoveY", yAxis);
+                }
             }
-
-            // Keep Player within tilemap bounds
-            /*float xCameraClamp = Mathf.Clamp(transform.position.x, bottomLeftLimit.x, topRightLimit.x);
-            float yCameraClamp = Mathf.Clamp(transform.position.y, bottomLeftLimit.y, topRightLimit.y);
-            transform.position = new Vector3(xCameraClamp, yCameraClamp, transform.position.z);*/
         }
     }
 

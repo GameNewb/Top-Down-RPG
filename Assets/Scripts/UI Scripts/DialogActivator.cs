@@ -18,8 +18,9 @@ public class DialogActivator : MonoBehaviour
     void Update()
     {
         // Show the dialog box when player clicks on NPC
-        if (canActivate && Input.GetButtonUp("Fire1") && !DialogManager.instance.dialogBox.activeInHierarchy)
+        if (canActivate && Input.GetButtonUp("Fire1") && !DialogManager.instance.dialogBox.activeInHierarchy && DialogManager.instance.isDialogRunning == false)
         {
+            Debug.Log("Just Activated in Hierarchy");
             DialogManager.instance.ShowDialog(lines);
         }
     }
