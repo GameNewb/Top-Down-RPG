@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class DialogManager : MonoBehaviour
 {
+    [SerializeField] string namePlaceHolder;
     public Text dialogText;
     public Text nameText;
     public GameObject dialogBox;
@@ -29,48 +30,48 @@ public class DialogManager : MonoBehaviour
     void Update()
     {
         // Active in scene
-        if (dialogBox.activeInHierarchy)
+        if (dialogBox.activeInHierarchy && Input.GetButtonUp("Fire1"))
         {
-            if (Input.GetButtonUp("Fire1"))
+            // Ensure that we don't skip text since we're using button up instead of down
+            if (!justStarted)
             {
-                // Ensure that we don't skip text since we're using button up instead of down
-                if (!justStarted)
+                // Check if dialogue is already scrolling
+                if (!isDialogRunning)
                 {
-                    // Check if dialogue is already scrolling
-                    if (!isDialogRunning)
+                    currentLine++;
+
+                    // End the dialog after it reached the length
+                    if (currentLine >= dialogLines.Length)
                     {
-                        currentLine++;
+                        // Disabled the dialog box
+                        dialogBox.SetActive(false);
 
-                        // End the dialog after it reached the length
-                        if (currentLine >= dialogLines.Length)
-                        {
-                            // Disabled the dialog box
-                            dialogBox.SetActive(false);
-
-                            // Re-enable player movement
-                            PlayerController.instance.canMove = true;
-                        }
-                        else
-                        {
-                            StartCoroutine(ScrollingText());
-                        }
-                    } 
+                        // Re-enable player movement
+                        PlayerController.instance.canMove = true;
+                    }
                     else
                     {
-                        // Stop the Coroutine to prevent multiple coroutines
-                        StopCoroutine(ScrollingText());
-                        isDialogRunning = false;
-                        
-                        // Show and update the full text
-                        dialogText.text = dialogLines[currentLine];
+                        // Change the name box for each speaker
+                        CheckNameLabel();
+
+                        // Start scrolling the dialog
+                        StartCoroutine("ScrollingText");
                     }
-                    
                 } 
                 else
                 {
-                    justStarted = false;
-                }
+                    // Stop the Coroutine to prevent multiple coroutines
+                    StopCoroutine("ScrollingText");
+                    isDialogRunning = false;
 
+                    // Show and update the full text, clear it out first to prevent coroutine
+                    dialogText.text = dialogLines[currentLine];
+                }
+                    
+            } 
+            else
+            {
+                justStarted = false;
             }
         }
     }
@@ -81,14 +82,27 @@ public class DialogManager : MonoBehaviour
         dialogLines = newLines;
         currentLine = 0;
 
+        // First iteration, replace the name
+        CheckNameLabel();
+
         // Update text
-        dialogText.text = dialogLines[0];
+        dialogText.text = dialogLines[currentLine];
         dialogBox.SetActive(true);
 
         justStarted = true;
 
         // Disable player movement
         PlayerController.instance.canMove = false;
+    }
+
+    private void CheckNameLabel()
+    {
+        if (dialogLines[currentLine].StartsWith(namePlaceHolder))
+        {
+            // Set name text and move to the next line
+            nameText.text = dialogLines[currentLine].Replace(namePlaceHolder, "");
+            currentLine++;
+        }
     }
 
     public IEnumerator ScrollingText()

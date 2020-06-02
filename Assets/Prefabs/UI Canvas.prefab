@@ -504,6 +504,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fb3a8f4550ab2043b53c1c74644f660, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  namePlaceHolder: Name-
   dialogText: {fileID: 1198054601}
   nameText: {fileID: 989155626}
   dialogBox: {fileID: 2033681064}

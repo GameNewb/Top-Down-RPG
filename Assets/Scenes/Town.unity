@@ -267,9 +267,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lines:
-  - HI!
+  - Name-Emily
+  - Hi!
   - My name is Emily!
   - Nice to meet you!
+  - Name-Player
+  - Hello
+  - Nice to meet you too!
 --- !u!1 &432965450
 GameObject:
   m_ObjectHideFlags: 0
