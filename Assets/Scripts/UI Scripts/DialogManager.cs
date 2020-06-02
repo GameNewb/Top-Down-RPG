@@ -76,7 +76,7 @@ public class DialogManager : MonoBehaviour
         }
     }
 
-    public void ShowDialog(string[] newLines)
+    public void ShowDialog(string[] newLines, bool isPerson)
     {
         // Set line number
         dialogLines = newLines;
@@ -90,6 +90,9 @@ public class DialogManager : MonoBehaviour
         dialogBox.SetActive(true);
 
         justStarted = true;
+
+        // Enable/disable for people/signs
+        nameBox.SetActive(isPerson);
 
         // Disable player movement
         PlayerController.instance.canMove = false;

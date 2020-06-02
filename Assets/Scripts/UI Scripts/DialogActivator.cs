@@ -7,6 +7,7 @@ public class DialogActivator : MonoBehaviour
     public string[] lines;
 
     private bool canActivate;
+    public bool isPerson = true;
 
     // Start is called before the first frame update
     void Start()
@@ -20,7 +21,7 @@ public class DialogActivator : MonoBehaviour
         // Show the dialog box when player clicks on NPC
         if (canActivate && Input.GetButtonUp("Fire1") && !DialogManager.instance.dialogBox.activeInHierarchy && DialogManager.instance.isDialogRunning == false)
         {
-            DialogManager.instance.ShowDialog(lines);
+            DialogManager.instance.ShowDialog(lines, isPerson);
         }
     }
 
