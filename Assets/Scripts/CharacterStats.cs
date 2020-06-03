@@ -17,6 +17,7 @@ public class CharacterStats : MonoBehaviour
     public int maxHP = 100;
     public int currentMP;
     public int maxMP = 30;
+    public int[] mpLVLBonus;
 
     // Attribute stats
     public int strength;
@@ -49,22 +50,51 @@ public class CharacterStats : MonoBehaviour
         currentEXP += expToAdd;
 
         // Level up player
-        if (currentEXP > expToNextLevel[playerLevel])
+        if (playerLevel < maxLevel)
         {
-            // Reset EXP
-            currentEXP -= expToNextLevel[playerLevel];
-            playerLevel++;
+            if(currentEXP > expToNextLevel[playerLevel])
+            {
+                // Reset EXP
+                currentEXP -= expToNextLevel[playerLevel];
+                playerLevel++;
+
+                // Determine whether to add to str or vitality
+                if (playerLevel % 2 == 0)
+                {
+                    strength++;
+                }
+                else
+                {
+                    vitality++;
+                }
+
+                // Increase and reset HP
+                maxHP = Mathf.FloorToInt(maxHP * 1.08f);
+                currentHP = maxHP;
+
+                maxMP += mpLVLBonus[playerLevel-1];
+                currentMP = maxMP;
+            }
+        }
+
+        // Do not let player exceed max level
+        if (playerLevel >= maxLevel)
+        {
+            currentEXP = 0;
         }
     }
 
     private void CalculateExpRequirement()
     {
         expToNextLevel = new int[maxLevel];
+        mpLVLBonus = new int[maxLevel];
         expToNextLevel[1] = baseEXP;
+        mpLVLBonus[1] = maxMP;
 
         for (int i = 2; i < expToNextLevel.Length; i++)
         {
-            expToNextLevel[i] = expToNextLevel[i-1] + (int) (i * Mathf.Sqrt(expToNextLevel[i - 1]) * 0.15f);
+            expToNextLevel[i] = expToNextLevel[i - 1] + (int) (i * Mathf.Sqrt(expToNextLevel[i - 1]) * 0.15f);
+            mpLVLBonus[i] = mpLVLBonus[i - 1] + Mathf.FloorToInt(i * 0.25f);
         }
     }
 }
