@@ -47,3 +47,5 @@ MonoBehaviour:
     type: 3}
   player: {fileID: 3172771674450404400, guid: 90b0a44207a280b4f8d1126fc35316a5, type: 3}
   sceneLoader: {fileID: 0}
+  gameMngr: {fileID: 8028671331069710646, guid: 2d7f3a6462461a74fbe29432e256d8ba,
+    type: 3}

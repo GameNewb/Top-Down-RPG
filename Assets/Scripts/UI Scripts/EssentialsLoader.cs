@@ -7,6 +7,7 @@ public class EssentialsLoader : MonoBehaviour
     [SerializeField] GameObject UIScreen;
     [SerializeField] GameObject player;
     [SerializeField] GameObject sceneLoader;
+    [SerializeField] GameObject gameMngr;
 
     // Start is called before the first frame update
     void Awake()
@@ -17,6 +18,7 @@ public class EssentialsLoader : MonoBehaviour
             Instantiate(UIScreen);
         }
 
+        // Initialize Player and its position
         if (PlayerController.instance == null)
         {
             // Set the Player at the scene entrance position
@@ -27,6 +29,12 @@ public class EssentialsLoader : MonoBehaviour
 
                 Instantiate(player, sceneLoaderPosition, rotation);
             } 
+        }
+
+        // Initialize GameManager
+        if (GameManager.instance == null)
+        {
+            Instantiate(gameMngr);
         }
     }
 
