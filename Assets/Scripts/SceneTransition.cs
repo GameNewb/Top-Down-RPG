@@ -14,12 +14,14 @@ public class SceneTransition : MonoBehaviour
     [SerializeField] float loadTimer = 1f;
 
     private PlayerController playerInstance;
+    private GameMenu gameMenu;
 
     // Start is called before the first frame update
     void Start()
     {
         sceneEntrance.transitionName = sceneTransitionName;
         playerInstance = PlayerController.instance;
+        gameMenu = GameMenu.instance;
     }
 
     // Update is called once per frame
@@ -44,9 +46,11 @@ public class SceneTransition : MonoBehaviour
         UIFade.instance.FadeToBlack();
         playerInstance.sceneTransitionName = sceneTransitionName;
         playerInstance.isLoading = true;
+        gameMenu.DisableControl(true);
         yield return new WaitForSeconds(loadTimer);
         SceneManager.LoadScene(sceneToLoad);
         UIFade.instance.FadeFromBlack();
         playerInstance.isLoading = false;
+        gameMenu.DisableControl(false);
     }
 }

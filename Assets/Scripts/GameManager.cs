@@ -12,7 +12,6 @@ public class GameManager : MonoBehaviour
     // Control the player controls when any of this is active/true
     public bool gameMenuOpen;
     public bool dialogActive;
-    public bool isLoading;
 
     // Start is called before the first frame update
     void Start()
