@@ -9,7 +9,11 @@ public class GameMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (theMenu == null)
+        {
+            // Get child menu component
+            theMenu = gameObject.transform.Find("Menu").gameObject;
+        }
     }
 
     // Update is called once per frame
@@ -20,10 +24,12 @@ public class GameMenu : MonoBehaviour
             if (theMenu.activeInHierarchy)
             {
                 theMenu.SetActive(false);
+                GameManager.instance.gameMenuOpen = false;
             }
             else
             {
                 theMenu.SetActive(true);
+                GameManager.instance.gameMenuOpen = true;
             }
             
         } 

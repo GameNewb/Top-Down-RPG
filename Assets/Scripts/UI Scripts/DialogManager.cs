@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class DialogManager : MonoBehaviour
 {
+    private GameManager gameMngr;
     [SerializeField] string namePlaceHolder;
     public Text dialogText;
     public Text nameText;
@@ -24,6 +25,7 @@ public class DialogManager : MonoBehaviour
     void Start()
     {
         instance = this;
+        gameMngr = GameManager.instance;
     }
 
     // Update is called once per frame
@@ -46,8 +48,8 @@ public class DialogManager : MonoBehaviour
                         // Disabled the dialog box
                         dialogBox.SetActive(false);
 
-                        // Re-enable player movement
-                        PlayerController.instance.canMove = true;
+                        // Re-enable player movement when dialog is inactive
+                        GameManager.instance.dialogActive = false;
                     }
                     else
                     {
@@ -94,8 +96,8 @@ public class DialogManager : MonoBehaviour
         // Enable/disable for people/signs
         nameBox.SetActive(isPerson);
 
-        // Disable player movement
-        PlayerController.instance.canMove = false;
+        // Disable player movement when dialog is active
+        GameManager.instance.dialogActive = true;
     }
 
     private void CheckNameLabel()
