@@ -1,13 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameMenu : MonoBehaviour
 {
     public GameObject theMenu;
     public static GameMenu instance;
 
+    private CharacterStats[] playerStats;
     private bool disableControls = false;
+
+    [SerializeField] Text[] nameText, hpText, mpText, lvlText, expText;
+    [SerializeField] Slider[] expSlider;
+    [SerializeField] Image[] charImage;
+    [SerializeField] GameObject[] charStatHolder;
 
     // Start is called before the first frame update
     void Start()
@@ -38,14 +45,33 @@ public class GameMenu : MonoBehaviour
         } 
     }
 
+    public void UpdateMainStats()
+    {
+        playerStats = GameManager.instance.playerStats;
+
+        for (int i = 0; i < playerStats.Length; i++)
+        {
+            if (playerStats[i].gameObject.activeInHierarchy)
+            {
+                charStatHolder[i].SetActive(true);
+            }
+            else
+            {
+                charStatHolder[i].SetActive(false);
+            }
+        }
+    }
+
     // Control the menu when different actions are performed 
     public void ControlMenu(bool control)
     {
         theMenu.SetActive(control);
+        UpdateMainStats();
         GameManager.instance.gameMenuOpen = control;
     }
 
     // Inactivate the menu when transitioning/loading between scenes
+    // Called from SceneTransition
     public void DisableControl(bool control)
     {
         disableControls = control;
