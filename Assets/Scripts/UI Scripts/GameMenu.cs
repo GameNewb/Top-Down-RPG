@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class GameMenu : MonoBehaviour
 {
     public GameObject theMenu;
+    public GameObject[] windows;
     public static GameMenu instance;
 
     private CharacterStats[] playerStats;
@@ -35,7 +36,7 @@ public class GameMenu : MonoBehaviour
         {
             if (theMenu.activeInHierarchy)
             {
-                ControlMenu(false);
+                CloseMenu();
             }
             else
             {
@@ -87,5 +88,35 @@ public class GameMenu : MonoBehaviour
     public void DisableControl(bool control)
     {
         disableControls = control;
+    }
+
+    // Toggle between windows (Items, Stats, etc.)
+    public void ToggleWindow(int windowNumber)
+    {
+        for(int i = 0; i < windows.Length; i++)
+        {
+            // Activate/inactivate the windows
+            if (i == windowNumber)
+            {
+                windows[i].SetActive(!windows[i].activeInHierarchy);
+            }
+            else
+            {
+                // Close other windows
+                windows[i].SetActive(false);
+            }
+        }
+    }
+
+    public void CloseMenu()
+    {
+        // Close any open menus
+        for (int i = 0; i < windows.Length; i++) {
+            windows[i].SetActive(false);
+        }
+
+        // Deactivate
+        theMenu.SetActive(false);
+        GameManager.instance.gameMenuOpen = false;
     }
 }
