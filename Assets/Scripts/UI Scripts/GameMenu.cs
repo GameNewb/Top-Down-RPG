@@ -45,15 +45,27 @@ public class GameMenu : MonoBehaviour
         } 
     }
 
+    // Function to update the stats section of the menu
     public void UpdateMainStats()
     {
         playerStats = GameManager.instance.playerStats;
 
         for (int i = 0; i < playerStats.Length; i++)
         {
+            // Activate / inactive each individual character stat section
             if (playerStats[i].gameObject.activeInHierarchy)
             {
                 charStatHolder[i].SetActive(true);
+
+                // Update corresponding values
+                nameText[i].text = playerStats[i].charName;
+                hpText[i].text = "HP: " + playerStats[i].currentHP + "/" + playerStats[i].maxHP;
+                mpText[i].text = "MP: " + playerStats[i].currentMP + "/" + playerStats[i].maxMP;
+                lvlText[i].text = "Lvl: " + playerStats[i].playerLevel;
+                expText[i].text = playerStats[i].currentEXP.ToString() + "/" + playerStats[i].expToNextLevel[playerStats[i].playerLevel];
+                expSlider[i].maxValue = playerStats[i].expToNextLevel[playerStats[i].playerLevel];
+                expSlider[i].value = playerStats[i].currentEXP;
+                charImage[i].sprite = playerStats[i].charImage;
             }
             else
             {

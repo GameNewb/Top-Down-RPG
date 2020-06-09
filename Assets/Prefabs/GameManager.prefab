@@ -111,6 +111,8 @@ MonoBehaviour:
   - {fileID: 8028671332150814843}
   - {fileID: 7232828453450903414}
   - {fileID: 8371392121112856171}
+  gameMenuOpen: 0
+  dialogActive: 0
 --- !u!1 &8028671332150814842
 GameObject:
   m_ObjectHideFlags: 0
@@ -171,7 +173,8 @@ MonoBehaviour:
   armrPwr: 0
   equippedWeapon: 
   equippredArmor: 
-  charImage: {fileID: 0}
+  charImage: {fileID: 3427114271967980436, guid: ea6d682a19de2a642986059a7352d95d,
+    type: 3}
 --- !u!1 &8575078145951471865
 GameObject:
   m_ObjectHideFlags: 0
