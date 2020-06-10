@@ -17,6 +17,11 @@ public class GameMenu : MonoBehaviour
     [SerializeField] Image[] charImage;
     [SerializeField] GameObject[] charStatHolder;
 
+    [SerializeField] GameObject[] statsButtons;
+
+    [SerializeField] Text statsName, statsHP, statsMP, statsStr, statsDef, statsWpn, statsWpnPower, statsArmor, statsArmorPower, statsExp;
+    [SerializeField] Image statsImage;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -93,6 +98,9 @@ public class GameMenu : MonoBehaviour
     // Toggle between windows (Items, Stats, etc.)
     public void ToggleWindow(int windowNumber)
     {
+        // If we're in the item or any other menu, update the stats automatically (e.g. using potion)
+        UpdateMainStats();
+
         for(int i = 0; i < windows.Length; i++)
         {
             // Activate/inactivate the windows
@@ -106,6 +114,52 @@ public class GameMenu : MonoBehaviour
                 windows[i].SetActive(false);
             }
         }
+    }
+
+    // Function to open each individual character stat page
+    public void OpenStats()
+    {
+        // Update stats automatically when stats are opened
+        UpdateMainStats();
+
+        // Automatically populate with first character
+        CharStats(0);
+
+        // Update stats info
+        for(int i = 0; i < statsButtons.Length; i++)
+        {
+            // Set the buttons based on active characters
+            statsButtons[i].SetActive(playerStats[i].gameObject.activeInHierarchy);
+
+            // Update button text
+            statsButtons[i].GetComponentInChildren<Text>().text = playerStats[i].charName;
+        }
+    }
+
+    // Function to update the Char Stat section of the menu
+    public void CharStats(int selected)
+    {
+        // Update stats details based on character data
+        statsName.text = playerStats[selected].charName;
+        statsHP.text = playerStats[selected].currentHP.ToString() + "/" + playerStats[selected].maxHP;
+        statsMP.text = playerStats[selected].currentMP.ToString() + "/" + playerStats[selected].maxMP;
+        statsStr.text = playerStats[selected].strength.ToString();
+        statsDef.text = playerStats[selected].vitality.ToString();
+
+        if (playerStats[selected].equippedWeapon != "")
+        {
+            statsWpn.text = playerStats[selected].equippedWeapon;
+        }
+        statsWpnPower.text = playerStats[selected].wpnPwr.ToString();
+
+        if (playerStats[selected].equippedWeapon != "")
+        {
+            statsArmor.text = playerStats[selected].armrPwr.ToString();
+        }
+        
+        statsArmorPower.text = playerStats[selected].armrPwr.ToString();
+        statsExp.text = (playerStats[selected].expToNextLevel[playerStats[selected].playerLevel] - playerStats[selected].currentEXP).ToString();
+        statsImage.sprite = playerStats[selected].charImage;
     }
 
     public void CloseMenu()

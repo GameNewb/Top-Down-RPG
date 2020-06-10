@@ -45,14 +45,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   charName: Olaf
   playerLevel: 3
-  currentEXP: 250
+  currentEXP: 150
   expToNextLevel: 
-  maxLevel: 10
-  baseEXP: 100
-  currentHP: 0
-  maxHP: 100
-  currentMP: 0
-  maxMP: 30
+  maxLevel: 100
+  baseEXP: 300
+  currentHP: 200
+  maxHP: 250
+  currentMP: 20
+  maxMP: 20
   mpLVLBonus: 
   strength: 10
   vitality: 16
@@ -158,17 +158,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   charName: Kiru
   playerLevel: 1
-  currentEXP: 0
+  currentEXP: 50
   expToNextLevel: 
-  maxLevel: 10
+  maxLevel: 100
   baseEXP: 100
-  currentHP: 0
+  currentHP: 80
   maxHP: 100
-  currentMP: 0
+  currentMP: 30
   maxMP: 30
   mpLVLBonus: 
-  strength: 0
-  vitality: 0
+  strength: 5
+  vitality: 3
   wpnPwr: 0
   armrPwr: 0
   equippedWeapon: 
