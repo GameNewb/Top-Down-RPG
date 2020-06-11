@@ -13,6 +13,11 @@ public class GameManager : MonoBehaviour
     public bool gameMenuOpen;
     public bool dialogActive;
 
+    // Item variables
+    [SerializeField] public string[] itemsHeld;
+    [SerializeField] public int[] numberOfItems;
+    [SerializeField] public Item[] referenceItems;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,5 +40,20 @@ public class GameManager : MonoBehaviour
         {
             playerController.canMove = true;
         }
+    }
+
+    public Item GetItemDetails(string itemToGet)
+    {
+        // Get the item we're looking for
+        for (int i = 0; i < referenceItems.Length; i++)
+        {
+            if(referenceItems[i].itemName == itemToGet)
+            {
+                return referenceItems[i];
+            }
+        }
+
+        // No item found
+        return null;
     }
 }
