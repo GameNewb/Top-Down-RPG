@@ -14,9 +14,9 @@ public class GameManager : MonoBehaviour
     public bool dialogActive;
 
     // Item variables
-    [SerializeField] public string[] itemsHeld;
-    [SerializeField] public int[] numberOfItems;
-    [SerializeField] public Item[] referenceItems;
+    public string[] itemsHeld;
+    public int[] numberOfItems;
+    public Item[] referenceItems;
 
     // Start is called before the first frame update
     void Start()
@@ -55,5 +55,32 @@ public class GameManager : MonoBehaviour
 
         // No item found
         return null;
+    }
+
+    public void SortItems()
+    {
+        // Variable to keep track of what's the next empty slot
+        int emptySlot = 0;
+
+        // Iterate through each inventory slot that we have
+        for (int i = 0; i < itemsHeld.Length; i++)
+        {
+            // If we see an available item in the inventory, move it to an empty slot
+            if (itemsHeld[i] != "")
+            {
+                itemsHeld[emptySlot] = itemsHeld[i];
+                numberOfItems[emptySlot] = numberOfItems[i];
+                emptySlot++;
+            }
+        }
+
+        // Populate inventory with "empty" items
+        // We start at the next empty slot, and just iterate through the remaining slots left
+        for (int i = emptySlot; i < itemsHeld.Length; i++)
+        {
+            // Reset the values
+            itemsHeld[i] = "";
+            numberOfItems[i] = 0;
+        }
     }
 }

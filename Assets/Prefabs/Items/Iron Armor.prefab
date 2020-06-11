@@ -95,7 +95,7 @@ MonoBehaviour:
   isItem: 0
   isWeapon: 0
   isArmor: 1
-  itemName: Leather Armor
+  itemName: Iron Armor
   itemDescription: Protects you from knives! (Not swords, just knives)
   value: 35
   itemSprite: {fileID: 21300014, guid: 0bc4ed27aef38a44bb72e80f9beb5326, type: 3}

@@ -166,6 +166,8 @@ public class GameMenu : MonoBehaviour
 
     public void ShowItems()
     {
+        GameManager.instance.SortItems();
+
         // Set the items section number in the grid
         for (int i = 0; i < itemButtons.Length; i++)
         {
@@ -178,7 +180,7 @@ public class GameMenu : MonoBehaviour
 
                 // Activate the image, set appropriate sprite, and set the amount we have
                 itemButtons[i].buttonImage.gameObject.SetActive(true);
-                itemButtons[i].buttonImage.sprite = GameManager.instance.GetItemDetails(itemHeld).itemSprite;
+                itemButtons[i].buttonImage.sprite = GameManager.instance.GetItemDetails(GameManager.instance.itemsHeld[i]).itemSprite;
                 itemButtons[i].amountText.text = GameManager.instance.numberOfItems[i].ToString();
             }
             else
