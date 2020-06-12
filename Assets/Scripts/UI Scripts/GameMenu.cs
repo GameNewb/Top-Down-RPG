@@ -24,6 +24,10 @@ public class GameMenu : MonoBehaviour
 
     [SerializeField] ItemButton[] itemButtons;
 
+    [SerializeField] string selectedItem;
+    [SerializeField] Item activeItem;
+    [SerializeField] Text itemName, itemDescription, useButtonText;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -190,6 +194,25 @@ public class GameMenu : MonoBehaviour
                 itemButtons[i].amountText.text = "";
             }
         }
+    }
+
+    public void SelectItem(Item selectedItem)
+    {
+        activeItem = selectedItem;
+        
+        // Item is either an equippable item or consumable; update text
+        if (activeItem.isWeapon || activeItem.isArmor)
+        {
+            useButtonText.text = "Equip";
+        }
+        else
+        {
+            useButtonText.text = "Use";
+        }
+
+        // Update the info
+        itemName.text = activeItem.itemName;
+        itemDescription.text = activeItem.itemDescription;
     }
 
     public void CloseMenu()
