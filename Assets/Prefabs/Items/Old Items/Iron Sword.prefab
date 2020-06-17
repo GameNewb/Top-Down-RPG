@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7665178396331804023}
   - component: {fileID: 6978992890708810039}
-  - component: {fileID: 2872996081028511623}
   m_Layer: 0
   m_Name: Iron Sword
   m_TagString: Untagged
@@ -80,28 +79,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2872996081028511623
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7567906928430269152}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6468a8a97d38f654b8e77723c1ffbdae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isItem: 0
-  isWeapon: 1
-  isArmor: 0
-  itemName: Iron Sword
-  itemDescription: Made from your old toy car
-  value: 35
-  itemSprite: {fileID: 21300078, guid: 0bc4ed27aef38a44bb72e80f9beb5326, type: 3}
-  amountToChange: 0
-  affectHP: 0
-  affectMP: 0
-  affectStr: 0
-  weaponStrength: 15
-  armorStrength: 0

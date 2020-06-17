@@ -20,4 +20,15 @@ public class ItemButton : MonoBehaviour
     {
         
     }
+
+    public void Press()
+    {
+        var gameManagerInstance = GameManager.instance;
+        // Item is not empty, update the text
+        if (gameManagerInstance.itemsHeld[buttonValue])
+        {
+            GameMenu.instance.SelectItem(gameManagerInstance.GetItemDetails(gameManagerInstance.itemsHeld[buttonValue]));
+        }
+    }
+
 }

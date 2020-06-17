@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Item : MonoBehaviour
+[System.Serializable]
+[CreateAssetMenu(menuName = "Items/Create Item")]
+public class Item : ScriptableObject
 {
     [Header("Item Type")]
     public bool isItem;
@@ -24,15 +26,61 @@ public class Item : MonoBehaviour
     public int weaponStrength;
     public int armorStrength;
 
-    // Start is called before the first frame update
-    void Start()
+    public void Use(CharacterStats charToUseOn)
     {
+        CharacterStats selectedChar = charToUseOn;
         
-    }
+        // If it's a consumable, check which one it affects
+        if (isItem)
+        {
+            if (affectHP)
+            {
+                selectedChar.currentHP += amountToChange;
+                if (selectedChar.currentHP > selectedChar.maxHP)
+                {
+                    selectedChar.currentHP = selectedChar.maxHP;
+                }
+            }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+            if (affectMP)
+            {
+                selectedChar.currentMP += amountToChange;
+                if (selectedChar.currentMP > selectedChar.maxMP)
+                {
+                    selectedChar.currentMP = selectedChar.maxMP;
+                }
+            }
+
+            if (affectStr)
+            {
+                selectedChar.strength += amountToChange;
+
+            }
+        }
+
+        if (isWeapon)
+        {
+            if (selectedChar.equippedWeapon != null)
+            {
+                GameManager.instance.AddItem(selectedChar.equippedWeapon, 1);
+            }
+
+            selectedChar.equippedWeapon = this;
+            selectedChar.wpnPwr = weaponStrength;
+        }
+
+        if (isArmor)
+        {
+            if (selectedChar.equippedArmor != null)
+            {
+                GameManager.instance.AddItem(selectedChar.equippedArmor, 1);
+
+            }
+
+            selectedChar.equippedArmor = this;
+            selectedChar.armrPwr = armorStrength;
+        }
+
+        GameManager.instance.RemoveItem(this);
     }
 }

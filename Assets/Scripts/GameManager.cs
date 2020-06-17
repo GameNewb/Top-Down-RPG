@@ -14,9 +14,11 @@ public class GameManager : MonoBehaviour
     public bool dialogActive;
 
     // Item variables
-    public string[] itemsHeld;
+    public Item[] itemsHeld;
     public int[] numberOfItems;
     public Item[] referenceItems;
+
+    public List<InventorySlots> playerInventory = new List<InventorySlots>();
 
     // Start is called before the first frame update
     void Start()
@@ -42,12 +44,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public Item GetItemDetails(string itemToGet)
+    public Item GetItemDetails(Item itemToGet)
     {
         // Get the item we're looking for
         for (int i = 0; i < referenceItems.Length; i++)
         {
-            if(referenceItems[i].itemName == itemToGet)
+            if(referenceItems[i] == itemToGet)
             {
                 return referenceItems[i];
             }
@@ -66,7 +68,7 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < itemsHeld.Length; i++)
         {
             // If we see an available item in the inventory, move it to an empty slot
-            if (itemsHeld[i] != "")
+            if (itemsHeld[i])
             {
                 itemsHeld[emptySlot] = itemsHeld[i];
                 numberOfItems[emptySlot] = numberOfItems[i];
@@ -79,8 +81,50 @@ public class GameManager : MonoBehaviour
         for (int i = emptySlot; i < itemsHeld.Length; i++)
         {
             // Reset the values
-            itemsHeld[i] = "";
+            itemsHeld[i] = null;
             numberOfItems[i] = 0;
         }
+    }
+
+    public void AddItem(Item itemToAdd, int amount)
+    {
+        bool hasItem = false;
+
+        for (int i = 0; i < playerInventory.Count; i++)
+        {
+            if (playerInventory[i].item == itemToAdd)
+            {
+                playerInventory[i].amount += amount;
+                hasItem = true;
+            }
+        }
+
+        // If player doesn't have item, just add it to inventory
+        if (!hasItem)
+        {
+            playerInventory.Add(new InventorySlots(itemToAdd, amount));
+        }
+    }
+
+    public void RemoveItem(Item itemToRemove)
+    {
+        for (int i = 0; i < playerInventory.Count; i++)
+        {
+            if (playerInventory[i].item == itemToRemove)
+            {
+                if (playerInventory[i].amount > 1)
+                {
+                    playerInventory[i].amount = playerInventory[i].amount - 1;
+                }
+                else
+                {
+                    GameMenu.instance.invItemButton.Remove(playerInventory[i]);
+                    playerInventory.Remove(playerInventory[i]);
+                }
+            }
+
+        }
+        GameMenu.instance.ShowItems();
+
     }
 }

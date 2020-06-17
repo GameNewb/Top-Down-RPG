@@ -28,6 +28,9 @@ public class GameMenu : MonoBehaviour
     [SerializeField] Item activeItem;
     [SerializeField] Text itemName, itemDescription, useButtonText;
 
+    public List<InventorySlots> invItemButton = new List<InventorySlots>();
+    public List<InventorySlots> invItemSlot = new List<InventorySlots>();
+
     // Start is called before the first frame update
     void Start()
     {
@@ -152,13 +155,13 @@ public class GameMenu : MonoBehaviour
         statsStr.text = playerStats[selected].strength.ToString();
         statsDef.text = playerStats[selected].vitality.ToString();
 
-        if (playerStats[selected].equippedWeapon != "")
+        if (playerStats[selected].equippedWeapon)
         {
-            statsWpn.text = playerStats[selected].equippedWeapon;
+            statsWpn.text = playerStats[selected].equippedWeapon.itemName;
         }
         statsWpnPower.text = playerStats[selected].wpnPwr.ToString();
 
-        if (playerStats[selected].equippedWeapon != "")
+        if (playerStats[selected].equippedWeapon)
         {
             statsArmor.text = playerStats[selected].armrPwr.ToString();
         }
@@ -178,7 +181,7 @@ public class GameMenu : MonoBehaviour
             itemButtons[i].buttonValue = i;
 
             // Item is held / in player
-            if (GameManager.instance.itemsHeld[i] != "")
+            if (GameManager.instance.itemsHeld[i])
             {
                 var itemHeld = GameManager.instance.itemsHeld[i];
 
@@ -214,7 +217,7 @@ public class GameMenu : MonoBehaviour
         itemName.text = activeItem.itemName;
         itemDescription.text = activeItem.itemDescription;
     }
-
+    
     public void CloseMenu()
     {
         // Close any open menus

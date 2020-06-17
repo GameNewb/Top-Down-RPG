@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7891581329346456428}
   - component: {fileID: 2479052875040512494}
-  - component: {fileID: 4991449395312338056}
   m_Layer: 0
   m_Name: MP Potion
   m_TagString: Untagged
@@ -80,28 +79,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4991449395312338056
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2966217453629839916}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6468a8a97d38f654b8e77723c1ffbdae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isItem: 0
-  isWeapon: 0
-  isArmor: 0
-  itemName: Mana Potion
-  itemDescription: Restores 15 MP
-  value: 5
-  itemSprite: {fileID: 21300004, guid: 0bc4ed27aef38a44bb72e80f9beb5326, type: 3}
-  amountToChange: 15
-  affectHP: 0
-  affectMP: 1
-  affectStr: 0
-  weaponStrength: 0
-  armorStrength: 0

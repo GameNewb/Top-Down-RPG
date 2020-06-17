@@ -26,8 +26,8 @@ public class CharacterStats : MonoBehaviour
     public int armrPwr;
 
     // Gear 
-    public string equippedWeapon;
-    public string equippredArmor;
+    public Item equippedWeapon;
+    public Item equippedArmor;
     public Sprite charImage;
 
     // Start is called before the first frame update
