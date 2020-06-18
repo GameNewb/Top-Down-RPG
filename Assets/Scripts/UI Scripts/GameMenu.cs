@@ -28,8 +28,8 @@ public class GameMenu : MonoBehaviour
     [SerializeField] Item activeItem;
     [SerializeField] Text itemName, itemDescription, useButtonText;
 
-    public List<InventorySlots> invItemButton = new List<InventorySlots>();
-    public List<InventorySlots> invItemSlot = new List<InventorySlots>();
+    public GameObject invItemSlot;
+    public GameObject invItemButtonHolder;
 
     // Start is called before the first frame update
     void Start()
@@ -197,6 +197,28 @@ public class GameMenu : MonoBehaviour
                 itemButtons[i].amountText.text = "";
             }
         }
+    }
+
+    public void ShowItems2()
+    {
+        foreach (InventorySlots slots in GameManager.instance.playerInventory)
+        {
+            //if (slots.amount > 0)
+           // {
+                // invItemButton is the parent object that is used as a panel
+                // invItemSlot is each individual slot in the inventory
+                GameObject newItemButton = Instantiate(invItemSlot) as GameObject;
+                ItemButton buttonInv = newItemButton.GetComponent<ItemButton>();
+
+                // buttonInv.buttonItem = slots.item;
+                // buttonInv.buttonImage.sprite = slots.item.itemSprite;
+
+                // buttonInv.amountText.text = slots.amount.ToString();
+                newItemButton.SetActive(true);
+                newItemButton.transform.SetParent(invItemButtonHolder.transform, false);
+          //  }
+        }
+
     }
 
     public void SelectItem(Item selectedItem)

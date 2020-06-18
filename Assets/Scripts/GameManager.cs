@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 public class GameManager : MonoBehaviour
 {
@@ -20,6 +21,10 @@ public class GameManager : MonoBehaviour
 
     public List<InventorySlots> playerInventory = new List<InventorySlots>();
 
+    public Item itemToAddLater;
+
+    private int nextEmptySlot;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -41,6 +46,18 @@ public class GameManager : MonoBehaviour
         else
         {
             playerController.canMove = true;
+        }
+
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            /*string[] ironArmor = AssetDatabase.FindAssets("1:Iron Armor", new[] { "Assets/Prefabs/Items" });
+
+            for (int i = 0; i < ironArmor.Length; i++)
+            {
+
+                Debug.Log(ironArmor[i]);
+            }*/
+            this.AddItem(itemToAddLater, 1);
         }
     }
 
@@ -76,6 +93,9 @@ public class GameManager : MonoBehaviour
             }
         }
 
+        // Global variable that keeps track of our next empty slot
+        nextEmptySlot = emptySlot;
+
         // Populate inventory with "empty" items
         // We start at the next empty slot, and just iterate through the remaining slots left
         for (int i = emptySlot; i < itemsHeld.Length; i++)
@@ -90,20 +110,28 @@ public class GameManager : MonoBehaviour
     {
         bool hasItem = false;
 
-        for (int i = 0; i < playerInventory.Count; i++)
+        // Sort Items first to easily distinguish the next empty slot
+        this.SortItems();
+
+        // Iterate through the current Player inventory to see if we have the item
+        for (int i = 0; i < itemsHeld.Length; i++)
         {
-            if (playerInventory[i].item == itemToAdd)
+            if (itemsHeld[i] == itemToAdd)
             {
-                playerInventory[i].amount += amount;
+                numberOfItems[i] += amount;
                 hasItem = true;
+                break;
             }
         }
 
-        // If player doesn't have item, just add it to inventory
+        // If player doesn't have item, add it to next empty slot
         if (!hasItem)
         {
-            playerInventory.Add(new InventorySlots(itemToAdd, amount));
+            itemsHeld[nextEmptySlot] = itemToAdd;
+            numberOfItems[nextEmptySlot] += amount;
         }
+
+        GameMenu.instance.ShowItems();
     }
 
     public void RemoveItem(Item itemToRemove)
@@ -118,7 +146,7 @@ public class GameManager : MonoBehaviour
                 }
                 else
                 {
-                    GameMenu.instance.invItemButton.Remove(playerInventory[i]);
+                    //GameMenu.instance.invItemButton.Remove(playerInventory[i]);
                     playerInventory.Remove(playerInventory[i]);
                 }
             }
