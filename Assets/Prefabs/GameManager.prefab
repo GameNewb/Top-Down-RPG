@@ -162,7 +162,48 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1a57e9849d49ace46aa806c4a8b70de3, type: 2}
   - {fileID: 11400000, guid: 1156c7f51ddf5d74d9d098feb5f6ed49, type: 2}
   - {fileID: 11400000, guid: e60978d626c53554e985419b2a151bd0, type: 2}
-  playerInventory: []
+  playerInventory:
+  - item: {fileID: 0}
+    amount: 0
+  - item: {fileID: 0}
+    amount: 0
+  - item: {fileID: 0}
+    amount: 0
+  - item: {fileID: 0}
+    amount: 0
+  - item: {fileID: 0}
+    amount: 0
+  - item: {fileID: 0}
+    amount: 0
+  - item: {fileID: 0}
+    amount: 0
+  - item: {fileID: 0}
+    amount: 0
+  - item: {fileID: 0}
+    amount: 0
+  - item: {fileID: 0}
+    amount: 0
+  - item: {fileID: 0}
+    amount: 0
+  - item: {fileID: 0}
+    amount: 0
+  - item: {fileID: 0}
+    amount: 0
+  - item: {fileID: 0}
+    amount: 0
+  - item: {fileID: 0}
+    amount: 0
+  - item: {fileID: 0}
+    amount: 0
+  - item: {fileID: 0}
+    amount: 0
+  - item: {fileID: 0}
+    amount: 0
+  - item: {fileID: 0}
+    amount: 0
+  - item: {fileID: 0}
+    amount: 0
+  itemToAddLater: {fileID: 11400000, guid: 1a57e9849d49ace46aa806c4a8b70de3, type: 2}
 --- !u!1 &8028671332150814842
 GameObject:
   m_ObjectHideFlags: 0

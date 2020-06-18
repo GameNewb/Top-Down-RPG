@@ -524,6 +524,7 @@ MonoBehaviour:
   buttonImage: {fileID: 1311171173407037410}
   amountText: {fileID: 7514156629545289231}
   buttonValue: 0
+  buttonItem: {fileID: 0}
 --- !u!1 &53138243876303855
 GameObject:
   m_ObjectHideFlags: 0
@@ -747,6 +748,7 @@ MonoBehaviour:
   buttonImage: {fileID: 1542299982186711812}
   amountText: {fileID: 6544574775827634047}
   buttonValue: 0
+  buttonItem: {fileID: 0}
 --- !u!1 &76148088336966422
 GameObject:
   m_ObjectHideFlags: 0
@@ -1183,6 +1185,7 @@ MonoBehaviour:
   buttonImage: {fileID: 4387118020133163119}
   amountText: {fileID: 5783068821889692629}
   buttonValue: 0
+  buttonItem: {fileID: 0}
 --- !u!1 &324620100771244559
 GameObject:
   m_ObjectHideFlags: 0
@@ -1490,6 +1493,7 @@ MonoBehaviour:
   buttonImage: {fileID: 2736004021080897308}
   amountText: {fileID: 9138530290737925645}
   buttonValue: 0
+  buttonItem: {fileID: 0}
 --- !u!1 &396974044366486303
 GameObject:
   m_ObjectHideFlags: 0
@@ -1886,7 +1890,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -3.8000488, y: 4.2249756}
+  m_AnchoredPosition: {x: -3.8000488, y: 4.2248535}
   m_SizeDelta: {x: -94.2, y: -79.75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4308128240729525434
@@ -1995,7 +1999,7 @@ RectTransform:
   - {fileID: 4239482170280327511}
   - {fileID: 8849983069204157661}
   m_Father: {fileID: 8846313774557083457}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2055,9 +2059,9 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 3665313653032984287}
   - {fileID: 8120151776745968017}
   - {fileID: 8863102839886897619}
+  - {fileID: 3665313653032984287}
   m_Father: {fileID: 7461460263039233763}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2405,6 +2409,7 @@ MonoBehaviour:
   buttonImage: {fileID: 8537112875014231749}
   amountText: {fileID: 3784579855860453870}
   buttonValue: 0
+  buttonItem: {fileID: 0}
 --- !u!1 &995957699199077765
 GameObject:
   m_ObjectHideFlags: 0
@@ -2554,6 +2559,7 @@ MonoBehaviour:
   buttonImage: {fileID: 7501371720412032636}
   amountText: {fileID: 7410651329008624929}
   buttonValue: 0
+  buttonItem: {fileID: 0}
 --- !u!1 &1083762627466601465
 GameObject:
   m_ObjectHideFlags: 0
@@ -2872,6 +2878,7 @@ MonoBehaviour:
   buttonImage: {fileID: 4328679201558593483}
   amountText: {fileID: 1648007488072976153}
   buttonValue: 0
+  buttonItem: {fileID: 0}
 --- !u!1 &1133297087846448951
 GameObject:
   m_ObjectHideFlags: 0
@@ -3262,6 +3269,7 @@ MonoBehaviour:
   buttonImage: {fileID: 1593868705344150203}
   amountText: {fileID: 6928487796275905635}
   buttonValue: 0
+  buttonItem: {fileID: 0}
 --- !u!1 &1204103159186423825
 GameObject:
   m_ObjectHideFlags: 0
@@ -3485,6 +3493,7 @@ MonoBehaviour:
   buttonImage: {fileID: 5954623534397486311}
   amountText: {fileID: 4035407473258754463}
   buttonValue: 0
+  buttonItem: {fileID: 0}
 --- !u!1 &1263592692504470586
 GameObject:
   m_ObjectHideFlags: 0
@@ -3999,6 +4008,7 @@ MonoBehaviour:
   buttonImage: {fileID: 6424684376894859308}
   amountText: {fileID: 8129054017573655814}
   buttonValue: 0
+  buttonItem: {fileID: 0}
 --- !u!1 &1465623759925923135
 GameObject:
   m_ObjectHideFlags: 0
@@ -4148,6 +4158,7 @@ MonoBehaviour:
   buttonImage: {fileID: 10601085365949047}
   amountText: {fileID: 2124997552809050736}
   buttonValue: 0
+  buttonItem: {fileID: 0}
 --- !u!1 &1479009155141977929
 GameObject:
   m_ObjectHideFlags: 0
@@ -4297,6 +4308,7 @@ MonoBehaviour:
   buttonImage: {fileID: 3705911103630400407}
   amountText: {fileID: 1190835621328877194}
   buttonValue: 0
+  buttonItem: {fileID: 0}
 --- !u!1 &1538477241379794179
 GameObject:
   m_ObjectHideFlags: 0
@@ -5231,6 +5243,7 @@ MonoBehaviour:
   buttonImage: {fileID: 2495633379368232253}
   amountText: {fileID: 478006937762340102}
   buttonValue: 0
+  buttonItem: {fileID: 0}
 --- !u!1 &1876017913805209642
 GameObject:
   m_ObjectHideFlags: 0
@@ -5380,6 +5393,7 @@ MonoBehaviour:
   buttonImage: {fileID: 2112080407369456186}
   amountText: {fileID: 8442926563455392286}
   buttonValue: 0
+  buttonItem: {fileID: 0}
 --- !u!1 &1920832594756607988
 GameObject:
   m_ObjectHideFlags: 0
@@ -6248,6 +6262,7 @@ MonoBehaviour:
   buttonImage: {fileID: 1518391053127333465}
   amountText: {fileID: 4107379455930934425}
   buttonValue: 0
+  buttonItem: {fileID: 0}
 --- !u!1 &2656775676438685542
 GameObject:
   m_ObjectHideFlags: 0
@@ -6888,6 +6903,7 @@ MonoBehaviour:
   buttonImage: {fileID: 8549688506678054249}
   amountText: {fileID: 1317951774796552270}
   buttonValue: 0
+  buttonItem: {fileID: 0}
 --- !u!1 &3035485396728460394
 GameObject:
   m_ObjectHideFlags: 0
@@ -7101,6 +7117,7 @@ MonoBehaviour:
   buttonImage: {fileID: 6976566433315722709}
   amountText: {fileID: 4185881432756023240}
   buttonValue: 0
+  buttonItem: {fileID: 0}
 --- !u!1 &3144888604194716071
 GameObject:
   m_ObjectHideFlags: 0
@@ -7616,6 +7633,7 @@ MonoBehaviour:
   buttonImage: {fileID: 1594193398302948973}
   amountText: {fileID: 2728930019651831027}
   buttonValue: 0
+  buttonItem: {fileID: 0}
 --- !u!1 &3474487040931779907
 GameObject:
   m_ObjectHideFlags: 0
@@ -7765,6 +7783,7 @@ MonoBehaviour:
   buttonImage: {fileID: 8715008963067997058}
   amountText: {fileID: 8258731536593908462}
   buttonValue: 0
+  buttonItem: {fileID: 0}
 --- !u!1 &3514167392190409123
 GameObject:
   m_ObjectHideFlags: 0
@@ -7993,6 +8012,7 @@ MonoBehaviour:
   buttonImage: {fileID: 6285317996080548959}
   amountText: {fileID: 6335321007491394142}
   buttonValue: 0
+  buttonItem: {fileID: 0}
 --- !u!1 &3626658288796615946
 GameObject:
   m_ObjectHideFlags: 0
@@ -8342,6 +8362,7 @@ MonoBehaviour:
   buttonImage: {fileID: 269105033184653356}
   amountText: {fileID: 8712494443074847996}
   buttonValue: 0
+  buttonItem: {fileID: 0}
 --- !u!1 &3747345595264180019
 GameObject:
   m_ObjectHideFlags: 0
@@ -8646,6 +8667,7 @@ MonoBehaviour:
   buttonImage: {fileID: 7736472933353909063}
   amountText: {fileID: 1498542029195813790}
   buttonValue: 0
+  buttonItem: {fileID: 0}
 --- !u!1 &3893935137547009386
 GameObject:
   m_ObjectHideFlags: 0
@@ -9209,6 +9231,7 @@ MonoBehaviour:
   buttonImage: {fileID: 6401607334675200918}
   amountText: {fileID: 129358630693543190}
   buttonValue: 0
+  buttonItem: {fileID: 0}
 --- !u!1 &4003389394550145324
 GameObject:
   m_ObjectHideFlags: 0
@@ -9358,6 +9381,7 @@ MonoBehaviour:
   buttonImage: {fileID: 7977952202684680344}
   amountText: {fileID: 1843323310523033952}
   buttonValue: 0
+  buttonItem: {fileID: 0}
 --- !u!1 &4005004346802691731
 GameObject:
   m_ObjectHideFlags: 0
@@ -9826,6 +9850,7 @@ MonoBehaviour:
   buttonImage: {fileID: 2402443411034067016}
   amountText: {fileID: 4447175823400354493}
   buttonValue: 0
+  buttonItem: {fileID: 0}
 --- !u!1 &4179097274097012782
 GameObject:
   m_ObjectHideFlags: 0
@@ -10847,8 +10872,8 @@ MonoBehaviour:
   itemName: {fileID: 1015132400552652976}
   itemDescription: {fileID: 1141362609847483470}
   useButtonText: {fileID: 4193817346363797793}
-  invItemButton: []
-  invItemSlot: []
+  invItemSlot: {fileID: 0}
+  invItemButtonHolder: {fileID: 0}
 --- !u!1 &4497515397139586924
 GameObject:
   m_ObjectHideFlags: 0
@@ -11072,6 +11097,7 @@ MonoBehaviour:
   buttonImage: {fileID: 8322588569099475411}
   amountText: {fileID: 4935142735639486494}
   buttonValue: 0
+  buttonItem: {fileID: 0}
 --- !u!1 &4542408067242083139
 GameObject:
   m_ObjectHideFlags: 0
@@ -12073,6 +12099,7 @@ MonoBehaviour:
   buttonImage: {fileID: 5999782960159257790}
   amountText: {fileID: 2118489279213061288}
   buttonValue: 0
+  buttonItem: {fileID: 0}
 --- !u!1 &5117616483820055570
 GameObject:
   m_ObjectHideFlags: 0
@@ -13257,7 +13284,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 129.79999, y: 0.099975586}
+  m_AnchoredPosition: {x: 129.79999, y: 0.099853516}
   m_SizeDelta: {x: -346.2, y: -76.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4803993178816664965
@@ -13329,7 +13356,7 @@ RectTransform:
   - {fileID: 5774026726162237552}
   - {fileID: 3304168704740918088}
   m_Father: {fileID: 8846313774557083457}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -13839,6 +13866,7 @@ MonoBehaviour:
   buttonImage: {fileID: 4199002708455378719}
   amountText: {fileID: 284561376507730925}
   buttonValue: 0
+  buttonItem: {fileID: 0}
 --- !u!1 &6289161144296818822
 GameObject:
   m_ObjectHideFlags: 0
@@ -13871,7 +13899,7 @@ RectTransform:
   - {fileID: 4329082453632414837}
   - {fileID: 3487612076387091399}
   m_Father: {fileID: 8846313774557083457}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -14328,6 +14356,7 @@ MonoBehaviour:
   buttonImage: {fileID: 3972853742775137889}
   amountText: {fileID: 1645363823528616853}
   buttonValue: 0
+  buttonItem: {fileID: 0}
 --- !u!1 &6422010602337219606
 GameObject:
   m_ObjectHideFlags: 0
@@ -14556,6 +14585,7 @@ MonoBehaviour:
   buttonImage: {fileID: 1374337763910543482}
   amountText: {fileID: 1985756318240779640}
   buttonValue: 0
+  buttonItem: {fileID: 0}
 --- !u!1 &6436409377101296230
 GameObject:
   m_ObjectHideFlags: 0
@@ -15110,6 +15140,7 @@ MonoBehaviour:
   buttonImage: {fileID: 6697913594121538019}
   amountText: {fileID: 2146670512878396522}
   buttonValue: 0
+  buttonItem: {fileID: 0}
 --- !u!1 &6629586891661586775
 GameObject:
   m_ObjectHideFlags: 0
@@ -15338,6 +15369,7 @@ MonoBehaviour:
   buttonImage: {fileID: 1622402491722613791}
   amountText: {fileID: 1190143731978848852}
   buttonValue: 0
+  buttonItem: {fileID: 0}
 --- !u!1 &6639182328660711087
 GameObject:
   m_ObjectHideFlags: 0
@@ -16162,6 +16194,7 @@ MonoBehaviour:
   buttonImage: {fileID: 525659197693396645}
   amountText: {fileID: 2952196944000184362}
   buttonValue: 0
+  buttonItem: {fileID: 0}
 --- !u!1 &6808756970973283353
 GameObject:
   m_ObjectHideFlags: 0
@@ -16349,7 +16382,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 4.300049, y: 31.100006}
+  m_AnchoredPosition: {x: 4.300049, y: 31.100098}
   m_SizeDelta: {x: -72.1, y: -107.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8688520572673009992
@@ -17637,6 +17670,7 @@ MonoBehaviour:
   buttonImage: {fileID: 5289017048179234821}
   amountText: {fileID: 6762795554766206795}
   buttonValue: 0
+  buttonItem: {fileID: 0}
 --- !u!1 &7524100413702102547
 GameObject:
   m_ObjectHideFlags: 0
@@ -18265,6 +18299,7 @@ MonoBehaviour:
   buttonImage: {fileID: 1304907103667706181}
   amountText: {fileID: 5004315355342790554}
   buttonValue: 0
+  buttonItem: {fileID: 0}
 --- !u!1 &7770532179363952029
 GameObject:
   m_ObjectHideFlags: 0
@@ -18488,6 +18523,7 @@ MonoBehaviour:
   buttonImage: {fileID: 1261831939784995204}
   amountText: {fileID: 8440644160928572800}
   buttonValue: 0
+  buttonItem: {fileID: 0}
 --- !u!1 &7866552173471726132
 GameObject:
   m_ObjectHideFlags: 0
@@ -18716,6 +18752,7 @@ MonoBehaviour:
   buttonImage: {fileID: 5007030420959699136}
   amountText: {fileID: 2522057665426544115}
   buttonValue: 0
+  buttonItem: {fileID: 0}
 --- !u!1 &7920750157302000350
 GameObject:
   m_ObjectHideFlags: 0
@@ -19712,6 +19749,7 @@ MonoBehaviour:
   buttonImage: {fileID: 1261994866648700947}
   amountText: {fileID: 5063225812549767662}
   buttonValue: 0
+  buttonItem: {fileID: 0}
 --- !u!1 &8572144414009929410
 GameObject:
   m_ObjectHideFlags: 0
@@ -19861,6 +19899,7 @@ MonoBehaviour:
   buttonImage: {fileID: 5805067788257521980}
   amountText: {fileID: 8393154317709822239}
   buttonValue: 0
+  buttonItem: {fileID: 0}
 --- !u!1 &8605053784101494761
 GameObject:
   m_ObjectHideFlags: 0
@@ -20807,6 +20846,7 @@ MonoBehaviour:
   buttonImage: {fileID: 1332258118049980590}
   amountText: {fileID: 5259612836465484103}
   buttonValue: 0
+  buttonItem: {fileID: 0}
 --- !u!1 &9025715849265620292
 GameObject:
   m_ObjectHideFlags: 0
