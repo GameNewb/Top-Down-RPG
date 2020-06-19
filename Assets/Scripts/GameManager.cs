@@ -50,14 +50,12 @@ public class GameManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.J))
         {
-            /*string[] ironArmor = AssetDatabase.FindAssets("1:Iron Armor", new[] { "Assets/Prefabs/Items" });
-
-            for (int i = 0; i < ironArmor.Length; i++)
-            {
-
-                Debug.Log(ironArmor[i]);
-            }*/
             this.AddItem(itemToAddLater, 1);
+        }
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            this.RemoveItem(itemToAddLater);
         }
     }
 
@@ -136,23 +134,23 @@ public class GameManager : MonoBehaviour
 
     public void RemoveItem(Item itemToRemove)
     {
-        for (int i = 0; i < playerInventory.Count; i++)
+        for (int i = 0; i < itemsHeld.Length; i++)
         {
-            if (playerInventory[i].item == itemToRemove)
+            if (itemsHeld[i] == itemToRemove)
             {
-                if (playerInventory[i].amount > 1)
+                numberOfItems[i]--;
+                
+                // Remove the item from our inventory if the amount is less than 0
+                if (numberOfItems[i] <= 0)
                 {
-                    playerInventory[i].amount = playerInventory[i].amount - 1;
+                    itemsHeld[i] = null;
+                    numberOfItems[i] = 0;
                 }
-                else
-                {
-                    //GameMenu.instance.invItemButton.Remove(playerInventory[i]);
-                    playerInventory.Remove(playerInventory[i]);
-                }
+
+                break;
             }
-
         }
-        GameMenu.instance.ShowItems();
 
+        GameMenu.instance.ShowItems();
     }
 }
