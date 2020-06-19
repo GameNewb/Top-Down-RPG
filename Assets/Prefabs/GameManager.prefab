@@ -163,6 +163,46 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1156c7f51ddf5d74d9d098feb5f6ed49, type: 2}
   - {fileID: 11400000, guid: e60978d626c53554e985419b2a151bd0, type: 2}
   playerInventory:
+  - item: {fileID: 11400000, guid: eb7150500b5f7c242b78fa827fb2ed3d, type: 2}
+    amount: 1
+  - item: {fileID: 0}
+    amount: 0
+  - item: {fileID: 11400000, guid: 82f9d7040c96b254db0e0e72a2a58bd0, type: 2}
+    amount: 5
+  - item: {fileID: 0}
+    amount: 0
+  - item: {fileID: 11400000, guid: e60978d626c53554e985419b2a151bd0, type: 2}
+    amount: 3
+  - item: {fileID: 0}
+    amount: 0
+  - item: {fileID: 0}
+    amount: 0
+  - item: {fileID: 0}
+    amount: 0
+  - item: {fileID: 0}
+    amount: 0
+  - item: {fileID: 0}
+    amount: 0
+  - item: {fileID: 11400000, guid: 1156c7f51ddf5d74d9d098feb5f6ed49, type: 2}
+    amount: 1
+  - item: {fileID: 0}
+    amount: 0
+  - item: {fileID: 0}
+    amount: 0
+  - item: {fileID: 0}
+    amount: 0
+  - item: {fileID: 0}
+    amount: 0
+  - item: {fileID: 0}
+    amount: 0
+  - item: {fileID: 0}
+    amount: 0
+  - item: {fileID: 0}
+    amount: 0
+  - item: {fileID: 0}
+    amount: 0
+  - item: {fileID: 0}
+    amount: 0
   - item: {fileID: 0}
     amount: 0
   - item: {fileID: 0}

@@ -31,6 +31,8 @@ public class GameMenu : MonoBehaviour
     public GameObject invItemSlot;
     public GameObject invItemButtonHolder;
 
+    private int maximumItemSlots = 40;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -95,6 +97,19 @@ public class GameMenu : MonoBehaviour
         theMenu.SetActive(control);
         UpdateMainStats();
         GameManager.instance.gameMenuOpen = control;
+    }
+
+    public void CloseMenu()
+    {
+        // Close any open menus
+        for (int i = 0; i < windows.Length; i++)
+        {
+            windows[i].SetActive(false);
+        }
+
+        // Deactivate
+        theMenu.SetActive(false);
+        GameManager.instance.gameMenuOpen = false;
     }
 
     // Inactivate the menu when transitioning/loading between scenes
@@ -171,6 +186,76 @@ public class GameMenu : MonoBehaviour
         statsImage.sprite = playerStats[selected].charImage;
     }
 
+    // Function to show inventory when "Items" button is clicked on the menu
+    public void ShowItems()
+    {
+        GameManager.instance.SortItems();
+        var playerInventory = GameManager.instance.playerInventory;
+
+        for (int i = 0; i < playerInventory.Count; i++)
+        {
+            itemButtons[i].buttonValue = i;
+            
+            if (playerInventory[i].item != null)
+            {
+                // Activate the image, set appropriate sprite, and set the amount we have
+                itemButtons[i].buttonImage.gameObject.SetActive(true);
+                itemButtons[i].buttonImage.sprite = GameManager.instance.GetItemDetails(GameManager.instance.playerInventory[i].item).itemSprite;
+                itemButtons[i].amountText.text = GameManager.instance.playerInventory[i].amount.ToString();
+            }
+            else
+            {
+                // Inactivate if we don't have the item
+                itemButtons[i].buttonImage.gameObject.SetActive(false);
+                itemButtons[i].amountText.text = "";
+            }
+        }
+    }
+
+    // Function that updates which item is selected by the player in the inventory menu
+    public void SelectItem(Item selectedItem)
+    {
+        activeItem = selectedItem;
+        
+        // Item is either an equippable item or consumable; update text
+        if (activeItem.isWeapon || activeItem.isArmor)
+        {
+            useButtonText.text = "Equip";
+        }
+        else
+        {
+            useButtonText.text = "Use";
+        }
+
+        // Update the info
+        itemName.text = activeItem.itemName;
+        itemDescription.text = activeItem.itemDescription;
+    }
+    
+    // Function to Discard an item from inventory
+    public void DiscardItem()
+    {
+        // TO-DO - add ability to remove more than 1 item amount
+        if (activeItem != null)
+        {
+            var playerInventory = GameManager.instance.playerInventory;
+            for (int i = 0; i < playerInventory.Count; i++)
+            {
+                if (activeItem == playerInventory[i].item)
+                {
+                    // Remove item from inventory
+                    GameManager.instance.RemoveItem(activeItem);
+                }
+            }
+        }
+    }
+   
+}
+
+/* OLD CODE */
+/*
+ *  // Function to show inventory when "Items" button is clicked on the menu
+    // uses itemsHeld variable
     public void ShowItems()
     {
         GameManager.instance.SortItems();
@@ -198,57 +283,10 @@ public class GameMenu : MonoBehaviour
             }
         }
     }
-
-    public void ShowItems2()
-    {
-        foreach (InventorySlots slots in GameManager.instance.playerInventory)
-        {
-            //if (slots.amount > 0)
-           // {
-                // invItemButton is the parent object that is used as a panel
-                // invItemSlot is each individual slot in the inventory
-                GameObject newItemButton = Instantiate(invItemSlot) as GameObject;
-                ItemButton buttonInv = newItemButton.GetComponent<ItemButton>();
-
-                // buttonInv.buttonItem = slots.item;
-                // buttonInv.buttonImage.sprite = slots.item.itemSprite;
-
-                // buttonInv.amountText.text = slots.amount.ToString();
-                newItemButton.SetActive(true);
-                newItemButton.transform.SetParent(invItemButtonHolder.transform, false);
-          //  }
-        }
-
-    }
-
-    public void SelectItem(Item selectedItem)
-    {
-        activeItem = selectedItem;
-        
-        // Item is either an equippable item or consumable; update text
-        if (activeItem.isWeapon || activeItem.isArmor)
-        {
-            useButtonText.text = "Equip";
-        }
-        else
-        {
-            useButtonText.text = "Use";
-        }
-
-        // Update the info
-        itemName.text = activeItem.itemName;
-        itemDescription.text = activeItem.itemDescription;
-    }
-    
-    public void CloseMenu()
-    {
-        // Close any open menus
-        for (int i = 0; i < windows.Length; i++) {
-            windows[i].SetActive(false);
-        }
-
-        // Deactivate
-        theMenu.SetActive(false);
-        GameManager.instance.gameMenuOpen = false;
-    }
-}
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ */
