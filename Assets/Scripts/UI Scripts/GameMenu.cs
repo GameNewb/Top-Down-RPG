@@ -28,10 +28,11 @@ public class GameMenu : MonoBehaviour
     [SerializeField] Item activeItem;
     [SerializeField] Text itemName, itemDescription, useButtonText;
 
-    public GameObject invItemSlot;
-    public GameObject invItemButtonHolder;
-
-    private int maximumItemSlots = 40;
+    // Variables for the Discard panel
+    [SerializeField] private GameObject discardPanel;
+    private GameObject amountFieldObj;
+    private InputField inputField;
+    private int amountText;
 
     // Start is called before the first frame update
     void Start()
@@ -40,6 +41,16 @@ public class GameMenu : MonoBehaviour
         {
             // Get child menu component
             theMenu = gameObject.transform.Find("Menu").gameObject;
+        }
+
+        // Set Listener for amount text field
+        if (discardPanel != null)
+        {
+            var eventListener = new InputField.SubmitEvent();
+            amountFieldObj = discardPanel.transform.GetChild(1).gameObject;
+            inputField = amountFieldObj.GetComponent<InputField>();
+            eventListener.AddListener(SetDiscardAmount);
+            inputField.onEndEdit = eventListener;
         }
 
         instance = this;
@@ -235,19 +246,58 @@ public class GameMenu : MonoBehaviour
     // Function to Discard an item from inventory
     public void DiscardItem()
     {
-        // TO-DO - add ability to remove more than 1 item amount
+        // Discards an item
         if (activeItem != null)
         {
             var playerInventory = GameManager.instance.playerInventory;
+            
             for (int i = 0; i < playerInventory.Count; i++)
             {
                 if (activeItem == playerInventory[i].item)
                 {
-                    // Remove item from inventory
-                    GameManager.instance.RemoveItem(activeItem);
+                    // If item amount is > 1, open a dialog box to allow player to drop X amount instead of 1
+                    if (playerInventory[i].amount > 1)
+                    {      
+                        discardPanel.SetActive(true);
+                    } 
+                    else
+                    {
+                        // Remove 1 item amount from inventory
+                        GameManager.instance.RemoveItem(activeItem, 1);
+                    }
                 }
             }
         }
+    }
+    
+    private void SetDiscardAmount(string amount)
+    {
+        if (amount != "")
+        {
+            amountText = int.Parse(amount);
+        }
+    }
+
+    // Function to display the discard panel for specifying amount to discard
+    public void ConfirmDiscardAmount()
+    {
+        // Remove the item, reset all values, close the panel
+        GameManager.instance.RemoveItem(activeItem, amountText);
+        activeItem = null;
+        itemName.text = null;
+        itemDescription.text = null;
+        this.CloseDiscardPanel();
+    }
+
+    // Closes the Discard Panel
+    public void CloseDiscardPanel()
+    {
+        // Revert to placeholder values - set to 2 since "Input Caret" is the 1st child
+        //var amountProperties = inputField.transform.GetChild(2).gameObject.GetComponent<Text>();
+        //amountText = 1;
+        //amountProperties.text = amountText.ToString();
+        //Debug.Log(amountProperties.text);
+        discardPanel.SetActive(false);
     }
    
 }

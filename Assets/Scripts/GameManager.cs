@@ -55,7 +55,7 @@ public class GameManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.P))
         {
-            this.RemoveItem(itemToAddLater);
+            this.RemoveItem(itemToAddLater, 1);
         }
     }
 
@@ -133,13 +133,13 @@ public class GameManager : MonoBehaviour
         GameMenu.instance.ShowItems();
     }
 
-    public void RemoveItem(Item itemToRemove)
+    public void RemoveItem(Item itemToRemove, int amount)
     {
         for (int i = 0; i < playerInventory.Count; i++)
         {
             if (playerInventory[i].item == itemToRemove)
             {
-                playerInventory[i].amount--;
+                playerInventory[i].amount -= amount;
                 
                 // Remove the item from our inventory if the amount is less than 0
                 if (playerInventory[i].amount <= 0)

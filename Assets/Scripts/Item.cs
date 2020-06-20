@@ -81,6 +81,6 @@ public class Item : ScriptableObject
             selectedChar.armrPwr = armorStrength;
         }
 
-        GameManager.instance.RemoveItem(this);
+        GameManager.instance.RemoveItem(this, 1);
     }
 }
