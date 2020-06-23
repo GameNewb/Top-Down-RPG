@@ -54,7 +54,6 @@ public class Item : ScriptableObject
             if (affectStr)
             {
                 selectedChar.strength += amountToChange;
-
             }
         }
 

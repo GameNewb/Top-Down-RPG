@@ -34,6 +34,10 @@ public class GameMenu : MonoBehaviour
     private InputField inputField;
     private int amountText;
 
+    // Variables for using an item on a specific character
+    public GameObject itemToUseOnMenu;
+    public Text[] itemToUseOnNames;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -120,6 +124,7 @@ public class GameMenu : MonoBehaviour
 
         // Deactivate
         theMenu.SetActive(false);
+        itemToUseOnMenu.SetActive(false);
         GameManager.instance.gameMenuOpen = false;
     }
 
@@ -149,6 +154,8 @@ public class GameMenu : MonoBehaviour
                 windows[i].SetActive(false);
             }
         }
+
+        itemToUseOnMenu.SetActive(false);
     }
 
     // Function to open each individual character stat page
@@ -181,18 +188,28 @@ public class GameMenu : MonoBehaviour
         statsStr.text = playerStats[selected].strength.ToString();
         statsDef.text = playerStats[selected].vitality.ToString();
 
+        // Set Equipped Weapon Text
         if (playerStats[selected].equippedWeapon)
         {
             statsWpn.text = playerStats[selected].equippedWeapon.itemName;
         }
+        else
+        {
+            statsWpn.text = "None";
+        }
         statsWpnPower.text = playerStats[selected].wpnPwr.ToString();
 
-        if (playerStats[selected].equippedWeapon)
+        // Set Equipped Armor Text
+        if (playerStats[selected].equippedArmor)
         {
-            statsArmor.text = playerStats[selected].armrPwr.ToString();
+            statsArmor.text = playerStats[selected].equippedArmor.itemName;
         }
-        
+        else
+        {
+            statsArmor.text = "None";
+        }
         statsArmorPower.text = playerStats[selected].armrPwr.ToString();
+
         statsExp.text = (playerStats[selected].expToNextLevel[playerStats[selected].playerLevel] - playerStats[selected].currentEXP).ToString();
         statsImage.sprite = playerStats[selected].charImage;
     }
@@ -300,6 +317,30 @@ public class GameMenu : MonoBehaviour
         discardPanel.SetActive(false);
     }
    
+    public void OpenItemToUseOnChoice()
+    {
+        itemToUseOnMenu.SetActive(true);
+
+        for (int i = 0; i < itemToUseOnNames.Length; i++)
+        {
+            var playerStats = GameManager.instance.playerStats[i];
+
+            // Set button text
+            itemToUseOnNames[i].text = playerStats.charName;
+            itemToUseOnNames[i].transform.parent.gameObject.SetActive(playerStats.gameObject.activeInHierarchy);
+        }
+    }
+
+    public void CloseItemToUseOnChoice()
+    {
+        itemToUseOnMenu.SetActive(false);
+    }
+
+    public void UseItem(int characterSelected)
+    {
+        activeItem.Use(playerStats[characterSelected]);
+        CloseItemToUseOnChoice();
+    }
 }
 
 /* OLD CODE */
