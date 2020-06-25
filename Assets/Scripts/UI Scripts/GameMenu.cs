@@ -38,6 +38,8 @@ public class GameMenu : MonoBehaviour
     public GameObject itemToUseOnMenu;
     public Text[] itemToUseOnNames;
 
+    public Text gilText;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -104,6 +106,8 @@ public class GameMenu : MonoBehaviour
                 charStatHolder[i].SetActive(false);
             }
         }
+
+        gilText.text = GameManager.instance.currentGil.ToString() + "g";
     }
 
     // Control the menu when different actions are performed 

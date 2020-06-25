@@ -18,12 +18,15 @@ public class GameManager : MonoBehaviour
     public Item[] itemsHeld;
     public int[] numberOfItems;
     public Item[] referenceItems;
-
+    
     public List<InventorySlots> playerInventory = new List<InventorySlots>();
 
     public Item itemToAddLater;
 
     private int nextEmptySlot;
+
+    public int currentGil;
+    public int maxGil;
     
     // Start is called before the first frame update
     void Start()

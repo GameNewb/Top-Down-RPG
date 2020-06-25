@@ -244,6 +244,8 @@ MonoBehaviour:
   - item: {fileID: 0}
     amount: 0
   itemToAddLater: {fileID: 11400000, guid: 1a57e9849d49ace46aa806c4a8b70de3, type: 2}
+  currentGil: 500
+  maxGil: 999999
 --- !u!1 &8028671332150814842
 GameObject:
   m_ObjectHideFlags: 0
