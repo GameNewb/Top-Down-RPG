@@ -40,6 +40,8 @@ public class GameMenu : MonoBehaviour
 
     public Text gilText;
 
+    private InventoryHelper inventoryHelper;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -60,12 +62,14 @@ public class GameMenu : MonoBehaviour
         }
 
         instance = this;
+
+        inventoryHelper = new InventoryHelper();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.M) || Input.GetKeyDown(KeyCode.Escape) && disableControls == false)
+        if (Input.GetKeyDown(KeyCode.M) || Input.GetKeyDown(KeyCode.Escape) && disableControls == false && !GameManager.instance.dialogActive)
         {
             if (theMenu.activeInHierarchy)
             {
@@ -75,7 +79,6 @@ public class GameMenu : MonoBehaviour
             {
                 ControlMenu(true);
             }
-            
         } 
     }
 
@@ -224,24 +227,8 @@ public class GameMenu : MonoBehaviour
         GameManager.instance.SortItems();
         var playerInventory = GameManager.instance.playerInventory;
 
-        for (int i = 0; i < playerInventory.Count; i++)
-        {
-            itemButtons[i].buttonValue = i;
-            
-            if (playerInventory[i].item != null)
-            {
-                // Activate the image, set appropriate sprite, and set the amount we have
-                itemButtons[i].buttonImage.gameObject.SetActive(true);
-                itemButtons[i].buttonImage.sprite = GameManager.instance.GetItemDetails(GameManager.instance.playerInventory[i].item).itemSprite;
-                itemButtons[i].amountText.text = GameManager.instance.playerInventory[i].amount.ToString();
-            }
-            else
-            {
-                // Inactivate if we don't have the item
-                itemButtons[i].buttonImage.gameObject.SetActive(false);
-                itemButtons[i].amountText.text = "";
-            }
-        }
+        // Display all the items that the player has
+        inventoryHelper.PopulateInventoryButtons(playerInventory, itemButtons);
     }
 
     // Function that updates which item is selected by the player in the inventory menu
@@ -249,19 +236,7 @@ public class GameMenu : MonoBehaviour
     {
         activeItem = selectedItem;
         
-        // Item is either an equippable item or consumable; update text
-        if (activeItem.isWeapon || activeItem.isArmor)
-        {
-            useButtonText.text = "Equip";
-        }
-        else
-        {
-            useButtonText.text = "Use";
-        }
-
-        // Update the info
-        itemName.text = activeItem.itemName;
-        itemDescription.text = activeItem.itemDescription;
+        inventoryHelper.SelectItem(activeItem, useButtonText, itemName, itemDescription);
     }
     
     // Function to Discard an item from inventory
@@ -321,6 +296,7 @@ public class GameMenu : MonoBehaviour
         discardPanel.SetActive(false);
     }
    
+    // Function to open the dialog for consumable items
     public void OpenItemToUseOnChoice()
     {
         itemToUseOnMenu.SetActive(true);
@@ -334,7 +310,8 @@ public class GameMenu : MonoBehaviour
             itemToUseOnNames[i].transform.parent.gameObject.SetActive(playerStats.gameObject.activeInHierarchy);
         }
     }
-
+    
+    // Function to close the dialog for consumable items
     public void CloseItemToUseOnChoice()
     {
         itemToUseOnMenu.SetActive(false);
@@ -342,7 +319,10 @@ public class GameMenu : MonoBehaviour
 
     public void UseItem(int characterSelected)
     {
-        activeItem.Use(playerStats[characterSelected]);
+        if (activeItem)
+        {
+            activeItem.Use(playerStats[characterSelected]);
+        }
         CloseItemToUseOnChoice();
     }
 }
@@ -379,7 +359,30 @@ public class GameMenu : MonoBehaviour
         }
     }
  * 
- * 
+ * public void ShowItems()
+    {
+        GameManager.instance.SortItems();
+        var playerInventory = GameManager.instance.playerInventory;
+
+        for (int i = 0; i < playerInventory.Count; i++)
+        {
+            itemButtons[i].buttonValue = i;
+            
+            if (playerInventory[i].item != null)
+            {
+                // Activate the image, set appropriate sprite, and set the amount we have
+                itemButtons[i].buttonImage.gameObject.SetActive(true);
+                itemButtons[i].buttonImage.sprite = GameManager.instance.GetItemDetails(GameManager.instance.playerInventory[i].item).itemSprite;
+                itemButtons[i].amountText.text = GameManager.instance.playerInventory[i].amount.ToString();
+            }
+            else
+            {
+                // Inactivate if we don't have the item
+                itemButtons[i].buttonImage.gameObject.SetActive(false);
+                itemButtons[i].amountText.text = "";
+            }
+        }
+    }
  * 
  * 
  * 

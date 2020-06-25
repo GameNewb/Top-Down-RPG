@@ -31,11 +31,6 @@ public class ItemButton : MonoBehaviour
         {
             GameMenu.instance.SelectItem(gameManagerInstance.GetItemDetails(gameManagerInstance.playerInventory[buttonValue].item));
         }
-        /**
-        if (gameManagerInstance.itemsHeld[buttonValue])
-        {
-            GameMenu.instance.SelectItem(gameManagerInstance.GetItemDetails(gameManagerInstance.itemsHeld[buttonValue]));
-        }*/
     }
 
 }
