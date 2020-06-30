@@ -26,11 +26,41 @@ public class ItemButton : MonoBehaviour
     {
         var gameManagerInstance = GameManager.instance;
 
-        // Item is not empty, update the text
-        if (gameManagerInstance.playerInventory[buttonValue].item != null)
+        // Player opens up the menu, display appropriate item info
+        if (GameMenu.instance.theMenu.activeInHierarchy)
         {
-            GameMenu.instance.SelectItem(gameManagerInstance.GetItemDetails(gameManagerInstance.playerInventory[buttonValue].item));
+            // Item is not empty, update the text
+            if (gameManagerInstance.playerInventory[buttonValue].item != null)
+            {
+                GameMenu.instance.SelectItem(gameManagerInstance.GetItemDetails(gameManagerInstance.playerInventory[buttonValue].item));
+            }
         }
+        
+        // Player opens up the shop
+        if (Shop.instance.shopMenu.activeInHierarchy)
+        {
+            var shopInstance = Shop.instance;
+            
+            // Buying items, update item name/description
+            if (shopInstance.buyMenu.activeInHierarchy)
+            {
+                if (shopInstance.itemsForSale[buttonValue].item != null)
+                {
+                    shopInstance.SelectBuyItem(gameManagerInstance.GetItemDetails(shopInstance.itemsForSale[buttonValue].item));
+                }
+                
+            }
+
+            // Selling items, update item name/description
+            if (shopInstance.sellMenu.activeInHierarchy)
+            {
+                if (gameManagerInstance.playerInventory[buttonValue].item != null)
+                {
+                    shopInstance.SelectSellItem(gameManagerInstance.GetItemDetails(gameManagerInstance.playerInventory[buttonValue].item));
+                }
+            }
+        }
+        
     }
 
 }
