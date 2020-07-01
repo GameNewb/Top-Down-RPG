@@ -10,16 +10,17 @@ public class ItemButton : MonoBehaviour
     public int buttonValue;
     public Item buttonItem;
 
+    private Button parentObject;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        parentObject = gameObject.GetComponent<Button>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
     }
 
     public void Press()
@@ -46,9 +47,8 @@ public class ItemButton : MonoBehaviour
             {
                 if (shopInstance.itemsForSale[buttonValue].item != null)
                 {
-                    shopInstance.SelectBuyItem(gameManagerInstance.GetItemDetails(shopInstance.itemsForSale[buttonValue].item));
+                    shopInstance.SelectBuyItem(shopInstance.itemsForSale[buttonValue], parentObject);
                 }
-                
             }
 
             // Selling items, update item name/description
@@ -56,9 +56,10 @@ public class ItemButton : MonoBehaviour
             {
                 if (gameManagerInstance.playerInventory[buttonValue].item != null)
                 {
-                    shopInstance.SelectSellItem(gameManagerInstance.GetItemDetails(gameManagerInstance.playerInventory[buttonValue].item));
+                    shopInstance.SelectSellItem(gameManagerInstance.playerInventory[buttonValue]);
                 }
             }
+            
         }
         
     }
