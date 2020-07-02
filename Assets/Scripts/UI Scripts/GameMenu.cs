@@ -261,6 +261,7 @@ public class GameMenu : MonoBehaviour
                         // Remove 1 item amount from inventory
                         GameManager.instance.RemoveItem(activeItem, 1);
                     }
+                    break;
                 }
             }
         }
@@ -326,65 +327,3 @@ public class GameMenu : MonoBehaviour
         CloseItemToUseOnChoice();
     }
 }
-
-/* OLD CODE */
-/*
- *  // Function to show inventory when "Items" button is clicked on the menu
-    // uses itemsHeld variable
-    public void ShowItems()
-    {
-        GameManager.instance.SortItems();
-
-        // Set the items section number in the grid
-        for (int i = 0; i < itemButtons.Length; i++)
-        {
-            itemButtons[i].buttonValue = i;
-
-            // Item is held / in player
-            if (GameManager.instance.itemsHeld[i])
-            {
-                var itemHeld = GameManager.instance.itemsHeld[i];
-
-                // Activate the image, set appropriate sprite, and set the amount we have
-                itemButtons[i].buttonImage.gameObject.SetActive(true);
-                itemButtons[i].buttonImage.sprite = GameManager.instance.GetItemDetails(GameManager.instance.itemsHeld[i]).itemSprite;
-                itemButtons[i].amountText.text = GameManager.instance.numberOfItems[i].ToString();
-            }
-            else
-            {
-                // Inactivate if we don't have the item
-                itemButtons[i].buttonImage.gameObject.SetActive(false);
-                itemButtons[i].amountText.text = "";
-            }
-        }
-    }
- * 
- * public void ShowItems()
-    {
-        GameManager.instance.SortItems();
-        var playerInventory = GameManager.instance.playerInventory;
-
-        for (int i = 0; i < playerInventory.Count; i++)
-        {
-            itemButtons[i].buttonValue = i;
-            
-            if (playerInventory[i].item != null)
-            {
-                // Activate the image, set appropriate sprite, and set the amount we have
-                itemButtons[i].buttonImage.gameObject.SetActive(true);
-                itemButtons[i].buttonImage.sprite = GameManager.instance.GetItemDetails(GameManager.instance.playerInventory[i].item).itemSprite;
-                itemButtons[i].amountText.text = GameManager.instance.playerInventory[i].amount.ToString();
-            }
-            else
-            {
-                // Inactivate if we don't have the item
-                itemButtons[i].buttonImage.gameObject.SetActive(false);
-                itemButtons[i].amountText.text = "";
-            }
-        }
-    }
- * 
- * 
- * 
- * 
- */

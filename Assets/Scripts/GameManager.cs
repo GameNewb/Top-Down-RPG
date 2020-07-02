@@ -15,8 +15,6 @@ public class GameManager : MonoBehaviour
     public bool dialogActive;
 
     // Item variables
-    public Item[] itemsHeld;
-    public int[] numberOfItems;
     public Item[] referenceItems;
     
     public List<InventorySlots> playerInventory = new List<InventorySlots>();
@@ -158,70 +156,3 @@ public class GameManager : MonoBehaviour
         GameMenu.instance.ShowItems();
     }
 }
-
-
-/* OLD CODE */
-/*
- * 
-    public void AddItem(Item itemToAdd, int amount)
-    {
-        bool hasItem = false;
-
-        // Sort Items first to easily distinguish the next empty slot
-        this.SortItems();
-
-        // Iterate through the current Player inventory to see if we have the item
-        for (int i = 0; i < itemsHeld.Length; i++)
-        {
-            if (itemsHeld[i] == itemToAdd)
-            {
-                numberOfItems[i] += amount;
-                hasItem = true;
-                break;
-            }
-        }
-
-        // If player doesn't have item, add it to next empty slot
-        if (!hasItem)
-        {
-            itemsHeld[nextEmptySlot] = itemToAdd;
-            numberOfItems[nextEmptySlot] += amount;
-        }
-
-        GameMenu.instance.ShowItems();
-    }
- * 
- * 
-
-    public void SortItems()
-    {
-        // Variable to keep track of what's the next empty slot
-        int emptySlot = 0;
-
-        // Iterate through each inventory slot that we have
-        for (int i = 0; i < itemsHeld.Length; i++)
-        {
-            // If we see an available item in the inventory, move it to an empty slot
-            if (itemsHeld[i])
-            {
-                itemsHeld[emptySlot] = itemsHeld[i];
-                numberOfItems[emptySlot] = numberOfItems[i];
-                emptySlot++;
-            }
-        }
-
-        // Global variable that keeps track of our next empty slot
-        nextEmptySlot = emptySlot;
-
-        // Populate inventory with "empty" items
-        // We start at the next empty slot, and just iterate through the remaining slots left
-        for (int i = emptySlot; i < itemsHeld.Length; i++)
-        {
-            // Reset the values
-            itemsHeld[i] = null;
-            numberOfItems[i] = 0;
-        }
-    }
- *
- * 
- */

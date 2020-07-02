@@ -11561,7 +11561,7 @@ PrefabInstance:
     - target: {fileID: 6402887853260713914, guid: 9368597b10407b949964ab518d075521,
         type: 3}
       propertyPath: m_Name
-      value: Shopkeeper
+      value: Shopkeeper - Town Shop 1
       objectReference: {fileID: 0}
     - target: {fileID: 6402887853260713894, guid: 9368597b10407b949964ab518d075521,
         type: 3}
@@ -11617,6 +11617,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6402887853260713893, guid: 9368597b10407b949964ab518d075521,
+        type: 3}
+      propertyPath: sceneLocation
+      value: Town Shop 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9368597b10407b949964ab518d075521, type: 3}
