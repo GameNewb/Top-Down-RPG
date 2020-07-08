@@ -275,6 +275,9 @@ MonoBehaviour:
   - Hello
   - Nice to meet you too!
   isPerson: 1
+  questToMark: Quest Test
+  shouldActivateQuest: 1
+  markComplete: 1
 --- !u!1 &432965450
 GameObject:
   m_ObjectHideFlags: 0
@@ -3765,7 +3768,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &991473295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8294,6 +8297,9 @@ MonoBehaviour:
   lines:
   - Welcome to New Leaf Town!
   isPerson: 0
+  questToMark: 
+  shouldActivateQuest: 0
+  markComplete: 0
 --- !u!61 &1404285840
 BoxCollider2D:
   m_ObjectHideFlags: 0

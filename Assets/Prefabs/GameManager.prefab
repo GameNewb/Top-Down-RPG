@@ -333,7 +333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fd14b8123a57b141896fddcc7d232bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  charName: Olaf
+  charName: Maki
   playerLevel: 3
   currentEXP: 250
   expToNextLevel: 

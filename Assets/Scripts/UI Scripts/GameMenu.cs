@@ -296,6 +296,12 @@ public class GameMenu : MonoBehaviour
         //Debug.Log(amountProperties.text);
         discardPanel.SetActive(false);
     }
+
+    public void SaveGame()
+    {
+        GameManager.instance.SaveData();
+        QuestManager.instance.SaveQuestData();
+    }
    
     // Function to open the dialog for consumable items
     public void OpenItemToUseOnChoice()
