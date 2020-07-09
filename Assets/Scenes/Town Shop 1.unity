@@ -562,6 +562,11 @@ PrefabInstance:
       propertyPath: tileMap
       value: 
       objectReference: {fileID: 1808232646}
+    - target: {fileID: 3051837591355435215, guid: 137d196018c85a742a3e189c7f2b00f0,
+        type: 3}
+      propertyPath: musicToPlay
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 3051837591967039439, guid: 137d196018c85a742a3e189c7f2b00f0,
         type: 3}
       propertyPath: m_LocalPosition.y

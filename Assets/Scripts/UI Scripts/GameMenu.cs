@@ -79,6 +79,8 @@ public class GameMenu : MonoBehaviour
             {
                 ControlMenu(true);
             }
+
+            AudioManager.instance.PlaySFX(5);
         } 
     }
 
@@ -331,5 +333,10 @@ public class GameMenu : MonoBehaviour
             activeItem.Use(playerStats[characterSelected]);
         }
         CloseItemToUseOnChoice();
+    }
+
+    public void PlayButtonSound()
+    {
+        AudioManager.instance.PlaySFX(4);
     }
 }

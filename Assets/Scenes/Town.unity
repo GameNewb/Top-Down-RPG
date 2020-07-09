@@ -1422,6 +1422,11 @@ PrefabInstance:
       propertyPath: tileMap
       value: 
       objectReference: {fileID: 1808232646}
+    - target: {fileID: 3051837591355435215, guid: 137d196018c85a742a3e189c7f2b00f0,
+        type: 3}
+      propertyPath: musicToPlay
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3051837591967039439, guid: 137d196018c85a742a3e189c7f2b00f0,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -18089,6 +18094,12 @@ PrefabInstance:
       propertyPath: sceneLoader
       value: 
       objectReference: {fileID: 1051058317}
+    - target: {fileID: 7635615609410995023, guid: afe26e6be4d158146a78c8af9713d5ac,
+        type: 3}
+      propertyPath: audioManager
+      value: 
+      objectReference: {fileID: 6027384833483634611, guid: 82490ffba806aa94eacc8a7e8d2f222f,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afe26e6be4d158146a78c8af9713d5ac, type: 3}
 --- !u!1001 &7554113574405010943

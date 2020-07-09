@@ -17,6 +17,9 @@ public class CameraController : MonoBehaviour
     private Vector3 bottomLeftAspectRatio;
     private Vector3 topRightAspectRatio;
 
+    public int musicToPlay;
+    private bool musicStarted;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +41,12 @@ public class CameraController : MonoBehaviour
     void LateUpdate()
     {
         // this.MoveCamera();
+
+        if (!musicStarted)
+        {
+            musicStarted = true;
+            AudioManager.instance.PlayBGM(musicToPlay);
+        }
     }
 
     // LEGACY CODE
