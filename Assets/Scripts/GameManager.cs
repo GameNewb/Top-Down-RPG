@@ -246,11 +246,10 @@ public class GameManager : MonoBehaviour
 
     public void LoadData()
     {
-        // TODO: Load Scene
+        string activeScene = PlayerPrefs.GetString("Current_Scene");
 
-        // Load previous player position
-        var playerPosition = new Vector3(PlayerPrefs.GetFloat("Player_Position_X"), PlayerPrefs.GetFloat("Player_Position_Y"), PlayerPrefs.GetFloat("Player_Position_Z"));
-        PlayerController.instance.transform.position = playerPosition;
+        // Load scene
+        StartCoroutine(LoadNewScene(activeScene));
 
         // Retrieve Player stat data
         for (int i = 0; i < playerStats.Length; i++)
@@ -295,5 +294,28 @@ public class GameManager : MonoBehaviour
             playerInventory[i].item = this.GetItemDetailsByName(PlayerPrefs.GetString("ItemInInventory_" + i));
             playerInventory[i].amount = PlayerPrefs.GetInt("ItemAmount_" + i);
         }
+    }
+
+    IEnumerator LoadNewScene(string sceneName)
+    {
+        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(sceneName);
+        asyncOperation.allowSceneActivation = false;
+        UIFade.instance.FadeToBlack();
+        playerController.isLoading = true;
+
+        while (asyncOperation.progress < 0.9f)
+        {
+            yield return null;
+        }
+
+        yield return new WaitForSeconds(1f);
+
+        UIFade.instance.FadeFromBlack();
+        playerController.isLoading = false;
+        asyncOperation.allowSceneActivation = true;
+
+        // Load previous player position
+        var playerPosition = new Vector3(PlayerPrefs.GetFloat("Player_Position_X"), PlayerPrefs.GetFloat("Player_Position_Y"), PlayerPrefs.GetFloat("Player_Position_Z"));
+        PlayerController.instance.transform.position = playerPosition;
     }
 }

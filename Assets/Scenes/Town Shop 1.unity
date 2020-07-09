@@ -11623,6 +11623,11 @@ PrefabInstance:
       propertyPath: sceneLocation
       value: Town Shop 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6402887853260713895, guid: 9368597b10407b949964ab518d075521,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9368597b10407b949964ab518d075521, type: 3}
 --- !u!1001 &6759873686072421257
