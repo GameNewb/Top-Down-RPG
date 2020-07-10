@@ -49,3 +49,5 @@ MonoBehaviour:
   sceneLoader: {fileID: 0}
   gameMngr: {fileID: 8028671331069710646, guid: 2d7f3a6462461a74fbe29432e256d8ba,
     type: 3}
+  audioManager: {fileID: 6027384833483634611, guid: 82490ffba806aa94eacc8a7e8d2f222f,
+    type: 3}

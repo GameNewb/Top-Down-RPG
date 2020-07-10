@@ -300,9 +300,11 @@ public class GameManager : MonoBehaviour
     {
         AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(sceneName);
         asyncOperation.allowSceneActivation = false;
-        UIFade.instance.FadeToBlack();
+        //UIFade.instance.FadeToBlack();
+        PlayerController.instance.sceneTransitionName = "";
         playerController.isLoading = true;
-
+        
+        
         while (asyncOperation.progress < 0.9f)
         {
             yield return null;
@@ -310,9 +312,10 @@ public class GameManager : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
 
-        UIFade.instance.FadeFromBlack();
-        playerController.isLoading = false;
+        //UIFade.instance.FadeFromBlack();
         asyncOperation.allowSceneActivation = true;
+        
+        playerController.isLoading = false;
 
         // Load previous player position
         var playerPosition = new Vector3(PlayerPrefs.GetFloat("Player_Position_X"), PlayerPrefs.GetFloat("Player_Position_Y"), PlayerPrefs.GetFloat("Player_Position_Z"));

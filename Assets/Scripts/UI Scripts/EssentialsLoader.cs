@@ -23,6 +23,7 @@ public class EssentialsLoader : MonoBehaviour
         if (PlayerController.instance == null)
         {
             // Set the Player at the scene entrance position
+            // We're loading from a scene
             if (sceneLoader != null)
             {
                 Vector3 sceneLoaderPosition = sceneLoader.transform.position;
@@ -30,6 +31,14 @@ public class EssentialsLoader : MonoBehaviour
 
                 Instantiate(player, sceneLoaderPosition, rotation);
             } 
+            else
+            {
+                // If we get here, we're loading from main menu
+                Vector3 playerPosition = new Vector3(PlayerPrefs.GetFloat("Player_Position_X"), PlayerPrefs.GetFloat("Player_Position_Y"), PlayerPrefs.GetFloat("Player_Position_Z"));
+                Quaternion playerRotation = new Quaternion(0, 0, 0, 0);
+               
+                Instantiate(player, playerPosition, playerRotation);
+            }
         }
 
         // Initialize GameManager

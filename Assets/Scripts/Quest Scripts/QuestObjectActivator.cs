@@ -29,6 +29,4 @@ public class QuestObjectActivator : MonoBehaviour
             objectToActivate.SetActive(activeIfComplete);
         }
     }
-
-
 }

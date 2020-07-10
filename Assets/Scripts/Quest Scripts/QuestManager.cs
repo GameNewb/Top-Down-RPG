@@ -34,6 +34,7 @@ public class QuestManager : MonoBehaviour
         }
     }
 
+    // Function to retrieve the index of the quest we're looking for
     public int GetQuest(string questToFind)
     {
         for (int i = 0; i < questMarkers.Count; i++)
@@ -47,7 +48,8 @@ public class QuestManager : MonoBehaviour
         return -1;
     }
 
-    public bool CheckIfComplete (string questToCheck)
+    // Function to check the status of the quest
+    public bool CheckIfComplete(string questToCheck)
     {
         int questNumber = this.GetQuest(questToCheck);
         
@@ -59,6 +61,7 @@ public class QuestManager : MonoBehaviour
         return false;
     }
 
+    // Function to mark a quest complete
     public void MarkQuestComplete(string questToMark)
     {
         questMarkers[this.GetQuest(questToMark)].isComplete = true;
@@ -66,6 +69,7 @@ public class QuestManager : MonoBehaviour
         this.UpdateLocalQuestObjects();
     }
 
+    // Function to mark a quest incomplete
     public void MarkQuestIncomplete(string questToMark)
     {
         questMarkers[this.GetQuest(questToMark)].isComplete = false;
@@ -73,6 +77,7 @@ public class QuestManager : MonoBehaviour
         this.UpdateLocalQuestObjects();
     }
 
+    // Function to update quest objectsp
     public void UpdateLocalQuestObjects()
     {
         QuestObjectActivator[] questObjects = FindObjectsOfType<QuestObjectActivator>();

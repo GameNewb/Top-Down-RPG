@@ -218,7 +218,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   questMarkers:
-  - questName: 
+  - questName: Test Object
     isComplete: 0
   - questName: Quest Test
     isComplete: 0
