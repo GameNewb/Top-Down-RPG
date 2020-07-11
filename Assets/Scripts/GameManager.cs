@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     // Control the player controls when any of this is active/true
     public bool gameMenuOpen;
     public bool dialogActive;
+    public bool activeBattle;
 
     // Item variables
     public Item[] referenceItems;
@@ -41,7 +42,7 @@ public class GameManager : MonoBehaviour
     {
         // Player can only move if nothing is opened
         // TODO - Optimize
-        if (gameMenuOpen || dialogActive)
+        if (gameMenuOpen || dialogActive || activeBattle)
         {
             playerController.canMove = false;
         } 
