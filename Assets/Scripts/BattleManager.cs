@@ -16,6 +16,8 @@ public class BattleManager : MonoBehaviour
     public BattleData[] playerPrefabs;
     public BattleData[] enemyPrefabs;
 
+    public List<BattleData> activeBattlers = new List<BattleData>();
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,7 +31,7 @@ public class BattleManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.H))
         {
-            StartBattle(new string[] { "Slime", "Skeleton" });
+            StartBattle(new string[] { "Slime", "Skeleton", "Goblin", "Slime", "Slime", "Slime" });
         }
     }
 
@@ -42,15 +44,67 @@ public class BattleManager : MonoBehaviour
 
             GameManager.instance.activeBattle = true;
 
-            Debug.Log("X: " + Camera.main.transform.position.x);
-
-            Debug.Log("Y: " + Camera.main.transform.position.y);
-
             // Set the appropriate BG position
             transform.position = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y, transform.position.z);
             battleScene.SetActive(true);
 
             AudioManager.instance.PlayBGM(0);
+
+            // Activate and load each player character into the battle scene
+            for (int i = 0; i < playerPositions.Length; i++)
+            {
+                var playerStats = GameManager.instance.playerStats[i];
+                if (playerStats && playerStats.gameObject.activeInHierarchy)
+                {
+                    for (int j = 0; j < playerPrefabs.Length; j++)
+                    {
+                        if (playerPrefabs[j].charName == playerStats.charName)
+                        {
+                            // Create the player character battle object
+                            // Allow movement of player objects
+                            BattleData newPlayer = Instantiate(playerPrefabs[j], playerPositions[i].position, playerPositions[i].rotation);
+                            newPlayer.transform.parent = playerPositions[i];
+
+                            // Add to the battle list
+                            activeBattlers.Add(newPlayer);
+
+                            // Load data
+                            activeBattlers[i].currentHP = playerStats.currentHP;
+                            activeBattlers[i].currentMP = playerStats.currentMP;
+                            activeBattlers[i].maxHP = playerStats.maxHP;
+                            activeBattlers[i].maxMP = playerStats.maxMP;
+                            activeBattlers[i].strength = playerStats.strength;
+                            activeBattlers[i].vitality = playerStats.vitality;
+                            activeBattlers[i].wpnPwr = playerStats.wpnPwr;
+                            activeBattlers[i].armrPwr = playerStats.armrPwr;
+                        }
+                    }
+                }
+            }
+
+            // Load enemies
+            for (int i = 0; i < enemiesToSpawn.Length; i++)
+            {
+                if (enemiesToSpawn[i] != null && enemiesToSpawn[i] != "")
+                {
+                    // TODO - optimizie using ScriptableObject or another data structure
+                    // Lookup is too slow
+                    for (int j = 0; j < enemyPrefabs.Length; j++)
+                    {
+                        if (enemyPrefabs[j].charName == enemiesToSpawn[i])
+                        {
+                            BattleData newEnemy = Instantiate(enemyPrefabs[j], enemyPositions[i].position, enemyPositions[i].rotation);
+                            newEnemy.transform.parent = enemyPositions[i];
+
+                            // Ensure sorting layer is "Battle Characters"
+                            newEnemy.GetComponent<SpriteRenderer>().sortingLayerName = "Battle Characters";
+
+                            // Add enemy
+                            activeBattlers.Add(newEnemy);
+                        }
+                    }
+                }
+            }
         }
     }
 }
