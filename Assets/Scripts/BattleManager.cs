@@ -15,8 +15,10 @@ public class BattleManager : MonoBehaviour
 
     public BattleData[] playerPrefabs;
     public BattleData[] enemyPrefabs;
+    public GameObject enemyScriptablePrefab;
 
     public List<BattleData> activeBattlers = new List<BattleData>();
+    public List<GameObject> activeEnemies = new List<GameObject>();
 
     // Start is called before the first frame update
     void Start()
@@ -31,7 +33,7 @@ public class BattleManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.H))
         {
-            StartBattle(new string[] { "Slime", "Skeleton", "Goblin", "Slime", "Slime", "Slime" });
+            StartBattle(new string[] { "Slime", "Skeleton", "Goblin", "Slime", "Slime" });
         }
     }
 
@@ -89,7 +91,23 @@ public class BattleManager : MonoBehaviour
                 {
                     // TODO - optimizie using ScriptableObject or another data structure
                     // Lookup is too slow
-                    for (int j = 0; j < enemyPrefabs.Length; j++)
+                    if(GameManager.instance.enemyScriptables.ContainsKey(enemiesToSpawn[i]))
+                    {
+                        GameObject newEnemy = Instantiate(enemyScriptablePrefab, enemyPositions[i].position, enemyPositions[i].rotation);
+                        newEnemy.transform.parent = enemyPositions[i];
+                        
+                        // Set the appropriate enemy to create
+                        newEnemy.GetComponent<CreateScriptableObject>().enemyToCreate = GameManager.instance.FindScriptableObject(enemiesToSpawn[i]);
+
+                        // Ensure sorting layer is "Battle Characters"
+                        newEnemy.GetComponent<SpriteRenderer>().sortingLayerName = "Battle Characters";
+                        newEnemy.GetComponent<SpriteRenderer>().sprite = GameManager.instance.FindScriptableObject(enemiesToSpawn[i]).enemySprite;
+
+                        // Add enemy
+                        activeEnemies.Add(newEnemy);
+                    }
+
+                    /*for (int j = 0; j < enemyPrefabs.Length; j++)
                     {
                         if (enemyPrefabs[j].charName == enemiesToSpawn[i])
                         {
@@ -102,7 +120,7 @@ public class BattleManager : MonoBehaviour
                             // Add enemy
                             activeBattlers.Add(newEnemy);
                         }
-                    }
+                    }*/
                 }
             }
         }

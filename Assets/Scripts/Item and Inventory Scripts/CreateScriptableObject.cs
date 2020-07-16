@@ -5,10 +5,19 @@ using UnityEngine;
 public class CreateScriptableObject : MonoBehaviour
 {
     public Item itemToCreate;
+    public EnemyScriptableObject enemyToCreate;
 
     public void Awake()
     {
         // Set the correct sprite for the item
-        GetComponent<SpriteRenderer>().sprite = itemToCreate.itemSprite;
+        if (itemToCreate != null)
+        {
+            GetComponent<SpriteRenderer>().sprite = itemToCreate.itemSprite;
+        }
+
+        if (enemyToCreate != null)
+        {
+            GetComponent<SpriteRenderer>().sprite = enemyToCreate.enemySprite;
+        }
     }
 }

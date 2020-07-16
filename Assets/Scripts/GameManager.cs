@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
 
     // Item variables
     public Item[] referenceItems;
-    
+
     public List<InventorySlots> playerInventory = new List<InventorySlots>();
 
     public Item itemToAddLater;
@@ -28,11 +28,17 @@ public class GameManager : MonoBehaviour
     public int currentGil;
     public int maxGil;
     
+    // Enemy references
+    public EnemyScriptableObject[] enemyReferences;
+    public Dictionary<string, EnemyScriptableObject> enemyScriptables = new Dictionary<string, EnemyScriptableObject>();
+
     // Start is called before the first frame update
     void Start()
     {
         instance = this;
         playerController = PlayerController.instance;
+
+        this.InitializeEnemyObjects();
 
         DontDestroyOnLoad(gameObject);
     }
@@ -49,6 +55,19 @@ public class GameManager : MonoBehaviour
         else
         {
             playerController.canMove = true;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            var obj = this.FindScriptableObject("Slime");
+            Debug.Log(obj);
+            Debug.Log("Name: " + obj.enemyName);
+            Debug.Log("Description: " + obj.enemyDescription);
+            Debug.Log("Current HP: " + obj.currentHP);
+            Debug.Log("Current MP: " + obj.currentMP);
+            Debug.Log("isCommon: " + obj.isCommon);
+            Debug.Log("isRare: " + obj.isRare);
+            Debug.Log("isBoss: " + obj.isBoss);
         }
 
         if (Input.GetKeyDown(KeyCode.O))
@@ -321,5 +340,19 @@ public class GameManager : MonoBehaviour
         // Load previous player position
         var playerPosition = new Vector3(PlayerPrefs.GetFloat("Player_Position_X"), PlayerPrefs.GetFloat("Player_Position_Y"), PlayerPrefs.GetFloat("Player_Position_Z"));
         PlayerController.instance.transform.position = playerPosition;
+    }
+
+    private void InitializeEnemyObjects()
+    {
+        // Initialize the enemy dictionary for lookup purposes later
+        for (int i = 0; i < enemyReferences.Length; i++)
+        {
+            enemyScriptables.Add(enemyReferences[i].name, enemyReferences[i]);
+        }
+    }
+
+    public EnemyScriptableObject FindScriptableObject(string name)
+    {
+        return enemyScriptables[name];
     }
 }

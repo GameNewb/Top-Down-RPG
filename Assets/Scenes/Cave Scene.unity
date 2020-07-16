@@ -8506,7 +8506,10 @@ MonoBehaviour:
   - {fileID: 7654938086388646997, guid: 7030e0ad835517c489b0b37f8a497798, type: 3}
   - {fileID: 6835478888156911303, guid: 771668b89de60de4982758cbd10bac12, type: 3}
   - {fileID: 6563475429046215383, guid: 51469bc6d57d74f41bbe2ed1217cecfa, type: 3}
+  enemyScriptablePrefab: {fileID: 2996788617438407038, guid: 389ebdd14622e4642a1b99ac492a4f58,
+    type: 3}
   activeBattlers: []
+  activeEnemies: []
 --- !u!1 &1423730016
 GameObject:
   m_ObjectHideFlags: 0
