@@ -8510,6 +8510,9 @@ MonoBehaviour:
     type: 3}
   activeBattlers: []
   activeEnemies: []
+  currentTurn: 0
+  waitingForATurn: 0
+  uiButtonsHolder: {fileID: 562504301}
 --- !u!1 &1423730016
 GameObject:
   m_ObjectHideFlags: 0

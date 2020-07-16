@@ -60,14 +60,6 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Z))
         {
             var obj = this.FindScriptableObject("Slime");
-            Debug.Log(obj);
-            Debug.Log("Name: " + obj.enemyName);
-            Debug.Log("Description: " + obj.enemyDescription);
-            Debug.Log("Current HP: " + obj.currentHP);
-            Debug.Log("Current MP: " + obj.currentMP);
-            Debug.Log("isCommon: " + obj.isCommon);
-            Debug.Log("isRare: " + obj.isRare);
-            Debug.Log("isBoss: " + obj.isBoss);
         }
 
         if (Input.GetKeyDown(KeyCode.O))

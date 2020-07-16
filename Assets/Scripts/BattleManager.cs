@@ -20,6 +20,12 @@ public class BattleManager : MonoBehaviour
     public List<BattleData> activeBattlers = new List<BattleData>();
     public List<GameObject> activeEnemies = new List<GameObject>();
 
+    public int currentTurn;
+    public bool waitingForATurn;
+
+    // UI for player actions
+    public GameObject uiButtonsHolder;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +40,29 @@ public class BattleManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.H))
         {
             StartBattle(new string[] { "Slime", "Skeleton", "Goblin", "Slime", "Slime" });
+        }
+
+        if (activeBattle)
+        {
+            if (waitingForATurn)
+            {
+                // Activate the button for players
+                if (activeBattlers[currentTurn].isPlayer)
+                {
+                    uiButtonsHolder.SetActive(true);
+                }
+                else
+                {
+                    uiButtonsHolder.SetActive(false);
+
+                    // Enemy attack
+                }
+            }
+
+            if (Input.GetKeyDown(KeyCode.N))
+            {
+                this.NextTurn();
+            }
         }
     }
 
@@ -91,7 +120,7 @@ public class BattleManager : MonoBehaviour
                 {
                     // TODO - optimizie using ScriptableObject or another data structure
                     // Lookup is too slow
-                    if(GameManager.instance.enemyScriptables.ContainsKey(enemiesToSpawn[i]))
+                    /*if(GameManager.instance.enemyScriptables.ContainsKey(enemiesToSpawn[i]))
                     {
                         GameObject newEnemy = Instantiate(enemyScriptablePrefab, enemyPositions[i].position, enemyPositions[i].rotation);
                         newEnemy.transform.parent = enemyPositions[i];
@@ -105,9 +134,9 @@ public class BattleManager : MonoBehaviour
 
                         // Add enemy
                         activeEnemies.Add(newEnemy);
-                    }
+                    }*/
 
-                    /*for (int j = 0; j < enemyPrefabs.Length; j++)
+                   for (int j = 0; j < enemyPrefabs.Length; j++)
                     {
                         if (enemyPrefabs[j].charName == enemiesToSpawn[i])
                         {
@@ -120,9 +149,69 @@ public class BattleManager : MonoBehaviour
                             // Add enemy
                             activeBattlers.Add(newEnemy);
                         }
-                    }*/
+                    }
                 }
             }
+
+            waitingForATurn = true;
+            currentTurn = Random.Range(0, activeBattlers.Count);
+        }
+    }
+
+    public void NextTurn()
+    {
+        currentTurn++;
+
+        if (currentTurn >= activeBattlers.Count)
+            currentTurn = 0;
+
+        waitingForATurn = true;
+
+        this.UpdateBattle();
+    }
+
+    public void UpdateBattle()
+    {
+        bool allEnemiesDead = true;
+        bool allPlayersDead = true;
+
+        for (int i = 0; i < activeBattlers.Count; i++)
+        {
+            // Set HP to 0 if they received more damage than max hp
+            if (activeBattlers[i].currentHP <= 0)
+            {
+                activeBattlers[i].currentHP = 0;
+
+                // Handle dead battler
+            }
+            else
+            {
+                if (activeBattlers[i].isPlayer)
+                {
+                    allPlayersDead = false;
+                }
+                else
+                {
+                    allEnemiesDead = false;
+                }
+            }
+        }
+
+        // Battle complete or Game Over
+        if (allEnemiesDead || allPlayersDead)
+        {
+            if (allEnemiesDead)
+            {
+                // End battle in victory
+            }
+            else
+            {
+                // Game over
+            }
+
+            battleScene.SetActive(false);
+            GameManager.instance.activeBattle = false;
+            activeBattle = false;
         }
     }
 }

@@ -93,7 +93,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47ba4896d5c888f42839893b4228aeaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPlayer: 0
+  isPlayer: 1
   movesAvailable: []
   charName: Kiru
   currentHP: 0
@@ -104,4 +104,4 @@ MonoBehaviour:
   vitality: 0
   wpnPwr: 0
   armrPwr: 0
-  isAlive: 0
+  hasDied: 0
