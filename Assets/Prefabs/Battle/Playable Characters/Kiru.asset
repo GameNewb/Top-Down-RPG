@@ -10,22 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fb1fb480c7f63954cbcdd27b25fb6d56, type: 3}
-  m_Name: Skeleton
+  m_Name: Kiru
   m_EditorClassIdentifier: 
   isBoss: 0
   isRare: 0
-  isCommon: 1
-  isPlayer: 0
-  objectName: Skeleton
-  objectDescription: The soldier of the undead
-  objectSprite: {fileID: 21300014, guid: 988d560df8d322a468c97243cbfd76e8, type: 3}
-  currentHP: 150
-  maxHP: 200
+  isCommon: 0
+  isPlayer: 1
+  objectName: Kiru
+  objectDescription: 
+  objectSprite: {fileID: 1189803590093747582, guid: ea6d682a19de2a642986059a7352d95d,
+    type: 3}
+  currentHP: 0
+  maxHP: 0
   currentMP: 0
   maxMP: 0
-  strength: 5
-  vitality: 5
-  wpnPwr: 5
-  armrPwr: 3
+  strength: 0
+  vitality: 0
+  wpnPwr: 0
+  armrPwr: 0
   hasDied: 0
   movesAvailable: []

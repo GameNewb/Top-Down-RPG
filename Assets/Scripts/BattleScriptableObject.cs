@@ -3,18 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-[CreateAssetMenu(menuName = "Enemy/Create Enemy")]
-public class EnemyScriptableObject : ScriptableObject
+[CreateAssetMenu(menuName = "Battle/Create Battle Object")]
+public class BattleScriptableObject : ScriptableObject
 {
-    [Header("Enemy Type")]
+    [Header("Battle Type")]
     public bool isBoss;
     public bool isRare;
     public bool isCommon;
+    public bool isPlayer;
 
-    [Header("Enemy Information")]
-    public string enemyName;
-    public string enemyDescription;
-    public Sprite enemySprite;
+    [Header("Battle Information")]
+    public string objectName;
+    public string objectDescription;
+    public Sprite objectSprite;
     public int currentHP, maxHP, currentMP, maxMP, strength, vitality, wpnPwr, armrPwr;
     public bool hasDied;
 

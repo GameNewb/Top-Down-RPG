@@ -206,6 +206,9 @@ MonoBehaviour:
   itemToAddLater: {fileID: 11400000, guid: 1a57e9849d49ace46aa806c4a8b70de3, type: 2}
   currentGil: 500
   maxGil: 999999
+  playerReferences:
+  - {fileID: 11400000, guid: 433b19b83027ddc439625c5c112aece1, type: 2}
+  - {fileID: 11400000, guid: 83b7d5ab39497194db78eefd1f5bb508, type: 2}
   enemyReferences:
   - {fileID: 11400000, guid: d281ba34c324815438d8be81666b244e, type: 2}
   - {fileID: 11400000, guid: b096160cbe8b712429419fd07cbb3405, type: 2}

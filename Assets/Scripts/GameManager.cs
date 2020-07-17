@@ -27,10 +27,14 @@ public class GameManager : MonoBehaviour
 
     public int currentGil;
     public int maxGil;
-    
+
+    // Player references
+    public BattleScriptableObject[] playerReferences;
+    public Dictionary<string, BattleScriptableObject> playerScriptables = new Dictionary<string, BattleScriptableObject>();
+
     // Enemy references
-    public EnemyScriptableObject[] enemyReferences;
-    public Dictionary<string, EnemyScriptableObject> enemyScriptables = new Dictionary<string, EnemyScriptableObject>();
+    public BattleScriptableObject[] enemyReferences;
+    public Dictionary<string, BattleScriptableObject> enemyScriptables = new Dictionary<string, BattleScriptableObject>();
 
     // Start is called before the first frame update
     void Start()
@@ -38,6 +42,8 @@ public class GameManager : MonoBehaviour
         instance = this;
         playerController = PlayerController.instance;
 
+        // Initialize the data for player and enemy objects
+        this.InitializePlayerObjects();
         this.InitializeEnemyObjects();
 
         DontDestroyOnLoad(gameObject);
@@ -59,7 +65,7 @@ public class GameManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            var obj = this.FindScriptableObject("Slime");
+            var obj = this.FindScriptableObject("Slime", false);
         }
 
         if (Input.GetKeyDown(KeyCode.O))
@@ -334,17 +340,31 @@ public class GameManager : MonoBehaviour
         PlayerController.instance.transform.position = playerPosition;
     }
 
+    private void InitializePlayerObjects()
+    { 
+        // Initialize the player dictionary for lookup purposes later
+        for (int i = 0; i < playerReferences.Length; i++)
+        {
+            playerScriptables.Add(playerReferences[i].objectName, playerReferences[i]);
+        }
+    }
+
     private void InitializeEnemyObjects()
     {
         // Initialize the enemy dictionary for lookup purposes later
         for (int i = 0; i < enemyReferences.Length; i++)
         {
-            enemyScriptables.Add(enemyReferences[i].name, enemyReferences[i]);
+            enemyScriptables.Add(enemyReferences[i].objectName, enemyReferences[i]);
         }
     }
 
-    public EnemyScriptableObject FindScriptableObject(string name)
+    public BattleScriptableObject FindScriptableObject(string name, bool isPlayer)
     {
+        if (isPlayer)
+        {
+            return playerScriptables[name];
+        }
+
         return enemyScriptables[name];
     }
 }

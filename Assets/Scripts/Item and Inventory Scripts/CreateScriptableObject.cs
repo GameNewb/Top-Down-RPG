@@ -5,7 +5,7 @@ using UnityEngine;
 public class CreateScriptableObject : MonoBehaviour
 {
     public Item itemToCreate;
-    public EnemyScriptableObject enemyToCreate;
+    public BattleScriptableObject objectToCreate;
 
     public void Awake()
     {
@@ -15,9 +15,9 @@ public class CreateScriptableObject : MonoBehaviour
             GetComponent<SpriteRenderer>().sprite = itemToCreate.itemSprite;
         }
 
-        if (enemyToCreate != null)
+        if (objectToCreate != null)
         {
-            GetComponent<SpriteRenderer>().sprite = enemyToCreate.enemySprite;
+            GetComponent<SpriteRenderer>().sprite = objectToCreate.objectSprite;
         }
     }
 }

@@ -15,9 +15,10 @@ MonoBehaviour:
   isBoss: 0
   isRare: 0
   isCommon: 1
-  enemyName: Goblin
-  enemyDescription: A swift little creature known to the locals
-  enemySprite: {fileID: 21300008, guid: 988d560df8d322a468c97243cbfd76e8, type: 3}
+  isPlayer: 0
+  objectName: Goblin
+  objectDescription: A creature known to the locals as the thieving mobs
+  objectSprite: {fileID: 21300008, guid: 988d560df8d322a468c97243cbfd76e8, type: 3}
   currentHP: 175
   maxHP: 175
   currentMP: 10

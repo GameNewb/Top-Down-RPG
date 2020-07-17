@@ -15,17 +15,17 @@ public class BattleManager : MonoBehaviour
 
     public BattleData[] playerPrefabs;
     public BattleData[] enemyPrefabs;
-    public GameObject enemyScriptablePrefab;
+    public GameObject objectScriptablePrefab;
 
     public List<BattleData> activeBattlers = new List<BattleData>();
-    public List<GameObject> activeEnemies = new List<GameObject>();
+    public List<GameObject> activeCombatants = new List<GameObject>();
 
     public int currentTurn;
     public bool waitingForATurn;
 
     // UI for player actions
     public GameObject uiButtonsHolder;
-
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -47,7 +47,7 @@ public class BattleManager : MonoBehaviour
             if (waitingForATurn)
             {
                 // Activate the button for players
-                if (activeBattlers[currentTurn].isPlayer)
+                if (activeCombatants[currentTurn].GetComponent<CreateScriptableObject>().objectToCreate.isPlayer)
                 {
                     uiButtonsHolder.SetActive(true);
                 }
@@ -87,7 +87,34 @@ public class BattleManager : MonoBehaviour
                 var playerStats = GameManager.instance.playerStats[i];
                 if (playerStats && playerStats.gameObject.activeInHierarchy)
                 {
-                    for (int j = 0; j < playerPrefabs.Length; j++)
+                    if (GameManager.instance.playerScriptables.ContainsKey(playerStats.charName))
+                    {
+                        // Create the player character battle object
+                        // Allow movement of player objects
+                        GameObject newPlayer = Instantiate(objectScriptablePrefab, playerPositions[i].position, playerPositions[i].rotation);
+                        newPlayer.transform.parent = playerPositions[i];
+
+                        // Set the appropriate enemy to create
+                        newPlayer.GetComponent<CreateScriptableObject>().objectToCreate = GameManager.instance.FindScriptableObject(playerStats.charName, true);
+
+                        // Ensure sorting layer is "Battle Characters"
+                        newPlayer.GetComponent<SpriteRenderer>().sortingLayerName = "Battle Characters";
+                        newPlayer.GetComponent<SpriteRenderer>().sprite = GameManager.instance.FindScriptableObject(playerStats.charName, true).objectSprite;
+
+                        // Add to the battle list
+                        activeCombatants.Add(newPlayer);
+
+                        // Load data
+                        activeCombatants[i].GetComponent<CreateScriptableObject>().objectToCreate.currentHP = playerStats.currentHP;
+                        activeCombatants[i].GetComponent<CreateScriptableObject>().objectToCreate.currentMP = playerStats.currentMP;
+                        activeCombatants[i].GetComponent<CreateScriptableObject>().objectToCreate.maxHP = playerStats.maxHP;
+                        activeCombatants[i].GetComponent<CreateScriptableObject>().objectToCreate.maxMP = playerStats.maxMP;
+                        activeCombatants[i].GetComponent<CreateScriptableObject>().objectToCreate.strength = playerStats.strength;
+                        activeCombatants[i].GetComponent<CreateScriptableObject>().objectToCreate.vitality = playerStats.vitality;
+                        activeCombatants[i].GetComponent<CreateScriptableObject>().objectToCreate.wpnPwr = playerStats.wpnPwr;
+                        activeCombatants[i].GetComponent<CreateScriptableObject>().objectToCreate.armrPwr = playerStats.armrPwr;
+                    }
+                    /*for (int j = 0; j < playerPrefabs.Length; j++)
                     {
                         if (playerPrefabs[j].charName == playerStats.charName)
                         {
@@ -109,7 +136,7 @@ public class BattleManager : MonoBehaviour
                             activeBattlers[i].wpnPwr = playerStats.wpnPwr;
                             activeBattlers[i].armrPwr = playerStats.armrPwr;
                         }
-                    }
+                    }*/
                 }
             }
 
@@ -118,25 +145,25 @@ public class BattleManager : MonoBehaviour
             {
                 if (enemiesToSpawn[i] != null && enemiesToSpawn[i] != "")
                 {
-                    // TODO - optimizie using ScriptableObject or another data structure
-                    // Lookup is too slow
-                    /*if(GameManager.instance.enemyScriptables.ContainsKey(enemiesToSpawn[i]))
+                    if (GameManager.instance.enemyScriptables.ContainsKey(enemiesToSpawn[i]))
                     {
-                        GameObject newEnemy = Instantiate(enemyScriptablePrefab, enemyPositions[i].position, enemyPositions[i].rotation);
+                        // TODO: Merge into one scriptable object
+                        GameObject newEnemy = Instantiate(objectScriptablePrefab, enemyPositions[i].position, enemyPositions[i].rotation);
                         newEnemy.transform.parent = enemyPositions[i];
                         
                         // Set the appropriate enemy to create
-                        newEnemy.GetComponent<CreateScriptableObject>().enemyToCreate = GameManager.instance.FindScriptableObject(enemiesToSpawn[i]);
+                        newEnemy.GetComponent<CreateScriptableObject>().objectToCreate = GameManager.instance.FindScriptableObject(enemiesToSpawn[i], false);
 
                         // Ensure sorting layer is "Battle Characters"
                         newEnemy.GetComponent<SpriteRenderer>().sortingLayerName = "Battle Characters";
-                        newEnemy.GetComponent<SpriteRenderer>().sprite = GameManager.instance.FindScriptableObject(enemiesToSpawn[i]).enemySprite;
+                        newEnemy.GetComponent<SpriteRenderer>().sprite = GameManager.instance.FindScriptableObject(enemiesToSpawn[i], false).objectSprite;
 
                         // Add enemy
-                        activeEnemies.Add(newEnemy);
-                    }*/
+                        activeCombatants.Add(newEnemy);
+                    }
 
-                   for (int j = 0; j < enemyPrefabs.Length; j++)
+                    /*
+                    for (int j = 0; j < enemyPrefabs.Length; j++)
                     {
                         if (enemyPrefabs[j].charName == enemiesToSpawn[i])
                         {
@@ -149,12 +176,12 @@ public class BattleManager : MonoBehaviour
                             // Add enemy
                             activeBattlers.Add(newEnemy);
                         }
-                    }
+                    }*/
                 }
             }
 
             waitingForATurn = true;
-            currentTurn = Random.Range(0, activeBattlers.Count);
+            currentTurn = Random.Range(0, activeCombatants.Count);
         }
     }
 
@@ -162,7 +189,7 @@ public class BattleManager : MonoBehaviour
     {
         currentTurn++;
 
-        if (currentTurn >= activeBattlers.Count)
+        if (currentTurn >= activeCombatants.Count)
             currentTurn = 0;
 
         waitingForATurn = true;
@@ -175,18 +202,19 @@ public class BattleManager : MonoBehaviour
         bool allEnemiesDead = true;
         bool allPlayersDead = true;
 
-        for (int i = 0; i < activeBattlers.Count; i++)
+        for (int i = 0; i < activeCombatants.Count; i++)
         {
+            // TODO: Merge into one scriptable object
             // Set HP to 0 if they received more damage than max hp
-            if (activeBattlers[i].currentHP <= 0)
+            if (activeCombatants[i].GetComponent<CreateScriptableObject>().objectToCreate.currentHP <= 0)
             {
-                activeBattlers[i].currentHP = 0;
+                activeCombatants[i].GetComponent<CreateScriptableObject>().objectToCreate.currentHP = 0;
 
                 // Handle dead battler
             }
             else
             {
-                if (activeBattlers[i].isPlayer)
+                if (activeCombatants[i].GetComponent<CreateScriptableObject>().objectToCreate.isPlayer)
                 {
                     allPlayersDead = false;
                 }
