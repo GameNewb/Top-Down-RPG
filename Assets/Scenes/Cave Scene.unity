@@ -8506,10 +8506,10 @@ MonoBehaviour:
   - {fileID: 7654938086388646997, guid: 7030e0ad835517c489b0b37f8a497798, type: 3}
   - {fileID: 6835478888156911303, guid: 771668b89de60de4982758cbd10bac12, type: 3}
   - {fileID: 6563475429046215383, guid: 51469bc6d57d74f41bbe2ed1217cecfa, type: 3}
-  enemyScriptablePrefab: {fileID: 2996788617438407038, guid: 389ebdd14622e4642a1b99ac492a4f58,
+  objectScriptablePrefab: {fileID: 7528641782018120941, guid: 991b76f86b6935c45b9783e560b695f6,
     type: 3}
   activeBattlers: []
-  activeEnemies: []
+  activeCombatants: []
   currentTurn: 0
   waitingForATurn: 0
   uiButtonsHolder: {fileID: 562504301}

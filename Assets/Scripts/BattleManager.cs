@@ -39,7 +39,7 @@ public class BattleManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.H))
         {
-            StartBattle(new string[] { "Slime", "Skeleton", "Goblin", "Slime", "Slime" });
+            StartBattle(new string[] { "Slime", "Skeleton", "Goblin" });
         }
 
         if (activeBattle)
@@ -56,6 +56,7 @@ public class BattleManager : MonoBehaviour
                     uiButtonsHolder.SetActive(false);
 
                     // Enemy attack
+                    StartCoroutine(EnemyMove());
                 }
             }
 
@@ -240,6 +241,46 @@ public class BattleManager : MonoBehaviour
             battleScene.SetActive(false);
             GameManager.instance.activeBattle = false;
             activeBattle = false;
+
+            // Destroy object after battle is done 
+            foreach(var combatants in activeCombatants)
+            {
+                Destroy(combatants);
+            }
+
+            activeCombatants.Clear();
         }
+    }
+
+    public IEnumerator EnemyMove()
+    {
+        waitingForATurn = false;
+
+        yield return new WaitForSeconds(1f);
+
+        this.EnemyAttack();
+
+        yield return new WaitForSeconds(1f);
+
+        this.NextTurn();
+    }
+
+    public void EnemyAttack()
+    {
+        List<int> players = new List<int>();
+
+        for (int i = 0; i < activeCombatants.Count; i++)
+        {
+            var combatant = activeCombatants[i].GetComponent<CreateScriptableObject>().objectToCreate;
+            if (combatant.isPlayer && combatant.currentHP > 0)
+            {
+                // Add player to enemy targets
+                players.Add(i);
+            } 
+        }
+
+        int selectedTarget = players[Random.Range(0, players.Count)];
+
+        activeCombatants[selectedTarget].GetComponent<CreateScriptableObject>().objectToCreate.currentHP -= 50;
     }
 }
