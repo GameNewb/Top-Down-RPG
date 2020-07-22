@@ -26,7 +26,9 @@ public class BattleManager : MonoBehaviour
     // UI for player actions
     public GameObject uiButtonsHolder;
 
+    // Attack sets and effect
     public BattleMoveset[] movesets;
+    public GameObject enemyParticleEffect;
     
     // Start is called before the first frame update
     void Start()
@@ -286,12 +288,11 @@ public class BattleManager : MonoBehaviour
         {
             selectedTarget = players[Random.Range(0, players.Count)];
         }
-
-        //activeCombatants[selectedTarget].GetComponent<CreateScriptableObject>().objectToCreate.currentHP -= 50;
-
+        
         // TODO: Refactor
+        // TODO: Fix bug where if player presses N continuously during enemy turn, IOB happens
         // Find the correct attack object
-        int selectAttack = Random.Range(0, activeCombatants[currentTurn].GetComponent<CreateScriptableObject>().objectToCreate.movesAvailable.Length - 1);
+        int selectAttack = Random.Range(0, activeCombatants[currentTurn].GetComponent<CreateScriptableObject>().objectToCreate.movesAvailable.Length);
         int movesetPower = 0;
 
         for (int i = 0; i < movesets.Length; i++)
@@ -302,6 +303,8 @@ public class BattleManager : MonoBehaviour
                 movesetPower = movesets[i].movesetDamage;
             }
         }
+
+        Instantiate(enemyParticleEffect, activeCombatants[currentTurn].transform.position, activeCombatants[currentTurn].transform.rotation);
 
         // Calculate the damage
         this.DealDamage(selectedTarget, movesetPower);
