@@ -8513,6 +8513,22 @@ MonoBehaviour:
   currentTurn: 0
   waitingForATurn: 0
   uiButtonsHolder: {fileID: 562504301}
+  movesets:
+  - movesetName: Slash
+    movesetDamage: 20
+    movesetCost: 0
+    movesetEffect: {fileID: 8771746286192134859, guid: e329356a6795c364497a876923d62150,
+      type: 3}
+  - movesetName: Fire
+    movesetDamage: 50
+    movesetCost: 5
+    movesetEffect: {fileID: 801851269495511448, guid: 5a8ddf380c38c2e438a3cb30d5777eb0,
+      type: 3}
+  - movesetName: Ice
+    movesetDamage: 65
+    movesetCost: 8
+    movesetEffect: {fileID: 4452856018920745885, guid: 61e3bb52bb719d6409ae2d97ee6de623,
+      type: 3}
 --- !u!1 &1423730016
 GameObject:
   m_ObjectHideFlags: 0

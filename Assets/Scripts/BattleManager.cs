@@ -25,6 +25,8 @@ public class BattleManager : MonoBehaviour
 
     // UI for player actions
     public GameObject uiButtonsHolder;
+
+    public BattleMoveset[] movesets;
     
     // Start is called before the first frame update
     void Start()
@@ -268,6 +270,7 @@ public class BattleManager : MonoBehaviour
     public void EnemyAttack()
     {
         List<int> players = new List<int>();
+        int selectedTarget = 0;
 
         for (int i = 0; i < activeCombatants.Count; i++)
         {
@@ -278,9 +281,45 @@ public class BattleManager : MonoBehaviour
                 players.Add(i);
             } 
         }
+        
+        if (players.Count > 0)
+        {
+            selectedTarget = players[Random.Range(0, players.Count)];
+        }
 
-        int selectedTarget = players[Random.Range(0, players.Count)];
+        //activeCombatants[selectedTarget].GetComponent<CreateScriptableObject>().objectToCreate.currentHP -= 50;
 
-        activeCombatants[selectedTarget].GetComponent<CreateScriptableObject>().objectToCreate.currentHP -= 50;
+        // TODO: Refactor
+        // Find the correct attack object
+        int selectAttack = Random.Range(0, activeCombatants[currentTurn].GetComponent<CreateScriptableObject>().objectToCreate.movesAvailable.Length - 1);
+        int movesetPower = 0;
+
+        for (int i = 0; i < movesets.Length; i++)
+        {
+            if (movesets[i].movesetName == activeCombatants[currentTurn].GetComponent<CreateScriptableObject>().objectToCreate.movesAvailable[selectAttack])
+            {
+                Instantiate(movesets[i].movesetEffect, activeCombatants[selectedTarget].transform.position, activeCombatants[selectedTarget].transform.rotation);
+                movesetPower = movesets[i].movesetDamage;
+            }
+        }
+
+        // Calculate the damage
+        this.DealDamage(selectedTarget, movesetPower);
     }
+
+    public void DealDamage(int target, int movesetPower)
+    {
+        var currentUser = activeCombatants[currentTurn].GetComponent<CreateScriptableObject>().objectToCreate;
+        var targetUser = activeCombatants[target].GetComponent<CreateScriptableObject>().objectToCreate;
+        float atkPower = currentUser.strength + currentUser.wpnPwr;
+        float vitPower = targetUser.vitality + targetUser.armrPwr;
+
+        float damageCalculation = (atkPower / vitPower) * movesetPower * Random.Range(.9f, 1.1f);
+        int damageToTake = Mathf.RoundToInt(damageCalculation);
+
+        Debug.Log(currentUser.objectName + " is dealing " + damageCalculation + "(" + damageToTake + ") damage to " + targetUser.objectName);
+
+        targetUser.currentHP -= damageToTake;
+    }
+    
 }

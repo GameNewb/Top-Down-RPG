@@ -28,4 +28,6 @@ MonoBehaviour:
   wpnPwr: 5
   armrPwr: 5
   hasDied: 0
-  movesAvailable: []
+  movesAvailable:
+  - Slash
+  - Ice
