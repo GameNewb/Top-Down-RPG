@@ -8533,6 +8533,18 @@ MonoBehaviour:
     type: 3}
   damageNumberEffect: {fileID: 3703430999311981731, guid: e403a7811355f5145afbf64ccc6cc7d8,
     type: 3}
+  playerName:
+  - {fileID: 406378641}
+  - {fileID: 1541818952}
+  - {fileID: 1475377001}
+  playerHP:
+  - {fileID: 1200849630}
+  - {fileID: 1189470505}
+  - {fileID: 1570261813}
+  playerMP:
+  - {fileID: 429224263}
+  - {fileID: 2001186883}
+  - {fileID: 885157058}
 --- !u!1 &1423730016
 GameObject:
   m_ObjectHideFlags: 0

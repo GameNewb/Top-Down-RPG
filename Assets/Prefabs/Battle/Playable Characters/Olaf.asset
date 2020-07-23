@@ -19,12 +19,12 @@ MonoBehaviour:
   objectName: Olaf
   objectDescription: 
   objectSprite: {fileID: 21300024, guid: e0ddba6d3fcf21f49949fcc95c849aac, type: 3}
-  currentHP: 0
-  maxHP: 0
-  currentMP: 0
-  maxMP: 0
-  strength: 0
-  vitality: 0
+  currentHP: 250
+  maxHP: 250
+  currentMP: 20
+  maxMP: 20
+  strength: 10
+  vitality: 16
   wpnPwr: 0
   armrPwr: 0
   hasDied: 0

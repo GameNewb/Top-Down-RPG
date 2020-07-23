@@ -20,12 +20,12 @@ MonoBehaviour:
   objectDescription: 
   objectSprite: {fileID: 1189803590093747582, guid: ea6d682a19de2a642986059a7352d95d,
     type: 3}
-  currentHP: 0
-  maxHP: 0
-  currentMP: 0
-  maxMP: 0
-  strength: 0
-  vitality: 0
+  currentHP: 100
+  maxHP: 100
+  currentMP: 30
+  maxMP: 30
+  strength: 5
+  vitality: 3
   wpnPwr: 0
   armrPwr: 0
   hasDied: 0

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BattleManager : MonoBehaviour
 {
@@ -31,6 +32,8 @@ public class BattleManager : MonoBehaviour
     public GameObject enemyParticleEffect;
 
     public BattleDamageNumber damageNumberEffect;
+
+    public Text[] playerName, playerHP, playerMP;
     
     // Start is called before the first frame update
     void Start()
@@ -45,7 +48,7 @@ public class BattleManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.H))
         {
-            StartBattle(new string[] { "Slime", "Skeleton", "Goblin" });
+            this.StartBattle(new string[] { "Slime", "Skeleton", "Goblin" });
         }
 
         if (activeBattle)
@@ -120,30 +123,8 @@ public class BattleManager : MonoBehaviour
                         activeCombatants[i].GetComponent<CreateScriptableObject>().objectToCreate.vitality = playerStats.vitality;
                         activeCombatants[i].GetComponent<CreateScriptableObject>().objectToCreate.wpnPwr = playerStats.wpnPwr;
                         activeCombatants[i].GetComponent<CreateScriptableObject>().objectToCreate.armrPwr = playerStats.armrPwr;
+                        activeCombatants[i].GetComponent<CreateScriptableObject>().objectToCreate.hasDied = playerStats.hasDied;
                     }
-                    /*for (int j = 0; j < playerPrefabs.Length; j++)
-                    {
-                        if (playerPrefabs[j].charName == playerStats.charName)
-                        {
-                            // Create the player character battle object
-                            // Allow movement of player objects
-                            BattleData newPlayer = Instantiate(playerPrefabs[j], playerPositions[i].position, playerPositions[i].rotation);
-                            newPlayer.transform.parent = playerPositions[i];
-
-                            // Add to the battle list
-                            activeBattlers.Add(newPlayer);
-
-                            // Load data
-                            activeBattlers[i].currentHP = playerStats.currentHP;
-                            activeBattlers[i].currentMP = playerStats.currentMP;
-                            activeBattlers[i].maxHP = playerStats.maxHP;
-                            activeBattlers[i].maxMP = playerStats.maxMP;
-                            activeBattlers[i].strength = playerStats.strength;
-                            activeBattlers[i].vitality = playerStats.vitality;
-                            activeBattlers[i].wpnPwr = playerStats.wpnPwr;
-                            activeBattlers[i].armrPwr = playerStats.armrPwr;
-                        }
-                    }*/
                 }
             }
 
@@ -168,27 +149,13 @@ public class BattleManager : MonoBehaviour
                         // Add enemy
                         activeCombatants.Add(newEnemy);
                     }
-
-                    /*
-                    for (int j = 0; j < enemyPrefabs.Length; j++)
-                    {
-                        if (enemyPrefabs[j].charName == enemiesToSpawn[i])
-                        {
-                            BattleData newEnemy = Instantiate(enemyPrefabs[j], enemyPositions[i].position, enemyPositions[i].rotation);
-                            newEnemy.transform.parent = enemyPositions[i];
-
-                            // Ensure sorting layer is "Battle Characters"
-                            newEnemy.GetComponent<SpriteRenderer>().sortingLayerName = "Battle Characters";
-
-                            // Add enemy
-                            activeBattlers.Add(newEnemy);
-                        }
-                    }*/
                 }
             }
 
             waitingForATurn = true;
             currentTurn = Random.Range(0, activeCombatants.Count);
+
+            this.UpdateUIStats();
         }
     }
 
@@ -202,6 +169,7 @@ public class BattleManager : MonoBehaviour
         waitingForATurn = true;
 
         this.UpdateBattle();
+        this.UpdateUIStats();
     }
 
     public void UpdateBattle()
@@ -255,6 +223,14 @@ public class BattleManager : MonoBehaviour
             }
 
             activeCombatants.Clear();
+        } 
+        else
+        {
+            // If the current combatant is already dead, skip their turn
+            if (activeCombatants[currentTurn].GetComponent<CreateScriptableObject>().objectToCreate.hasDied)
+            {
+                currentTurn++;
+            }
         }
     }
 
@@ -306,12 +282,14 @@ public class BattleManager : MonoBehaviour
             }
         }
 
+        // Instantiate the particle effect when enemy attacks
         Instantiate(enemyParticleEffect, activeCombatants[currentTurn].transform.position, activeCombatants[currentTurn].transform.rotation);
 
         // Calculate the damage
         this.DealDamage(selectedTarget, movesetPower);
     }
 
+    // Function to deal damage to objects
     public void DealDamage(int target, int movesetPower)
     {
         var currentUser = activeCombatants[currentTurn].GetComponent<CreateScriptableObject>().objectToCreate;
@@ -319,14 +297,51 @@ public class BattleManager : MonoBehaviour
         float atkPower = currentUser.strength + currentUser.wpnPwr;
         float vitPower = targetUser.vitality + targetUser.armrPwr;
 
+        // Calculate the damage to take
         float damageCalculation = (atkPower / vitPower) * movesetPower * Random.Range(.9f, 1.1f);
         int damageToTake = Mathf.RoundToInt(damageCalculation);
-
-        Debug.Log(currentUser.objectName + " is dealing " + damageCalculation + "(" + damageToTake + ") damage to " + targetUser.objectName);
-
+        
         targetUser.currentHP -= damageToTake;
 
+        // Set status
+        if (targetUser.currentHP <= 0)
+        {
+            targetUser.hasDied = true;
+        }
+
+        // Instantiate the damage numbers on screen
         Instantiate(damageNumberEffect, activeCombatants[target].transform.position, activeCombatants[target].transform.rotation).SetDamage(damageToTake);
+        
+        // Update player UI stats
+        this.UpdateUIStats();
     }
     
+    // Function to update the player stats UI
+    public void UpdateUIStats()
+    {
+        // Iterate through each text element
+        for (int i = 0; i < playerName.Length; i++)
+        {
+            if (activeCombatants.Count > i)
+            {
+                var playerObject = activeCombatants[i].GetComponent<CreateScriptableObject>().objectToCreate;
+
+                if (playerObject.isPlayer)
+                {
+                    playerName[i].gameObject.SetActive(true);
+                    playerName[i].text = playerObject.objectName;
+                    playerHP[i].text = Mathf.Clamp(playerObject.currentHP, 0, int.MaxValue) + "/" + playerObject.maxHP;
+                    playerMP[i].text = Mathf.Clamp(playerObject.currentMP, 0, int.MaxValue) + "/" + playerObject.maxMP;
+                } 
+                else
+                { 
+                    playerName[i].gameObject.SetActive(false);
+                }
+            }
+            else
+            {
+                playerName[i].gameObject.SetActive(false);
+            }
+        }
+    }
 }

@@ -11,6 +11,7 @@ public class CharacterStats : MonoBehaviour
     public int[] expToNextLevel;
     public int maxLevel = 100;
     public int baseEXP = 100;
+    public bool hasDied = false;
 
     // HP/MP Stats
     public int currentHP;
