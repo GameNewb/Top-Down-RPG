@@ -29,6 +29,8 @@ public class BattleManager : MonoBehaviour
     // Attack sets and effect
     public BattleMoveset[] movesets;
     public GameObject enemyParticleEffect;
+
+    public BattleDamageNumber damageNumberEffect;
     
     // Start is called before the first frame update
     void Start()
@@ -323,6 +325,8 @@ public class BattleManager : MonoBehaviour
         Debug.Log(currentUser.objectName + " is dealing " + damageCalculation + "(" + damageToTake + ") damage to " + targetUser.objectName);
 
         targetUser.currentHP -= damageToTake;
+
+        Instantiate(damageNumberEffect, activeCombatants[target].transform.position, activeCombatants[target].transform.rotation).SetDamage(damageToTake);
     }
     
 }
