@@ -27,7 +27,7 @@ MonoBehaviour:
   vitality: 2
   wpnPwr: 3
   armrPwr: 2
-  hasDied: 0
+  hasDied: 1
   movesAvailable:
   - Slash
   - Fire

@@ -34,7 +34,11 @@ public class BattleManager : MonoBehaviour
     public BattleDamageNumber damageNumberEffect;
 
     public Text[] playerName, playerHP, playerMP;
-    
+
+    // UI for target buttons
+    public GameObject targetMenu;
+    public BattleTargetButton[] targetButtons;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -159,6 +163,7 @@ public class BattleManager : MonoBehaviour
         }
     }
 
+    // Function to change turns
     public void NextTurn()
     {
         currentTurn++;
@@ -172,6 +177,7 @@ public class BattleManager : MonoBehaviour
         this.UpdateUIStats();
     }
 
+    // Function to process the battle data after each turn
     public void UpdateBattle()
     {
         bool allEnemiesDead = true;
@@ -341,6 +347,61 @@ public class BattleManager : MonoBehaviour
             else
             {
                 playerName[i].gameObject.SetActive(false);
+            }
+        }
+    }
+
+    public void PlayerAttack(string moveName, int selectedTarget)
+    {
+        int movesetPower = 0;
+
+        for (int i = 0; i < movesets.Length; i++)
+        {
+            if (movesets[i].movesetName == moveName)
+            {
+                Instantiate(movesets[i].movesetEffect, activeCombatants[selectedTarget].transform.position, activeCombatants[selectedTarget].transform.rotation);
+                movesetPower = movesets[i].movesetDamage;
+            }
+        }
+
+        // TODO: Change effect for player
+        Instantiate(enemyParticleEffect, activeCombatants[currentTurn].transform.position, activeCombatants[currentTurn].transform.rotation);
+
+        this.DealDamage(selectedTarget, movesetPower);
+
+        // Prevent player from clicking the buttons multiple times
+        uiButtonsHolder.SetActive(false);
+        targetMenu.SetActive(false);
+        this.NextTurn();
+    }
+
+    public void OpenTargetMenu(string moveName)
+    {
+        targetMenu.SetActive(true);
+
+        List<int> enemies = new List<int>();
+
+        for (int i = 0; i < activeCombatants.Count; i++)
+        {
+            // Add enemy to target list
+            if (!activeCombatants[i].GetComponent<CreateScriptableObject>().objectToCreate.isPlayer)
+            {
+                enemies.Add(i);
+            }
+        }
+
+        for (int i = 0; i < targetButtons.Length; i++)
+        {
+            if (enemies.Count > i)
+            {
+                targetButtons[i].gameObject.SetActive(true);
+                targetButtons[i].moveName = moveName;
+                targetButtons[i].activeCombatantTarget = enemies[i];
+                targetButtons[i].targetName.text = activeCombatants[enemies[i]].GetComponent<CreateScriptableObject>().objectToCreate.objectName;
+            }
+            else
+            {
+                targetButtons[i].gameObject.SetActive(false);
             }
         }
     }
