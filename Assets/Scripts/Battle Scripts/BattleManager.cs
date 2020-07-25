@@ -40,6 +40,10 @@ public class BattleManager : MonoBehaviour
     public GameObject targetMenu;
     public BattleTargetButton[] targetButtons;
 
+    // UI for menu buttons
+    public GameObject magicMenu;
+    public BattleMagicSelection[] magicButtons;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -83,6 +87,8 @@ public class BattleManager : MonoBehaviour
 
     public void StartBattle (string[] enemiesToSpawn)
     {
+        GameManager.instance.activeBattle = true;
+
         // Check first if we're not in a battle already
         if (!activeBattle)
         {
@@ -203,6 +209,9 @@ public class BattleManager : MonoBehaviour
             }
 
             activeCombatants.Clear();
+
+            // Allow usage of menu again
+            GameManager.instance.activeBattle = false;
         } 
         else
         {
@@ -220,6 +229,7 @@ public class BattleManager : MonoBehaviour
         }
     }
 
+    // Function t
     public IEnumerator EnemyMove()
     {
         waitingForATurn = false;
@@ -384,6 +394,39 @@ public class BattleManager : MonoBehaviour
             else
             {
                 targetButtons[i].gameObject.SetActive(false);
+            }
+        }
+    }
+
+    // Function that opens the magic menu
+    public void OpenMagicMenu() 
+    {
+        magicMenu.SetActive(true);
+
+        for (int i = 0; i< magicButtons.Length; i++)
+        {
+            var battlerMoveset = activeCombatants[currentTurn].GetComponent<ScriptableObjectProperties>().movesAvailable;
+            if (battlerMoveset.Length > i)
+            {
+                magicButtons[i].gameObject.SetActive(true);
+
+                // Set the properties
+                magicButtons[i].spellName = battlerMoveset[i];
+                magicButtons[i].nameText.text = battlerMoveset[i];
+
+                // TODO: Optimize
+                for (int j = 0; j < movesets.Length; j++)
+                {
+                    if (movesets[j].movesetName == magicButtons[i].spellName)
+                    {
+                        magicButtons[i].spellCost = movesets[j].movesetCost;
+                        magicButtons[i].costText.text = magicButtons[i].spellCost.ToString();
+                    }
+                }
+            }
+            else
+            {
+                magicButtons[i].gameObject.SetActive(false);
             }
         }
     }

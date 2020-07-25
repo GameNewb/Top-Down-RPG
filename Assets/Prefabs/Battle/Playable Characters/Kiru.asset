@@ -29,4 +29,5 @@ MonoBehaviour:
   wpnPwr: 0
   armrPwr: 0
   hasDied: 0
-  movesAvailable: []
+  movesAvailable:
+  - Ice

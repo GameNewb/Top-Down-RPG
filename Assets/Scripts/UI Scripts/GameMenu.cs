@@ -70,7 +70,9 @@ public class GameMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.M) || Input.GetKeyDown(KeyCode.Escape) && disableControls == false && !GameManager.instance.dialogActive)
+        if (Input.GetKeyDown(KeyCode.M) || Input.GetKeyDown(KeyCode.Escape) && disableControls == false 
+            && !GameManager.instance.dialogActive 
+            && !GameManager.instance.activeBattle)
         {
             if (theMenu.activeInHierarchy)
             {
