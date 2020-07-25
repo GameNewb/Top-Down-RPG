@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class BattleManager : MonoBehaviour
 {
+    private BattleManagerHelper bmHelper = new BattleManagerHelper();
     public static BattleManager instance;
 
     private bool activeBattle;
@@ -108,29 +109,7 @@ public class BattleManager : MonoBehaviour
                         GameObject newPlayer = Instantiate(objectScriptablePrefab, playerPositions[i].position, playerPositions[i].rotation);
                         newPlayer.transform.parent = playerPositions[i];
 
-                        // Set the appropriate enemy to create
-                        newPlayer.GetComponent<ScriptableObjectProperties>().objectToCreate = GameManager.instance.FindScriptableObject(playerStats.charName, true);
-
-                        // Ensure sorting layer is "Battle Characters"
-                        newPlayer.GetComponent<SpriteRenderer>().sortingLayerName = "Battle Characters";
-                        newPlayer.GetComponent<SpriteRenderer>().sprite = GameManager.instance.FindScriptableObject(playerStats.charName, true).objectSprite;
-
-                        // Add to the battle list
-                        activeCombatants.Add(newPlayer);
-
-                        // Load data
-                        activeCombatants[i].GetComponent<ScriptableObjectProperties>().objectName = playerStats.charName;
-                        activeCombatants[i].GetComponent<ScriptableObjectProperties>().objectSprite = playerStats.charImage;
-                        activeCombatants[i].GetComponent<ScriptableObjectProperties>().currentHP = playerStats.currentHP;
-                        activeCombatants[i].GetComponent<ScriptableObjectProperties>().currentMP = playerStats.currentMP;
-                        activeCombatants[i].GetComponent<ScriptableObjectProperties>().maxHP = playerStats.maxHP;
-                        activeCombatants[i].GetComponent<ScriptableObjectProperties>().maxMP = playerStats.maxMP;
-                        activeCombatants[i].GetComponent<ScriptableObjectProperties>().strength = playerStats.strength;
-                        activeCombatants[i].GetComponent<ScriptableObjectProperties>().vitality = playerStats.vitality;
-                        activeCombatants[i].GetComponent<ScriptableObjectProperties>().wpnPwr = playerStats.wpnPwr;
-                        activeCombatants[i].GetComponent<ScriptableObjectProperties>().armrPwr = playerStats.armrPwr;
-                        activeCombatants[i].GetComponent<ScriptableObjectProperties>().hasDied = playerStats.hasDied;
-                        activeCombatants[i].GetComponent<ScriptableObjectProperties>().isPlayer = true;
+                        bmHelper.InitializeBattleData(newPlayer, true, playerStats.charName, playerStats);
                     }
                 }
             }
@@ -145,32 +124,8 @@ public class BattleManager : MonoBehaviour
                         // TODO: Merge into one scriptable object
                         GameObject newEnemy = Instantiate(objectScriptablePrefab, enemyPositions[i].position, enemyPositions[i].rotation);
                         newEnemy.transform.parent = enemyPositions[i];
-                        
-                        var enemyScriptable = GameManager.instance.FindScriptableObject(enemiesToSpawn[i], false);
 
-                        // Set the appropriate enemy to create
-                        newEnemy.GetComponent<ScriptableObjectProperties>().objectToCreate = enemyScriptable;
-
-                        // Ensure sorting layer is "Battle Characters"
-                        newEnemy.GetComponent<SpriteRenderer>().sortingLayerName = "Battle Characters";
-                        newEnemy.GetComponent<SpriteRenderer>().sprite = GameManager.instance.FindScriptableObject(enemiesToSpawn[i], false).objectSprite;
-
-                        newEnemy.GetComponent<ScriptableObjectProperties>().objectName = enemyScriptable.objectName;
-                        newEnemy.GetComponent<ScriptableObjectProperties>().objectDescription = enemyScriptable.objectDescription;
-                        newEnemy.GetComponent<ScriptableObjectProperties>().objectSprite = enemyScriptable.objectSprite;
-                        newEnemy.GetComponent<ScriptableObjectProperties>().currentHP = enemyScriptable.currentHP;
-                        newEnemy.GetComponent<ScriptableObjectProperties>().currentMP = enemyScriptable.currentMP;
-                        newEnemy.GetComponent<ScriptableObjectProperties>().maxHP = enemyScriptable.maxHP;
-                        newEnemy.GetComponent<ScriptableObjectProperties>().maxMP = enemyScriptable.maxMP;
-                        newEnemy.GetComponent<ScriptableObjectProperties>().strength = enemyScriptable.strength;
-                        newEnemy.GetComponent<ScriptableObjectProperties>().vitality = enemyScriptable.vitality;
-                        newEnemy.GetComponent<ScriptableObjectProperties>().wpnPwr = enemyScriptable.wpnPwr;
-                        newEnemy.GetComponent<ScriptableObjectProperties>().armrPwr = enemyScriptable.armrPwr;
-                        newEnemy.GetComponent<ScriptableObjectProperties>().hasDied = enemyScriptable.hasDied;
-                        newEnemy.GetComponent<ScriptableObjectProperties>().movesAvailable = enemyScriptable.movesAvailable;
-
-                        // Add enemy
-                        activeCombatants.Add(newEnemy);
+                        bmHelper.InitializeBattleData(newEnemy, false, enemiesToSpawn[i], null);
                     }
                 }
             }
@@ -376,6 +331,7 @@ public class BattleManager : MonoBehaviour
         }
     }
 
+    // Function to control players attack
     public void PlayerAttack(string moveName, int selectedTarget)
     {
         int movesetPower = 0;
@@ -400,6 +356,7 @@ public class BattleManager : MonoBehaviour
         this.NextTurn();
     }
 
+    // Function that opens the target menu when player attacks
     public void OpenTargetMenu(string moveName)
     {
         targetMenu.SetActive(true);
