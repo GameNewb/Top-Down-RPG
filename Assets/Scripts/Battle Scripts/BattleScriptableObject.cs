@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
 [CreateAssetMenu(menuName = "Battle/Create Battle Object")]
 public class BattleScriptableObject : ScriptableObject
 {
@@ -21,5 +20,4 @@ public class BattleScriptableObject : ScriptableObject
 
     [Header("Attack Moves")]
     public string[] movesAvailable;
-
 }

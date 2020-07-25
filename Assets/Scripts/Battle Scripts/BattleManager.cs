@@ -58,9 +58,9 @@ public class BattleManager : MonoBehaviour
         if (activeBattle)
         {
             if (waitingForATurn)
-            {
+            {  
                 // Activate the button for players
-                if (activeCombatants[currentTurn].GetComponent<CreateScriptableObject>().objectToCreate.isPlayer)
+                if (activeCombatants[currentTurn].GetComponent<ScriptableObjectProperties>().isPlayer)
                 {
                     uiButtonsHolder.SetActive(true);
                 }
@@ -109,7 +109,7 @@ public class BattleManager : MonoBehaviour
                         newPlayer.transform.parent = playerPositions[i];
 
                         // Set the appropriate enemy to create
-                        newPlayer.GetComponent<CreateScriptableObject>().objectToCreate = GameManager.instance.FindScriptableObject(playerStats.charName, true);
+                        newPlayer.GetComponent<ScriptableObjectProperties>().objectToCreate = GameManager.instance.FindScriptableObject(playerStats.charName, true);
 
                         // Ensure sorting layer is "Battle Characters"
                         newPlayer.GetComponent<SpriteRenderer>().sortingLayerName = "Battle Characters";
@@ -119,15 +119,18 @@ public class BattleManager : MonoBehaviour
                         activeCombatants.Add(newPlayer);
 
                         // Load data
-                        activeCombatants[i].GetComponent<CreateScriptableObject>().objectToCreate.currentHP = playerStats.currentHP;
-                        activeCombatants[i].GetComponent<CreateScriptableObject>().objectToCreate.currentMP = playerStats.currentMP;
-                        activeCombatants[i].GetComponent<CreateScriptableObject>().objectToCreate.maxHP = playerStats.maxHP;
-                        activeCombatants[i].GetComponent<CreateScriptableObject>().objectToCreate.maxMP = playerStats.maxMP;
-                        activeCombatants[i].GetComponent<CreateScriptableObject>().objectToCreate.strength = playerStats.strength;
-                        activeCombatants[i].GetComponent<CreateScriptableObject>().objectToCreate.vitality = playerStats.vitality;
-                        activeCombatants[i].GetComponent<CreateScriptableObject>().objectToCreate.wpnPwr = playerStats.wpnPwr;
-                        activeCombatants[i].GetComponent<CreateScriptableObject>().objectToCreate.armrPwr = playerStats.armrPwr;
-                        activeCombatants[i].GetComponent<CreateScriptableObject>().objectToCreate.hasDied = playerStats.hasDied;
+                        activeCombatants[i].GetComponent<ScriptableObjectProperties>().objectName = playerStats.charName;
+                        activeCombatants[i].GetComponent<ScriptableObjectProperties>().objectSprite = playerStats.charImage;
+                        activeCombatants[i].GetComponent<ScriptableObjectProperties>().currentHP = playerStats.currentHP;
+                        activeCombatants[i].GetComponent<ScriptableObjectProperties>().currentMP = playerStats.currentMP;
+                        activeCombatants[i].GetComponent<ScriptableObjectProperties>().maxHP = playerStats.maxHP;
+                        activeCombatants[i].GetComponent<ScriptableObjectProperties>().maxMP = playerStats.maxMP;
+                        activeCombatants[i].GetComponent<ScriptableObjectProperties>().strength = playerStats.strength;
+                        activeCombatants[i].GetComponent<ScriptableObjectProperties>().vitality = playerStats.vitality;
+                        activeCombatants[i].GetComponent<ScriptableObjectProperties>().wpnPwr = playerStats.wpnPwr;
+                        activeCombatants[i].GetComponent<ScriptableObjectProperties>().armrPwr = playerStats.armrPwr;
+                        activeCombatants[i].GetComponent<ScriptableObjectProperties>().hasDied = playerStats.hasDied;
+                        activeCombatants[i].GetComponent<ScriptableObjectProperties>().isPlayer = true;
                     }
                 }
             }
@@ -143,12 +146,28 @@ public class BattleManager : MonoBehaviour
                         GameObject newEnemy = Instantiate(objectScriptablePrefab, enemyPositions[i].position, enemyPositions[i].rotation);
                         newEnemy.transform.parent = enemyPositions[i];
                         
+                        var enemyScriptable = GameManager.instance.FindScriptableObject(enemiesToSpawn[i], false);
+
                         // Set the appropriate enemy to create
-                        newEnemy.GetComponent<CreateScriptableObject>().objectToCreate = GameManager.instance.FindScriptableObject(enemiesToSpawn[i], false);
+                        newEnemy.GetComponent<ScriptableObjectProperties>().objectToCreate = enemyScriptable;
 
                         // Ensure sorting layer is "Battle Characters"
                         newEnemy.GetComponent<SpriteRenderer>().sortingLayerName = "Battle Characters";
                         newEnemy.GetComponent<SpriteRenderer>().sprite = GameManager.instance.FindScriptableObject(enemiesToSpawn[i], false).objectSprite;
+
+                        newEnemy.GetComponent<ScriptableObjectProperties>().objectName = enemyScriptable.objectName;
+                        newEnemy.GetComponent<ScriptableObjectProperties>().objectDescription = enemyScriptable.objectDescription;
+                        newEnemy.GetComponent<ScriptableObjectProperties>().objectSprite = enemyScriptable.objectSprite;
+                        newEnemy.GetComponent<ScriptableObjectProperties>().currentHP = enemyScriptable.currentHP;
+                        newEnemy.GetComponent<ScriptableObjectProperties>().currentMP = enemyScriptable.currentMP;
+                        newEnemy.GetComponent<ScriptableObjectProperties>().maxHP = enemyScriptable.maxHP;
+                        newEnemy.GetComponent<ScriptableObjectProperties>().maxMP = enemyScriptable.maxMP;
+                        newEnemy.GetComponent<ScriptableObjectProperties>().strength = enemyScriptable.strength;
+                        newEnemy.GetComponent<ScriptableObjectProperties>().vitality = enemyScriptable.vitality;
+                        newEnemy.GetComponent<ScriptableObjectProperties>().wpnPwr = enemyScriptable.wpnPwr;
+                        newEnemy.GetComponent<ScriptableObjectProperties>().armrPwr = enemyScriptable.armrPwr;
+                        newEnemy.GetComponent<ScriptableObjectProperties>().hasDied = enemyScriptable.hasDied;
+                        newEnemy.GetComponent<ScriptableObjectProperties>().movesAvailable = enemyScriptable.movesAvailable;
 
                         // Add enemy
                         activeCombatants.Add(newEnemy);
@@ -187,15 +206,15 @@ public class BattleManager : MonoBehaviour
         {
             // TODO: Merge into one scriptable object
             // Set HP to 0 if they received more damage than max hp
-            if (activeCombatants[i].GetComponent<CreateScriptableObject>().objectToCreate.currentHP <= 0)
+            if (activeCombatants[i].GetComponent<ScriptableObjectProperties>().currentHP <= 0)
             {
-                activeCombatants[i].GetComponent<CreateScriptableObject>().objectToCreate.currentHP = 0;
+                activeCombatants[i].GetComponent<ScriptableObjectProperties>().currentHP = 0;
 
                 // Handle dead battler
             }
             else
             {
-                if (activeCombatants[i].GetComponent<CreateScriptableObject>().objectToCreate.isPlayer)
+                if (activeCombatants[i].GetComponent<ScriptableObjectProperties>().isPlayer)
                 {
                     allPlayersDead = false;
                 }
@@ -233,9 +252,15 @@ public class BattleManager : MonoBehaviour
         else
         {
             // If the current combatant is already dead, skip their turn
-            if (activeCombatants[currentTurn].GetComponent<CreateScriptableObject>().objectToCreate.hasDied)
+            // Iteratively loop through dead characters to increment current turn
+            while (activeCombatants[currentTurn].GetComponent<ScriptableObjectProperties>().hasDied)
             {
                 currentTurn++;
+                
+                if (currentTurn >= activeCombatants.Count)
+                {
+                    currentTurn = 0;
+                }
             }
         }
     }
@@ -260,7 +285,7 @@ public class BattleManager : MonoBehaviour
 
         for (int i = 0; i < activeCombatants.Count; i++)
         {
-            var combatant = activeCombatants[i].GetComponent<CreateScriptableObject>().objectToCreate;
+            var combatant = activeCombatants[i].GetComponent<ScriptableObjectProperties>();
             if (combatant.isPlayer && combatant.currentHP > 0)
             {
                 // Add player to enemy targets
@@ -276,12 +301,12 @@ public class BattleManager : MonoBehaviour
         // TODO: Refactor
         // TODO: Fix bug where if player presses N continuously during enemy turn, IOB happens
         // Find the correct attack object
-        int selectAttack = Random.Range(0, activeCombatants[currentTurn].GetComponent<CreateScriptableObject>().objectToCreate.movesAvailable.Length);
+        int selectAttack = Random.Range(0, activeCombatants[currentTurn].GetComponent<ScriptableObjectProperties>().movesAvailable.Length);
         int movesetPower = 0;
 
         for (int i = 0; i < movesets.Length; i++)
         {
-            if (movesets[i].movesetName == activeCombatants[currentTurn].GetComponent<CreateScriptableObject>().objectToCreate.movesAvailable[selectAttack])
+            if (movesets[i].movesetName == activeCombatants[currentTurn].GetComponent<ScriptableObjectProperties>().movesAvailable[selectAttack])
             {
                 Instantiate(movesets[i].movesetEffect, activeCombatants[selectedTarget].transform.position, activeCombatants[selectedTarget].transform.rotation);
                 movesetPower = movesets[i].movesetDamage;
@@ -298,8 +323,8 @@ public class BattleManager : MonoBehaviour
     // Function to deal damage to objects
     public void DealDamage(int target, int movesetPower)
     {
-        var currentUser = activeCombatants[currentTurn].GetComponent<CreateScriptableObject>().objectToCreate;
-        var targetUser = activeCombatants[target].GetComponent<CreateScriptableObject>().objectToCreate;
+        var currentUser = activeCombatants[currentTurn].GetComponent<ScriptableObjectProperties>();
+        var targetUser = activeCombatants[target].GetComponent<ScriptableObjectProperties>();
         float atkPower = currentUser.strength + currentUser.wpnPwr;
         float vitPower = targetUser.vitality + targetUser.armrPwr;
 
@@ -330,7 +355,7 @@ public class BattleManager : MonoBehaviour
         {
             if (activeCombatants.Count > i)
             {
-                var playerObject = activeCombatants[i].GetComponent<CreateScriptableObject>().objectToCreate;
+                var playerObject = activeCombatants[i].GetComponent<ScriptableObjectProperties>();
 
                 if (playerObject.isPlayer)
                 {
@@ -384,7 +409,7 @@ public class BattleManager : MonoBehaviour
         for (int i = 0; i < activeCombatants.Count; i++)
         {
             // Add enemy to target list
-            if (!activeCombatants[i].GetComponent<CreateScriptableObject>().objectToCreate.isPlayer)
+            if (!activeCombatants[i].GetComponent<ScriptableObjectProperties>().isPlayer)
             {
                 enemies.Add(i);
             }
@@ -397,7 +422,7 @@ public class BattleManager : MonoBehaviour
                 targetButtons[i].gameObject.SetActive(true);
                 targetButtons[i].moveName = moveName;
                 targetButtons[i].activeCombatantTarget = enemies[i];
-                targetButtons[i].targetName.text = activeCombatants[enemies[i]].GetComponent<CreateScriptableObject>().objectToCreate.objectName;
+                targetButtons[i].targetName.text = activeCombatants[enemies[i]].GetComponent<ScriptableObjectProperties>().objectName;
             }
             else
             {

@@ -93,4 +93,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemToCreate: {fileID: 0}
-  enemyToCreate: {fileID: 0}
+  objectToCreate: {fileID: 0}
+  isBoss: 0
+  isRare: 0
+  isCommon: 0
+  isPlayer: 0
+  objectName: 
+  objectDescription: 
+  objectSprite: {fileID: 0}
+  currentHP: 0
+  maxHP: 0
+  currentMP: 0
+  maxMP: 0
+  strength: 0
+  vitality: 0
+  wpnPwr: 0
+  armrPwr: 0
+  hasDied: 0
+  movesAvailable: []

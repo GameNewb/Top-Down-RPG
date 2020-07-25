@@ -18,7 +18,7 @@ public class ItemPickup : MonoBehaviour
         if (canPickup && Input.GetButtonDown("Fire1") && PlayerController.instance.canMove)
         {
             // Add Item to player inventory
-            GameManager.instance.AddItem((Item) GetComponent<CreateScriptableObject>().itemToCreate, 1);
+            GameManager.instance.AddItem((Item) GetComponent<ScriptableObjectProperties>().itemToCreate, 1);
             Destroy(gameObject);
         }
     }
