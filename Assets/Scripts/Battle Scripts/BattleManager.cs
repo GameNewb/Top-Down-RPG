@@ -8,7 +8,7 @@ public class BattleManager : MonoBehaviour
     private BattleManagerHelper bmHelper = new BattleManagerHelper();
     public static BattleManager instance;
 
-    private bool activeBattle;
+    public bool activeBattle;
 
     public GameObject battleScene;
 
@@ -43,6 +43,10 @@ public class BattleManager : MonoBehaviour
     // UI for menu buttons
     public GameObject magicMenu;
     public BattleMagicSelection[] magicButtons;
+
+    public BattleNotification battleNotice;
+
+    public int chanceToFlee = 35;
 
     // Start is called before the first frame update
     void Start()
@@ -198,7 +202,10 @@ public class BattleManager : MonoBehaviour
                 // Game over
             }
 
-            battleScene.SetActive(false);
+            // End Battle
+            this.EndBattle();
+
+            /*battleScene.SetActive(false);
             GameManager.instance.activeBattle = false;
             activeBattle = false;
 
@@ -212,6 +219,9 @@ public class BattleManager : MonoBehaviour
 
             // Allow usage of menu again
             GameManager.instance.activeBattle = false;
+
+            // Disable BG
+            AudioManager.instance.StopMusic();*/
         } 
         else
         {
@@ -390,6 +400,12 @@ public class BattleManager : MonoBehaviour
                 targetButtons[i].moveName = moveName;
                 targetButtons[i].activeCombatantTarget = enemies[i];
                 targetButtons[i].targetName.text = activeCombatants[enemies[i]].GetComponent<ScriptableObjectProperties>().objectName;
+
+                // Disable targeting for dead enemies
+                if (activeCombatants[enemies[i]].GetComponent<ScriptableObjectProperties>().hasDied)
+                {
+                    targetButtons[i].GetComponentInParent<Button>().interactable = false;
+                }
             }
             else
             {
@@ -430,4 +446,54 @@ public class BattleManager : MonoBehaviour
             }
         }
     }
+
+    public void Flee()
+    {
+        int fleeSuccess = Random.Range(0, 100);
+
+        if (fleeSuccess < chanceToFlee)
+        {
+            // End the battle
+            this.EndBattle();
+
+            /*activeBattle = false;
+            battleScene.SetActive(false);
+            
+            // Allow usage of menu again
+            GameManager.instance.activeBattle = false;
+
+            // Disable BG
+            AudioManager.instance.StopMusic();*/
+        }
+        else
+        {
+            // Flee not successful
+            this.NextTurn();
+            battleNotice.theText.text = "Couldn't escape!";
+            battleNotice.Activate();
+
+        }
+    }
+
+    public void EndBattle()
+    {
+        activeBattle = false;
+        battleScene.SetActive(false);
+        GameManager.instance.activeBattle = false;
+
+        // Destroy object after battle is done 
+        foreach (var combatants in activeCombatants)
+        {
+            Destroy(combatants);
+        }
+
+        activeCombatants.Clear();
+
+        // Allow usage of menu again
+        GameManager.instance.activeBattle = false;
+
+        // Disable BG
+        AudioManager.instance.StopMusic();
+    }
+
 }

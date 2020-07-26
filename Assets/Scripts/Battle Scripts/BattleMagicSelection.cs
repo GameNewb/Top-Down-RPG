@@ -32,11 +32,14 @@ public class BattleMagicSelection : MonoBehaviour
         {
             bmInstance.magicMenu.SetActive(false);
             bmInstance.OpenTargetMenu(spellName);
-            currentMP -= spellCost;
+            bmInstance.activeCombatants[bmInstance.currentTurn].GetComponent<ScriptableObjectProperties>().currentMP -= spellCost;
         }
         else
         {
             // Let player know there isn't enough MP
+            bmInstance.battleNotice.theText.text = "Not Enough MP!";
+            bmInstance.battleNotice.Activate();
+            bmInstance.magicMenu.SetActive(false);
         }
     }
 }

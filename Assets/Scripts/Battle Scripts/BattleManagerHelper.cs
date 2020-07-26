@@ -53,4 +53,24 @@ public class BattleManagerHelper
         // Add to the combat list
         BattleManager.instance.activeCombatants.Add(objectPrefab);
     }
+
+    /*public void EndBattle()
+    {
+        GameManager.instance.activeBattle = false;
+        activeBattle = false;
+
+        // Destroy object after battle is done 
+        foreach (var combatants in activeCombatants)
+        {
+            Destroy(combatants);
+        }
+
+        activeCombatants.Clear();
+
+        // Allow usage of menu again
+        GameManager.instance.activeBattle = false;
+
+        // Disable BG
+        AudioManager.instance.StopMusic();
+    }*/
 }
