@@ -12,6 +12,7 @@ public class BattleManager : MonoBehaviour
 
     public GameObject battleScene;
 
+    [Header("Object Prefabs")]
     public Transform[] playerPositions;
     public Transform[] enemyPositions;
 
@@ -19,7 +20,7 @@ public class BattleManager : MonoBehaviour
     public BattleData[] enemyPrefabs;
     public GameObject objectScriptablePrefab;
 
-    public List<BattleData> activeBattlers = new List<BattleData>();
+    [Header("Active Battlers")]
     public List<GameObject> activeCombatants = new List<GameObject>();
 
     public int currentTurn;
@@ -29,21 +30,31 @@ public class BattleManager : MonoBehaviour
     public GameObject uiButtonsHolder;
 
     // Attack sets and effect
+    [Header("Movesets")]
     public BattleMoveset[] movesets;
     public GameObject enemyParticleEffect;
 
     public BattleDamageNumber damageNumberEffect;
 
+    [Header("Player Stats and Text")]
     public Text[] playerName, playerHP, playerMP;
 
     // UI for target buttons
+    [Header("Target Menu")]
     public GameObject targetMenu;
     public BattleTargetButton[] targetButtons;
 
     // UI for menu buttons
+    [Header("Magic Menu")]
     public GameObject magicMenu;
     public BattleMagicSelection[] magicButtons;
 
+    // UI for item buttons
+    [Header("Item Menu")]
+    public GameObject itemMenu;
+    public GameObject itemButtonToInstantiate;
+
+    [Header("Battle Notification")]
     public BattleNotification battleNotice;
 
     public int chanceToFlee = 35;
@@ -204,24 +215,6 @@ public class BattleManager : MonoBehaviour
 
             // End Battle
             this.EndBattle();
-
-            /*battleScene.SetActive(false);
-            GameManager.instance.activeBattle = false;
-            activeBattle = false;
-
-            // Destroy object after battle is done 
-            foreach(var combatants in activeCombatants)
-            {
-                Destroy(combatants);
-            }
-
-            activeCombatants.Clear();
-
-            // Allow usage of menu again
-            GameManager.instance.activeBattle = false;
-
-            // Disable BG
-            AudioManager.instance.StopMusic();*/
         } 
         else
         {
@@ -447,6 +440,33 @@ public class BattleManager : MonoBehaviour
         }
     }
 
+    // Function that opens the item menu
+    public void OpenItemMenu()
+    {
+        itemMenu.SetActive(true);
+
+        var playerInventory = GameManager.instance.playerInventory;
+
+        // Loop through GameManager player inventory
+        // Display a button for each one
+        for (int i = 0; i < playerInventory.Count; i++)
+        {
+            // Only display items the player has
+            if (playerInventory[i].item != null)
+            {
+                // Instantiate new button for that item
+                GameObject itemButton = Instantiate(itemButtonToInstantiate);
+                
+                // Set the item name and image
+                itemButton.GetComponentInChildren<Text>().text = playerInventory[i].item.itemName;
+                itemButton.transform.GetChild(0).GetComponentInChildren<Image>().sprite = playerInventory[i].item.itemSprite;
+                itemButton.transform.SetParent(itemMenu.transform, true);
+                itemButton.SetActive(true);
+
+            }
+        }
+    }
+
     public void Flee()
     {
         int fleeSuccess = Random.Range(0, 100);
@@ -455,15 +475,6 @@ public class BattleManager : MonoBehaviour
         {
             // End the battle
             this.EndBattle();
-
-            /*activeBattle = false;
-            battleScene.SetActive(false);
-            
-            // Allow usage of menu again
-            GameManager.instance.activeBattle = false;
-
-            // Disable BG
-            AudioManager.instance.StopMusic();*/
         }
         else
         {
