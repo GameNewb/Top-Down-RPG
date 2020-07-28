@@ -5,8 +5,11 @@ using UnityEngine.UI;
 
 public class BattleUseItem : MonoBehaviour
 {
+    public GameObject playerPosition;
     public int buttonIndex;
 
+    private GameObject parentMenu;
+    
     public void UseItem()
     {
         // Target menu
@@ -22,15 +25,21 @@ public class BattleUseItem : MonoBehaviour
         // Add usage here for items
         if (itemToUse.name != null)
         {
-            itemToUse.Use(currentSelectedPlayer);
+            // Pass in the player object
+            itemToUse.UseInBattle(playerPosition.transform.GetChild(0).gameObject);
+            bmInstance.UpdateUIStats();
             parentMenu.SetActive(false);
             bmInstance.itemMenu.SetActive(false);
 
-            // For each individually created item button, delete after using an item so we don't get duplicates
+            // For each individually created item button
             for (int i = 0; i < bmInstance.itemMenu.transform.childCount; i++)
             {
+                // Destroy after using the item so we don't get duplicates
                 Destroy(bmInstance.itemMenu.transform.GetChild(i).gameObject);
             }
+
+            // Do next turn
+            bmInstance.NextTurn();
         }
 
     }

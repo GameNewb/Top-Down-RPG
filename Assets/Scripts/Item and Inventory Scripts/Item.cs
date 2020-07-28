@@ -82,4 +82,42 @@ public class Item : ScriptableObject
 
         GameManager.instance.RemoveItem(this, 1);
     }
+
+    public void UseInBattle(GameObject charToUseOn)
+    {
+        // If it's a consumable, check which one it affects
+        if (isItem)
+        {
+            var characterScriptable = charToUseOn.GetComponent<ScriptableObjectProperties>();
+
+            if (affectHP)
+            {
+                characterScriptable.currentHP += amountToChange;
+
+                if (characterScriptable.currentHP > characterScriptable.maxHP)
+                {
+                    characterScriptable.currentHP = characterScriptable.maxHP;
+                }
+
+                // After healing, revive player
+                if (characterScriptable.hasDied && characterScriptable.currentHP > 0)
+                {
+                    characterScriptable.hasDied = false;
+                }
+            }
+
+            if (affectMP)
+            {
+                characterScriptable.currentMP += amountToChange;
+
+                if (characterScriptable.currentMP > characterScriptable.maxMP)
+                {
+                    characterScriptable.currentMP = characterScriptable.maxMP;
+                }
+            }
+
+        }
+        
+        GameManager.instance.RemoveItem(this, 1);
+    }
 }
