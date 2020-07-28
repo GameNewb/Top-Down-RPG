@@ -9,23 +9,15 @@ public class BattleItemButton : MonoBehaviour
 
     public Button[] characterNameButtons;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void Press()
     {
         // Activate menu to use item on
         targetMenu.SetActive(true);
         
+        // Retrieve the item details and set it to be used for the character
+        Item item = GameManager.instance.GetItemDetailsByName(gameObject.name.ToString());
+        BattleManager.instance.itemToUse = item;
+
         for (int i = 0; i < characterNameButtons.Length; i++)
         {
             // Only show UI for active characters

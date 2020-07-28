@@ -49,10 +49,11 @@ public class BattleManager : MonoBehaviour
     public GameObject magicMenu;
     public BattleMagicSelection[] magicButtons;
 
-    // UI for item buttons
+    // UI for item buttons and reference to the Item to be used
     [Header("Item Menu")]
     public GameObject itemMenu;
     public GameObject itemButtonToInstantiate;
+    public Item itemToUse;
 
     [Header("Battle Notification")]
     public BattleNotification battleNotice;
@@ -232,7 +233,7 @@ public class BattleManager : MonoBehaviour
         }
     }
 
-    // Function t
+    // Function to allow enemies to move/do attack
     public IEnumerator EnemyMove()
     {
         waitingForATurn = false;
@@ -461,6 +462,7 @@ public class BattleManager : MonoBehaviour
                 itemButton.GetComponentInChildren<Text>().text = playerInventory[i].item.itemName;
                 itemButton.transform.GetChild(0).GetComponentInChildren<Image>().sprite = playerInventory[i].item.itemSprite;
                 itemButton.transform.SetParent(itemMenu.transform, true);
+                itemButton.name = playerInventory[i].item.name;
                 itemButton.SetActive(true);
 
             }
