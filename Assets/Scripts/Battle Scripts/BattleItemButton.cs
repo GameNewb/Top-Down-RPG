@@ -9,23 +9,6 @@ public class BattleItemButton : MonoBehaviour
 
     public Button[] characterNameButtons;
     
-    public void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            // Deactivate item menu
-            gameObject.transform.parent.gameObject.SetActive(false);
-            targetMenu.SetActive(false);
-
-            // For each individually created item button
-            for (int i = 0; i < BattleManager.instance.itemMenu.transform.childCount; i++)
-            {
-                // Destroy after using the item so we don't get duplicates
-                Destroy(BattleManager.instance.itemMenu.transform.GetChild(i).gameObject);
-            }
-        }
-    }
-
     public void Press()
     {
         // Activate menu to use item on

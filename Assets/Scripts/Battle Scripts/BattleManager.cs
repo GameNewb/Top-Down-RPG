@@ -53,6 +53,7 @@ public class BattleManager : MonoBehaviour
     [Header("Item Menu")]
     public GameObject itemMenu;
     public GameObject itemButtonToInstantiate;
+    public GameObject targetUseMenu;
     public Item itemToUse;
 
     [Header("Battle Notification")]
@@ -84,6 +85,22 @@ public class BattleManager : MonoBehaviour
                 if (activeCombatants[currentTurn].GetComponent<ScriptableObjectProperties>().isPlayer)
                 {
                     uiButtonsHolder.SetActive(true);
+                    
+                    // Close any open menu
+                    if (Input.GetKeyDown(KeyCode.Escape))
+                    {
+                        targetMenu.SetActive(false);
+                        itemMenu.SetActive(false);
+                        magicMenu.SetActive(false);
+                        targetUseMenu.SetActive(false);
+
+                        // For each individually created item button
+                        for (int i = 0; i < itemMenu.transform.childCount; i++)
+                        {
+                            // Destroy after pressing esc so we don't get duplicates
+                            Destroy(itemMenu.transform.GetChild(i).gameObject);
+                        }
+                    }
                 }
                 else
                 {
@@ -98,6 +115,7 @@ public class BattleManager : MonoBehaviour
             {
                 this.NextTurn();
             }
+
         }
     }
 
@@ -452,15 +470,16 @@ public class BattleManager : MonoBehaviour
         // Display a button for each one
         for (int i = 0; i < playerInventory.Count; i++)
         {
-            // Only display items the player has
-            if (playerInventory[i].item != null)
+            // Only display items the player has (consumables only for now)
+            if (playerInventory[i].item != null && playerInventory[i].item.isItem)
             {
                 // Instantiate new button for that item
                 GameObject itemButton = Instantiate(itemButtonToInstantiate);
                 
                 // Set the item name and image
-                itemButton.GetComponentInChildren<Text>().text = playerInventory[i].item.itemName;
                 itemButton.transform.GetChild(0).GetComponentInChildren<Image>().sprite = playerInventory[i].item.itemSprite;
+                itemButton.transform.GetChild(1).GetComponentInChildren<Text>().text = playerInventory[i].item.itemName;
+                itemButton.transform.GetChild(2).GetComponentInChildren<Text>().text = playerInventory[i].amount.ToString();
                 itemButton.transform.SetParent(itemMenu.transform, true);
                 itemButton.name = playerInventory[i].item.name;
                 itemButton.SetActive(true);
