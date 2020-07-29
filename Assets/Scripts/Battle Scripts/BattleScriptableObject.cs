@@ -20,4 +20,8 @@ public class BattleScriptableObject : ScriptableObject
 
     [Header("Attack Moves")]
     public string[] movesAvailable;
+
+    [Header("Battle Sprites")]
+    public SpriteRenderer objectSpriteRenderer;
+    public Sprite deadSprite, aliveSprite;
 }

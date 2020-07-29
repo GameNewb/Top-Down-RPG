@@ -199,7 +199,7 @@ public class BattleManager : MonoBehaviour
 
         for (int i = 0; i < activeCombatants.Count; i++)
         {
-            // TODO: Merge into one scriptable object
+            // TODO: Merge into one scriptable object, refactor this mess
             // Set HP to 0 if they received more damage than max hp
             if (activeCombatants[i].GetComponent<ScriptableObjectProperties>().currentHP <= 0)
             {
@@ -325,6 +325,12 @@ public class BattleManager : MonoBehaviour
         if (targetUser.currentHP <= 0)
         {
             targetUser.hasDied = true;
+
+            // Set dead sprite if player character dies
+            if (targetUser.isPlayer)
+            {
+                targetUser.objectSpriteRenderer.sprite = targetUser.deadSprite;
+            }
         }
 
         // Instantiate the damage numbers on screen
@@ -417,6 +423,10 @@ public class BattleManager : MonoBehaviour
                 if (activeCombatants[enemies[i]].GetComponent<ScriptableObjectProperties>().hasDied)
                 {
                     targetButtons[i].GetComponentInParent<Button>().interactable = false;
+                }
+                else
+                {
+                    targetButtons[i].GetComponentInParent<Button>().interactable = true;
                 }
             }
             else

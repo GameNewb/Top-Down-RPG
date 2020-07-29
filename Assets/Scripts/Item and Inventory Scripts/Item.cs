@@ -103,6 +103,7 @@ public class Item : ScriptableObject
                 if (characterScriptable.hasDied && characterScriptable.currentHP > 0)
                 {
                     characterScriptable.hasDied = false;
+                    characterScriptable.objectSpriteRenderer.sprite = characterScriptable.aliveSprite;
                 }
             }
 

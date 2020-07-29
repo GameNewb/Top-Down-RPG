@@ -23,6 +23,10 @@ public class ScriptableObjectProperties : MonoBehaviour
     [Header("Attack Moves")]
     public string[] movesAvailable;
 
+    [Header("Battle Sprites")]
+    public SpriteRenderer objectSpriteRenderer;
+    public Sprite deadSprite, aliveSprite;
+
     public void Awake()
     {
         // Set the correct sprite for the item

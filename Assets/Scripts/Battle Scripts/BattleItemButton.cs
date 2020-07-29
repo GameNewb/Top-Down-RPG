@@ -22,10 +22,24 @@ public class BattleItemButton : MonoBehaviour
         {
             // Only show UI for active characters
             var playerStats = GameManager.instance.playerStats[i];
+
+            // Get the appropriate player scriptable
+            var playerScriptable = BattleManager.instance.activeCombatants;
+
             if (playerStats && playerStats.gameObject.activeInHierarchy)
             {
                 characterNameButtons[i].gameObject.SetActive(true);
                 characterNameButtons[i].GetComponentInChildren<Text>().text = playerStats.charName.ToString();
+
+                // Disable selection for non HP healing items if the player is dead
+                if (playerScriptable[i].GetComponent<ScriptableObjectProperties>().hasDied && !item.affectHP)
+                {
+                    characterNameButtons[i].interactable = false;
+                } 
+                else
+                {
+                    characterNameButtons[i].interactable = true;
+                }
             }
             else
             {
