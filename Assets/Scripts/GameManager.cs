@@ -226,6 +226,7 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetInt("Player_" + playerStats[i].charName + "_Vitality", playerStats[i].vitality);
             PlayerPrefs.SetInt("Player_" + playerStats[i].charName + "_WeaponPower", playerStats[i].wpnPwr);
             PlayerPrefs.SetInt("Player_" + playerStats[i].charName + "_ArmorPower", playerStats[i].armrPwr);
+            PlayerPrefs.SetString("Player_" + playerStats[i].charName + "_HasDied", playerStats[i].hasDied.ToString());
 
             if (playerStats[i].equippedWeapon != null)
             {
@@ -293,6 +294,17 @@ public class GameManager : MonoBehaviour
             playerStats[i].vitality = PlayerPrefs.GetInt("Player_" + playerStats[i].charName + "_Vitality");
             playerStats[i].wpnPwr = PlayerPrefs.GetInt("Player_" + playerStats[i].charName + "_WeaponPower");
             playerStats[i].armrPwr = PlayerPrefs.GetInt("Player_" + playerStats[i].charName + "_ArmorPower");
+            
+            // Null checks
+            if (PlayerPrefs.GetString("Player_" + playerStats[i].charName + "_HasDied") != null &&
+                PlayerPrefs.GetString("Player_" + playerStats[i].charName + "_HasDied") != "")
+            {
+                playerStats[i].hasDied = bool.Parse(PlayerPrefs.GetString("Player_" + playerStats[i].charName + "_HasDied"));
+            }
+            else
+            {
+                playerStats[i].hasDied = (playerStats[i].currentHP <= 0);
+            }
 
             if (PlayerPrefs.HasKey("Player_" + playerStats[i].charName + "_EquippedWeapon"))
             {

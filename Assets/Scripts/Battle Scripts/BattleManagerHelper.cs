@@ -50,6 +50,7 @@ public class BattleManagerHelper
             objectPrefab.GetComponent<ScriptableObjectProperties>().vitality = scriptableObject.vitality;
             objectPrefab.GetComponent<ScriptableObjectProperties>().hasDied = scriptableObject.hasDied;
             objectPrefab.GetComponent<ScriptableObjectProperties>().movesAvailable = scriptableObject.movesAvailable;
+            objectPrefab.GetComponent<ScriptableObjectProperties>().objectSpriteRenderer = objectPrefab.GetComponent<SpriteRenderer>();
             objectPrefab.GetComponent<ScriptableObjectProperties>().isPlayer = false;
         }
 

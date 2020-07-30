@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class BattleManager : MonoBehaviour
 {
@@ -60,6 +61,8 @@ public class BattleManager : MonoBehaviour
     public BattleNotification battleNotice;
 
     public int chanceToFlee = 35;
+
+    public string gameOverScene;
 
     // Start is called before the first frame update
     void Start()
@@ -206,6 +209,10 @@ public class BattleManager : MonoBehaviour
                 activeCombatants[i].GetComponent<ScriptableObjectProperties>().currentHP = 0;
 
                 // Handle dead battler
+                if (!activeCombatants[i].GetComponent<ScriptableObjectProperties>().isPlayer)
+                {
+                    activeCombatants[i].GetComponent<ScriptableObjectProperties>().Fade();
+                }
             }
             else
             {
@@ -226,14 +233,13 @@ public class BattleManager : MonoBehaviour
             if (allEnemiesDead)
             {
                 // End battle in victory
+                StartCoroutine(EndBattle());
             }
             else
             {
                 // Game over
+                StartCoroutine(GameOver());
             }
-
-            // End Battle
-            this.EndBattle();
         } 
         else
         {
@@ -247,6 +253,35 @@ public class BattleManager : MonoBehaviour
                 {
                     currentTurn = 0;
                 }
+            }
+        }
+    }
+
+    // Function to update the player stats UI
+    public void UpdateUIStats()
+    {
+        // Iterate through each text element
+        for (int i = 0; i < playerName.Length; i++)
+        {
+            if (activeCombatants.Count > i)
+            {
+                var playerObject = activeCombatants[i].GetComponent<ScriptableObjectProperties>();
+
+                if (playerObject.isPlayer)
+                {
+                    playerName[i].gameObject.SetActive(true);
+                    playerName[i].text = playerObject.objectName;
+                    playerHP[i].text = Mathf.Clamp(playerObject.currentHP, 0, int.MaxValue) + "/" + playerObject.maxHP;
+                    playerMP[i].text = Mathf.Clamp(playerObject.currentMP, 0, int.MaxValue) + "/" + playerObject.maxMP;
+                }
+                else
+                {
+                    playerName[i].gameObject.SetActive(false);
+                }
+            }
+            else
+            {
+                playerName[i].gameObject.SetActive(false);
             }
         }
     }
@@ -265,6 +300,7 @@ public class BattleManager : MonoBehaviour
         this.NextTurn();
     }
 
+    // Function that controls enemy attack
     public void EnemyAttack()
     {
         List<int> players = new List<int>();
@@ -307,6 +343,31 @@ public class BattleManager : MonoBehaviour
         this.DealDamage(selectedTarget, movesetPower);
     }
 
+    // Function to control players attack
+    public void PlayerAttack(string moveName, int selectedTarget)
+    {
+        int movesetPower = 0;
+
+        for (int i = 0; i < movesets.Length; i++)
+        {
+            if (movesets[i].movesetName == moveName)
+            {
+                Instantiate(movesets[i].movesetEffect, activeCombatants[selectedTarget].transform.position, activeCombatants[selectedTarget].transform.rotation);
+                movesetPower = movesets[i].movesetDamage;
+            }
+        }
+
+        // TODO: Change effect for player
+        Instantiate(enemyParticleEffect, activeCombatants[currentTurn].transform.position, activeCombatants[currentTurn].transform.rotation);
+
+        this.DealDamage(selectedTarget, movesetPower);
+
+        // Prevent player from clicking the buttons multiple times
+        uiButtonsHolder.SetActive(false);
+        targetMenu.SetActive(false);
+        this.NextTurn();
+    }
+
     // Function to deal damage to objects
     public void DealDamage(int target, int movesetPower)
     {
@@ -340,60 +401,6 @@ public class BattleManager : MonoBehaviour
         this.UpdateUIStats();
     }
     
-    // Function to update the player stats UI
-    public void UpdateUIStats()
-    {
-        // Iterate through each text element
-        for (int i = 0; i < playerName.Length; i++)
-        {
-            if (activeCombatants.Count > i)
-            {
-                var playerObject = activeCombatants[i].GetComponent<ScriptableObjectProperties>();
-
-                if (playerObject.isPlayer)
-                {
-                    playerName[i].gameObject.SetActive(true);
-                    playerName[i].text = playerObject.objectName;
-                    playerHP[i].text = Mathf.Clamp(playerObject.currentHP, 0, int.MaxValue) + "/" + playerObject.maxHP;
-                    playerMP[i].text = Mathf.Clamp(playerObject.currentMP, 0, int.MaxValue) + "/" + playerObject.maxMP;
-                } 
-                else
-                { 
-                    playerName[i].gameObject.SetActive(false);
-                }
-            }
-            else
-            {
-                playerName[i].gameObject.SetActive(false);
-            }
-        }
-    }
-
-    // Function to control players attack
-    public void PlayerAttack(string moveName, int selectedTarget)
-    {
-        int movesetPower = 0;
-
-        for (int i = 0; i < movesets.Length; i++)
-        {
-            if (movesets[i].movesetName == moveName)
-            {
-                Instantiate(movesets[i].movesetEffect, activeCombatants[selectedTarget].transform.position, activeCombatants[selectedTarget].transform.rotation);
-                movesetPower = movesets[i].movesetDamage;
-            }
-        }
-
-        // TODO: Change effect for player
-        Instantiate(enemyParticleEffect, activeCombatants[currentTurn].transform.position, activeCombatants[currentTurn].transform.rotation);
-
-        this.DealDamage(selectedTarget, movesetPower);
-
-        // Prevent player from clicking the buttons multiple times
-        uiButtonsHolder.SetActive(false);
-        targetMenu.SetActive(false);
-        this.NextTurn();
-    }
-
     // Function that opens the target menu when player attacks
     public void OpenTargetMenu(string moveName)
     {
@@ -498,6 +505,7 @@ public class BattleManager : MonoBehaviour
         }
     }
 
+    // Function to allow players to run from battle
     public void Flee()
     {
         int fleeSuccess = Random.Range(0, 100);
@@ -505,7 +513,7 @@ public class BattleManager : MonoBehaviour
         if (fleeSuccess < chanceToFlee)
         {
             // End the battle
-            this.EndBattle();
+            StartCoroutine(EndBattle());
         }
         else
         {
@@ -517,11 +525,46 @@ public class BattleManager : MonoBehaviour
         }
     }
 
-    public void EndBattle()
+    // Coroutine function that controls the battle when player is victorious
+    public IEnumerator EndBattle()
     {
+        // Deactivate anything related to Battle
         activeBattle = false;
-        battleScene.SetActive(false);
-        GameManager.instance.activeBattle = false;
+        uiButtonsHolder.SetActive(false);
+        targetMenu.SetActive(false);
+        magicMenu.SetActive(false);
+        itemMenu.SetActive(false);
+        targetUseMenu.SetActive(false);
+        battleNotice.gameObject.SetActive(false);
+
+        yield return new WaitForSeconds(.5f);
+
+        UIFade.instance.FadeToBlack();       
+
+        // For each player, update the corresponding stats after battle
+        for (int i = 0; i < activeCombatants.Count; i++)
+        {
+            var activeCombatant = activeCombatants[i].GetComponent<ScriptableObjectProperties>();
+            if (activeCombatant.isPlayer)
+            {
+                // Assumption of playerStats[i] and activeCombatants[i] for each player has the same index (it should be)
+                var playerStats = GameManager.instance.playerStats[i];
+
+                // Update stats
+                if (activeCombatant.objectName == playerStats.charName)
+                {
+                    GameManager.instance.playerStats[i].currentHP = activeCombatant.currentHP;
+                    GameManager.instance.playerStats[i].currentMP = activeCombatant.currentMP;
+                }
+            }
+            else
+            {
+                // Break out of the loop since there's no point in iterating over the enemies
+                break;
+            }
+        }
+
+        yield return new WaitForSeconds(1.5f);
 
         // Destroy object after battle is done 
         foreach (var combatants in activeCombatants)
@@ -530,12 +573,25 @@ public class BattleManager : MonoBehaviour
         }
 
         activeCombatants.Clear();
+        currentTurn = 0;
+
+        UIFade.instance.FadeFromBlack();
+        battleScene.SetActive(false);
 
         // Allow usage of menu again
         GameManager.instance.activeBattle = false;
-
-        // Disable BG
-        AudioManager.instance.StopMusic();
+        
+        // Disable Battle BG
+        AudioManager.instance.PlayBGM(FindObjectOfType<CameraController>().musicToPlay);
     }
 
+    // Function that controls the UI when player loses a battle
+    public IEnumerator GameOver()
+    {
+        activeBattle = false;
+        UIFade.instance.FadeToBlack();
+        yield return new WaitForSeconds(1.5f);
+
+        SceneManager.LoadScene(gameOverScene);
+    }
 }

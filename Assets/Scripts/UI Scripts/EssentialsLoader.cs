@@ -9,6 +9,7 @@ public class EssentialsLoader : MonoBehaviour
     [SerializeField] GameObject sceneLoader;
     [SerializeField] GameObject gameMngr;
     [SerializeField] GameObject audioManager;
+    [SerializeField] GameObject battleManager;
 
     // Start is called before the first frame update
     void Awake()
@@ -51,6 +52,12 @@ public class EssentialsLoader : MonoBehaviour
         if (AudioManager.instance == null)
         {
             Instantiate(audioManager);
+        }
+
+        // Initialize Audio Manager
+        if (BattleManager.instance == null)
+        {
+            Instantiate(battleManager);
         }
     }
 

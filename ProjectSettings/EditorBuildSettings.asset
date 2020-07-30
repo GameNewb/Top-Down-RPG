@@ -26,4 +26,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Town Shop 1.unity
     guid: 4e3132cd3d4c0a2419a3786768df57cd
+  - enabled: 1
+    path: Assets/Scenes/Cave Scene.unity
+    guid: 67a7b715a6ddc3742a43c61b0b2fc60a
+  - enabled: 1
+    path: Assets/Scenes/Game Over.unity
+    guid: def009075ac0b0c458907b25dcc011c1
   m_configObjects: {}
