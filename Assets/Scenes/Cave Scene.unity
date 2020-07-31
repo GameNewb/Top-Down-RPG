@@ -649,6 +649,105 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 137d196018c85a742a3e189c7f2b00f0, type: 3}
+--- !u!1 &600687197
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 600687200}
+  - component: {fileID: 600687199}
+  - component: {fileID: 600687198}
+  m_Layer: 0
+  m_Name: Battle Zone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &600687198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 600687197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c5decb5485ce694e8e4940022a08712, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  potentialBattles:
+  - enemies:
+    - Slime
+    - Slime
+    - Slime
+    rewardXP: 100
+    rewardsItems:
+    - HP Potion
+  - enemies:
+    - Skeleton
+    - Skeleton
+    rewardXP: 200
+    rewardsItems:
+    - Wooden Sword
+    - HP Potion
+  - enemies:
+    - Goblin
+    - Skeleton
+    - Skeleton
+    rewardXP: 350
+    rewardsItems:
+    - Iron Armor
+    - MP Potion
+  activateOnEnter: 0
+  activateOnStay: 0
+  activateOnExit: 0
+  timeBetweenBattles: 10
+  betweenBattleEncounter: 10
+  deactivateAfterStarting: 0
+--- !u!61 &600687199
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 600687197}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 5.2095423, y: -2.0797968}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 20.844145, y: 12.611666}
+  m_EdgeRadius: 0
+--- !u!4 &600687200
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 600687197}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 32.9, y: 0, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &731141033
 GameObject:
   m_ObjectHideFlags: 0
