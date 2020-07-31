@@ -2957,6 +2957,10 @@ MonoBehaviour:
   battleNotice: {fileID: 2149254459285446428}
   chanceToFlee: 35
   gameOverScene: Game Over
+  rewardXP: 150
+  rewardItems:
+  - HP Potion
+  - Leather Armor
 --- !u!1 &2149254459197656078
 GameObject:
   m_ObjectHideFlags: 0

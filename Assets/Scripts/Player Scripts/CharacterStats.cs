@@ -85,6 +85,7 @@ public class CharacterStats : MonoBehaviour
         }
     }
 
+    // TODO: Fix exp leak
     private void CalculateExpRequirement()
     {
         expToNextLevel = new int[maxLevel];

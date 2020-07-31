@@ -61,8 +61,12 @@ public class BattleManager : MonoBehaviour
     public BattleNotification battleNotice;
 
     public int chanceToFlee = 35;
+    private bool fleeing;
 
     public string gameOverScene;
+
+    public int rewardXP;
+    public string[] rewardItems;
 
     // Start is called before the first frame update
     void Start()
@@ -513,10 +517,13 @@ public class BattleManager : MonoBehaviour
         if (fleeSuccess < chanceToFlee)
         {
             // End the battle
+            fleeing = true;
             StartCoroutine(EndBattle());
         }
         else
         {
+            fleeing = false;
+
             // Flee not successful
             this.NextTurn();
             battleNotice.theText.text = "Couldn't escape!";
@@ -579,8 +586,16 @@ public class BattleManager : MonoBehaviour
         battleScene.SetActive(false);
 
         // Allow usage of menu again
-        GameManager.instance.activeBattle = false;
-        
+        if (fleeing)
+        {
+            GameManager.instance.activeBattle = false;
+            fleeing = false;
+        }
+        else
+        {
+            BattleRewards.instance.OpenRewardScreen(rewardXP, rewardItems);
+        }
+
         // Disable Battle BG
         AudioManager.instance.PlayBGM(FindObjectOfType<CameraController>().musicToPlay);
     }
