@@ -10,7 +10,7 @@ public class BattleRewards : MonoBehaviour
     public Text xpText, itemText;
     public GameObject rewardsScreen;
 
-    public string[] rewardItems;
+    public Dictionary<Item, int> rewardItems;
     public int xpEarned;
 
     // Start is called before the first frame update
@@ -24,7 +24,7 @@ public class BattleRewards : MonoBehaviour
     {
     }
 
-    public void OpenRewardScreen(int xp, string[] rewards)
+    public void OpenRewardScreen(int xp, Dictionary<Item, int> rewards)
     {
         xpEarned = xp;
         rewardItems = rewards;
@@ -33,9 +33,9 @@ public class BattleRewards : MonoBehaviour
         itemText.text = "";
 
         // Display text for each item obtained
-        for (int i = 0; i < rewardItems.Length; i++)
+        foreach (var item in rewardItems)
         {
-            itemText.text += rewards[i] + "\n";
+            itemText.text += item.Key.itemName + "\t\t " + item.Value + "x\n";
         }
 
         rewardsScreen.SetActive(true);
@@ -54,14 +54,12 @@ public class BattleRewards : MonoBehaviour
             }
         }
         
-        // TODO: maybe refactor rewardItems to use Item instead of string???
         // Add rewards to player inventory
-        for (int i = 0; i < rewardItems.Length; i++)
+        foreach (var item in rewardItems) 
         {
-            GameManager.instance.AddItem(GameManager.instance.GetItemDetailsByName(rewardItems[i]), 1);
+            GameManager.instance.AddItem(GameManager.instance.GetItemDetails(item.Key), item.Value);
         }
-
-
+        
         rewardsScreen.SetActive(false);
 
         GameManager.instance.activeBattle = false;

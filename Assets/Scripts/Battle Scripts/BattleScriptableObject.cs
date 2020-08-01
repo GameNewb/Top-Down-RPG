@@ -24,4 +24,7 @@ public class BattleScriptableObject : ScriptableObject
     [Header("Battle Sprites")]
     public SpriteRenderer objectSpriteRenderer;
     public Sprite deadSprite, aliveSprite;
+
+    [Header("Item Drop Properties")]
+    public List<Item> itemsToDrop;
 }

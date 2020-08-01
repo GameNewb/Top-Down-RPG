@@ -31,3 +31,9 @@ MonoBehaviour:
   movesAvailable:
   - Slash
   - Fire
+  objectSpriteRenderer: {fileID: 0}
+  deadSprite: {fileID: 0}
+  aliveSprite: {fileID: 0}
+  itemsToDrop:
+  - {fileID: 11400000, guid: 82f9d7040c96b254db0e0e72a2a58bd0, type: 2}
+  - {fileID: 11400000, guid: e60978d626c53554e985419b2a151bd0, type: 2}

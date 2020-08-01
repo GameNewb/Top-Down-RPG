@@ -76,8 +76,7 @@ public class BattleStarter : MonoBehaviour
         GameManager.instance.activeBattle = true;
 
         int selectedBattle = Random.Range(0, potentialBattles.Length);
-
-        BattleManager.instance.rewardItems = potentialBattles[selectedBattle].rewardsItems;
+        
         BattleManager.instance.rewardXP = potentialBattles[selectedBattle].rewardXP;
 
         yield return new WaitForSeconds(1.5f);

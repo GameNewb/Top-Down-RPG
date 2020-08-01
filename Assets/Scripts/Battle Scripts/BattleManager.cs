@@ -66,7 +66,6 @@ public class BattleManager : MonoBehaviour
     public string gameOverScene;
 
     public int rewardXP;
-    public string[] rewardItems;
 
     // Start is called before the first frame update
     void Start()
@@ -79,11 +78,6 @@ public class BattleManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            this.StartBattle(new string[] { "Slime", "Skeleton", "Goblin" });
-        }
-
         if (activeBattle)
         {
             if (waitingForATurn)
@@ -117,12 +111,6 @@ public class BattleManager : MonoBehaviour
                     StartCoroutine(EnemyMove());
                 }
             }
-
-            if (Input.GetKeyDown(KeyCode.N))
-            {
-                this.NextTurn();
-            }
-
         }
     }
 
@@ -535,6 +523,9 @@ public class BattleManager : MonoBehaviour
     // Coroutine function that controls the battle when player is victorious
     public IEnumerator EndBattle()
     {
+        // Variable to store all the items to drop at the end of combat
+        Dictionary<Item, int> itemDrops = new Dictionary<Item, int>();
+        
         // Deactivate anything related to Battle
         activeBattle = false;
         uiButtonsHolder.SetActive(false);
@@ -562,23 +553,47 @@ public class BattleManager : MonoBehaviour
                 {
                     GameManager.instance.playerStats[i].currentHP = activeCombatant.currentHP;
                     GameManager.instance.playerStats[i].currentMP = activeCombatant.currentMP;
+
+                    // Set character stat to hasDied
+                    if (activeCombatant.hasDied)
+                    {
+                        playerStats.hasDied = true;
+                    }
                 }
+                
             }
             else
             {
-                // Break out of the loop since there's no point in iterating over the enemies
-                break;
+                // Grab all the item drops from each enemy and store it
+                foreach (var item in activeCombatant.itemsToDrop)
+                {
+                    // Randomize the drop rate
+                    float percentDrop = Random.Range(0, 100);
+
+                    // If droprate is greater than the Item drop rate, add it to the rewards
+                    if (percentDrop > item.itemDropRate)
+                    {
+                        // If we're getting the same drops from the enemies, grab its amount and just combine it
+                        // Else add the custom Item amount
+                        if (itemDrops.ContainsKey(item))
+                        {
+                            var currentValue = itemDrops[item];
+
+                            itemDrops[item] = currentValue + item.amountToDrop;
+                        }
+                        else
+                        {
+                            itemDrops.Add(item, item.amountToDrop);
+                        }
+                    }
+                }
             }
+
+            Destroy(activeCombatant.gameObject);
         }
 
         yield return new WaitForSeconds(1.5f);
-
-        // Destroy object after battle is done 
-        foreach (var combatants in activeCombatants)
-        {
-            Destroy(combatants);
-        }
-
+        
         activeCombatants.Clear();
         currentTurn = 0;
 
@@ -593,7 +608,7 @@ public class BattleManager : MonoBehaviour
         }
         else
         {
-            BattleRewards.instance.OpenRewardScreen(rewardXP, rewardItems);
+            BattleRewards.instance.OpenRewardScreen(rewardXP, itemDrops);
         }
 
         // Disable Battle BG
@@ -609,4 +624,5 @@ public class BattleManager : MonoBehaviour
 
         SceneManager.LoadScene(gameOverScene);
     }
+    
 }

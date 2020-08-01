@@ -17,6 +17,10 @@ public class Item : ScriptableObject
     public int value;
     public Sprite itemSprite;
 
+    [Header("Item Drop Properties")]
+    public float itemDropRate;
+    public int amountToDrop;
+
     [Header("Item Effects")]
     // Used for adding or subtracting to values
     public int amountToChange;

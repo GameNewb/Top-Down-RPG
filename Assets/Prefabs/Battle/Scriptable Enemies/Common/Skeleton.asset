@@ -30,3 +30,9 @@ MonoBehaviour:
   hasDied: 0
   movesAvailable:
   - Slash
+  objectSpriteRenderer: {fileID: 0}
+  deadSprite: {fileID: 0}
+  aliveSprite: {fileID: 0}
+  itemsToDrop:
+  - {fileID: 11400000, guid: 1a57e9849d49ace46aa806c4a8b70de3, type: 2}
+  - {fileID: 11400000, guid: 1156c7f51ddf5d74d9d098feb5f6ed49, type: 2}

@@ -19,6 +19,8 @@ MonoBehaviour:
   itemDescription: Made from your old bed frame
   value: 25
   itemSprite: {fileID: 21300074, guid: 0bc4ed27aef38a44bb72e80f9beb5326, type: 3}
+  itemDropRate: 40
+  amountToDrop: 1
   amountToChange: 0
   affectHP: 0
   affectMP: 0

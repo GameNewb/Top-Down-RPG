@@ -31,6 +31,9 @@ public class ScriptableObjectProperties : MonoBehaviour
     private bool shouldFade;
     public float fadeSpeed = 1f;
 
+    [Header("Item Drop Properties")]
+    public List<Item> itemsToDrop;
+
     public void Awake()
     {
         // Set the correct sprite for the item

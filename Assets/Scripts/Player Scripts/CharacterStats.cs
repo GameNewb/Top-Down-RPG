@@ -49,7 +49,7 @@ public class CharacterStats : MonoBehaviour
         // Level up player
         if (playerLevel < maxLevel)
         {
-            if(currentEXP > expToNextLevel[playerLevel])
+            if(currentEXP >= expToNextLevel[playerLevel])
             {
                 // Reset EXP
                 currentEXP -= expToNextLevel[playerLevel];

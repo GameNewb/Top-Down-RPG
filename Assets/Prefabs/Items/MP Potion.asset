@@ -19,6 +19,8 @@ MonoBehaviour:
   itemDescription: Restores 15 MP
   value: 10
   itemSprite: {fileID: 21300004, guid: 0bc4ed27aef38a44bb72e80f9beb5326, type: 3}
+  itemDropRate: 60
+  amountToDrop: 2
   amountToChange: 15
   affectHP: 0
   affectMP: 1
