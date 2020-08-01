@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class BattleManagerHelper
 {
-    public void InitializeBattleData(GameObject objectPrefab, bool isPlayer, string objectName, CharacterStats characterStats)
+    public void InitializeBattleData(GameObject objectPrefab, bool isPlayer, BattleScriptableObject battleScriptable, CharacterStats characterStats)
     {
         // Grab the appropriate scriptable object
-        var scriptableObject = GameManager.instance.FindScriptableObject(objectName, isPlayer);
+        //var scriptableObject = GameManager.instance.FindScriptableObject(objectName, isPlayer);
 
         // Set the Object to create using the ScriptableObject
-        objectPrefab.GetComponent<ScriptableObjectProperties>().objectToCreate = scriptableObject;
+        objectPrefab.GetComponent<ScriptableObjectProperties>().objectToCreate = battleScriptable;
 
         // Set sorting layers
         objectPrefab.GetComponent<SpriteRenderer>().sortingLayerName = "Battle Characters";
-        objectPrefab.GetComponent<SpriteRenderer>().sprite = scriptableObject.objectSprite;
+        objectPrefab.GetComponent<SpriteRenderer>().sprite = battleScriptable.objectSprite;
 
         // Set stats
         if (isPlayer)
@@ -30,28 +30,28 @@ public class BattleManagerHelper
             objectPrefab.GetComponent<ScriptableObjectProperties>().strength = characterStats.strength;
             objectPrefab.GetComponent<ScriptableObjectProperties>().vitality = characterStats.vitality;
             objectPrefab.GetComponent<ScriptableObjectProperties>().hasDied = characterStats.hasDied;
-            objectPrefab.GetComponent<ScriptableObjectProperties>().movesAvailable = scriptableObject.movesAvailable;
+            objectPrefab.GetComponent<ScriptableObjectProperties>().movesAvailable = battleScriptable.movesAvailable;
             objectPrefab.GetComponent<ScriptableObjectProperties>().objectSpriteRenderer = objectPrefab.GetComponent<SpriteRenderer>();
-            objectPrefab.GetComponent<ScriptableObjectProperties>().aliveSprite = scriptableObject.aliveSprite;
-            objectPrefab.GetComponent<ScriptableObjectProperties>().deadSprite = scriptableObject.deadSprite;
+            objectPrefab.GetComponent<ScriptableObjectProperties>().aliveSprite = battleScriptable.aliveSprite;
+            objectPrefab.GetComponent<ScriptableObjectProperties>().deadSprite = battleScriptable.deadSprite;
             objectPrefab.GetComponent<ScriptableObjectProperties>().isPlayer = true;
         }
         else
         {
             // Set enemy data
-            objectPrefab.GetComponent<ScriptableObjectProperties>().objectName = scriptableObject.objectName;
-            objectPrefab.GetComponent<ScriptableObjectProperties>().objectDescription = scriptableObject.objectDescription;
-            objectPrefab.GetComponent<ScriptableObjectProperties>().objectSprite = scriptableObject.objectSprite;
-            objectPrefab.GetComponent<ScriptableObjectProperties>().currentHP = scriptableObject.currentHP;
-            objectPrefab.GetComponent<ScriptableObjectProperties>().currentMP = scriptableObject.currentMP;
-            objectPrefab.GetComponent<ScriptableObjectProperties>().maxHP = scriptableObject.maxHP;
-            objectPrefab.GetComponent<ScriptableObjectProperties>().maxMP = scriptableObject.maxMP;
-            objectPrefab.GetComponent<ScriptableObjectProperties>().strength = scriptableObject.strength;
-            objectPrefab.GetComponent<ScriptableObjectProperties>().vitality = scriptableObject.vitality;
-            objectPrefab.GetComponent<ScriptableObjectProperties>().hasDied = scriptableObject.hasDied;
-            objectPrefab.GetComponent<ScriptableObjectProperties>().movesAvailable = scriptableObject.movesAvailable;
+            objectPrefab.GetComponent<ScriptableObjectProperties>().objectName = battleScriptable.objectName;
+            objectPrefab.GetComponent<ScriptableObjectProperties>().objectDescription = battleScriptable.objectDescription;
+            objectPrefab.GetComponent<ScriptableObjectProperties>().objectSprite = battleScriptable.objectSprite;
+            objectPrefab.GetComponent<ScriptableObjectProperties>().currentHP = battleScriptable.currentHP;
+            objectPrefab.GetComponent<ScriptableObjectProperties>().currentMP = battleScriptable.currentMP;
+            objectPrefab.GetComponent<ScriptableObjectProperties>().maxHP = battleScriptable.maxHP;
+            objectPrefab.GetComponent<ScriptableObjectProperties>().maxMP = battleScriptable.maxMP;
+            objectPrefab.GetComponent<ScriptableObjectProperties>().strength = battleScriptable.strength;
+            objectPrefab.GetComponent<ScriptableObjectProperties>().vitality = battleScriptable.vitality;
+            objectPrefab.GetComponent<ScriptableObjectProperties>().hasDied = battleScriptable.hasDied;
+            objectPrefab.GetComponent<ScriptableObjectProperties>().movesAvailable = battleScriptable.movesAvailable;
             objectPrefab.GetComponent<ScriptableObjectProperties>().objectSpriteRenderer = objectPrefab.GetComponent<SpriteRenderer>();
-            objectPrefab.GetComponent<ScriptableObjectProperties>().itemsToDrop = scriptableObject.itemsToDrop;
+            objectPrefab.GetComponent<ScriptableObjectProperties>().itemsToDrop = battleScriptable.itemsToDrop;
             objectPrefab.GetComponent<ScriptableObjectProperties>().isPlayer = false;
         }
 

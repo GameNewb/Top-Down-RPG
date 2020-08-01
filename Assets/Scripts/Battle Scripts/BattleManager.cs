@@ -57,6 +57,10 @@ public class BattleManager : MonoBehaviour
     public GameObject targetUseMenu;
     public Item itemToUse;
 
+    // UI for item buttons and reference to the Item to be used
+    [Header("Flee Menu")]
+    public GameObject fleeButton;
+
     [Header("Battle Notification")]
     public BattleNotification battleNotice;
 
@@ -114,9 +118,10 @@ public class BattleManager : MonoBehaviour
         }
     }
 
-    public void StartBattle (string[] enemiesToSpawn)
+    public void StartBattle (BattleScriptableObject[] enemiesToSpawn)
     {
         GameManager.instance.activeBattle = true;
+        bool bossBattle = false;
 
         // Check first if we're not in a battle already
         if (!activeBattle)
@@ -139,12 +144,14 @@ public class BattleManager : MonoBehaviour
                 {
                     if (GameManager.instance.playerScriptables.ContainsKey(playerStats.charName))
                     {
+                        BattleScriptableObject character = GameManager.instance.playerScriptables[playerStats.charName];
+
                         // Create the player character battle object
                         // Allow movement of player objects
                         GameObject newPlayer = Instantiate(objectScriptablePrefab, playerPositions[i].position, playerPositions[i].rotation);
                         newPlayer.transform.parent = playerPositions[i];
 
-                        bmHelper.InitializeBattleData(newPlayer, true, playerStats.charName, playerStats);
+                        bmHelper.InitializeBattleData(newPlayer, true, character, playerStats);
                     }
                 }
             }
@@ -152,17 +159,29 @@ public class BattleManager : MonoBehaviour
             // Load enemies
             for (int i = 0; i < enemiesToSpawn.Length; i++)
             {
-                if (enemiesToSpawn[i] != null && enemiesToSpawn[i] != "")
+                if (enemiesToSpawn[i] != null && enemiesToSpawn[i].objectName != "")
                 {
-                    if (GameManager.instance.enemyScriptables.ContainsKey(enemiesToSpawn[i]))
+                    if (GameManager.instance.enemyScriptables.ContainsKey(enemiesToSpawn[i].objectName))
                     {
-                        // TODO: Merge into one scriptable object
+                        // Instantiate a new enemy prefab using the SO
                         GameObject newEnemy = Instantiate(objectScriptablePrefab, enemyPositions[i].position, enemyPositions[i].rotation);
                         newEnemy.transform.parent = enemyPositions[i];
 
                         bmHelper.InitializeBattleData(newEnemy, false, enemiesToSpawn[i], null);
+                        
+                        if (enemiesToSpawn[i].isBoss)
+                        {
+                            bossBattle = true;
+                        }
                     }
+
                 }
+            }
+
+            // If boss fight, disable Flee button
+            if (bossBattle)
+            { 
+                fleeButton.GetComponent<Button>().interactable = false;
             }
 
             waitingForATurn = true;
@@ -516,7 +535,6 @@ public class BattleManager : MonoBehaviour
             this.NextTurn();
             battleNotice.theText.text = "Couldn't escape!";
             battleNotice.Activate();
-
         }
     }
 

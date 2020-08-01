@@ -81,6 +81,7 @@ public class BattleStarter : MonoBehaviour
 
         yield return new WaitForSeconds(1.5f);
 
+        // Start the battle
         BattleManager.instance.StartBattle(potentialBattles[selectedBattle].enemies);
         UIFade.instance.FadeFromBlack();
 

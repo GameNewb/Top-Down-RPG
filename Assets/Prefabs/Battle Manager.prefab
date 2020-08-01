@@ -2954,13 +2954,11 @@ MonoBehaviour:
   itemButtonToInstantiate: {fileID: 2149254459855347394}
   targetUseMenu: {fileID: 2149254459237950313}
   itemToUse: {fileID: 0}
+  fleeButton: {fileID: 2149254459152311942}
   battleNotice: {fileID: 2149254459285446428}
   chanceToFlee: 35
   gameOverScene: Game Over
   rewardXP: 150
-  rewardItems:
-  - HP Potion
-  - Leather Armor
 --- !u!1 &2149254459197656078
 GameObject:
   m_ObjectHideFlags: 0

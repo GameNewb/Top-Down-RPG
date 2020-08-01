@@ -5,9 +5,6 @@ using UnityEngine;
 [System.Serializable]
 public class BattleType 
 {
-    public string[] enemies;
+    public BattleScriptableObject[] enemies;
     public int rewardXP;
-    public string[] rewardsItems;
-
-
 }
