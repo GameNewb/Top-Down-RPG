@@ -69,7 +69,7 @@ public class BattleManager : MonoBehaviour
 
     public string gameOverScene;
 
-    public int rewardXP;
+    private int expReward;
 
     // Start is called before the first frame update
     void Start()
@@ -605,6 +605,9 @@ public class BattleManager : MonoBehaviour
                         }
                     }
                 }
+
+                // Calculate total exp to give
+                expReward += activeCombatant.expPoints;
             }
 
             Destroy(activeCombatant.gameObject);
@@ -626,8 +629,11 @@ public class BattleManager : MonoBehaviour
         }
         else
         {
-            BattleRewards.instance.OpenRewardScreen(rewardXP, itemDrops);
+            BattleRewards.instance.OpenRewardScreen(expReward, itemDrops);
         }
+
+        // Reset EXP gain
+        expReward = 0;
 
         // Disable Battle BG
         AudioManager.instance.PlayBGM(FindObjectOfType<CameraController>().musicToPlay);

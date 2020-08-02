@@ -33,6 +33,9 @@ public class ScriptableObjectProperties : MonoBehaviour
 
     [Header("Item Drop Properties")]
     public List<Item> itemsToDrop;
+    
+    [Header("EXP Properties")]
+    public int expPoints;
 
     public void Awake()
     {

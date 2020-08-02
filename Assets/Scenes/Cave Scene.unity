@@ -154,7 +154,6 @@ MonoBehaviour:
   potentialBattles:
   - enemies:
     - {fileID: 11400000, guid: f7715a195dd98f74fb99df5f5f3de305, type: 2}
-    rewardXP: 1000
   activateOnEnter: 1
   activateOnStay: 0
   activateOnExit: 0
@@ -813,16 +812,13 @@ MonoBehaviour:
     - {fileID: 11400000, guid: d281ba34c324815438d8be81666b244e, type: 2}
     - {fileID: 11400000, guid: d281ba34c324815438d8be81666b244e, type: 2}
     - {fileID: 11400000, guid: d281ba34c324815438d8be81666b244e, type: 2}
-    rewardXP: 100
   - enemies:
     - {fileID: 11400000, guid: b096160cbe8b712429419fd07cbb3405, type: 2}
     - {fileID: 11400000, guid: b096160cbe8b712429419fd07cbb3405, type: 2}
-    rewardXP: 200
   - enemies:
     - {fileID: 11400000, guid: b096160cbe8b712429419fd07cbb3405, type: 2}
     - {fileID: 11400000, guid: efb5eb2cc62648146b801919386345f1, type: 2}
     - {fileID: 11400000, guid: b096160cbe8b712429419fd07cbb3405, type: 2}
-    rewardXP: 350
   activateOnEnter: 0
   activateOnStay: 0
   activateOnExit: 0

@@ -27,4 +27,7 @@ public class BattleScriptableObject : ScriptableObject
 
     [Header("Item Drop Properties")]
     public List<Item> itemsToDrop;
+
+    [Header("EXP Properties")]
+    public int expPoints;
 }

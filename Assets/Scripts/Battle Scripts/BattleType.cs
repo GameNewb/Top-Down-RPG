@@ -6,5 +6,4 @@ using UnityEngine;
 public class BattleType 
 {
     public BattleScriptableObject[] enemies;
-    public int rewardXP;
 }

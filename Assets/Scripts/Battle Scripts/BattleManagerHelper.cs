@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Helper class that populates SO objects
+// Used from BattleManager to prevent long lines of code in the Manager class
 public class BattleManagerHelper
 {
     public void InitializeBattleData(GameObject objectPrefab, bool isPlayer, BattleScriptableObject battleScriptable, CharacterStats characterStats)
@@ -52,13 +54,14 @@ public class BattleManagerHelper
             objectPrefab.GetComponent<ScriptableObjectProperties>().movesAvailable = battleScriptable.movesAvailable;
             objectPrefab.GetComponent<ScriptableObjectProperties>().objectSpriteRenderer = objectPrefab.GetComponent<SpriteRenderer>();
             objectPrefab.GetComponent<ScriptableObjectProperties>().itemsToDrop = battleScriptable.itemsToDrop;
+            objectPrefab.GetComponent<ScriptableObjectProperties>().expPoints = battleScriptable.expPoints;
             objectPrefab.GetComponent<ScriptableObjectProperties>().isPlayer = false;
         }
 
         // Add to the combat list
         BattleManager.instance.activeCombatants.Add(objectPrefab);
     }
-
+    
     /*public void EndBattle()
     {
         GameManager.instance.activeBattle = false;
