@@ -70,6 +70,7 @@ public class BattleManager : MonoBehaviour
     public string gameOverScene;
 
     private int expReward;
+    private int gilReward;
 
     // Start is called before the first frame update
     void Start()
@@ -608,6 +609,7 @@ public class BattleManager : MonoBehaviour
 
                 // Calculate total exp to give
                 expReward += activeCombatant.expPoints;
+                gilReward += activeCombatant.gilDropAmount;
             }
 
             Destroy(activeCombatant.gameObject);
@@ -629,11 +631,13 @@ public class BattleManager : MonoBehaviour
         }
         else
         {
-            BattleRewards.instance.OpenRewardScreen(expReward, itemDrops);
+            BattleRewards.instance.OpenRewardScreen(expReward, gilReward, itemDrops);
         }
 
-        // Reset EXP gain
+        // Reset EXP/Gil/Item gain
         expReward = 0;
+        gilReward = 0;
+        itemDrops.Clear();
 
         // Disable Battle BG
         AudioManager.instance.PlayBGM(FindObjectOfType<CameraController>().musicToPlay);

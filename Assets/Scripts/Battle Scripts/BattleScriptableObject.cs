@@ -27,6 +27,8 @@ public class BattleScriptableObject : ScriptableObject
 
     [Header("Item Drop Properties")]
     public List<Item> itemsToDrop;
+    public int gilMinDropAmount;
+    public int gilMaxDropAmount;
 
     [Header("EXP Properties")]
     public int expPoints;

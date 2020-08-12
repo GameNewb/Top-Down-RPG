@@ -20,9 +20,7 @@ public class GameManager : MonoBehaviour
     public Item[] referenceItems;
 
     public List<InventorySlots> playerInventory = new List<InventorySlots>();
-
-    public Item itemToAddLater;
-
+   
     private int nextEmptySlot;
 
     public int currentGil;
@@ -57,15 +55,10 @@ public class GameManager : MonoBehaviour
         if (gameMenuOpen || dialogActive || activeBattle)
         {
             playerController.canMove = false;
-        } 
+        }
         else
         {
             playerController.canMove = true;
-        }
-
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            var obj = this.FindScriptableObject("Slime", false);
         }
 
         if (Input.GetKeyDown(KeyCode.O))

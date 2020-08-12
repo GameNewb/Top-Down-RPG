@@ -38,4 +38,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 82f9d7040c96b254db0e0e72a2a58bd0, type: 2}
   - {fileID: 11400000, guid: eb7150500b5f7c242b78fa827fb2ed3d, type: 2}
   - {fileID: 11400000, guid: c5bfc1a7a0b3283489957914cab3fc74, type: 2}
+  gilMinDropAmount: 100
+  gilMaxDropAmount: 200
   expPoints: 75

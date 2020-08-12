@@ -54,6 +54,7 @@ public class BattleManagerHelper
             objectPrefab.GetComponent<ScriptableObjectProperties>().movesAvailable = battleScriptable.movesAvailable;
             objectPrefab.GetComponent<ScriptableObjectProperties>().objectSpriteRenderer = objectPrefab.GetComponent<SpriteRenderer>();
             objectPrefab.GetComponent<ScriptableObjectProperties>().itemsToDrop = battleScriptable.itemsToDrop;
+            objectPrefab.GetComponent<ScriptableObjectProperties>().gilDropAmount = Random.Range(battleScriptable.gilMinDropAmount, battleScriptable.gilMaxDropAmount);
             objectPrefab.GetComponent<ScriptableObjectProperties>().expPoints = battleScriptable.expPoints;
             objectPrefab.GetComponent<ScriptableObjectProperties>().isPlayer = false;
         }

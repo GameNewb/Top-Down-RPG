@@ -33,7 +33,8 @@ public class ScriptableObjectProperties : MonoBehaviour
 
     [Header("Item Drop Properties")]
     public List<Item> itemsToDrop;
-    
+    public int gilDropAmount;
+
     [Header("EXP Properties")]
     public int expPoints;
 

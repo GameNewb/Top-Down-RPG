@@ -7,11 +7,12 @@ public class BattleRewards : MonoBehaviour
 {
     public static BattleRewards instance;
 
-    public Text xpText, itemText;
+    public Text xpText, gilText, itemText;
     public GameObject rewardsScreen;
 
     public Dictionary<Item, int> rewardItems;
-    public int xpEarned;
+    private int xpEarned;
+    private int gilReceived;
 
     // Start is called before the first frame update
     void Start()
@@ -24,14 +25,16 @@ public class BattleRewards : MonoBehaviour
     {
     }
 
-    public void OpenRewardScreen(int xp, Dictionary<Item, int> rewards)
+    public void OpenRewardScreen(int xp, int gil, Dictionary<Item, int> rewards)
     {
         xpEarned = xp;
+        gilReceived = gil;
         rewardItems = rewards;
 
         xpText.text = "Earned " + xpEarned + " XP";
+        gilText.text = "Received " + gilReceived + "g";
         itemText.text = "";
-
+        
         // Display text for each item obtained
         foreach (var item in rewardItems)
         {
@@ -53,6 +56,9 @@ public class BattleRewards : MonoBehaviour
                 GameManager.instance.playerStats[i].AddExp(xpEarned);
             }
         }
+
+        // Add gil
+        GameManager.instance.currentGil += gilReceived;
         
         // Add rewards to player inventory
         foreach (var item in rewardItems) 
@@ -63,5 +69,19 @@ public class BattleRewards : MonoBehaviour
         rewardsScreen.SetActive(false);
 
         GameManager.instance.activeBattle = false;
+
+        // Reset
+        this.ResetVariables();
+    }
+
+    private void ResetVariables()
+    {
+        xpText.text = "Earned " + xpEarned + " XP";
+        gilText.text = "Received " + gilReceived + "g";
+        itemText.text = "";
+
+        xpEarned = 0;
+        gilReceived = 0;
+        rewardItems = null;
     }
 }
