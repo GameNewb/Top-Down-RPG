@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc3e958d9ab85114299702340be31e38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transitionName: 
+  sceneTransitionedFrom: 
 --- !u!1 &7840068218423127676
 GameObject:
   m_ObjectHideFlags: 0
@@ -56,7 +56,7 @@ GameObject:
   - component: {fileID: -8681162579574671915}
   - component: {fileID: 5000448202392831747}
   m_Layer: 0
-  m_Name: Scene Transition
+  m_Name: Scene Exit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -116,5 +116,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneToLoad: 
-  sceneTransitionName: 
+  sceneTransitionFrom: 
   sceneEntrance: {fileID: 5800137024454645917}
+  loadTimer: 1

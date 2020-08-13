@@ -324,7 +324,7 @@ public class GameManager : MonoBehaviour
         AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(sceneName);
         asyncOperation.allowSceneActivation = false;
         //UIFade.instance.FadeToBlack();
-        PlayerController.instance.sceneTransitionName = "";
+        PlayerController.instance.sceneTransitionFrom = "";
         playerController.isLoading = true;
         
         

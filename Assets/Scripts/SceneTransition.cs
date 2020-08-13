@@ -7,7 +7,7 @@ public class SceneTransition : MonoBehaviour
 {
     // Variables used for transitioning the Player to the next scene
     [SerializeField] string sceneToLoad;
-    [SerializeField] string sceneTransitionName;
+    [SerializeField] string sceneTransitionFrom;
 
     [SerializeField] SceneEntrance sceneEntrance;
 
@@ -19,15 +19,9 @@ public class SceneTransition : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        sceneEntrance.transitionName = sceneTransitionName;
+        //sceneEntrance.sceneTransitionedFrom = sceneTransitionFrom;
         playerInstance = PlayerController.instance;
         gameMenu = GameMenu.instance;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -44,13 +38,13 @@ public class SceneTransition : MonoBehaviour
         // Fade the screen from black to white
         // Disable player controls when loading
         UIFade.instance.FadeToBlack();
-        playerInstance.sceneTransitionName = sceneTransitionName;
-        playerInstance.isLoading = true;
+        PlayerController.instance.sceneTransitionFrom = sceneTransitionFrom;
+        PlayerController.instance.isLoading = true;
         gameMenu.DisableControl(true);
         yield return new WaitForSeconds(loadTimer);
         SceneManager.LoadScene(sceneToLoad);
         UIFade.instance.FadeFromBlack();
-        playerInstance.isLoading = false;
+        PlayerController.instance.isLoading = false;
         gameMenu.DisableControl(false);
     }
 }

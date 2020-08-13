@@ -1162,10 +1162,20 @@ PrefabInstance:
       propertyPath: sceneTransitionName
       value: Town Shop 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5000448202392831747, guid: 33f3344a0e717864f929f6fbaa1b655e,
+        type: 3}
+      propertyPath: sceneTransitionFrom
+      value: Town Shop 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5800137024454645917, guid: 33f3344a0e717864f929f6fbaa1b655e,
         type: 3}
       propertyPath: transitionName
       value: Town Shop 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5800137024454645917, guid: 33f3344a0e717864f929f6fbaa1b655e,
+        type: 3}
+      propertyPath: sceneTransitionedFrom
+      value: Town
       objectReference: {fileID: 0}
     - target: {fileID: 5389454045075513794, guid: 33f3344a0e717864f929f6fbaa1b655e,
         type: 3}

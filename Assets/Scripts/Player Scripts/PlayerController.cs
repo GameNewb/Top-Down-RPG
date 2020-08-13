@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float moveSpeed = 10f;
 
     public static PlayerController instance;
-    public string sceneTransitionName = "";
+    public string sceneTransitionFrom = "";
 
     private Vector3 bottomLeftLimit;
     private Vector3 topRightLimit;

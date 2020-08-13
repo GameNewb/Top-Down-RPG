@@ -1291,7 +1291,7 @@ PrefabInstance:
     - target: {fileID: 7840068218423127676, guid: 33f3344a0e717864f929f6fbaa1b655e,
         type: 3}
       propertyPath: m_Name
-      value: Scene Transition
+      value: Start Scene Transition
       objectReference: {fileID: 0}
     - target: {fileID: 7840068218423127618, guid: 33f3344a0e717864f929f6fbaa1b655e,
         type: 3}
@@ -1371,17 +1371,27 @@ PrefabInstance:
     - target: {fileID: 5000448202392831747, guid: 33f3344a0e717864f929f6fbaa1b655e,
         type: 3}
       propertyPath: sceneToLoad
-      value: Town
+      value: Start Scene
       objectReference: {fileID: 0}
     - target: {fileID: 5000448202392831747, guid: 33f3344a0e717864f929f6fbaa1b655e,
         type: 3}
       propertyPath: sceneTransitionName
-      value: Town Shop 1
+      value: Cave Scene
+      objectReference: {fileID: 0}
+    - target: {fileID: 5000448202392831747, guid: 33f3344a0e717864f929f6fbaa1b655e,
+        type: 3}
+      propertyPath: sceneTransitionFrom
+      value: Cave Scene
       objectReference: {fileID: 0}
     - target: {fileID: 5800137024454645917, guid: 33f3344a0e717864f929f6fbaa1b655e,
         type: 3}
       propertyPath: transitionName
-      value: Town Shop 1
+      value: Start Scene
+      objectReference: {fileID: 0}
+    - target: {fileID: 5800137024454645917, guid: 33f3344a0e717864f929f6fbaa1b655e,
+        type: 3}
+      propertyPath: sceneTransitionedFrom
+      value: Start Scene
       objectReference: {fileID: 0}
     - target: {fileID: 5389454045075513794, guid: 33f3344a0e717864f929f6fbaa1b655e,
         type: 3}

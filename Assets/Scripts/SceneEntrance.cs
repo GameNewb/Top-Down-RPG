@@ -2,10 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Class that details where the player lands when the Scene loads
 public class SceneEntrance : MonoBehaviour
 {
     private PlayerController playerInstance;
-    public string transitionName;
+
+
+    [Header("Scene Where Player Is Expected To Come From")]
+    public string sceneTransitionedFrom;
 
     // Start is called before the first frame update
     void Start()
@@ -15,19 +19,14 @@ public class SceneEntrance : MonoBehaviour
         // Set the position of player after transitioning into a new scene
         if (playerInstance != null)
         {
-            string playerTransitionName = playerInstance.sceneTransitionName;
+            string playerTransitionName = playerInstance.sceneTransitionFrom;
 
-            if (transitionName == playerTransitionName)
+            if (sceneTransitionedFrom == playerTransitionName)
             {
                 playerInstance.transform.position = transform.position;
             }
         }
         
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }
