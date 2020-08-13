@@ -637,7 +637,6 @@ public class BattleManager : MonoBehaviour
         // Reset EXP/Gil/Item gain
         expReward = 0;
         gilReward = 0;
-        itemDrops.Clear();
 
         // Disable Battle BG
         AudioManager.instance.PlayBGM(FindObjectOfType<CameraController>().musicToPlay);

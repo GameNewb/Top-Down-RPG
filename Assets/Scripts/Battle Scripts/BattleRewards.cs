@@ -30,7 +30,7 @@ public class BattleRewards : MonoBehaviour
         xpEarned = xp;
         gilReceived = gil;
         rewardItems = rewards;
-
+        
         xpText.text = "Earned " + xpEarned + " XP";
         gilText.text = "Received " + gilReceived + "g";
         itemText.text = "";
@@ -47,7 +47,7 @@ public class BattleRewards : MonoBehaviour
     public void CloseRewardScreen()
     {
         var playerStats = GameManager.instance.playerStats;
-
+        
         for (int i = 0; i < playerStats.Length; i++)
         {
             // Add EXP to active characters and alive characters only
@@ -59,13 +59,13 @@ public class BattleRewards : MonoBehaviour
 
         // Add gil
         GameManager.instance.currentGil += gilReceived;
-        
+
         // Add rewards to player inventory
-        foreach (var item in rewardItems) 
+        foreach (var item in rewardItems)
         {
             GameManager.instance.AddItem(GameManager.instance.GetItemDetails(item.Key), item.Value);
         }
-        
+
         rewardsScreen.SetActive(false);
 
         GameManager.instance.activeBattle = false;
