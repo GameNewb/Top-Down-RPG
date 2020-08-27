@@ -37,6 +37,13 @@ public class BattleManagerHelper
             objectPrefab.GetComponent<ScriptableObjectProperties>().aliveSprite = battleScriptable.aliveSprite;
             objectPrefab.GetComponent<ScriptableObjectProperties>().deadSprite = battleScriptable.deadSprite;
             objectPrefab.GetComponent<ScriptableObjectProperties>().isPlayer = true;
+
+            // Set AnimatorController if a controller exists
+            var animatorResource = Resources.Load<RuntimeAnimatorController>("Battle Animations/" + characterStats.charName + "Controller");
+            if (animatorResource)
+            {
+                objectPrefab.GetComponent<Animator>().runtimeAnimatorController = animatorResource;
+            }
         }
         else
         {

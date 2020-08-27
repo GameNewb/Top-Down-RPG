@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 104684887729693302}
   - component: {fileID: 2933921005874067512}
   - component: {fileID: 2634953256574718896}
+  - component: {fileID: 995650498146740776}
   m_Layer: 0
   m_Name: Player Prefab
   m_TagString: Untagged
@@ -93,5 +94,48 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemToCreate: {fileID: 0}
-  enemyToCreate: {fileID: 0}
-  characterToCreate: {fileID: 11400000, guid: 433b19b83027ddc439625c5c112aece1, type: 2}
+  objectToCreate: {fileID: 0}
+  isBoss: 0
+  isRare: 0
+  isCommon: 0
+  isPlayer: 0
+  objectName: 
+  objectDescription: 
+  objectSprite: {fileID: 0}
+  currentHP: 0
+  maxHP: 0
+  currentMP: 0
+  maxMP: 0
+  strength: 0
+  vitality: 0
+  wpnPwr: 0
+  armrPwr: 0
+  hasDied: 0
+  animator: {fileID: 0}
+  movesAvailable: []
+  objectSpriteRenderer: {fileID: 0}
+  deadSprite: {fileID: 0}
+  aliveSprite: {fileID: 0}
+  fadeSpeed: 1
+  itemsToDrop: []
+  gilDropAmount: 0
+  expPoints: 0
+--- !u!95 &995650498146740776
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6595298524650340197}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a1d28a0f54e40ec49be8b547798ed1fe, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

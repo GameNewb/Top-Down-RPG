@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: PlayerIdleDown
+  m_Name: KiruIdle
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,7 +20,16 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 2634803378037534032, guid: 3edbd7036b98b09498d6b1761ac0d486,
+      value: {fileID: -2207236230058056998, guid: 4f26dc743bb390249a018791054bf48f,
+        type: 3}
+    - time: 0.125
+      value: {fileID: 7891982148883367678, guid: 4f26dc743bb390249a018791054bf48f,
+        type: 3}
+    - time: 0.25
+      value: {fileID: 484464017491646080, guid: 4f26dc743bb390249a018791054bf48f,
+        type: 3}
+    - time: 0.375
+      value: {fileID: -2207236230058056998, guid: 4f26dc743bb390249a018791054bf48f,
         type: 3}
     attribute: m_Sprite
     path: 
@@ -41,13 +50,16 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 2634803378037534032, guid: 3edbd7036b98b09498d6b1761ac0d486, type: 3}
+    - {fileID: -2207236230058056998, guid: 4f26dc743bb390249a018791054bf48f, type: 3}
+    - {fileID: 7891982148883367678, guid: 4f26dc743bb390249a018791054bf48f, type: 3}
+    - {fileID: 484464017491646080, guid: 4f26dc743bb390249a018791054bf48f, type: 3}
+    - {fileID: -2207236230058056998, guid: 4f26dc743bb390249a018791054bf48f, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.125
+    m_StopTime: 0.5
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0

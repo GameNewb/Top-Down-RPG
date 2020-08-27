@@ -18,7 +18,7 @@ MonoBehaviour:
   isPlayer: 1
   objectName: Kiru
   objectDescription: 
-  objectSprite: {fileID: 1189803590093747582, guid: ea6d682a19de2a642986059a7352d95d,
+  objectSprite: {fileID: -2207236230058056998, guid: 4f26dc743bb390249a018791054bf48f,
     type: 3}
   currentHP: 150
   maxHP: 150
@@ -32,7 +32,11 @@ MonoBehaviour:
   movesAvailable:
   - Ice
   objectSpriteRenderer: {fileID: 0}
-  deadSprite: {fileID: 8202781100932666147, guid: ea6d682a19de2a642986059a7352d95d,
+  deadSprite: {fileID: 8138726566797790806, guid: 4f26dc743bb390249a018791054bf48f,
     type: 3}
-  aliveSprite: {fileID: 1189803590093747582, guid: ea6d682a19de2a642986059a7352d95d,
+  aliveSprite: {fileID: -2207236230058056998, guid: 4f26dc743bb390249a018791054bf48f,
     type: 3}
+  itemsToDrop: []
+  gilMinDropAmount: 0
+  gilMaxDropAmount: 0
+  expPoints: 0

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3728140720149925099}
   - component: {fileID: 3576238954304374092}
   - component: {fileID: 5511657504662870524}
+  - component: {fileID: 4945344081746074208}
   m_Layer: 0
   m_Name: Character Object Prefab
   m_TagString: Untagged
@@ -93,6 +94,47 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemToCreate: {fileID: 0}
-  enemyToCreate: {fileID: 0}
-  characterToCreate: {fileID: 0}
   objectToCreate: {fileID: 0}
+  isBoss: 0
+  isRare: 0
+  isCommon: 0
+  isPlayer: 0
+  objectName: 
+  objectDescription: 
+  objectSprite: {fileID: 0}
+  currentHP: 0
+  maxHP: 0
+  currentMP: 0
+  maxMP: 0
+  strength: 0
+  vitality: 0
+  wpnPwr: 0
+  armrPwr: 0
+  hasDied: 0
+  movesAvailable: []
+  objectSpriteRenderer: {fileID: 0}
+  deadSprite: {fileID: 0}
+  aliveSprite: {fileID: 0}
+  fadeSpeed: 1
+  itemsToDrop: []
+  gilDropAmount: 0
+  expPoints: 0
+--- !u!95 &4945344081746074208
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7528641782018120941}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
