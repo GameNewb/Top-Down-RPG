@@ -231,6 +231,12 @@ public class BattleManager : MonoBehaviour
                 if (activeCombatants[i].GetComponent<ScriptableObjectProperties>().isPlayer)
                 {
                     allPlayersDead = false;
+
+                    // Set to idle animation if player has been revived
+                    if (activeCombatants[i].GetComponent<Animator>().runtimeAnimatorController && activeCombatants[i].GetComponent<Animator>().GetBool("isDead"))
+                    {
+                        activeCombatants[i].GetComponent<Animator>().SetBool("isDead", false);
+                    }
                 }
                 else
                 {
@@ -352,7 +358,7 @@ public class BattleManager : MonoBehaviour
         Instantiate(enemyParticleEffect, activeCombatants[currentTurn].transform.position, activeCombatants[currentTurn].transform.rotation);
 
         // Calculate the damage
-        this.DealDamage(selectedTarget, movesetPower);
+        this.DealDamage(selectedTarget, movesetPower, "Slash");
     }
 
     // Function to control players attack
@@ -372,7 +378,7 @@ public class BattleManager : MonoBehaviour
         // TODO: Change effect for player
         Instantiate(enemyParticleEffect, activeCombatants[currentTurn].transform.position, activeCombatants[currentTurn].transform.rotation);
 
-        this.DealDamage(selectedTarget, movesetPower);
+        this.DealDamage(selectedTarget, movesetPower, moveName);
 
         // Prevent player from clicking the buttons multiple times
         uiButtonsHolder.SetActive(false);
@@ -381,12 +387,18 @@ public class BattleManager : MonoBehaviour
     }
 
     // Function to deal damage to objects
-    public void DealDamage(int target, int movesetPower)
+    public void DealDamage(int target, int movesetPower, string moveName)
     {
         var currentUser = activeCombatants[currentTurn].GetComponent<ScriptableObjectProperties>();
         var targetUser = activeCombatants[target].GetComponent<ScriptableObjectProperties>();
         float atkPower = currentUser.strength + currentUser.wpnPwr;
         float vitPower = targetUser.vitality + targetUser.armrPwr;
+
+        // Set Animation and Position change if animation exists
+        if (activeCombatants[currentTurn].GetComponent<Animator>().runtimeAnimatorController)
+        {
+            StartCoroutine(PlayAttackAnimation(currentTurn, moveName));
+        }
 
         // Calculate the damage to take
         float damageCalculation = (atkPower / vitPower) * movesetPower * Random.Range(.9f, 1.1f);
@@ -403,12 +415,19 @@ public class BattleManager : MonoBehaviour
             if (targetUser.isPlayer)
             {
                 targetUser.objectSpriteRenderer.sprite = targetUser.deadSprite;
+                activeCombatants[target].GetComponent<Animator>().SetBool("isDead", true);
             }
+        }
+
+        // Play damaged animation
+        if (activeCombatants[target].GetComponent<Animator>().runtimeAnimatorController)
+        {
+            StartCoroutine(PlayDamagedAnimation(target));
         }
 
         // Instantiate the damage numbers on screen
         Instantiate(damageNumberEffect, activeCombatants[target].transform.position, activeCombatants[target].transform.rotation).SetDamage(damageToTake);
-        
+
         // Update player UI stats
         this.UpdateUIStats();
     }
@@ -651,5 +670,28 @@ public class BattleManager : MonoBehaviour
 
         SceneManager.LoadScene(gameOverScene);
     }
-    
+
+    // Function to change the attack animation of the current user
+    private IEnumerator PlayAttackAnimation(int currentUser, string moveName)
+    {
+        string attackType = "magicAttack";
+
+        // Change animation bool based on the attack
+        if (moveName == "Slash")
+        {
+            attackType = "physicalAttack";
+        }
+
+        activeCombatants[currentUser].GetComponent<Animator>().SetBool(attackType, true);
+        yield return new WaitForSeconds(1.5f);
+        activeCombatants[currentUser].GetComponent<Animator>().SetBool(attackType, false);
+    }
+
+    // Function to change the attack animation of the current user
+    private IEnumerator PlayDamagedAnimation(int currentUser)
+    {
+        activeCombatants[currentUser].GetComponent<Animator>().SetBool("isDamaged", true);
+        yield return new WaitForSeconds(1f);
+        activeCombatants[currentUser].GetComponent<Animator>().SetBool("isDamaged", false);
+    }
 }
