@@ -340,7 +340,6 @@ public class BattleManager : MonoBehaviour
         }
         
         // TODO: Refactor
-        // TODO: Fix bug where if player presses N continuously during enemy turn, IOB happens
         // Find the correct attack object
         int selectAttack = Random.Range(0, activeCombatants[currentTurn].GetComponent<ScriptableObjectProperties>().movesAvailable.Length);
         int movesetPower = 0;
@@ -393,6 +392,12 @@ public class BattleManager : MonoBehaviour
         var targetUser = activeCombatants[target].GetComponent<ScriptableObjectProperties>();
         float atkPower = currentUser.strength + currentUser.wpnPwr;
         float vitPower = targetUser.vitality + targetUser.armrPwr;
+
+        // Move to target if it's a physical/melee attack
+        if (moveName == "Slash")
+        {
+            StartCoroutine(MoveTarget(currentTurn, target));
+        }
 
         // Set Animation and Position change if animation exists
         if (activeCombatants[currentTurn].GetComponent<Animator>().runtimeAnimatorController)
@@ -684,14 +689,56 @@ public class BattleManager : MonoBehaviour
 
         activeCombatants[currentUser].GetComponent<Animator>().SetBool(attackType, true);
         yield return new WaitForSeconds(1.5f);
-        activeCombatants[currentUser].GetComponent<Animator>().SetBool(attackType, false);
+
+        // TODO: Fix later after adding victory fan fare
+        // Bug: accessing object when all enemies are dead
+        if (activeCombatants[currentTurn])
+        {
+            activeCombatants[currentUser].GetComponent<Animator>().SetBool(attackType, false);
+        }
     }
 
     // Function to change the attack animation of the current user
     private IEnumerator PlayDamagedAnimation(int currentUser)
     {
-        activeCombatants[currentUser].GetComponent<Animator>().SetBool("isDamaged", true);
+        if (activeCombatants[currentTurn])
+        {
+            activeCombatants[currentUser].GetComponent<Animator>().SetBool("isDamaged", true);
+        }
+
         yield return new WaitForSeconds(1f);
-        activeCombatants[currentUser].GetComponent<Animator>().SetBool("isDamaged", false);
+
+        if (activeCombatants[currentTurn])
+        {
+            activeCombatants[currentUser].GetComponent<Animator>().SetBool("isDamaged", false);
+        }
     }
+
+    // Function that moves the attacking object to the target 
+    private IEnumerator MoveTarget(int currentUser, int targetUser)
+    {
+        float step = 0.5f * Time.deltaTime;
+        var attackerPosition = activeCombatants[currentUser].transform.position;
+        var defenderPosition = activeCombatants[targetUser].transform.position;
+        
+        // TODO Add some fancy schmany animation???
+        // Move towards the target
+        while (Vector2.Distance(activeCombatants[currentUser].transform.position, defenderPosition) > 2f)
+        {
+            activeCombatants[currentUser].transform.position = Vector2.MoveTowards(activeCombatants[currentUser].transform.position, defenderPosition, step);
+        }
+
+        yield return new WaitForSeconds(.75f);
+
+        // TODO: Fix later after adding victory fan fare
+        // Bug: accessing object when all enemies are dead
+        if (activeCombatants[currentTurn])
+        {
+            // Move back to the previous location
+            while (Vector2.Distance(activeCombatants[currentUser].transform.position, attackerPosition) > 0f)
+            {
+                activeCombatants[currentUser].transform.position = Vector2.MoveTowards(activeCombatants[currentUser].transform.position, attackerPosition, step);
+            }
+        }
+    } 
 }
