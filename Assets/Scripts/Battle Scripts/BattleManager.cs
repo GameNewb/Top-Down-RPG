@@ -688,7 +688,7 @@ public class BattleManager : MonoBehaviour
         }
 
         activeCombatants[currentUser].GetComponent<Animator>().SetBool(attackType, true);
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1.1f);
 
         // TODO: Fix later after adding victory fan fare
         // Bug: accessing object when all enemies are dead
@@ -728,7 +728,7 @@ public class BattleManager : MonoBehaviour
             activeCombatants[currentUser].transform.position = Vector2.MoveTowards(activeCombatants[currentUser].transform.position, defenderPosition, step);
         }
 
-        yield return new WaitForSeconds(.75f);
+        yield return new WaitForSeconds(0.75f);
 
         // TODO: Fix later after adding victory fan fare
         // Bug: accessing object when all enemies are dead

@@ -94,7 +94,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayer: 1
   movesAvailable: []
-  charName: Olaf
+  charName: Aki
   currentHP: 0
   maxHP: 0
   currentMP: 0

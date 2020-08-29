@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fd14b8123a57b141896fddcc7d232bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  charName: Olaf
+  charName: Aki
   playerLevel: 3
   currentEXP: 150
   expToNextLevel: 
@@ -61,7 +61,8 @@ MonoBehaviour:
   armrPwr: 0
   equippedWeapon: {fileID: 0}
   equippedArmor: {fileID: 0}
-  charImage: {fileID: 21300000, guid: e0ddba6d3fcf21f49949fcc95c849aac, type: 3}
+  charImage: {fileID: 2330761377080779233, guid: 52bffac580e3dfd45a39381226b3e981,
+    type: 3}
 --- !u!1 &8028671331069710646
 GameObject:
   m_ObjectHideFlags: 0
@@ -204,7 +205,6 @@ MonoBehaviour:
     amount: 0
   - item: {fileID: 0}
     amount: 0
-  itemToAddLater: {fileID: 11400000, guid: 1a57e9849d49ace46aa806c4a8b70de3, type: 2}
   currentGil: 500
   maxGil: 999999
   playerReferences:
@@ -299,7 +299,7 @@ MonoBehaviour:
   armrPwr: 0
   equippedWeapon: {fileID: 0}
   equippedArmor: {fileID: 0}
-  charImage: {fileID: 3427114271967980436, guid: ea6d682a19de2a642986059a7352d95d,
+  charImage: {fileID: 2634803378037534032, guid: 3edbd7036b98b09498d6b1761ac0d486,
     type: 3}
 --- !u!1 &8575078145951471865
 GameObject:
