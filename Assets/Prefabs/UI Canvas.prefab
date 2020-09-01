@@ -27194,8 +27194,6 @@ MonoBehaviour:
   gilText: {fileID: 7902444952615252246}
   itemText: {fileID: 1725624564550124191}
   rewardsScreen: {fileID: 4882025030708670550}
-  xpEarned: 0
-  gilReceived: 0
 --- !u!1 &4497515397139586924
 GameObject:
   m_ObjectHideFlags: 0
