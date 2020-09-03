@@ -48,8 +48,14 @@ TagManager:
   - name: Items
     uniqueID: 887772749
     locked: 0
+  - name: Front Objects
+    uniqueID: 379524547
+    locked: 0
   - name: Player
     uniqueID: 575248167
+    locked: 0
+  - name: Back Objects
+    uniqueID: 2479506171
     locked: 0
   - name: Battle BG
     uniqueID: 82007953

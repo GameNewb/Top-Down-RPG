@@ -65,6 +65,19 @@ public class BattleManagerHelper
             objectPrefab.GetComponent<ScriptableObjectProperties>().gilDropAmount = Random.Range(battleScriptable.gilMinDropAmount, battleScriptable.gilMaxDropAmount);
             objectPrefab.GetComponent<ScriptableObjectProperties>().expPoints = battleScriptable.expPoints;
             objectPrefab.GetComponent<ScriptableObjectProperties>().isPlayer = false;
+
+            // Flip the sprite
+            if (battleScriptable.flipSpriteHorizontally)
+            {
+                objectPrefab.GetComponent<SpriteRenderer>().flipX = true;
+            }
+
+            // Set AnimatorController if a controller exists
+            var animatorResource = Resources.Load<RuntimeAnimatorController>("Battle Animations/Enemy Animations/" + battleScriptable.objectName + "/" + battleScriptable.objectName + "Controller");
+            if (animatorResource)
+            {
+                objectPrefab.GetComponent<Animator>().runtimeAnimatorController = animatorResource;
+            }
         }
 
         // Add to the combat list
