@@ -357,6 +357,7 @@ public class BattleManager : MonoBehaviour
         // Find the correct attack object
         int selectAttack = Random.Range(0, activeCombatants[currentTurn].GetComponent<ScriptableObjectProperties>().movesAvailable.Length);
         int movesetPower = 0;
+        string moveName = "Slash";
 
         for (int i = 0; i < movesets.Length; i++)
         {
@@ -364,6 +365,7 @@ public class BattleManager : MonoBehaviour
             {
                 Instantiate(movesets[i].movesetEffect, activeCombatants[selectedTarget].transform.position, activeCombatants[selectedTarget].transform.rotation);
                 movesetPower = movesets[i].movesetDamage;
+                moveName = movesets[i].movesetName;
             }
         }
 
@@ -371,7 +373,7 @@ public class BattleManager : MonoBehaviour
         Instantiate(enemyParticleEffect, activeCombatants[currentTurn].transform.position, activeCombatants[currentTurn].transform.rotation);
 
         // Calculate the damage
-        this.DealDamage(selectedTarget, movesetPower, "Slash");
+        this.DealDamage(selectedTarget, movesetPower, moveName);
     }
 
     // Function to control players attack

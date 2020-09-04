@@ -64,17 +64,23 @@ public class QuestManager : MonoBehaviour
     // Function to mark a quest complete
     public void MarkQuestComplete(string questToMark)
     {
-        questMarkers[this.GetQuest(questToMark)].isComplete = true;
-        
-        this.UpdateLocalQuestObjects();
+        if (questToMark != "")
+        {
+            questMarkers[this.GetQuest(questToMark)].isComplete = true;
+
+            this.UpdateLocalQuestObjects();
+        }
     }
 
     // Function to mark a quest incomplete
     public void MarkQuestIncomplete(string questToMark)
     {
-        questMarkers[this.GetQuest(questToMark)].isComplete = false;
+        if (questToMark != "")
+        {
+            questMarkers[this.GetQuest(questToMark)].isComplete = false;
 
-        this.UpdateLocalQuestObjects();
+            this.UpdateLocalQuestObjects();
+        }
     }
 
     // Function to update quest objectsp
