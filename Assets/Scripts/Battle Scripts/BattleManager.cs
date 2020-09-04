@@ -13,6 +13,8 @@ public class BattleManager : MonoBehaviour
 
     public GameObject battleScene;
 
+    public string background;
+
     [Header("Object Prefabs")]
     public Transform[] playerPositions;
     public Transform[] enemyPositions;
@@ -121,6 +123,18 @@ public class BattleManager : MonoBehaviour
 
     public void StartBattle (BattleScriptableObject[] enemiesToSpawn)
     {
+        // Set background based on fight
+        var bgResource = Resources.Load<Sprite>("Backgrounds/" + background + " BG");
+        if (bgResource)
+        {
+            battleScene.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = bgResource;
+        } 
+        else
+        {
+            battleScene.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Backgrounds/Field BG");
+        }
+
+        // Activate battle
         GameManager.instance.activeBattle = true;
         bool bossBattle = false;
 

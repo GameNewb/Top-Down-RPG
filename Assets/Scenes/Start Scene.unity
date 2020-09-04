@@ -3240,6 +3240,7 @@ MonoBehaviour:
   timeBetweenBattles: 0
   betweenBattleEncounter: 0
   deactivateAfterStarting: 1
+  background: Forest
 --- !u!1 &1204680919
 GameObject:
   m_ObjectHideFlags: 0
