@@ -518,6 +518,7 @@ public class BattleManager : MonoBehaviour
                     {
                         magicButtons[i].spellCost = movesets[j].movesetCost;
                         magicButtons[i].costText.text = magicButtons[i].spellCost.ToString();
+                        magicButtons[i].image.sprite = movesets[j].movesetImage;
                     }
                 }
             }

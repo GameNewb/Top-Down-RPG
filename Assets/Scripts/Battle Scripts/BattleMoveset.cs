@@ -8,5 +8,6 @@ public class BattleMoveset
     public string movesetName;
     public int movesetDamage;
     public int movesetCost;
+    public Sprite movesetImage;
     public AttackEffect movesetEffect;
 }

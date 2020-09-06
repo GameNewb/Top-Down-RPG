@@ -7,6 +7,7 @@ public class BattleMagicSelection : MonoBehaviour
 {
     public string spellName;
     public int spellCost;
+    public Image image;
     public Text nameText;
     public Text costText;
 

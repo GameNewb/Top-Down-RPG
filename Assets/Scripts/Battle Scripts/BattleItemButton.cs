@@ -31,14 +31,29 @@ public class BattleItemButton : MonoBehaviour
                 characterNameButtons[i].gameObject.SetActive(true);
                 characterNameButtons[i].GetComponentInChildren<Text>().text = playerStats.charName.ToString();
 
-                // Disable selection for non HP healing items if the player is dead
-                if (playerScriptable[i].GetComponent<ScriptableObjectProperties>().hasDied && !item.affectHP)
+                // Disaable revival items if player is still alive
+                if(item.revivalItem)
                 {
-                    characterNameButtons[i].interactable = false;
-                } 
+                    if (playerScriptable[i].GetComponent<ScriptableObjectProperties>().hasDied)
+                    {
+                        characterNameButtons[i].interactable = true;
+                    }
+                    else
+                    {
+                        characterNameButtons[i].interactable = false;
+                    }
+                }
                 else
                 {
-                    characterNameButtons[i].interactable = true;
+                    // Disable selection for non HP healing items if the player is dead
+                    if (playerScriptable[i].GetComponent<ScriptableObjectProperties>().hasDied)
+                    {
+                        characterNameButtons[i].interactable = false;
+                    }
+                    else
+                    {
+                        characterNameButtons[i].interactable = true;
+                    }
                 }
             }
             else

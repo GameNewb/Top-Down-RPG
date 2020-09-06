@@ -24,7 +24,7 @@ public class Item : ScriptableObject
     [Header("Item Effects")]
     // Used for adding or subtracting to values
     public int amountToChange;
-    public bool affectHP, affectMP, affectStr;
+    public bool affectHP, affectMP, affectStr, revivalItem;
 
     [Header("Equippable Stats")]
     public int weaponStrength;
@@ -96,18 +96,18 @@ public class Item : ScriptableObject
 
             if (affectHP)
             {
+                // Revive player 
+                if (characterScriptable.hasDied && characterScriptable.currentHP <= 0 && revivalItem)
+                {
+                    characterScriptable.hasDied = false;
+                    characterScriptable.objectSpriteRenderer.sprite = characterScriptable.aliveSprite;
+                }
+                
                 characterScriptable.currentHP += amountToChange;
 
                 if (characterScriptable.currentHP > characterScriptable.maxHP)
                 {
                     characterScriptable.currentHP = characterScriptable.maxHP;
-                }
-
-                // After healing, revive player
-                if (characterScriptable.hasDied && characterScriptable.currentHP > 0)
-                {
-                    characterScriptable.hasDied = false;
-                    characterScriptable.objectSpriteRenderer.sprite = characterScriptable.aliveSprite;
                 }
             }
 
