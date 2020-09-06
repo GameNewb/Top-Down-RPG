@@ -10,7 +10,14 @@ public class MouseOverControl : MonoBehaviour, IPointerEnterHandler
     
     public void OnPointerEnter(PointerEventData eventData)
     {
-        Vector3 newTransform = new Vector3(gameObject.transform.position.x - 130f, gameObject.transform.position.y - 10f, gameObject.transform.position.z);
+        float currentScreenWidth = (float) Screen.width;
+        float currentScreenHeight = (float) Screen.height;
+
+        // Calculate the position of the cursor based on the resolution
+        var xPosition = (currentScreenWidth/7) - gameObject.transform.position.x;
+        var yPosition = gameObject.transform.position.y;
+
+        Vector3 newTransform = new Vector3(xPosition, yPosition, gameObject.transform.position.z);
         menuCursor.transform.position = newTransform;
     }
 
