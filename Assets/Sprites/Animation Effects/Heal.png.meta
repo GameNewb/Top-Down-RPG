@@ -1,0 +1,1675 @@
+fileFormatVersion: 2
+guid: 15255a2becef3464caa91e0bb32633ec
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2903848411162822477
+    second: Heal_0
+  - first:
+      213: -893675218100121079
+    second: Heal_1
+  - first:
+      213: 2928916444087662039
+    second: Heal_2
+  - first:
+      213: -1398132742003509683
+    second: Heal_3
+  - first:
+      213: 5238786112167760410
+    second: Heal_4
+  - first:
+      213: -2599149563224560162
+    second: Heal_5
+  - first:
+      213: 5951998098815178954
+    second: Heal_6
+  - first:
+      213: -7882718956405584606
+    second: Heal_7
+  - first:
+      213: 2725092365876084024
+    second: Heal_8
+  - first:
+      213: 992378399082110112
+    second: Heal_9
+  - first:
+      213: 2421232261252437877
+    second: Heal_10
+  - first:
+      213: -4068766378435259518
+    second: Heal_11
+  - first:
+      213: 1557450757567181408
+    second: Heal_12
+  - first:
+      213: 6421123366466283125
+    second: Heal_13
+  - first:
+      213: -7966453475780122835
+    second: Heal_14
+  - first:
+      213: -5989852605575689667
+    second: Heal_15
+  - first:
+      213: -7158995259480235635
+    second: Heal_16
+  - first:
+      213: -7662327064183290077
+    second: Heal_17
+  - first:
+      213: 2985310409800207045
+    second: Heal_18
+  - first:
+      213: 8105470336463822503
+    second: Heal_19
+  - first:
+      213: -7135650998928299952
+    second: Heal_20
+  - first:
+      213: -184691572337072097
+    second: Heal_21
+  - first:
+      213: 7309765191579799462
+    second: Heal_22
+  - first:
+      213: 2766561391996798575
+    second: Heal_23
+  - first:
+      213: 7694347312310704306
+    second: Heal_24
+  - first:
+      213: 897857041362733705
+    second: Heal_25
+  - first:
+      213: 4520891684768419379
+    second: Heal_26
+  - first:
+      213: 1221282709112148294
+    second: Heal_27
+  - first:
+      213: 8133986634368575711
+    second: Heal_28
+  - first:
+      213: 1842964440369449502
+    second: Heal_29
+  - first:
+      213: -5431226487832629640
+    second: Heal_30
+  - first:
+      213: 596539445551007504
+    second: Heal_31
+  - first:
+      213: 3148166895537523845
+    second: Heal_32
+  - first:
+      213: 5901139370929903705
+    second: Heal_33
+  - first:
+      213: 5250587442990550047
+    second: Heal_34
+  - first:
+      213: -9210335553038938995
+    second: Heal_35
+  - first:
+      213: -5324656693905859248
+    second: Heal_36
+  - first:
+      213: -8805036044568676367
+    second: Heal_37
+  - first:
+      213: 8482078727848254058
+    second: Heal_38
+  - first:
+      213: 5071377516388106638
+    second: Heal_39
+  - first:
+      213: 175474515341161304
+    second: Heal_40
+  - first:
+      213: 7993806690062974342
+    second: Heal_41
+  - first:
+      213: 694844973480745852
+    second: Heal_42
+  - first:
+      213: -1111584803006136542
+    second: Heal_43
+  - first:
+      213: -2358549282155033610
+    second: Heal_44
+  - first:
+      213: 6856291704468196895
+    second: Heal_45
+  - first:
+      213: -8328498563334237736
+    second: Heal_46
+  - first:
+      213: -8660952742999913037
+    second: Heal_47
+  - first:
+      213: -7934982044189493873
+    second: Heal_48
+  - first:
+      213: -419629941085492474
+    second: Heal_49
+  - first:
+      213: 4794424135397091974
+    second: Heal_50
+  - first:
+      213: 3872875674795224161
+    second: Heal_51
+  - first:
+      213: 3292321361793003695
+    second: Heal_52
+  - first:
+      213: 233976871020624812
+    second: Heal_53
+  - first:
+      213: 1421846925679404719
+    second: Heal_54
+  - first:
+      213: 3096026115338126738
+    second: Heal_55
+  - first:
+      213: 8205781963374784790
+    second: Heal_56
+  - first:
+      213: 6831604947100797592
+    second: Heal_57
+  - first:
+      213: -158973495403073390
+    second: Heal_58
+  - first:
+      213: -8965110703254032765
+    second: Heal_59
+  - first:
+      213: 4242336413872270202
+    second: Heal_60
+  - first:
+      213: 2356599405872985603
+    second: Heal_61
+  - first:
+      213: -2945388658908633784
+    second: Heal_62
+  - first:
+      213: 2899581983694544682
+    second: Heal_63
+  - first:
+      213: 2260465796539704306
+    second: Heal_64
+  - first:
+      213: -2711343063214103024
+    second: Heal_65
+  - first:
+      213: 8889779412087599742
+    second: Heal_66
+  - first:
+      213: -5562301313894906375
+    second: Heal_67
+  - first:
+      213: -2720877461727046937
+    second: Heal_68
+  - first:
+      213: -6943661194031454975
+    second: Heal_69
+  - first:
+      213: 2586988339405633152
+    second: Heal_70
+  - first:
+      213: -5664709898289443345
+    second: Heal_71
+  - first:
+      213: -7641268599719730307
+    second: Heal_72
+  - first:
+      213: 5407335907294616411
+    second: Heal_73
+  - first:
+      213: 7909908892261867296
+    second: Heal_74
+  - first:
+      213: -5367023855424970402
+    second: Heal_75
+  - first:
+      213: -6688384138209779539
+    second: Heal_76
+  - first:
+      213: 7647361705032227396
+    second: Heal_77
+  - first:
+      213: -462320621266028112
+    second: Heal_78
+  - first:
+      213: 5625061966867161784
+    second: Heal_79
+  - first:
+      213: -2837235490652188484
+    second: Heal_80
+  - first:
+      213: 7697121146804988229
+    second: Heal_81
+  - first:
+      213: 8753334242266366338
+    second: Heal_82
+  - first:
+      213: -2004545575396748580
+    second: Heal_83
+  - first:
+      213: -5026760909376248361
+    second: Heal_84
+  - first:
+      213: -9115870331688216039
+    second: Heal_85
+  - first:
+      213: -7648994227942440090
+    second: Heal_86
+  - first:
+      213: 5222411462126891950
+    second: Heal_87
+  - first:
+      213: 8925684967251821543
+    second: Heal_88
+  - first:
+      213: -5446664676496414316
+    second: Heal_89
+  - first:
+      213: 3382320261672333528
+    second: Heal_90
+  - first:
+      213: -5751789445139863690
+    second: Heal_91
+  - first:
+      213: 6578371099922019033
+    second: Heal_92
+  - first:
+      213: -4796716851761229081
+    second: Heal_93
+  - first:
+      213: -1900998154179420567
+    second: Heal_94
+  - first:
+      213: 7013933065697054525
+    second: Heal_95
+  - first:
+      213: 243609719076281805
+    second: Heal_96
+  - first:
+      213: -2798756808344985141
+    second: Heal_97
+  - first:
+      213: 5566057304625125168
+    second: Heal_98
+  - first:
+      213: 6559708929555261943
+    second: Heal_99
+  - first:
+      213: -8930539829907315566
+    second: Heal_100
+  - first:
+      213: -6570770615161502482
+    second: Heal_101
+  - first:
+      213: 6144648152916696294
+    second: Heal_102
+  - first:
+      213: 5726639762926181837
+    second: Heal_103
+  - first:
+      213: 2152204209331676049
+    second: Heal_104
+  - first:
+      213: 1551554810664054469
+    second: Heal_105
+  - first:
+      213: 8968940873693289422
+    second: Heal_106
+  - first:
+      213: -7078820018513368412
+    second: Heal_107
+  - first:
+      213: -877649855358447894
+    second: Heal_108
+  - first:
+      213: 1989222811348645394
+    second: Heal_109
+  - first:
+      213: -215266916384071142
+    second: Heal_110
+  - first:
+      213: 746769003066484160
+    second: Heal_111
+  - first:
+      213: -6014736483074349420
+    second: Heal_112
+  - first:
+      213: 2454208412959319767
+    second: Heal_113
+  - first:
+      213: 5104925351714834308
+    second: Heal_114
+  - first:
+      213: -39255958165529273
+    second: Heal_115
+  - first:
+      213: 1170378500390053159
+    second: Heal_116
+  - first:
+      213: 4924272672522478221
+    second: Heal_117
+  - first:
+      213: 5689627093159718773
+    second: Heal_118
+  - first:
+      213: -7198845203090894249
+    second: Heal_119
+  - first:
+      213: 795929460878097072
+    second: Heal_120
+  - first:
+      213: -6921310037740410808
+    second: Heal_121
+  - first:
+      213: 1791323931700501735
+    second: Heal_122
+  - first:
+      213: 2260630759465211989
+    second: Heal_123
+  - first:
+      213: 2092197075410082319
+    second: Heal_124
+  - first:
+      213: 1324539831739516301
+    second: Heal_125
+  - first:
+      213: 2107762739143474565
+    second: Heal_126
+  - first:
+      213: -6195275540244385700
+    second: Heal_127
+  - first:
+      213: 1565308534394722082
+    second: Heal_128
+  - first:
+      213: -1544144506300092111
+    second: Heal_129
+  - first:
+      213: 4614201892952293591
+    second: Heal_130
+  - first:
+      213: 5209135664075237327
+    second: Heal_131
+  - first:
+      213: -597334973689310058
+    second: Heal_132
+  - first:
+      213: -787191709863107838
+    second: Heal_133
+  - first:
+      213: -1525968354760309500
+    second: Heal_134
+  - first:
+      213: 8999658807410279173
+    second: Heal_135
+  - first:
+      213: -4849305853276347356
+    second: Heal_136
+  - first:
+      213: 1008816139902321472
+    second: Heal_137
+  - first:
+      213: -1346191188529511458
+    second: Heal_138
+  - first:
+      213: 2996138907934758512
+    second: Heal_139
+  - first:
+      213: -1556468824713310104
+    second: Heal_140
+  - first:
+      213: -8832608069372089781
+    second: Heal_141
+  - first:
+      213: 7602843336307989561
+    second: Heal_142
+  - first:
+      213: 6890992882256282256
+    second: Heal_143
+  - first:
+      213: -5348893135573882352
+    second: Heal_144
+  - first:
+      213: 1870030227398834675
+    second: Heal_145
+  - first:
+      213: -8852463509357800892
+    second: Heal_146
+  - first:
+      213: 5005837230040357716
+    second: Heal_147
+  - first:
+      213: -6783463461469157431
+    second: Heal_148
+  - first:
+      213: 2235748447304139824
+    second: Heal_149
+  - first:
+      213: 651593956423188042
+    second: Heal_150
+  - first:
+      213: -1343313312027468129
+    second: Heal_151
+  - first:
+      213: -8801654897633028026
+    second: Heal_152
+  - first:
+      213: -3373683375106821212
+    second: Heal_153
+  - first:
+      213: 2088557908478132551
+    second: Heal_154
+  - first:
+      213: 1391176811545178068
+    second: Heal_155
+  - first:
+      213: 1232694042653548037
+    second: Heal_156
+  - first:
+      213: 4051028543604015497
+    second: Heal_157
+  - first:
+      213: 4513104763341829084
+    second: Heal_158
+  - first:
+      213: -4450493453949231444
+    second: Heal_159
+  - first:
+      213: 2056531698178903567
+    second: Heal_160
+  - first:
+      213: -2523573741817941125
+    second: Heal_161
+  - first:
+      213: 1568821812140497420
+    second: Heal_162
+  - first:
+      213: 5860312830927249293
+    second: Heal_163
+  - first:
+      213: -9032163153701078837
+    second: Heal_164
+  - first:
+      213: -2254979544930309254
+    second: Heal_165
+  - first:
+      213: 3081909481608817222
+    second: Heal_166
+  - first:
+      213: -3544940793915677398
+    second: Heal_167
+  - first:
+      213: -8750927660675411014
+    second: Heal_168
+  - first:
+      213: 2669822582241776339
+    second: Heal_169
+  - first:
+      213: -3725618112846225217
+    second: Heal_170
+  - first:
+      213: -6675588419214401546
+    second: Heal_171
+  - first:
+      213: 5095912457718411074
+    second: Heal_172
+  - first:
+      213: -1262189510071987918
+    second: Heal_173
+  - first:
+      213: 3748312809350632320
+    second: Heal_174
+  - first:
+      213: -5776317915200497006
+    second: Heal_175
+  - first:
+      213: 311540973617066322
+    second: Heal_176
+  - first:
+      213: 7223125934768195443
+    second: Heal_177
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Heal_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1728
+        width: 192
+        height: 192
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57d9fe873df057145af5bbca9e324ecd
+      internalID: 2903848411162822477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heal_1
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 1728
+        width: 192
+        height: 192
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d04b0a6d267672f4ca51e7da66824dd3
+      internalID: -893675218100121079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heal_2
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 1728
+        width: 192
+        height: 192
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e881a8aa48f3c74bbcd0e1ac1e1b7bc
+      internalID: 2928916444087662039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heal_3
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 1728
+        width: 192
+        height: 192
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8505e95eb9d3ec747b446b8b82e75831
+      internalID: -1398132742003509683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heal_4
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1728
+        width: 192
+        height: 192
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a74c409fac0b494389604e3b1230f48
+      internalID: 5238786112167760410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heal_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1536
+        width: 192
+        height: 192
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52f18449cd5b81446b63315631e6445e
+      internalID: -2599149563224560162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heal_6
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 1536
+        width: 192
+        height: 192
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93771b87750e4984aa11e10dfd946c8b
+      internalID: 5951998098815178954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heal_7
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 1536
+        width: 192
+        height: 192
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b611c30160e0d1446b6dea1970dd8f4b
+      internalID: -7882718956405584606
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heal_8
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 1536
+        width: 192
+        height: 192
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c441842bc688fd64c9ceaaf2249d2307
+      internalID: 2725092365876084024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heal_9
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1536
+        width: 192
+        height: 192
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 478160ebccfdea2469805d0d7dfb06de
+      internalID: 992378399082110112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heal_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1344
+        width: 192
+        height: 192
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66c41416638291748a1723814c15be64
+      internalID: 2421232261252437877
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heal_11
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 1344
+        width: 192
+        height: 192
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16a5c45a5102f154c9ea407582dbfc4f
+      internalID: -4068766378435259518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heal_12
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 1344
+        width: 192
+        height: 192
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ebb7f44102084e4d92c287bc6e43dbd
+      internalID: 1557450757567181408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heal_13
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 1344
+        width: 192
+        height: 192
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e712e21538caa048a4782c25c8c4dc2
+      internalID: 6421123366466283125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heal_14
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1344
+        width: 192
+        height: 192
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d656e581cb0f2d1488c0b6e5f6a7317f
+      internalID: -7966453475780122835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heal_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1152
+        width: 192
+        height: 192
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f948dd7235bf5649bf91b979c02c75c
+      internalID: -5989852605575689667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heal_16
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 1152
+        width: 192
+        height: 192
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 653301290ae4a134eb5a50ef493c7de8
+      internalID: -7158995259480235635
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heal_17
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 1152
+        width: 192
+        height: 192
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5622d6367a10bdb459f92b5a3f54ad8d
+      internalID: -7662327064183290077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heal_18
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 1152
+        width: 192
+        height: 192
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c896324fae0709147be9738adc5dca06
+      internalID: 2985310409800207045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heal_19
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1152
+        width: 192
+        height: 192
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e1d6e150479b41449ca0cd9a4536beb
+      internalID: 8105470336463822503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heal_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 960
+        width: 192
+        height: 192
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a1891e808f2e734fbaa1030bb123d2c
+      internalID: -7135650998928299952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heal_21
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 960
+        width: 192
+        height: 192
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01edb5502bad08f4197b9ce7e8b62ef5
+      internalID: -184691572337072097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heal_22
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 960
+        width: 192
+        height: 192
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48e8237afd5460e41a6dacc00eafe7d1
+      internalID: 7309765191579799462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heal_23
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 960
+        width: 192
+        height: 192
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3934af1ab0c91fe42acb57304fcfa8aa
+      internalID: 2766561391996798575
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heal_24
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 960
+        width: 192
+        height: 192
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d9b58e9dee3a6340bbecc7884105229
+      internalID: 7694347312310704306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heal_25
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 768
+        width: 192
+        height: 192
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e1d8656162f0c24b91917c508a9690d
+      internalID: 897857041362733705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heal_26
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 768
+        width: 192
+        height: 192
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 312158e9fd010154883a9e97dda33248
+      internalID: 4520891684768419379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heal_27
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 768
+        width: 192
+        height: 192
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1eb30802f145e6a4984b8a1da7c0a813
+      internalID: 1221282709112148294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heal_28
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 768
+        width: 192
+        height: 192
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c413aa8d303cbc468dc46802973d73c
+      internalID: 8133986634368575711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heal_29
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 768
+        width: 192
+        height: 192
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50f7c740a3fdfac44aab027ed363870c
+      internalID: 1842964440369449502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heal_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 576
+        width: 192
+        height: 192
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe4a13a34cf9dbf43826d671d2e26fb1
+      internalID: -5431226487832629640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heal_31
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 576
+        width: 192
+        height: 192
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9123d34eee5bc6d4a8e85e7c8931aba2
+      internalID: 596539445551007504
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heal_32
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 576
+        width: 192
+        height: 192
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d58f4c9f25e924b44a3896252c265997
+      internalID: 3148166895537523845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heal_33
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 576
+        width: 192
+        height: 192
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3e6371676d079c429e33d567b6e433b
+      internalID: 5901139370929903705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heal_34
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 576
+        width: 192
+        height: 192
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e219303dbe7f144dbceeea64f165e58
+      internalID: 5250587442990550047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heal_35
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 384
+        width: 192
+        height: 192
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd55cdc8cae4f1e46913e2dca4eb085d
+      internalID: -9210335553038938995
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heal_36
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 384
+        width: 192
+        height: 192
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d9dc231d7cb798449141835d3dc1cd3
+      internalID: -5324656693905859248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heal_37
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 384
+        width: 192
+        height: 192
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57c9f6306e06d6e45950aecef85abbf4
+      internalID: -8805036044568676367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heal_38
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 384
+        width: 192
+        height: 192
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38f594e5f3cc263499714ee9dafcf8ef
+      internalID: 8482078727848254058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heal_39
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 192
+        width: 192
+        height: 192
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e83110625c169804384e17c617d4ca59
+      internalID: 5071377516388106638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heal_40
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 192
+        width: 192
+        height: 192
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81759145a36512245839843667cecbc9
+      internalID: 175474515341161304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heal_41
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 192
+        width: 192
+        height: 192
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8892dacfe55fc354eb9bf67196247713
+      internalID: 7993806690062974342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heal_42
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 192
+        width: 192
+        height: 192
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2af835078052f94f8acfab2042fecd2
+      internalID: 694844973480745852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heal_43
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 192
+        width: 192
+        height: 192
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be19313448fd8814887f18b5f55fde20
+      internalID: -1111584803006136542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heal_44
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 192
+        height: 192
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80fc06760a3ef244a84bed44768fb2da
+      internalID: -2358549282155033610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heal_45
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 192
+        height: 192
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ffb3c1f25f076174f86b8cafc1ed5315
+      internalID: 6856291704468196895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heal_46
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 192
+        height: 192
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d05f6f65e58d91245ab54c3ecaf40b0a
+      internalID: -8328498563334237736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heal_47
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 0
+        width: 192
+        height: 192
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0cb94529069124543886843286e844f7
+      internalID: -8660952742999913037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heal_48
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 192
+        height: 192
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a0c35807f539304086f3b839474f32f
+      internalID: -7934982044189493873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 0a7d6e85f400afe459eb5c9242428ec6
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

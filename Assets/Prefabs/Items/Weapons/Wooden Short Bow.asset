@@ -10,20 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6468a8a97d38f654b8e77723c1ffbdae, type: 3}
-  m_Name: Iron Sword
+  m_Name: Wooden Short Bow
   m_EditorClassIdentifier: 
   isItem: 0
   isWeapon: 1
   isArmor: 0
-  itemName: Iron Sword
-  itemDescription: Made from your toy
+  isRangedWeapon: 1
+  itemName: Wooden Short Bow
+  itemDescription: A recurve bow made from wood
   value: 50
-  itemSprite: {fileID: 21300078, guid: 0bc4ed27aef38a44bb72e80f9beb5326, type: 3}
-  itemDropRate: 30
-  amountToDrop: 1
+  itemSprite: {fileID: 4494720160737882667, guid: 4e4d5bd34608fd34a907909fa5e0e470,
+    type: 3}
+  itemDropRate: 0
+  amountToDrop: 0
   amountToChange: 0
   affectHP: 0
   affectMP: 0
   affectStr: 0
-  weaponStrength: 15
+  revivalItem: 0
+  weaponStrength: 20
   armorStrength: 0

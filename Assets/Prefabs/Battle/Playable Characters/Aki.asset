@@ -32,11 +32,13 @@ MonoBehaviour:
   movesAvailable:
   - Fire
   - Ice
+  - Lightning
   objectSpriteRenderer: {fileID: 0}
   deadSprite: {fileID: -2586234562987136288, guid: f7f12022d38fe9b44878e8363a5247dc,
     type: 3}
   aliveSprite: {fileID: -5429194016677706456, guid: f7f12022d38fe9b44878e8363a5247dc,
     type: 3}
+  flipSpriteHorizontally: 0
   itemsToDrop: []
   gilMinDropAmount: 0
   gilMaxDropAmount: 0

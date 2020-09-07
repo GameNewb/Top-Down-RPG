@@ -10,20 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6468a8a97d38f654b8e77723c1ffbdae, type: 3}
-  m_Name: Leather Armor
+  m_Name: Wooden Sword
   m_EditorClassIdentifier: 
   isItem: 0
-  isWeapon: 0
-  isArmor: 1
-  itemName: Leather Armor
-  itemDescription: Protects you from paper cuts!
+  isWeapon: 1
+  isArmor: 0
+  itemName: Wooden Sword
+  itemDescription: Made from your old bed frame
   value: 25
-  itemSprite: {fileID: 21300010, guid: 0bc4ed27aef38a44bb72e80f9beb5326, type: 3}
+  itemSprite: {fileID: 21300074, guid: 0bc4ed27aef38a44bb72e80f9beb5326, type: 3}
   itemDropRate: 40
   amountToDrop: 1
   amountToChange: 0
   affectHP: 0
   affectMP: 0
   affectStr: 0
-  weaponStrength: 0
-  armorStrength: 5
+  revivalItem: 0
+  weaponStrength: 5
+  armorStrength: 0

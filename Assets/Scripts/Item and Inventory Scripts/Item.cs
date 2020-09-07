@@ -10,6 +10,7 @@ public class Item : ScriptableObject
     public bool isItem;
     public bool isWeapon;
     public bool isArmor;
+    public bool isRangedWeapon;
 
     [Header("Item Information")]
     public string itemName;

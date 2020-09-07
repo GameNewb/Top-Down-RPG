@@ -10,20 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6468a8a97d38f654b8e77723c1ffbdae, type: 3}
-  m_Name: HP Potion
+  m_Name: Iron Armor
   m_EditorClassIdentifier: 
-  isItem: 1
+  isItem: 0
   isWeapon: 0
-  isArmor: 0
-  itemName: Health Potion
-  itemDescription: Restores 50 HP
-  value: 5
-  itemSprite: {fileID: 21300000, guid: 0bc4ed27aef38a44bb72e80f9beb5326, type: 3}
-  itemDropRate: 80
-  amountToDrop: 3
-  amountToChange: 50
-  affectHP: 1
+  isArmor: 1
+  itemName: Iron Armor
+  itemDescription: Protects you from knives! (Not swords, just knives)
+  value: 50
+  itemSprite: {fileID: 21300014, guid: 0bc4ed27aef38a44bb72e80f9beb5326, type: 3}
+  itemDropRate: 30
+  amountToDrop: 1
+  amountToChange: 0
+  affectHP: 0
   affectMP: 0
   affectStr: 0
+  revivalItem: 0
   weaponStrength: 0
-  armorStrength: 0
+  armorStrength: 10

@@ -10,20 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6468a8a97d38f654b8e77723c1ffbdae, type: 3}
-  m_Name: MP Potion
+  m_Name: Leather Armor
   m_EditorClassIdentifier: 
-  isItem: 1
+  isItem: 0
   isWeapon: 0
-  isArmor: 0
-  itemName: Mana Potion
-  itemDescription: Restores 15 MP
-  value: 10
-  itemSprite: {fileID: 21300004, guid: 0bc4ed27aef38a44bb72e80f9beb5326, type: 3}
-  itemDropRate: 60
-  amountToDrop: 2
-  amountToChange: 15
+  isArmor: 1
+  itemName: Leather Armor
+  itemDescription: Protects you from paper cuts!
+  value: 25
+  itemSprite: {fileID: 21300010, guid: 0bc4ed27aef38a44bb72e80f9beb5326, type: 3}
+  itemDropRate: 40
+  amountToDrop: 1
+  amountToChange: 0
   affectHP: 0
-  affectMP: 1
+  affectMP: 0
   affectStr: 0
+  revivalItem: 0
   weaponStrength: 0
-  armorStrength: 0
+  armorStrength: 5

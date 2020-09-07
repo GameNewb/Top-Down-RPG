@@ -410,9 +410,16 @@ public class BattleManager : MonoBehaviour
         float vitPower = targetUser.vitality + targetUser.armrPwr;
 
         // Move to target if it's a physical/melee attack
-        if (moveName == "Slash")
+        if (moveName == "Slash" && !currentUser.isPlayer)
         {
             StartCoroutine(MoveTarget(currentTurn, target));
+        }
+        else if (moveName == "Slash" && currentUser.isPlayer)
+        {
+            if (currentUser.equippedWeapon != null && !currentUser.equippedWeapon.isRangedWeapon)
+            {
+                StartCoroutine(MoveTarget(currentTurn, target));
+            }
         }
 
         // Set Animation and Position change if animation exists
@@ -696,12 +703,17 @@ public class BattleManager : MonoBehaviour
     // Function to change the attack animation of the current user
     private IEnumerator PlayAttackAnimation(int currentUser, string moveName)
     {
+        bool isRangeAttack = activeCombatants[currentUser].GetComponent<ScriptableObjectProperties>().equippedWeapon.isRangedWeapon;
         string attackType = "magicAttack";
 
         // Change animation bool based on the attack
-        if (moveName == "Slash")
+        if (moveName == "Slash" && !isRangeAttack)
         {
             attackType = "physicalAttack";
+        }
+        else if (moveName == "Slash" && isRangeAttack)
+        {
+            attackType = "rangeAttack";
         }
 
         activeCombatants[currentUser].GetComponent<Animator>().SetBool(attackType, true);

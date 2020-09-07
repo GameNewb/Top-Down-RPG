@@ -3143,6 +3143,13 @@ MonoBehaviour:
       type: 3}
     movesetEffect: {fileID: 4452856018920745885, guid: 61e3bb52bb719d6409ae2d97ee6de623,
       type: 3}
+  - movesetName: Lightning
+    movesetDamage: 80
+    movesetCost: 10
+    movesetImage: {fileID: -365430052784356160, guid: 4e4d5bd34608fd34a907909fa5e0e470,
+      type: 3}
+    movesetEffect: {fileID: 8771746286192134859, guid: 23659b0f0a8fe9b448e1a4a662b6c211,
+      type: 3}
   enemyParticleEffect: {fileID: 7870986734292537290, guid: 63407d87610c06944bf8dc311dbf8f43,
     type: 3}
   damageNumberEffect: {fileID: 3703430999311981731, guid: e403a7811355f5145afbf64ccc6cc7d8,

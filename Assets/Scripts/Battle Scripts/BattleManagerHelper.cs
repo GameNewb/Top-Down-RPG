@@ -36,6 +36,8 @@ public class BattleManagerHelper
             objectPrefab.GetComponent<ScriptableObjectProperties>().objectSpriteRenderer = objectPrefab.GetComponent<SpriteRenderer>();
             objectPrefab.GetComponent<ScriptableObjectProperties>().aliveSprite = battleScriptable.aliveSprite;
             objectPrefab.GetComponent<ScriptableObjectProperties>().deadSprite = battleScriptable.deadSprite;
+            objectPrefab.GetComponent<ScriptableObjectProperties>().equippedWeapon = characterStats.equippedWeapon;
+            objectPrefab.GetComponent<ScriptableObjectProperties>().equippedArmor = characterStats.equippedArmor;
             objectPrefab.GetComponent<ScriptableObjectProperties>().isPlayer = true;
             objectPrefab.GetComponent<SpriteRenderer>().sortingOrder = 1;
 
