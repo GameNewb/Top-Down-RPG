@@ -29,6 +29,8 @@ public class Item : ScriptableObject
 
     [Header("Equippable Stats")]
     public int weaponStrength;
+    [Tooltip("Crit Multiplier that is multiplied to the actual damage")] public float weaponCritMultiplier;
+    [Tooltip("Crit Chance in Percentage")] public float weaponCritChance;
     public int armorStrength;
 
     public void Use(CharacterStats charToUseOn)

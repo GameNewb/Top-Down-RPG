@@ -22170,5 +22170,10 @@ PrefabInstance:
       propertyPath: m_BoundingShape2D
       value: 
       objectReference: {fileID: 1964437755}
+    - target: {fileID: 1253825665173657991, guid: 137d196018c85a742a3e189c7f2b00f0,
+        type: 3}
+      propertyPath: shakeDuration
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 137d196018c85a742a3e189c7f2b00f0, type: 3}

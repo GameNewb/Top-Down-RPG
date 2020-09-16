@@ -15,6 +15,7 @@ MonoBehaviour:
   isItem: 0
   isWeapon: 1
   isArmor: 0
+  isRangedWeapon: 0
   itemName: Iron Sword
   itemDescription: Made from your toy
   value: 50
@@ -27,4 +28,6 @@ MonoBehaviour:
   affectStr: 0
   revivalItem: 0
   weaponStrength: 15
+  weaponCritMultiplier: 1.2
+  weaponCritChance: 20
   armorStrength: 0

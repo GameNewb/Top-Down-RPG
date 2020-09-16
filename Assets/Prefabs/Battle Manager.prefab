@@ -3199,6 +3199,7 @@ MonoBehaviour:
   battleNotice: {fileID: 2149254459285446428}
   chanceToFlee: 35
   gameOverScene: Game Over
+  camera: {fileID: 3051837592501799999, guid: 137d196018c85a742a3e189c7f2b00f0, type: 3}
 --- !u!1 &2149254459197656078
 GameObject:
   m_ObjectHideFlags: 0

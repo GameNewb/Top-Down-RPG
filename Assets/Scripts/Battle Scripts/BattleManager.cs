@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Cinemachine;
 
 public class BattleManager : MonoBehaviour
 {
@@ -74,6 +75,8 @@ public class BattleManager : MonoBehaviour
     private int expReward;
     private int gilReward;
 
+    [SerializeField] private GameObject camera;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -123,6 +126,10 @@ public class BattleManager : MonoBehaviour
 
     public void StartBattle (BattleScriptableObject[] enemiesToSpawn)
     {
+        // Set the camera when battle start for shaking
+        camera = GameObject.Find("Custom Camera");
+        camera.GetComponent<CinemachineBrain>().enabled = false;
+
         // Set background based on fight
         var bgResource = Resources.Load<Sprite>("Backgrounds/" + background + " BG");
         if (bgResource)
@@ -430,7 +437,31 @@ public class BattleManager : MonoBehaviour
 
         // Calculate the damage to take
         float damageCalculation = (atkPower / vitPower) * movesetPower * Random.Range(.9f, 1.1f);
+        float additionalDamage = 0f;
         int damageToTake = Mathf.RoundToInt(damageCalculation);
+
+        // Calculate CRIT Values
+        if (currentUser.equippedWeapon != null)
+        {
+            float critRandomizer = Random.Range(0f, 1f);
+
+            // If successful crit, add more damage
+            if (critRandomizer < (currentUser.equippedWeapon.weaponCritChance / 100f))
+            {
+                additionalDamage = damageCalculation * currentUser.equippedWeapon.weaponCritMultiplier;
+                damageToTake += (int) additionalDamage;
+
+                // Shake the camera
+                if (camera)
+                {
+                    // Disable Cinemachine to allow shake
+                    camera.GetComponent<ScreenShake>().transform = camera.gameObject.transform;
+                    camera.GetComponent<ScreenShake>().initialPosition = camera.gameObject.transform.localPosition;
+                    camera.GetComponent<ScreenShake>().shakeMagnitude = 0.3f;
+                    camera.GetComponent<ScreenShake>().TriggerShake(0.5f);
+                }
+            }
+        }
         
         targetUser.currentHP -= damageToTake;
 
@@ -590,6 +621,9 @@ public class BattleManager : MonoBehaviour
     // Coroutine function that controls the battle when player is victorious
     public IEnumerator EndBattle()
     {
+        // Re-enable camera
+        camera.GetComponent<CinemachineBrain>().enabled = true;
+
         // Variable to store all the items to drop at the end of combat
         Dictionary<Item, int> itemDrops = new Dictionary<Item, int>();
         
@@ -703,11 +737,17 @@ public class BattleManager : MonoBehaviour
     // Function to change the attack animation of the current user
     private IEnumerator PlayAttackAnimation(int currentUser, string moveName)
     {
-        bool isRangeAttack = activeCombatants[currentUser].GetComponent<ScriptableObjectProperties>().equippedWeapon.isRangedWeapon;
         string attackType = "magicAttack";
+        bool isRangeAttack = false;
 
+        // If there is an equipped weapon, check if it's range
+        if (activeCombatants[currentUser].GetComponent<ScriptableObjectProperties>().equippedWeapon)
+        {
+            isRangeAttack = activeCombatants[currentUser].GetComponent<ScriptableObjectProperties>().equippedWeapon.isRangedWeapon;
+        }
+        
         // Change animation bool based on the attack
-        if (moveName == "Slash" && !isRangeAttack)
+        if (moveName == "Slash" && isRangeAttack == false)
         {
             attackType = "physicalAttack";
         }

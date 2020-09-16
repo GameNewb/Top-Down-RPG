@@ -29,4 +29,6 @@ MonoBehaviour:
   affectStr: 0
   revivalItem: 0
   weaponStrength: 20
+  weaponCritMultiplier: 1.1
+  weaponCritChance: 10
   armorStrength: 0
