@@ -35,6 +35,13 @@ public class ItemButton : MonoBehaviour
             {
                 GameMenu.instance.SelectItem(gameManagerInstance.GetItemDetails(gameManagerInstance.playerInventory[buttonValue].item));
             }
+
+            // Close the Character Selection Panel when selecting a new item from inventory
+            GameObject characterSelectionPanel = gameObject.transform.parent.gameObject.transform.parent.Find("Character Selection Panel").gameObject;
+            if (characterSelectionPanel.activeInHierarchy)
+            {
+                characterSelectionPanel.SetActive(false);
+            }
         }
         
         // Player opens up the shop

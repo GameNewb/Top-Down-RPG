@@ -126,6 +126,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e60978d626c53554e985419b2a151bd0, type: 2}
   - {fileID: 11400000, guid: 58a6f408e3b633948b8970986d9d4903, type: 2}
   - {fileID: 11400000, guid: cc1d2ed5f3c911d42beb6f0c8eeb1160, type: 2}
+  - {fileID: 11400000, guid: 405ac4c57e0cf204b89abb0cb1e40ea1, type: 2}
   playerInventory:
   - item: {fileID: 11400000, guid: eb7150500b5f7c242b78fa827fb2ed3d, type: 2}
     amount: 1
@@ -175,8 +176,8 @@ MonoBehaviour:
     amount: 0
   - item: {fileID: 0}
     amount: 0
-  - item: {fileID: 0}
-    amount: 0
+  - item: {fileID: 11400000, guid: 405ac4c57e0cf204b89abb0cb1e40ea1, type: 2}
+    amount: 1
   - item: {fileID: 0}
     amount: 0
   - item: {fileID: 0}

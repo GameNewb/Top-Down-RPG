@@ -332,6 +332,16 @@ public class GameMenu : MonoBehaviour
             // Set button text
             itemToUseOnNames[i].text = playerStats.charName;
             itemToUseOnNames[i].transform.parent.gameObject.SetActive(playerStats.gameObject.activeInHierarchy);
+
+            // Disable the Character selection if item is for revival and character is still alive
+            if (activeItem.revivalItem && !playerStats.hasDied)
+            {
+                itemToUseOnNames[i].transform.parent.gameObject.GetComponent<Button>().interactable = false;
+            }
+            else
+            {
+                itemToUseOnNames[i].transform.parent.gameObject.GetComponent<Button>().interactable = true;
+            }
         }
     }
     

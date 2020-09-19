@@ -10,25 +10,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6468a8a97d38f654b8e77723c1ffbdae, type: 3}
-  m_Name: Wooden Short Bow
+  m_Name: Tonberry Knife
   m_EditorClassIdentifier: 
   isItem: 0
   isWeapon: 1
   isArmor: 0
-  isRangedWeapon: 1
-  itemName: Wooden Short Bow
-  itemDescription: A recurve bow made from wood
-  value: 50
-  itemSprite: {fileID: 4494720160737882667, guid: 4e4d5bd34608fd34a907909fa5e0e470,
+  isRangedWeapon: 0
+  itemName: Tonberry Knife
+  itemDescription: A chef's knife used by a malevolent creature
+  value: 10000
+  itemSprite: {fileID: -6244844835084872462, guid: 4e4d5bd34608fd34a907909fa5e0e470,
     type: 3}
-  itemDropRate: 30
+  itemDropRate: 1
   amountToDrop: 1
   amountToChange: 0
   affectHP: 0
   affectMP: 0
   affectStr: 0
   revivalItem: 0
-  weaponStrength: 20
-  weaponCritMultiplier: 1.1
-  weaponCritChance: 10
+  weaponStrength: 1
+  weaponCritMultiplier: 5.5
+  weaponCritChance: 1000
   armorStrength: 0
