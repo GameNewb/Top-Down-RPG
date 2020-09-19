@@ -57,6 +57,9 @@ MonoBehaviour:
   mpLVLBonus: 
   strength: 10
   vitality: 16
+  intelligence: 5
+  dexterity: 2
+  luck: 1
   wpnPwr: 0
   armrPwr: 0
   equippedWeapon: {fileID: 0}
@@ -299,6 +302,9 @@ MonoBehaviour:
   mpLVLBonus: 
   strength: 5
   vitality: 3
+  intelligence: 2
+  dexterity: 5
+  luck: 3
   wpnPwr: 0
   armrPwr: 0
   equippedWeapon: {fileID: 0}
@@ -362,6 +368,9 @@ MonoBehaviour:
   mpLVLBonus: 
   strength: 10
   vitality: 16
+  intelligence: 0
+  dexterity: 0
+  luck: 0
   wpnPwr: 0
   armrPwr: 0
   equippedWeapon: {fileID: 0}

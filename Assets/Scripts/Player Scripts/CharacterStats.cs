@@ -23,12 +23,20 @@ public class CharacterStats : MonoBehaviour
     // Attribute stats
     public int strength;
     public int vitality;
+    public int intelligence;
+    public int dexterity;
+    public int luck;
     public int wpnPwr;
     public int armrPwr;
 
     // Gear 
     public Item equippedWeapon;
+    public Item equippedShield;
     public Item equippedArmor;
+    public Item equippedGloves;
+    public Item equippedBoots;
+    public Item equippedAccessoryLeft;
+    public Item equippedAccessoryRight;
     public Sprite charImage;
 
     // Start is called before the first frame update

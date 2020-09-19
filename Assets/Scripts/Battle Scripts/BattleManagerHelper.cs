@@ -31,6 +31,9 @@ public class BattleManagerHelper
             objectPrefab.GetComponent<ScriptableObjectProperties>().armrPwr = characterStats.armrPwr;
             objectPrefab.GetComponent<ScriptableObjectProperties>().strength = characterStats.strength;
             objectPrefab.GetComponent<ScriptableObjectProperties>().vitality = characterStats.vitality;
+            objectPrefab.GetComponent<ScriptableObjectProperties>().intelligence = characterStats.intelligence;
+            objectPrefab.GetComponent<ScriptableObjectProperties>().dexterity = characterStats.dexterity;
+            objectPrefab.GetComponent<ScriptableObjectProperties>().luck = characterStats.luck;
             objectPrefab.GetComponent<ScriptableObjectProperties>().hasDied = characterStats.hasDied;
             objectPrefab.GetComponent<ScriptableObjectProperties>().movesAvailable = battleScriptable.movesAvailable;
             objectPrefab.GetComponent<ScriptableObjectProperties>().objectSpriteRenderer = objectPrefab.GetComponent<SpriteRenderer>();
@@ -38,6 +41,11 @@ public class BattleManagerHelper
             objectPrefab.GetComponent<ScriptableObjectProperties>().deadSprite = battleScriptable.deadSprite;
             objectPrefab.GetComponent<ScriptableObjectProperties>().equippedWeapon = characterStats.equippedWeapon;
             objectPrefab.GetComponent<ScriptableObjectProperties>().equippedArmor = characterStats.equippedArmor;
+            objectPrefab.GetComponent<ScriptableObjectProperties>().equippedShield = characterStats.equippedShield;
+            objectPrefab.GetComponent<ScriptableObjectProperties>().equippedGloves = characterStats.equippedGloves;
+            objectPrefab.GetComponent<ScriptableObjectProperties>().equippedBoots = characterStats.equippedBoots;
+            objectPrefab.GetComponent<ScriptableObjectProperties>().equippedAccessoryLeft = characterStats.equippedAccessoryLeft;
+            objectPrefab.GetComponent<ScriptableObjectProperties>().equippedAccessoryRight = characterStats.equippedAccessoryRight;
             objectPrefab.GetComponent<ScriptableObjectProperties>().isPlayer = true;
             objectPrefab.GetComponent<SpriteRenderer>().sortingOrder = 1;
 

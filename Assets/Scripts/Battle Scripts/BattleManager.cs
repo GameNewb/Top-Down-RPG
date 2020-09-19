@@ -445,7 +445,7 @@ public class BattleManager : MonoBehaviour
             float critRandomizer = Random.Range(0f, 1f);
 
             // If successful crit, add more damage
-            if (critRandomizer < (currentUser.equippedWeapon.weaponCritChance / 100f))
+            if (critRandomizer < (currentUser.equippedWeapon.weaponCritChance / 100f) + (currentUser.luck/200f))
             {
                 additionalDamage = damageCalculation * currentUser.equippedWeapon.weaponCritMultiplier;
                 damageToTake += (int) additionalDamage;

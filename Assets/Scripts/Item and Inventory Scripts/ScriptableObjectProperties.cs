@@ -17,8 +17,8 @@ public class ScriptableObjectProperties : MonoBehaviour
     public string objectName;
     public string objectDescription;
     public Sprite objectSprite;
-    public int currentHP, maxHP, currentMP, maxMP, strength, vitality, wpnPwr, armrPwr;
-    public Item equippedWeapon, equippedArmor;
+    public int currentHP, maxHP, currentMP, maxMP, strength, vitality, intelligence, dexterity, luck, wpnPwr, armrPwr;
+    public Item equippedWeapon, equippedArmor, equippedShield, equippedGloves, equippedBoots, equippedAccessoryLeft, equippedAccessoryRight;
     public bool hasDied;
     
     [Header("Attack Moves")]
