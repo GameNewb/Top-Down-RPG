@@ -20,8 +20,8 @@ public class GameMenu : MonoBehaviour
 
     [SerializeField] GameObject[] statsButtons;
 
-    [SerializeField] Text statsName, statsHP, statsMP, statsStr, statsDef, statsWpn, statsWpnPower, statsArmor, statsArmorPower, statsExp;
-    [SerializeField] Text strStat, vitStat, intStat, dexStat, luckStat, wpnStat, offHandStat, armrStat, gloveStat, shoesStat, accessory1Stat, accessory2Stat;
+   // [SerializeField] Text statsName, statsHP, statsMP, statsStr, statsDef, statsWpn, statsWpnPower, statsArmor, statsArmorPower, statsExp;
+    [SerializeField] Text hpStat, mpStat, expStat, strStat, vitStat, intStat, dexStat, luckStat, wpnStat, offHandStat, armrStat, gloveStat, shoesStat, accessory1Stat, accessory2Stat;
     [SerializeField] Image statsImage;
     [SerializeField] Image wpnImage, offHandImage, armorImage, gloveImage, shoesImage, accessory1Image, accessory2Image;
 
@@ -196,7 +196,7 @@ public class GameMenu : MonoBehaviour
     }
 
     // Function to update the Char Stat section of the menu
-    public void CharStats(int selected)
+    /*public void CharStats(int selected)
     {
         // Update stats details based on character data
         statsName.text = playerStats[selected].charName;
@@ -229,11 +229,16 @@ public class GameMenu : MonoBehaviour
 
         statsExp.text = (playerStats[selected].expToNextLevel[playerStats[selected].playerLevel] - playerStats[selected].currentEXP).ToString();
         statsImage.sprite = playerStats[selected].charImage;
-    }
+    } */
 
     // Function to update the Char Stat section of the menu
     public void SetStatValues(int selected)
     {
+        // Set HP/MP/EXP
+        hpStat.text = playerStats[selected].currentHP.ToString() + "/" + playerStats[selected].maxHP;
+        mpStat.text = playerStats[selected].currentMP.ToString() + "/" + playerStats[selected].maxMP;
+        expStat.text = (playerStats[selected].expToNextLevel[playerStats[selected].playerLevel] - playerStats[selected].currentEXP).ToString();
+
         // Set image
         statsImage.sprite = playerStats[selected].charImage;
 
@@ -313,7 +318,31 @@ public class GameMenu : MonoBehaviour
             shoesImage.sprite = null;
             shoesImage.color = transparentColor;
         }
-        
+
+        // Set Equipped Shoes Text
+        if (playerStats[selected].equippedAccessoryLeft)
+        {
+            accessory1Image.sprite = playerStats[selected].equippedAccessoryLeft.itemSprite;
+            accessory1Image.color = opaqueColor;
+        }
+        else
+        {
+            accessory1Image.sprite = null;
+            accessory1Image.color = transparentColor;
+        }
+
+        // Set Equipped Shoes Text
+        if (playerStats[selected].equippedAccessoryRight)
+        {
+            accessory2Image.sprite = playerStats[selected].equippedAccessoryRight.itemSprite;
+            accessory2Image.color = opaqueColor;
+        }
+        else
+        {
+            accessory2Image.sprite = null;
+            accessory2Image.color = transparentColor;
+        }
+
     }
 
     // Function to show inventory when "Items" button is clicked on the menu
