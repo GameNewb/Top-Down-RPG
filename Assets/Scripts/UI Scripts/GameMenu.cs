@@ -21,7 +21,9 @@ public class GameMenu : MonoBehaviour
     [SerializeField] GameObject[] statsButtons;
 
     [SerializeField] Text statsName, statsHP, statsMP, statsStr, statsDef, statsWpn, statsWpnPower, statsArmor, statsArmorPower, statsExp;
+    [SerializeField] Text strStat, vitStat, intStat, dexStat, luckStat, wpnStat, offHandStat, armrStat, gloveStat, shoesStat, accessory1Stat, accessory2Stat;
     [SerializeField] Image statsImage;
+    [SerializeField] Image wpnImage, offHandImage, armorImage, gloveImage, shoesImage, accessory1Image, accessory2Image;
 
     [SerializeField] ItemButton[] itemButtons;
 
@@ -42,6 +44,8 @@ public class GameMenu : MonoBehaviour
     public Text gilText;
 
     private InventoryHelper inventoryHelper;
+    private Color transparentColor = new Color(0f, 0f, 0f, 0f);
+    private Color opaqueColor = new Color(1f, 1f, 1f, 1f);
 
     // Start is called before the first frame update
     void Start()
@@ -177,10 +181,11 @@ public class GameMenu : MonoBehaviour
         UpdateMainStats();
 
         // Automatically populate with first character
-        CharStats(0);
+        //CharStats(0);
+        this.SetStatValues(0);
 
         // Update stats info
-        for(int i = 0; i < statsButtons.Length; i++)
+        for (int i = 0; i < statsButtons.Length; i++)
         {
             // Set the buttons based on active characters
             statsButtons[i].SetActive(playerStats[i].gameObject.activeInHierarchy);
@@ -224,6 +229,91 @@ public class GameMenu : MonoBehaviour
 
         statsExp.text = (playerStats[selected].expToNextLevel[playerStats[selected].playerLevel] - playerStats[selected].currentEXP).ToString();
         statsImage.sprite = playerStats[selected].charImage;
+    }
+
+    // Function to update the Char Stat section of the menu
+    public void SetStatValues(int selected)
+    {
+        // Set image
+        statsImage.sprite = playerStats[selected].charImage;
+
+        // Update stats details based on character data
+        strStat.text = playerStats[selected].strength.ToString();
+        vitStat.text = playerStats[selected].vitality.ToString();
+        intStat.text = playerStats[selected].intelligence.ToString();
+        dexStat.text = playerStats[selected].dexterity.ToString();
+        luckStat.text = playerStats[selected].luck.ToString();
+
+        // Set Equipped Weapon Text
+        if (playerStats[selected].equippedWeapon)
+        {
+            wpnStat.text = playerStats[selected].equippedWeapon.itemName;
+            wpnImage.sprite = playerStats[selected].equippedWeapon.itemSprite;
+            wpnImage.color = opaqueColor;
+        }
+        else
+        {
+            wpnStat.text = "None";
+            wpnImage.sprite = null;
+            wpnImage.color = transparentColor;
+        }
+
+        // Set Equipped Armor Text
+        if (playerStats[selected].equippedArmor)
+        {
+            armrStat.text = playerStats[selected].equippedArmor.itemName;
+            armorImage.sprite = playerStats[selected].equippedArmor.itemSprite;
+            armorImage.color = opaqueColor;
+        }
+        else
+        {
+            armrStat.text = "None";
+            armorImage.sprite = null;
+            armorImage.color = transparentColor;
+        }
+
+        // Set Equipped Shield Text
+        if (playerStats[selected].equippedShield)
+        {
+            offHandStat.text = playerStats[selected].equippedShield.itemName;
+            offHandImage.sprite = playerStats[selected].equippedShield.itemSprite;
+            offHandImage.color = opaqueColor;
+        }
+        else
+        {
+            offHandStat.text = "None";
+            offHandImage.sprite = null;
+            offHandImage.color = transparentColor;
+        }
+
+        // Set Equipped Gloves Text
+        if (playerStats[selected].equippedGloves)
+        {
+            gloveStat.text = playerStats[selected].equippedGloves.itemName;
+            gloveImage.sprite = playerStats[selected].equippedGloves.itemSprite;
+            gloveImage.color = opaqueColor;
+        }
+        else
+        {
+            gloveStat.text = "None";
+            gloveImage.sprite = null;
+            gloveImage.color = transparentColor;
+        }
+
+        // Set Equipped Shoes Text
+        if (playerStats[selected].equippedBoots)
+        {
+            shoesStat.text = playerStats[selected].equippedBoots.itemName;
+            shoesImage.sprite = playerStats[selected].equippedBoots.itemSprite;
+            shoesImage.color = opaqueColor;
+        }
+        else
+        {
+            shoesStat.text = "None";
+            shoesImage.sprite = null;
+            shoesImage.color = transparentColor;
+        }
+        
     }
 
     // Function to show inventory when "Items" button is clicked on the menu
