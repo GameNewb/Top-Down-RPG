@@ -25,6 +25,9 @@ MonoBehaviour:
   maxMP: 10
   strength: 8
   vitality: 5
+  intelligence: 5
+  dexterity: 2
+  luck: 2
   wpnPwr: 5
   armrPwr: 5
   hasDied: 0
@@ -34,6 +37,7 @@ MonoBehaviour:
   objectSpriteRenderer: {fileID: 0}
   deadSprite: {fileID: 0}
   aliveSprite: {fileID: 0}
+  flipSpriteHorizontally: 0
   itemsToDrop:
   - {fileID: 11400000, guid: 82f9d7040c96b254db0e0e72a2a58bd0, type: 2}
   - {fileID: 11400000, guid: eb7150500b5f7c242b78fa827fb2ed3d, type: 2}

@@ -141,15 +141,41 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 64b71bec2ed090f4596a2cbbd185f835, type: 2}
   - {fileID: 11400000, guid: 95598cf16bd12ff40afcd6d4ffe560a3, type: 2}
   playerInventory:
-  - item: {fileID: 11400000, guid: eb7150500b5f7c242b78fa827fb2ed3d, type: 2}
+  - item: {fileID: 11400000, guid: 9ac723a42aaff624e9742bafaba8f559, type: 2}
+    amount: 2
+  - item: {fileID: 0}
+    amount: 0
+  - item: {fileID: 11400000, guid: 8ef66e3b088ce624d92078e7389b8226, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: fdcc326b188419c4fb091fe27a75fd38, type: 2}
     amount: 1
   - item: {fileID: 0}
     amount: 0
-  - item: {fileID: 11400000, guid: 82f9d7040c96b254db0e0e72a2a58bd0, type: 2}
+  - item: {fileID: 0}
+    amount: 0
+  - item: {fileID: 11400000, guid: b5315c41aec587541849614b612334a2, type: 2}
+    amount: 2
+  - item: {fileID: 0}
+    amount: 0
+  - item: {fileID: 0}
+    amount: 0
+  - item: {fileID: 0}
+    amount: 0
+  - item: {fileID: 11400000, guid: 2ce494d192e7ea546aec42af4ae533b5, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: 3285a817971c2e84f88ab365ec45034b, type: 2}
     amount: 5
   - item: {fileID: 0}
     amount: 0
-  - item: {fileID: 11400000, guid: e60978d626c53554e985419b2a151bd0, type: 2}
+  - item: {fileID: 0}
+    amount: 0
+  - item: {fileID: 0}
+    amount: 0
+  - item: {fileID: 0}
+    amount: 0
+  - item: {fileID: 0}
+    amount: 0
+  - item: {fileID: 11400000, guid: f6de0b07eef2ce64485a33512a846e11, type: 2}
     amount: 3
   - item: {fileID: 0}
     amount: 0
@@ -157,39 +183,13 @@ MonoBehaviour:
     amount: 0
   - item: {fileID: 0}
     amount: 0
+  - item: {fileID: 11400000, guid: b046783e72fada243ae672708562a5f7, type: 2}
+    amount: 3
   - item: {fileID: 0}
     amount: 0
   - item: {fileID: 0}
     amount: 0
-  - item: {fileID: 11400000, guid: 1156c7f51ddf5d74d9d098feb5f6ed49, type: 2}
-    amount: 1
-  - item: {fileID: 0}
-    amount: 0
-  - item: {fileID: 0}
-    amount: 0
-  - item: {fileID: 0}
-    amount: 0
-  - item: {fileID: 0}
-    amount: 0
-  - item: {fileID: 0}
-    amount: 0
-  - item: {fileID: 0}
-    amount: 0
-  - item: {fileID: 11400000, guid: 58a6f408e3b633948b8970986d9d4903, type: 2}
-    amount: 2
-  - item: {fileID: 0}
-    amount: 0
-  - item: {fileID: 0}
-    amount: 0
-  - item: {fileID: 0}
-    amount: 0
-  - item: {fileID: 11400000, guid: cc1d2ed5f3c911d42beb6f0c8eeb1160, type: 2}
-    amount: 2
-  - item: {fileID: 0}
-    amount: 0
-  - item: {fileID: 0}
-    amount: 0
-  - item: {fileID: 11400000, guid: 405ac4c57e0cf204b89abb0cb1e40ea1, type: 2}
+  - item: {fileID: 11400000, guid: d07c3467211d6a04ca7173773099f0e9, type: 2}
     amount: 1
   - item: {fileID: 0}
     amount: 0
@@ -213,13 +213,13 @@ MonoBehaviour:
     amount: 0
   - item: {fileID: 0}
     amount: 0
-  - item: {fileID: 11400000, guid: 26f1535eee9e3ab41a7ebf797ab22665, type: 2}
-    amount: 2
-  - item: {fileID: 11400000, guid: e3bf1256e46437148a6dfd07e17c5671, type: 2}
+  - item: {fileID: 11400000, guid: 543403fc4a451194db9d7d15355f9d76, type: 2}
     amount: 1
-  - item: {fileID: 11400000, guid: 76a0feac5c2bf2e46b4d25dbeabfaead, type: 2}
+  - item: {fileID: 11400000, guid: 5c8acd8c54e40ea428551cba4d9af5e0, type: 2}
     amount: 1
-  - item: {fileID: 11400000, guid: 64b71bec2ed090f4596a2cbbd185f835, type: 2}
+  - item: {fileID: 11400000, guid: 9b43ce81076a6c94b83de7f8fcbb0d2b, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: 0a2e1bc22d948af49b107d27ff1365cb, type: 2}
     amount: 1
   currentGil: 500
   maxGil: 999999

@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6468a8a97d38f654b8e77723c1ffbdae, type: 3}
+  m_Name: Revitalizing Potion
+  m_EditorClassIdentifier: 
+  isItem: 1
+  isWeapon: 0
+  isArmor: 0
+  itemName: Revitalizing Potion
+  itemDescription: Resurrects a fallen comrade
+  value: 0
+  itemSprite: {fileID: 7101249384074980438, guid: 4e4d5bd34608fd34a907909fa5e0e470,
+    type: 3}
+  itemDropRate: 0
+  amountToDrop: 0
+  amountToChange: 60
+  affectHP: 1
+  affectMP: 0
+  affectStr: 0
+  revivalItem: 1
+  weaponStrength: 0
+  armorStrength: 0

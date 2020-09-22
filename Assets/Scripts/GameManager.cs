@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using UnityEngine.SceneManagement;
+using System.IO;
 
 public class GameManager : MonoBehaviour
 {
@@ -40,6 +41,9 @@ public class GameManager : MonoBehaviour
         instance = this;
         playerController = PlayerController.instance;
 
+        // Initialize ref items
+        this.InitializeRefItems();
+
         // Initialize the data for player and enemy objects
         this.InitializePlayerObjects();
         this.InitializeEnemyObjects();
@@ -70,6 +74,37 @@ public class GameManager : MonoBehaviour
         {
             this.LoadData();
         }
+    }
+
+    private void InitializeRefItems()
+    {
+        List<string> fullResourcePath = new List<string>();
+        string resourcePath = Application.dataPath + "/Resources/Items";
+        string[] directories = Directory.GetDirectories(resourcePath, "*", SearchOption.AllDirectories);
+        
+        // Loop through each Item folder/subfolder
+        foreach (var folder in directories)
+        {
+            string itemSubfolder = folder.Substring(resourcePath.Length + 1);
+
+            DirectoryInfo directory = new DirectoryInfo("Assets/Resources/Items/" + itemSubfolder);
+            FileInfo[] itemFiles = directory.GetFiles("*.asset");
+
+            // For each item in the subfolder, add it to the reference items list
+            foreach (var item in itemFiles)
+            {
+                fullResourcePath.Add("Items/" + itemSubfolder + "/" + item.Name.Replace(".asset", ""));
+            }
+        }
+
+        string[] itemResource = fullResourcePath.ToArray();
+
+        for(var i = 0; i < itemResource.Length; i++)
+        {
+            // Load each item
+            referenceItems[i] = (Item)Resources.Load(itemResource[i]);
+        }
+
     }
 
     // Get Item based on the item object that's passed

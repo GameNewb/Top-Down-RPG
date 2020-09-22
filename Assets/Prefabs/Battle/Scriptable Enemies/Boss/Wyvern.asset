@@ -20,11 +20,14 @@ MonoBehaviour:
   objectDescription: A fabled monster known throughout the continent
   objectSprite: {fileID: 21300000, guid: dd61146dbe36aa6449131fb544979165, type: 3}
   currentHP: 3000
-  maxHP: 300
+  maxHP: 3000
   currentMP: 50
   maxMP: 50
   strength: 15
   vitality: 15
+  intelligence: 15
+  dexterity: 10
+  luck: 10
   wpnPwr: 0
   armrPwr: 0
   hasDied: 0
@@ -35,6 +38,10 @@ MonoBehaviour:
   objectSpriteRenderer: {fileID: 0}
   deadSprite: {fileID: 0}
   aliveSprite: {fileID: 21300000, guid: dd61146dbe36aa6449131fb544979165, type: 3}
+  flipSpriteHorizontally: 0
   itemsToDrop:
   - {fileID: 11400000, guid: 82f9d7040c96b254db0e0e72a2a58bd0, type: 2}
   - {fileID: 11400000, guid: e60978d626c53554e985419b2a151bd0, type: 2}
+  gilMinDropAmount: 0
+  gilMaxDropAmount: 0
+  expPoints: 0

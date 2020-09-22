@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6468a8a97d38f654b8e77723c1ffbdae, type: 3}
+  m_Name: Black Leather Boots
+  m_EditorClassIdentifier: 
+  isItem: 0
+  isWeapon: 0
+  isArmor: 0
+  isRangedWeapon: 0
+  isOffhand: 0
+  isGloves: 0
+  isBoots: 1
+  isAccessory: 0
+  itemName: Black Leather Boots
+  itemDescription: Boots made with a rare metal
+  value: 500
+  itemSprite: {fileID: 1287848914120043789, guid: 4e4d5bd34608fd34a907909fa5e0e470,
+    type: 3}
+  itemDropRate: 5
+  amountToDrop: 1
+  amountToChange: 0
+  affectHP: 0
+  affectMP: 0
+  affectStr: 0
+  revivalItem: 0
+  weaponStrength: 0
+  weaponCritMultiplier: 0
+  weaponCritChance: 0
+  armorStrength: 30
