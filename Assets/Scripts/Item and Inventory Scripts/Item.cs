@@ -11,6 +11,10 @@ public class Item : ScriptableObject
     public bool isWeapon;
     public bool isArmor;
     public bool isRangedWeapon;
+    public bool isOffhand;
+    public bool isGloves;
+    public bool isBoots;
+    public bool isAccessory;
 
     [Header("Item Information")]
     public string itemName;
@@ -64,6 +68,7 @@ public class Item : ScriptableObject
             }
         }
 
+        // Weapon equipment
         if (isWeapon)
         {
             if (selectedChar.equippedWeapon != null)
@@ -75,6 +80,7 @@ public class Item : ScriptableObject
             selectedChar.wpnPwr = weaponStrength;
         }
 
+        // Armor equipment
         if (isArmor)
         {
             if (selectedChar.equippedArmor != null)
@@ -85,6 +91,60 @@ public class Item : ScriptableObject
 
             selectedChar.equippedArmor = this;
             selectedChar.armrPwr = armorStrength;
+        }
+
+        // Off-hand / shield equipment
+        // TODO - refactor bow equipment
+        if (isOffhand)
+        {
+            if (selectedChar.equippedShield != null)
+            {
+                GameManager.instance.AddItem(selectedChar.equippedShield, 1);
+                selectedChar.armrPwr -= selectedChar.equippedShield.armorStrength;
+            }
+
+            selectedChar.equippedShield = this;
+            selectedChar.armrPwr += armorStrength;
+        }
+
+        // Gloves equipment
+        if (isGloves)
+        {
+            if (selectedChar.equippedGloves != null)
+            {
+                GameManager.instance.AddItem(selectedChar.equippedGloves, 1);
+                selectedChar.armrPwr -= selectedChar.equippedGloves.armorStrength;
+            }
+
+            selectedChar.equippedGloves = this;
+            selectedChar.armrPwr += armorStrength;
+        }
+
+        // Boots equipment
+        if (isBoots)
+        {
+            if (selectedChar.equippedBoots != null)
+            {
+                GameManager.instance.AddItem(selectedChar.equippedBoots, 1);
+                selectedChar.armrPwr -= selectedChar.equippedBoots.armorStrength;
+            }
+
+            selectedChar.equippedBoots = this;
+            selectedChar.armrPwr += armorStrength;
+        }
+
+        // Accessory equipment
+        if (isAccessory)
+        {
+            // TODO - Accessory swapping
+            if (selectedChar.equippedAccessoryLeft != null)
+            {
+                GameManager.instance.AddItem(selectedChar.equippedAccessoryLeft, 1);
+
+            }
+
+            selectedChar.equippedAccessoryLeft = this;
+            selectedChar.armrPwr += armorStrength;
         }
 
         GameManager.instance.RemoveItem(this, 1);

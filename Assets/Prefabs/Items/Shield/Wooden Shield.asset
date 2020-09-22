@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6468a8a97d38f654b8e77723c1ffbdae, type: 3}
+  m_Name: Wooden Shield
+  m_EditorClassIdentifier: 
+  isItem: 0
+  isWeapon: 0
+  isArmor: 0
+  isRangedWeapon: 0
+  isOffhand: 1
+  isGloves: 0
+  isBoots: 0
+  isAccessory: 0
+  itemName: Wooden Shield
+  itemDescription: Shield made from wood
+  value: 50
+  itemSprite: {fileID: 3919694969877805321, guid: 4e4d5bd34608fd34a907909fa5e0e470,
+    type: 3}
+  itemDropRate: 20
+  amountToDrop: 1
+  amountToChange: 0
+  affectHP: 0
+  affectMP: 0
+  affectStr: 0
+  revivalItem: 0
+  weaponStrength: 0
+  weaponCritMultiplier: 0
+  weaponCritChance: 0
+  armorStrength: 10

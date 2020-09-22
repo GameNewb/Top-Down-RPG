@@ -30,13 +30,13 @@ public class InventoryHelper
     public void SelectItem(Item activeItem, Text useButton, Text itemName, Text itemDescription)
     {
         // Item is either an equippable item or consumable; update text
-        if (activeItem.isWeapon || activeItem.isArmor)
+        if (activeItem.isItem)
         {
-            useButton.text = "Equip";
+            useButton.text = "Use";
         }
         else
         {
-            useButton.text = "Use";
+            useButton.text = "Equip";
         }
 
         // Update the info

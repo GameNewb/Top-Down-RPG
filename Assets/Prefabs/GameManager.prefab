@@ -63,7 +63,12 @@ MonoBehaviour:
   wpnPwr: 0
   armrPwr: 0
   equippedWeapon: {fileID: 0}
+  equippedShield: {fileID: 0}
   equippedArmor: {fileID: 0}
+  equippedGloves: {fileID: 0}
+  equippedBoots: {fileID: 0}
+  equippedAccessoryLeft: {fileID: 0}
+  equippedAccessoryRight: {fileID: 0}
   charImage: {fileID: 2330761377080779233, guid: 52bffac580e3dfd45a39381226b3e981,
     type: 3}
 --- !u!1 &8028671331069710646
@@ -130,6 +135,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 58a6f408e3b633948b8970986d9d4903, type: 2}
   - {fileID: 11400000, guid: cc1d2ed5f3c911d42beb6f0c8eeb1160, type: 2}
   - {fileID: 11400000, guid: 405ac4c57e0cf204b89abb0cb1e40ea1, type: 2}
+  - {fileID: 11400000, guid: e3bf1256e46437148a6dfd07e17c5671, type: 2}
+  - {fileID: 11400000, guid: 26f1535eee9e3ab41a7ebf797ab22665, type: 2}
+  - {fileID: 11400000, guid: 76a0feac5c2bf2e46b4d25dbeabfaead, type: 2}
+  - {fileID: 11400000, guid: 64b71bec2ed090f4596a2cbbd185f835, type: 2}
+  - {fileID: 11400000, guid: 95598cf16bd12ff40afcd6d4ffe560a3, type: 2}
   playerInventory:
   - item: {fileID: 11400000, guid: eb7150500b5f7c242b78fa827fb2ed3d, type: 2}
     amount: 1
@@ -203,14 +213,14 @@ MonoBehaviour:
     amount: 0
   - item: {fileID: 0}
     amount: 0
-  - item: {fileID: 0}
-    amount: 0
-  - item: {fileID: 0}
-    amount: 0
-  - item: {fileID: 0}
-    amount: 0
-  - item: {fileID: 0}
-    amount: 0
+  - item: {fileID: 11400000, guid: 26f1535eee9e3ab41a7ebf797ab22665, type: 2}
+    amount: 2
+  - item: {fileID: 11400000, guid: e3bf1256e46437148a6dfd07e17c5671, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: 76a0feac5c2bf2e46b4d25dbeabfaead, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: 64b71bec2ed090f4596a2cbbd185f835, type: 2}
+    amount: 1
   currentGil: 500
   maxGil: 999999
   playerReferences:
@@ -308,7 +318,12 @@ MonoBehaviour:
   wpnPwr: 0
   armrPwr: 0
   equippedWeapon: {fileID: 0}
+  equippedShield: {fileID: 0}
   equippedArmor: {fileID: 0}
+  equippedGloves: {fileID: 0}
+  equippedBoots: {fileID: 0}
+  equippedAccessoryLeft: {fileID: 0}
+  equippedAccessoryRight: {fileID: 0}
   charImage: {fileID: 2634803378037534032, guid: 3edbd7036b98b09498d6b1761ac0d486,
     type: 3}
 --- !u!1 &8575078145951471865
@@ -374,5 +389,10 @@ MonoBehaviour:
   wpnPwr: 0
   armrPwr: 0
   equippedWeapon: {fileID: 0}
+  equippedShield: {fileID: 0}
   equippedArmor: {fileID: 0}
+  equippedGloves: {fileID: 0}
+  equippedBoots: {fileID: 0}
+  equippedAccessoryLeft: {fileID: 0}
+  equippedAccessoryRight: {fileID: 0}
   charImage: {fileID: 21300000, guid: e0ddba6d3fcf21f49949fcc95c849aac, type: 3}
