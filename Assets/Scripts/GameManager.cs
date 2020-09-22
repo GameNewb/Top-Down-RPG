@@ -217,10 +217,15 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetInt("Player_" + playerStats[i].charName + "_MaxMP", playerStats[i].maxMP);
             PlayerPrefs.SetInt("Player_" + playerStats[i].charName + "_Strength", playerStats[i].strength);
             PlayerPrefs.SetInt("Player_" + playerStats[i].charName + "_Vitality", playerStats[i].vitality);
+            PlayerPrefs.SetInt("Player_" + playerStats[i].charName + "_Intelligence", playerStats[i].intelligence);
+            PlayerPrefs.SetInt("Player_" + playerStats[i].charName + "_Dexterity", playerStats[i].dexterity);
+            PlayerPrefs.SetInt("Player_" + playerStats[i].charName + "_Luck", playerStats[i].luck);
             PlayerPrefs.SetInt("Player_" + playerStats[i].charName + "_WeaponPower", playerStats[i].wpnPwr);
             PlayerPrefs.SetInt("Player_" + playerStats[i].charName + "_ArmorPower", playerStats[i].armrPwr);
             PlayerPrefs.SetString("Player_" + playerStats[i].charName + "_HasDied", playerStats[i].hasDied.ToString());
 
+            // Check for nulls
+            // Weapon
             if (playerStats[i].equippedWeapon != null)
             {
                 PlayerPrefs.SetString("Player_" + playerStats[i].charName + "_EquippedWeapon", playerStats[i].equippedWeapon.itemName);
@@ -230,6 +235,7 @@ public class GameManager : MonoBehaviour
                 PlayerPrefs.SetString("Player_" + playerStats[i].charName + "_EquippedWeapon", "");
             }
 
+            // Armor
             if (playerStats[i].equippedArmor != null)
             {
                 PlayerPrefs.SetString("Player_" + playerStats[i].charName + "_EquippedArmor", playerStats[i].equippedArmor.itemName);
@@ -237,6 +243,56 @@ public class GameManager : MonoBehaviour
             else
             {
                 PlayerPrefs.SetString("Player_" + playerStats[i].charName + "_EquippedArmor", "");
+            }
+
+            // Shield / off-hand
+            if (playerStats[i].equippedShield != null)
+            {
+                PlayerPrefs.SetString("Player_" + playerStats[i].charName + "_EquippedShield", playerStats[i].equippedShield.itemName);
+            }
+            else
+            {
+                PlayerPrefs.SetString("Player_" + playerStats[i].charName + "_EquippedShield", "");
+            }
+
+            // Gloves
+            if (playerStats[i].equippedGloves != null)
+            {
+                PlayerPrefs.SetString("Player_" + playerStats[i].charName + "_EquippedGloves", playerStats[i].equippedGloves.itemName);
+            }
+            else
+            {
+                PlayerPrefs.SetString("Player_" + playerStats[i].charName + "_EquippedGloves", "");
+            }
+
+            // Boots
+            if (playerStats[i].equippedBoots != null)
+            {
+                PlayerPrefs.SetString("Player_" + playerStats[i].charName + "_EquippedBoots", playerStats[i].equippedBoots.itemName);
+            }
+            else
+            {
+                PlayerPrefs.SetString("Player_" + playerStats[i].charName + "_EquippedBoots", "");
+            }
+
+            // Left accessory
+            if (playerStats[i].equippedAccessoryLeft != null)
+            {
+                PlayerPrefs.SetString("Player_" + playerStats[i].charName + "_EquippedAccessoryLeft", playerStats[i].equippedAccessoryLeft.itemName);
+            }
+            else
+            {
+                PlayerPrefs.SetString("Player_" + playerStats[i].charName + "_EquippedAccessoryLeft", "");
+            }
+
+            // Right accessory
+            if (playerStats[i].equippedAccessoryRight != null)
+            {
+                PlayerPrefs.SetString("Player_" + playerStats[i].charName + "_EquippedAccessoryRight", playerStats[i].equippedAccessoryRight.itemName);
+            }
+            else
+            {
+                PlayerPrefs.SetString("Player_" + playerStats[i].charName + "_EquippedAccessoryRight", "");
             }
         }
 
@@ -285,6 +341,9 @@ public class GameManager : MonoBehaviour
             playerStats[i].maxMP = PlayerPrefs.GetInt("Player_" + playerStats[i].charName + "_MaxMP");
             playerStats[i].strength = PlayerPrefs.GetInt("Player_" + playerStats[i].charName + "_Strength");
             playerStats[i].vitality = PlayerPrefs.GetInt("Player_" + playerStats[i].charName + "_Vitality");
+            playerStats[i].intelligence = PlayerPrefs.GetInt("Player_" + playerStats[i].charName + "_Intelligence");
+            playerStats[i].dexterity = PlayerPrefs.GetInt("Player_" + playerStats[i].charName + "_Dexterity");
+            playerStats[i].luck = PlayerPrefs.GetInt("Player_" + playerStats[i].charName + "_Luck");
             playerStats[i].wpnPwr = PlayerPrefs.GetInt("Player_" + playerStats[i].charName + "_WeaponPower");
             playerStats[i].armrPwr = PlayerPrefs.GetInt("Player_" + playerStats[i].charName + "_ArmorPower");
             
@@ -308,7 +367,31 @@ public class GameManager : MonoBehaviour
             {
                 playerStats[i].equippedArmor = this.GetItemDetailsByName(PlayerPrefs.GetString("Player_" + playerStats[i].charName + "_EquippedArmor"));
             }
+
+            if (PlayerPrefs.HasKey("Player_" + playerStats[i].charName + "_EquippedShield"))
+            {
+                playerStats[i].equippedShield = this.GetItemDetailsByName(PlayerPrefs.GetString("Player_" + playerStats[i].charName + "_EquippedShield"));
+            }
+
+            if (PlayerPrefs.HasKey("Player_" + playerStats[i].charName + "_EquippedGloves"))
+            {
+                playerStats[i].equippedGloves = this.GetItemDetailsByName(PlayerPrefs.GetString("Player_" + playerStats[i].charName + "_EquippedGloves"));
+            }
             
+            if (PlayerPrefs.HasKey("Player_" + playerStats[i].charName + "_EquippedBoots"))
+            {
+                playerStats[i].equippedBoots = this.GetItemDetailsByName(PlayerPrefs.GetString("Player_" + playerStats[i].charName + "_EquippedBoots"));
+            }
+
+            if (PlayerPrefs.HasKey("Player_" + playerStats[i].charName + "_EquippedAccessoryLeft"))
+            {
+                playerStats[i].equippedAccessoryLeft = this.GetItemDetailsByName(PlayerPrefs.GetString("Player_" + playerStats[i].charName + "_EquippedAccessoryLeft"));
+            }
+
+            if (PlayerPrefs.HasKey("Player_" + playerStats[i].charName + "_EquippedAccessoryRight"))
+            {
+                playerStats[i].equippedAccessoryRight = this.GetItemDetailsByName(PlayerPrefs.GetString("Player_" + playerStats[i].charName + "_EquippedAccessoryRight"));
+            }
         }
 
         // Retrieve player saved inventory
