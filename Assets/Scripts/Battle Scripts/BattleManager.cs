@@ -412,19 +412,29 @@ public class BattleManager : MonoBehaviour
     {
         var currentUser = activeCombatants[currentTurn].GetComponent<ScriptableObjectProperties>();
         var targetUser = activeCombatants[target].GetComponent<ScriptableObjectProperties>();
+        bool isMagicAtk = true;
         float atkPower = currentUser.strength + currentUser.wpnPwr;
+        float matkPower = currentUser.intelligence + currentUser.wpnPwr;
         float vitPower = targetUser.vitality + targetUser.armrPwr;
 
         // Move to target if it's a physical/melee attack
-        if (moveName == "Slash" && !currentUser.isPlayer)
+        if (!currentUser.isPlayer)
         {
-            StartCoroutine(MoveTarget(currentTurn, target));
-        }
-        else if (moveName == "Slash" && currentUser.isPlayer)
-        {
-            if (currentUser.equippedWeapon != null && !currentUser.equippedWeapon.isRangedWeapon)
+            if (moveName == "Slash")
             {
                 StartCoroutine(MoveTarget(currentTurn, target));
+                isMagicAtk = false;
+            }
+        }
+        else if(currentUser.isPlayer)
+        {
+            if (moveName == "Slash")
+            {
+                isMagicAtk = false;
+                if (currentUser.equippedWeapon != null && !currentUser.equippedWeapon.isRangedWeapon)
+                {
+                    StartCoroutine(MoveTarget(currentTurn, target));
+                }
             }
         }
 
@@ -436,6 +446,13 @@ public class BattleManager : MonoBehaviour
 
         // Calculate the damage to take
         float damageCalculation = (atkPower / vitPower) * movesetPower * Random.Range(.9f, 1.1f);
+
+        // Use intelligence stat for magic damage
+        if (isMagicAtk)
+        {
+            damageCalculation = (matkPower / vitPower) * movesetPower * Random.Range(.9f, 1.1f);
+        }
+
         float additionalDamage = 0f;
         int damageToTake = Mathf.RoundToInt(damageCalculation);
 
@@ -468,6 +485,10 @@ public class BattleManager : MonoBehaviour
         if (targetUser.currentHP <= 0)
         {
             targetUser.hasDied = true;
+
+            // Reset camera to stop shake
+            camera.GetComponent<ScreenShake>().transform = camera.gameObject.transform;
+            camera.GetComponent<ScreenShake>().initialPosition = camera.gameObject.transform.localPosition;
 
             // Set dead sprite if player character dies
             if (targetUser.isPlayer)

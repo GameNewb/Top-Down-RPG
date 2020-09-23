@@ -68,6 +68,9 @@ public class BattleManagerHelper
             objectPrefab.GetComponent<ScriptableObjectProperties>().maxMP = battleScriptable.maxMP;
             objectPrefab.GetComponent<ScriptableObjectProperties>().strength = battleScriptable.strength;
             objectPrefab.GetComponent<ScriptableObjectProperties>().vitality = battleScriptable.vitality;
+            objectPrefab.GetComponent<ScriptableObjectProperties>().intelligence = battleScriptable.intelligence;
+            objectPrefab.GetComponent<ScriptableObjectProperties>().dexterity = battleScriptable.dexterity;
+            objectPrefab.GetComponent<ScriptableObjectProperties>().luck = battleScriptable.luck;
             objectPrefab.GetComponent<ScriptableObjectProperties>().hasDied = battleScriptable.hasDied;
             objectPrefab.GetComponent<ScriptableObjectProperties>().movesAvailable = battleScriptable.movesAvailable;
             objectPrefab.GetComponent<ScriptableObjectProperties>().objectSpriteRenderer = objectPrefab.GetComponent<SpriteRenderer>();

@@ -26,6 +26,9 @@ MonoBehaviour:
   maxMP: 15
   strength: 5
   vitality: 8
+  intelligence: 3
+  dexterity: 2
+  luck: 2
   wpnPwr: 5
   armrPwr: 10
   hasDied: 0

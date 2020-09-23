@@ -125,21 +125,7 @@ MonoBehaviour:
   gameMenuOpen: 0
   dialogActive: 0
   activeBattle: 0
-  referenceItems:
-  - {fileID: 11400000, guid: 82f9d7040c96b254db0e0e72a2a58bd0, type: 2}
-  - {fileID: 11400000, guid: eb7150500b5f7c242b78fa827fb2ed3d, type: 2}
-  - {fileID: 11400000, guid: c5bfc1a7a0b3283489957914cab3fc74, type: 2}
-  - {fileID: 11400000, guid: 1a57e9849d49ace46aa806c4a8b70de3, type: 2}
-  - {fileID: 11400000, guid: 1156c7f51ddf5d74d9d098feb5f6ed49, type: 2}
-  - {fileID: 11400000, guid: e60978d626c53554e985419b2a151bd0, type: 2}
-  - {fileID: 11400000, guid: 58a6f408e3b633948b8970986d9d4903, type: 2}
-  - {fileID: 11400000, guid: cc1d2ed5f3c911d42beb6f0c8eeb1160, type: 2}
-  - {fileID: 11400000, guid: 405ac4c57e0cf204b89abb0cb1e40ea1, type: 2}
-  - {fileID: 11400000, guid: e3bf1256e46437148a6dfd07e17c5671, type: 2}
-  - {fileID: 11400000, guid: 26f1535eee9e3ab41a7ebf797ab22665, type: 2}
-  - {fileID: 11400000, guid: 76a0feac5c2bf2e46b4d25dbeabfaead, type: 2}
-  - {fileID: 11400000, guid: 64b71bec2ed090f4596a2cbbd185f835, type: 2}
-  - {fileID: 11400000, guid: 95598cf16bd12ff40afcd6d4ffe560a3, type: 2}
+  referenceItems: []
   playerInventory:
   - item: {fileID: 11400000, guid: 9ac723a42aaff624e9742bafaba8f559, type: 2}
     amount: 2

@@ -98,8 +98,9 @@ public class GameManager : MonoBehaviour
         }
 
         string[] itemResource = fullResourcePath.ToArray();
+        referenceItems = new Item[itemResource.Length];
 
-        for(var i = 0; i < itemResource.Length; i++)
+        for (var i = 0; i < itemResource.Length; i++) 
         {
             // Load each item
             referenceItems[i] = (Item)Resources.Load(itemResource[i]);
