@@ -251,6 +251,7 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetInt("Player_" + playerStats[i].charName + "_CurrentMP", playerStats[i].currentMP);
             PlayerPrefs.SetInt("Player_" + playerStats[i].charName + "_MaxHP", playerStats[i].maxHP);
             PlayerPrefs.SetInt("Player_" + playerStats[i].charName + "_MaxMP", playerStats[i].maxMP);
+            PlayerPrefs.SetInt("Player_" + playerStats[i].charName + "_StatPoints", playerStats[i].statPoints);
             PlayerPrefs.SetInt("Player_" + playerStats[i].charName + "_Strength", playerStats[i].strength);
             PlayerPrefs.SetInt("Player_" + playerStats[i].charName + "_Vitality", playerStats[i].vitality);
             PlayerPrefs.SetInt("Player_" + playerStats[i].charName + "_Intelligence", playerStats[i].intelligence);
@@ -375,6 +376,7 @@ public class GameManager : MonoBehaviour
             playerStats[i].currentMP = PlayerPrefs.GetInt("Player_" + playerStats[i].charName + "_CurrentMP");
             playerStats[i].maxHP = PlayerPrefs.GetInt("Player_" + playerStats[i].charName + "_MaxHP");
             playerStats[i].maxMP = PlayerPrefs.GetInt("Player_" + playerStats[i].charName + "_MaxMP");
+            playerStats[i].statPoints = PlayerPrefs.GetInt("Player_" + playerStats[i].charName + "_StatPoints");
             playerStats[i].strength = PlayerPrefs.GetInt("Player_" + playerStats[i].charName + "_Strength");
             playerStats[i].vitality = PlayerPrefs.GetInt("Player_" + playerStats[i].charName + "_Vitality");
             playerStats[i].intelligence = PlayerPrefs.GetInt("Player_" + playerStats[i].charName + "_Intelligence");

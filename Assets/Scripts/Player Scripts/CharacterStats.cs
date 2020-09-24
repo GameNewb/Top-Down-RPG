@@ -21,6 +21,7 @@ public class CharacterStats : MonoBehaviour
     public int[] mpLVLBonus;
 
     // Attribute stats
+    public int statPoints = 0;
     public int strength;
     public int vitality;
     public int intelligence;
@@ -50,6 +51,8 @@ public class CharacterStats : MonoBehaviour
     {
     }
 
+    // Function to add exp
+    // TODO: change LVL up logic
     public void AddExp(int expToAdd)
     {
         currentEXP += expToAdd;
@@ -62,6 +65,7 @@ public class CharacterStats : MonoBehaviour
                 // Reset EXP
                 currentEXP -= expToNextLevel[playerLevel];
                 playerLevel++;
+                statPoints += 3;
 
                 // Determine whether to add to str or vitality
                 if (playerLevel % 2 == 0)

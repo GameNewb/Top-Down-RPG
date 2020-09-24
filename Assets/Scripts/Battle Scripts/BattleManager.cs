@@ -76,7 +76,7 @@ public class BattleManager : MonoBehaviour
     private int gilReward;
 
     [SerializeField] private GameObject camera;
-
+    
     // Start is called before the first frame update
     void Start()
     {

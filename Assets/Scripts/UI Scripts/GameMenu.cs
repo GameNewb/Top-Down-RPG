@@ -19,8 +19,7 @@ public class GameMenu : MonoBehaviour
     [SerializeField] GameObject[] charStatHolder;
 
     [SerializeField] GameObject[] statsButtons;
-
-   // [SerializeField] Text statsName, statsHP, statsMP, statsStr, statsDef, statsWpn, statsWpnPower, statsArmor, statsArmorPower, statsExp;
+    
     [SerializeField] Text hpStat, mpStat, expStat, strStat, vitStat, intStat, dexStat, luckStat, wpnStat, offHandStat, armrStat, gloveStat, shoesStat, accessory1Stat, accessory2Stat;
     [SerializeField] Image statsImage;
     [SerializeField] Image wpnImage, offHandImage, armorImage, gloveImage, shoesImage, accessory1Image, accessory2Image;
@@ -43,9 +42,18 @@ public class GameMenu : MonoBehaviour
 
     public Text gilText;
 
+    // Variables to clean the image
     private InventoryHelper inventoryHelper;
     private Color transparentColor = new Color(0f, 0f, 0f, 0f);
     private Color opaqueColor = new Color(1f, 1f, 1f, 1f);
+
+    // Variables for Stat management
+    [Header("Stat Increase/Decrease")]
+    [SerializeField] private GameObject strengthObjStat;
+    [SerializeField] private GameObject vitalityObjStat;
+    [SerializeField] private GameObject intelligenceObjStat;
+    [SerializeField] private GameObject dexterityObjStat;
+    [SerializeField] private GameObject luckObjStat;
 
     // Start is called before the first frame update
     void Start()
@@ -181,7 +189,6 @@ public class GameMenu : MonoBehaviour
         UpdateMainStats();
 
         // Automatically populate with first character
-        //CharStats(0);
         this.SetStatValues(0);
 
         // Update stats info
@@ -194,42 +201,6 @@ public class GameMenu : MonoBehaviour
             statsButtons[i].GetComponentInChildren<Text>().text = playerStats[i].charName;
         }
     }
-
-    // Function to update the Char Stat section of the menu
-    /*public void CharStats(int selected)
-    {
-        // Update stats details based on character data
-        statsName.text = playerStats[selected].charName;
-        statsHP.text = playerStats[selected].currentHP.ToString() + "/" + playerStats[selected].maxHP;
-        statsMP.text = playerStats[selected].currentMP.ToString() + "/" + playerStats[selected].maxMP;
-        statsStr.text = playerStats[selected].strength.ToString();
-        statsDef.text = playerStats[selected].vitality.ToString();
-
-        // Set Equipped Weapon Text
-        if (playerStats[selected].equippedWeapon)
-        {
-            statsWpn.text = playerStats[selected].equippedWeapon.itemName;
-        }
-        else
-        {
-            statsWpn.text = "None";
-        }
-        statsWpnPower.text = playerStats[selected].wpnPwr.ToString();
-
-        // Set Equipped Armor Text
-        if (playerStats[selected].equippedArmor)
-        {
-            statsArmor.text = playerStats[selected].equippedArmor.itemName;
-        }
-        else
-        {
-            statsArmor.text = "None";
-        }
-        statsArmorPower.text = playerStats[selected].armrPwr.ToString();
-
-        statsExp.text = (playerStats[selected].expToNextLevel[playerStats[selected].playerLevel] - playerStats[selected].currentEXP).ToString();
-        statsImage.sprite = playerStats[selected].charImage;
-    } */
 
     // Function to update the Char Stat section of the menu
     public void SetStatValues(int selected)
@@ -343,6 +314,23 @@ public class GameMenu : MonoBehaviour
             accessory2Image.color = transparentColor;
         }
 
+        // Set the stats +/- buttons
+        strengthObjStat.GetComponent<StatManager>().selectedCharacter = selected;
+        vitalityObjStat.GetComponent<StatManager>().selectedCharacter = selected;
+        intelligenceObjStat.GetComponent<StatManager>().selectedCharacter = selected;
+        dexterityObjStat.GetComponent<StatManager>().selectedCharacter = selected;
+        luckObjStat.GetComponent<StatManager>().selectedCharacter = selected;
+    }
+
+    // Function to update the stat page
+    public void UpdatDetailedStat(int selected)
+    {
+        // Update stats details based on character data
+        strStat.text = playerStats[selected].strength.ToString();
+        vitStat.text = playerStats[selected].vitality.ToString();
+        intStat.text = playerStats[selected].intelligence.ToString();
+        dexStat.text = playerStats[selected].dexterity.ToString();
+        luckStat.text = playerStats[selected].luck.ToString();
     }
 
     // Function to show inventory when "Items" button is clicked on the menu
