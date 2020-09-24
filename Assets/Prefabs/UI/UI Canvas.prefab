@@ -19107,6 +19107,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedCharacter: 0
+  subtractButton: {fileID: 2481598975115807439}
+  addButton: {fileID: 4363166307261464550}
 --- !u!1 &2726597708735304880
 GameObject:
   m_ObjectHideFlags: 0
@@ -20143,6 +20145,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedCharacter: 0
+  subtractButton: {fileID: 1826498787614589807}
+  addButton: {fileID: 1796796825331449555}
 --- !u!1 &2924250074148569726
 GameObject:
   m_ObjectHideFlags: 0
@@ -21437,6 +21441,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedCharacter: 0
+  subtractButton: {fileID: 7211048079618097655}
+  addButton: {fileID: 3947763551025142850}
 --- !u!1 &3035485396728460394
 GameObject:
   m_ObjectHideFlags: 0
@@ -22689,6 +22695,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedCharacter: 0
+  subtractButton: {fileID: 419981360931268689}
+  addButton: {fileID: 7984850289799035310}
 --- !u!1 &3203664199925779933
 GameObject:
   m_ObjectHideFlags: 0
@@ -24718,7 +24726,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 120.27, y: -238.79999}
+  m_AnchoredPosition: {x: 120.27, y: -238.7998}
   m_SizeDelta: {x: 240.54, y: 75.52}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7194719077693461765
@@ -30997,7 +31005,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 120.27, y: -37.76}
+  m_AnchoredPosition: {x: 120.27, y: -37.759766}
   m_SizeDelta: {x: 240.54, y: 75.52}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3183741684596965306
@@ -32757,7 +32765,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 120.27, y: -138.28}
+  m_AnchoredPosition: {x: 120.27, y: -138.27979}
   m_SizeDelta: {x: 240.54, y: 75.52}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7472761738634782470
@@ -51256,6 +51264,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedCharacter: 0
+  subtractButton: {fileID: 1046859672836484707}
+  addButton: {fileID: 3842961217075648059}
 --- !u!1 &7349693319651214108
 GameObject:
   m_ObjectHideFlags: 0
