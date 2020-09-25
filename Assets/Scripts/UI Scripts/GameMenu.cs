@@ -54,6 +54,9 @@ public class GameMenu : MonoBehaviour
     [SerializeField] private GameObject intelligenceObjStat;
     [SerializeField] private GameObject dexterityObjStat;
     [SerializeField] private GameObject luckObjStat;
+    [SerializeField] private GameObject[] statObjects;
+    [SerializeField] private Text statPointText;
+
 
     // Start is called before the first frame update
     void Start()
@@ -320,10 +323,12 @@ public class GameMenu : MonoBehaviour
         intelligenceObjStat.GetComponent<StatManager>().selectedCharacter = selected;
         dexterityObjStat.GetComponent<StatManager>().selectedCharacter = selected;
         luckObjStat.GetComponent<StatManager>().selectedCharacter = selected;
+
+        this.UpdateDetailedStat(selected);
     }
 
     // Function to update the stat page
-    public void UpdatDetailedStat(int selected)
+    public void UpdateDetailedStat(int selected)
     {
         // Update stats details based on character data
         strStat.text = playerStats[selected].strength.ToString();
@@ -331,6 +336,30 @@ public class GameMenu : MonoBehaviour
         intStat.text = playerStats[selected].intelligence.ToString();
         dexStat.text = playerStats[selected].dexterity.ToString();
         luckStat.text = playerStats[selected].luck.ToString();
+        statPointText.text = playerStats[selected].statPoints.ToString();
+
+        // Reactivate all + button when player has statpoints
+        if (playerStats[selected].statPoints > 0)
+        {
+            for (int i = 0; i < statObjects.Length; i++)
+            {
+                statObjects[i].transform.GetChild(1).GetComponent<Button>().interactable = true;
+            }
+        }
+        else
+        {
+            for (int i = 0; i < statObjects.Length; i++)
+            {
+                statObjects[i].transform.GetChild(1).GetComponent<Button>().interactable = false;
+            }
+        }
+
+        // Reactivate subtract button when opening a new Character page
+        statObjects[0].transform.GetChild(0).GetComponent<Button>().interactable = playerStats[selected].strength > 0 ? true : false;
+        statObjects[1].transform.GetChild(0).GetComponent<Button>().interactable = playerStats[selected].vitality > 0 ? true : false;
+        statObjects[2].transform.GetChild(0).GetComponent<Button>().interactable = playerStats[selected].intelligence > 0 ? true : false;
+        statObjects[3].transform.GetChild(0).GetComponent<Button>().interactable = playerStats[selected].dexterity > 0 ? true : false;
+        statObjects[4].transform.GetChild(0).GetComponent<Button>().interactable = playerStats[selected].luck > 0 ? true : false;
     }
 
     // Function to show inventory when "Items" button is clicked on the menu

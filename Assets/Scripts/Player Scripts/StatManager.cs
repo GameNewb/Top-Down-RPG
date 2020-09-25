@@ -55,22 +55,14 @@ public class StatManager : MonoBehaviour
             }
 
             playerStats[selectedCharacter].statPoints--;
-
-            if (playerStats[selectedCharacter].statPoints <= 0)
-            {
-                addButton.GetComponent<Button>().interactable = false;
-            }
-
-            // Update UI
-            GameMenu.instance.UpdatDetailedStat(selectedCharacter);
         } 
         else
         {
             addButton.GetComponent<Button>().interactable = false;
         }
 
-        // Reactivate subtract button
-        subtractButton.GetComponent<Button>().interactable = true;
+        // Update UI
+        GameMenu.instance.UpdateDetailedStat(selectedCharacter);
     }
 
     // Function to subtract from the current stat
@@ -121,10 +113,7 @@ public class StatManager : MonoBehaviour
         
         playerStats[selectedCharacter].statPoints++;
 
-        // Reactivate add button
-        addButton.GetComponent<Button>().interactable = true;
-
         // Update UI
-        GameMenu.instance.UpdatDetailedStat(selectedCharacter);
+        GameMenu.instance.UpdateDetailedStat(selectedCharacter);
     }
 }
