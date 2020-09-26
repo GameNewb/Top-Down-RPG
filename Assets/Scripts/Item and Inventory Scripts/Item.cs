@@ -37,7 +37,7 @@ public class Item : ScriptableObject
     [Tooltip("Crit Chance in Percentage")] public float weaponCritChance;
     public int armorStrength;
 
-    public void Use(CharacterStats charToUseOn)
+    public void Use(CharacterStats charToUseOn, int slot)
     {
         CharacterStats selectedChar = charToUseOn;
         
@@ -136,14 +136,24 @@ public class Item : ScriptableObject
         // Accessory equipment
         if (isAccessory)
         {
-            // TODO - Accessory swapping
-            if (selectedChar.equippedAccessoryLeft != null)
+            // Accesory swap 
+            if (slot == 1)
             {
-                GameManager.instance.AddItem(selectedChar.equippedAccessoryLeft, 1);
-
+                if (selectedChar.equippedAccessoryLeft != null)
+                {
+                    GameManager.instance.AddItem(selectedChar.equippedAccessoryLeft, 1);
+                }
+                selectedChar.equippedAccessoryLeft = this;
+            }
+            else if (slot == 2)
+            {
+                if (selectedChar.equippedAccessoryRight != null)
+                {
+                    GameManager.instance.AddItem(selectedChar.equippedAccessoryRight, 1);
+                }
+                selectedChar.equippedAccessoryRight = this;
             }
 
-            selectedChar.equippedAccessoryLeft = this;
             selectedChar.armrPwr += armorStrength;
         }
 

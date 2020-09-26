@@ -444,68 +444,81 @@ public class BattleManager : MonoBehaviour
             StartCoroutine(PlayAttackAnimation(currentTurn, moveName));
         }
 
-        // Calculate the damage to take
-        float damageCalculation = (atkPower / vitPower) * movesetPower * Random.Range(.9f, 1.1f);
+        // Calculate dodge chance
+        // TODO- add better calculation
+        float dodgeRandomizer = Random.Range(0f, 1f);
+        float targetUserDodgeChance = (targetUser.dexterity / 100f) * 0.5f;
 
-        // Use intelligence stat for magic damage
-        if (isMagicAtk)
+        if (dodgeRandomizer < targetUserDodgeChance)
         {
-            damageCalculation = (matkPower / vitPower) * movesetPower * Random.Range(.9f, 1.1f);
+            // Instantiate the "MISS" on screen
+            Instantiate(damageNumberEffect, activeCombatants[target].transform.position, activeCombatants[target].transform.rotation).Miss();
         }
-
-        float additionalDamage = 0f;
-        int damageToTake = Mathf.RoundToInt(damageCalculation);
-
-        // Calculate CRIT Values
-        if (currentUser.equippedWeapon != null)
+        else
         {
-            float critRandomizer = Random.Range(0f, 1f);
+            // Calculate the damage to take
+            float damageCalculation = (atkPower / vitPower) * movesetPower * Random.Range(.9f, 1.1f);
 
-            // If successful crit, add more damage
-            if (critRandomizer < (currentUser.equippedWeapon.weaponCritChance / 100f) + (currentUser.luck/200f))
+            // Use intelligence stat for magic damage
+            if (isMagicAtk)
             {
-                additionalDamage = damageCalculation * currentUser.equippedWeapon.weaponCritMultiplier;
-                damageToTake += (int) additionalDamage;
+                damageCalculation = (matkPower / vitPower) * movesetPower * Random.Range(.9f, 1.1f);
+            }
 
-                // Shake the camera
-                if (camera)
+            float additionalDamage = 0f;
+            int damageToTake = Mathf.RoundToInt(damageCalculation);
+
+            // Calculate CRIT Values
+            if (currentUser.equippedWeapon != null)
+            {
+                float critRandomizer = Random.Range(0f, 1f);
+
+                // If successful crit, add more damage
+                if (critRandomizer < (currentUser.equippedWeapon.weaponCritChance / 100f) + (currentUser.luck / 200f))
                 {
-                    // Disable Cinemachine to allow shake
-                    camera.GetComponent<ScreenShake>().transform = camera.gameObject.transform;
-                    camera.GetComponent<ScreenShake>().initialPosition = camera.gameObject.transform.localPosition;
-                    camera.GetComponent<ScreenShake>().shakeMagnitude = 0.3f;
-                    camera.GetComponent<ScreenShake>().TriggerShake(0.5f);
+                    additionalDamage = damageCalculation * currentUser.equippedWeapon.weaponCritMultiplier;
+                    damageToTake += (int)additionalDamage;
+
+                    // Shake the camera
+                    if (camera)
+                    {
+                        // Disable Cinemachine to allow shake
+                        camera.GetComponent<ScreenShake>().transform = camera.gameObject.transform;
+                        camera.GetComponent<ScreenShake>().initialPosition = camera.gameObject.transform.localPosition;
+                        camera.GetComponent<ScreenShake>().shakeMagnitude = 0.3f;
+                        camera.GetComponent<ScreenShake>().TriggerShake(0.5f);
+                    }
                 }
             }
-        }
-        
-        targetUser.currentHP -= damageToTake;
 
-        // Set status
-        if (targetUser.currentHP <= 0)
-        {
-            targetUser.hasDied = true;
+            targetUser.currentHP -= damageToTake;
 
-            // Reset camera to stop shake
-            camera.GetComponent<ScreenShake>().transform = camera.gameObject.transform;
-            camera.GetComponent<ScreenShake>().initialPosition = camera.gameObject.transform.localPosition;
-
-            // Set dead sprite if player character dies
-            if (targetUser.isPlayer)
+            // Set status
+            if (targetUser.currentHP <= 0)
             {
-                targetUser.objectSpriteRenderer.sprite = targetUser.deadSprite;
-                activeCombatants[target].GetComponent<Animator>().SetBool("isDead", true);
+                targetUser.hasDied = true;
+
+                // Reset camera to stop shake
+                camera.GetComponent<ScreenShake>().transform = camera.gameObject.transform;
+                camera.GetComponent<ScreenShake>().initialPosition = camera.gameObject.transform.localPosition;
+
+                // Set dead sprite if player character dies
+                if (targetUser.isPlayer)
+                {
+                    targetUser.objectSpriteRenderer.sprite = targetUser.deadSprite;
+                    activeCombatants[target].GetComponent<Animator>().SetBool("isDead", true);
+                }
             }
-        }
 
-        // Play damaged animation
-        if (activeCombatants[target].GetComponent<Animator>().runtimeAnimatorController)
-        {
-            StartCoroutine(PlayDamagedAnimation(target));
-        }
+            // Play damaged animation
+            if (activeCombatants[target].GetComponent<Animator>().runtimeAnimatorController)
+            {
+                StartCoroutine(PlayDamagedAnimation(target));
+            }
 
-        // Instantiate the damage numbers on screen
-        Instantiate(damageNumberEffect, activeCombatants[target].transform.position, activeCombatants[target].transform.rotation).SetDamage(damageToTake);
+            // Instantiate the damage numbers on screen
+            Instantiate(damageNumberEffect, activeCombatants[target].transform.position, activeCombatants[target].transform.rotation).SetDamage(damageToTake);
+        }
 
         // Update player UI stats
         this.UpdateUIStats();

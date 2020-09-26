@@ -12,6 +12,8 @@ public class BattleDamageNumber : MonoBehaviour
 
     public float placementJitter = 2f;
 
+    private Color yellowColor = new Color(0.8f, 0.8f, 0f);
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,5 +30,12 @@ public class BattleDamageNumber : MonoBehaviour
     {
         damageText.text = damageAmount.ToString();
         transform.position += new Vector3(Random.Range(-placementJitter*1.5f, placementJitter*1.5f), Random.Range(-placementJitter, placementJitter), 0f);
+    }
+
+    public void Miss()
+    {
+        damageText.text = "MISS";
+        damageText.color = yellowColor;
+        transform.position += new Vector3(Random.Range(-placementJitter * 1.5f, placementJitter * 1.5f), Random.Range(-placementJitter, placementJitter), 0f);
     }
 }

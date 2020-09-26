@@ -30,6 +30,7 @@ public class GameMenu : MonoBehaviour
     [SerializeField] Item activeItem;
     [SerializeField] Text itemName, itemDescription, useButtonText;
     [SerializeField] GameObject actionPanel;
+    [SerializeField] GameObject accessoryPanel;
 
     // Variables for the Discard panel
     [SerializeField] private GameObject discardPanel;
@@ -42,9 +43,12 @@ public class GameMenu : MonoBehaviour
     public Text[] itemToUseOnNames;
 
     public Text gilText;
-
-    // Variables to clean the image
+    
     private InventoryHelper inventoryHelper;
+    private int accessorySlot = 1;
+    private int selectedChar = 1;
+    
+    // Variables to clean the image
     private Color transparentColor = new Color(0f, 0f, 0f, 0f);
     private Color opaqueColor = new Color(1f, 1f, 1f, 1f);
 
@@ -421,6 +425,7 @@ public class GameMenu : MonoBehaviour
                     {
                         // Remove 1 item amount from inventory
                         GameManager.instance.RemoveItem(activeItem, 1);
+                        this.CloseItemToUseOnChoice();
                     }
                     break;
                 }
@@ -444,7 +449,9 @@ public class GameMenu : MonoBehaviour
         activeItem = null;
         itemName.text = null;
         itemDescription.text = null;
-        this.CloseDiscardPanel();
+
+        this.ClosePanel(discardPanel);
+        this.CloseItemToUseOnChoice();
     }
 
     // Closes the Discard Panel
@@ -456,6 +463,21 @@ public class GameMenu : MonoBehaviour
         //amountProperties.text = amountText.ToString();
         //Debug.Log(amountProperties.text);
         discardPanel.SetActive(false);
+    }
+
+    // Function to close any panel object
+    public void ClosePanel(GameObject panel)
+    {
+        panel.SetActive(false);
+    }
+
+    // Function to set the accessory slot
+    public void SetAccessorySlot(int slot)
+    {
+        accessorySlot = slot;
+        activeItem.Use(playerStats[selectedChar], accessorySlot);
+
+        this.CloseItemToUseOnChoice();
     }
 
     public void SaveGame()
@@ -505,23 +527,34 @@ public class GameMenu : MonoBehaviour
     public void CloseItemToUseOnChoice()
     {
         itemToUseOnMenu.SetActive(false);
+        accessoryPanel.SetActive(false);
+        actionPanel.SetActive(false);
+        
+        // Fix for items being selectable even after use - leads to equipment duplication
+        activeItem = null;
+        selectedItem = "";
+
+        itemName.text = "";
+        itemDescription.text = "";
     }
 
     public void UseItem(int characterSelected)
     {
         if (activeItem)
         {
-            activeItem.Use(playerStats[characterSelected]);
+            // If accessory, allow player to select which slot
+            if (activeItem.isAccessory)
+            {
+                selectedChar = characterSelected;
+                accessoryPanel.SetActive(true);
+            }
+            else
+            {
+                activeItem.Use(playerStats[characterSelected], accessorySlot);
+
+                this.CloseItemToUseOnChoice();
+            }
         }
-        CloseItemToUseOnChoice();
-
-        // Fix for items being selectable even after use - leads to equipment duplication
-        activeItem = null;
-        selectedItem = "";
-        actionPanel.SetActive(false);
-
-        itemName.text = "";
-        itemDescription.text = "";
     }
 
     public void PlayButtonSound()
