@@ -39,9 +39,9 @@ MonoBehaviour:
   aliveSprite: {fileID: 0}
   flipSpriteHorizontally: 0
   itemsToDrop:
-  - {fileID: 11400000, guid: 82f9d7040c96b254db0e0e72a2a58bd0, type: 2}
-  - {fileID: 11400000, guid: eb7150500b5f7c242b78fa827fb2ed3d, type: 2}
-  - {fileID: 11400000, guid: c5bfc1a7a0b3283489957914cab3fc74, type: 2}
+  - {fileID: 11400000, guid: 3285a817971c2e84f88ab365ec45034b, type: 2}
+  - {fileID: 11400000, guid: 8ef66e3b088ce624d92078e7389b8226, type: 2}
+  - {fileID: 11400000, guid: 5c8acd8c54e40ea428551cba4d9af5e0, type: 2}
   gilMinDropAmount: 100
   gilMaxDropAmount: 200
   expPoints: 75

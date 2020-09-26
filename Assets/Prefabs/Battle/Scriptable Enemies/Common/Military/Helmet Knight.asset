@@ -39,7 +39,9 @@ MonoBehaviour:
   deadSprite: {fileID: 0}
   aliveSprite: {fileID: 0}
   flipSpriteHorizontally: 1
-  itemsToDrop: []
+  itemsToDrop:
+  - {fileID: 11400000, guid: b5315c41aec587541849614b612334a2, type: 2}
+  - {fileID: 11400000, guid: d07c3467211d6a04ca7173773099f0e9, type: 2}
   gilMinDropAmount: 10
   gilMaxDropAmount: 30
   expPoints: 50

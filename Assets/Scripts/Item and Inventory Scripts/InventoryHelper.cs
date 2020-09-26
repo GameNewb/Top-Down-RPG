@@ -15,7 +15,10 @@ public class InventoryHelper
             {
                 // Activate the image, set appropriate sprite, and set the amount we have
                 itemButtons[i].buttonImage.gameObject.SetActive(true);
-                itemButtons[i].buttonImage.sprite = GameManager.instance.GetItemDetails(inventory[i].item).itemSprite;
+                if (GameManager.instance.GetItemDetails(inventory[i].item) != null)
+                {
+                    itemButtons[i].buttonImage.sprite = GameManager.instance.GetItemDetails(inventory[i].item).itemSprite;
+                }
                 itemButtons[i].amountText.text = inventory[i].amount.ToString();
             }
             else

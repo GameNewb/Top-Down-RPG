@@ -29,6 +29,7 @@ public class GameMenu : MonoBehaviour
     [SerializeField] string selectedItem;
     [SerializeField] Item activeItem;
     [SerializeField] Text itemName, itemDescription, useButtonText;
+    [SerializeField] GameObject actionPanel;
 
     // Variables for the Discard panel
     [SerializeField] private GameObject discardPanel;
@@ -375,9 +376,28 @@ public class GameMenu : MonoBehaviour
     // Function that updates which item is selected by the player in the inventory menu
     public void SelectItem(Item selectedItem)
     {
-        activeItem = selectedItem;
+        // Reset values when selecting an empty slot in the inventory
+        if (selectedItem == null)
+        {
+            activeItem = null;
+            actionPanel.SetActive(false);
+
+            itemName.text = "";
+            itemDescription.text = "";
+        }
+        else
+        {
+            activeItem = selectedItem;
+
+            // If action panel has been disable, re-enable it
+            if (!actionPanel.activeInHierarchy)
+            {
+                actionPanel.SetActive(true);
+            }
+
+            inventoryHelper.SelectItem(activeItem, useButtonText, itemName, itemDescription);
+        }
         
-        inventoryHelper.SelectItem(activeItem, useButtonText, itemName, itemDescription);
     }
     
     // Function to Discard an item from inventory
@@ -494,6 +514,14 @@ public class GameMenu : MonoBehaviour
             activeItem.Use(playerStats[characterSelected]);
         }
         CloseItemToUseOnChoice();
+
+        // Fix for items being selectable even after use - leads to equipment duplication
+        activeItem = null;
+        selectedItem = "";
+        actionPanel.SetActive(false);
+
+        itemName.text = "";
+        itemDescription.text = "";
     }
 
     public void PlayButtonSound()
