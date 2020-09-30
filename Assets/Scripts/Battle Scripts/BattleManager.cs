@@ -36,6 +36,8 @@ public class BattleManager : MonoBehaviour
     // Attack sets and effect
     [Header("Movesets")]
     public BattleMoveset[] movesets;
+    public MagicScriptable[] magicMovesets;
+    public GameObject magicPrefab;
     public GameObject enemyParticleEffect;
 
     public BattleDamageNumber damageNumberEffect;
@@ -387,12 +389,24 @@ public class BattleManager : MonoBehaviour
     {
         int movesetPower = 0;
 
-        for (int i = 0; i < movesets.Length; i++)
+        /*for (int i = 0; i < movesets.Length; i++)
         {
             if (movesets[i].movesetName == moveName)
             {
                 Instantiate(movesets[i].movesetEffect, activeCombatants[selectedTarget].transform.position, activeCombatants[selectedTarget].transform.rotation);
                 movesetPower = movesets[i].movesetDamage;
+            }
+        }*/
+
+        // Instantiate the magic scriptable
+        for (int i = 0; i < magicMovesets.Length; i++)
+        {
+            if (magicMovesets[i].magicName == moveName)
+            {
+                GameObject magicObj = Instantiate(magicPrefab, activeCombatants[selectedTarget].transform.position, activeCombatants[selectedTarget].transform.rotation);
+                bmHelper.InitializeMagicData(magicObj, magicMovesets[i]);
+
+                movesetPower = magicMovesets[i].magicDamage;
             }
         }
 
@@ -583,13 +597,13 @@ public class BattleManager : MonoBehaviour
                 magicButtons[i].nameText.text = battlerMoveset[i];
 
                 // TODO: Optimize
-                for (int j = 0; j < movesets.Length; j++)
+                for (int j = 0; j < magicMovesets.Length; j++)
                 {
-                    if (movesets[j].movesetName == magicButtons[i].spellName)
+                    if (magicMovesets[j].magicName == magicButtons[i].spellName)
                     {
-                        magicButtons[i].spellCost = movesets[j].movesetCost;
+                        magicButtons[i].spellCost = magicMovesets[j].magicCost;
                         magicButtons[i].costText.text = magicButtons[i].spellCost.ToString();
-                        magicButtons[i].image.sprite = movesets[j].movesetImage;
+                        magicButtons[i].image.sprite = magicMovesets[j].magicSprite;
                     }
                 }
             }

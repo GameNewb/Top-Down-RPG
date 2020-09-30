@@ -55,6 +55,7 @@ MonoBehaviour:
   currentMP: 20
   maxMP: 20
   mpLVLBonus: 
+  statPoints: 0
   strength: 10
   vitality: 16
   intelligence: 5
@@ -155,10 +156,10 @@ MonoBehaviour:
     amount: 0
   - item: {fileID: 0}
     amount: 0
-  - item: {fileID: 0}
-    amount: 0
-  - item: {fileID: 0}
-    amount: 0
+  - item: {fileID: 11400000, guid: 0eae082251ea9a5468b522dc47859bd9, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: 7bf94802c26ae9f49968ac6f15a54f9f, type: 2}
+    amount: 1
   - item: {fileID: 0}
     amount: 0
   - item: {fileID: 11400000, guid: f6de0b07eef2ce64485a33512a846e11, type: 2}
@@ -296,6 +297,7 @@ MonoBehaviour:
   currentMP: 30
   maxMP: 30
   mpLVLBonus: 
+  statPoints: 0
   strength: 5
   vitality: 3
   intelligence: 2
@@ -367,6 +369,7 @@ MonoBehaviour:
   currentMP: 0
   maxMP: 30
   mpLVLBonus: 
+  statPoints: 0
   strength: 10
   vitality: 16
   intelligence: 0

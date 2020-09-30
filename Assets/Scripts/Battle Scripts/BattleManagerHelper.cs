@@ -8,9 +8,6 @@ public class BattleManagerHelper
 {
     public void InitializeBattleData(GameObject objectPrefab, bool isPlayer, BattleScriptableObject battleScriptable, CharacterStats characterStats)
     {
-        // Grab the appropriate scriptable object
-        //var scriptableObject = GameManager.instance.FindScriptableObject(objectName, isPlayer);
-
         // Set the Object to create using the ScriptableObject
         objectPrefab.GetComponent<ScriptableObjectProperties>().objectToCreate = battleScriptable;
 
@@ -96,24 +93,24 @@ public class BattleManagerHelper
         // Add to the combat list
         BattleManager.instance.activeCombatants.Add(objectPrefab);
     }
-    
-    /*public void EndBattle()
+
+    // Function to initialize the magic data prefab
+    public void InitializeMagicData(GameObject magicObject, MagicScriptable magicScriptable)
     {
-        GameManager.instance.activeBattle = false;
-        activeBattle = false;
+        // Set sorting layers
+        magicObject.GetComponent<SpriteRenderer>().sortingLayerName = "Battle Characters";
+        magicObject.GetComponent<SpriteRenderer>().sortingOrder = 2;
 
-        // Destroy object after battle is done 
-        foreach (var combatants in activeCombatants)
-        {
-            Destroy(combatants);
-        }
-
-        activeCombatants.Clear();
-
-        // Allow usage of menu again
-        GameManager.instance.activeBattle = false;
-
-        // Disable BG
-        AudioManager.instance.StopMusic();
-    }*/
+        // Set appropriate magic properties
+        magicObject.GetComponent<MagicProperties>().magicName = magicScriptable.magicName;
+        magicObject.GetComponent<MagicProperties>().magicDescription = magicScriptable.magicDescription;
+        magicObject.GetComponent<MagicProperties>().magicCost = magicScriptable.magicCost;
+        magicObject.GetComponent<MagicProperties>().magicDamage = magicScriptable.magicDamage;
+        magicObject.GetComponent<MagicProperties>().magicSprite = magicScriptable.magicSprite;
+        magicObject.GetComponent<MagicProperties>().effectLength = magicScriptable.effectLength;
+        magicObject.GetComponent<MagicProperties>().soundEffect = magicScriptable.soundEffect;
+        magicObject.GetComponent<MagicProperties>().magicAnimation = magicScriptable.magicAnimation;
+        magicObject.GetComponent<Animator>().runtimeAnimatorController = magicScriptable.magicAnimation;
+       
+    }
 }

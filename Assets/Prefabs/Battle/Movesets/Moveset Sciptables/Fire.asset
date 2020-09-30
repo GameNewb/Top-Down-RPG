@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed689766a6a1bd6469d796f1ef7fba53, type: 3}
+  m_Name: Fire
+  m_EditorClassIdentifier: 
+  magicName: Fire
+  magicDescription: BURN THEM ALL
+  magicCost: 5
+  magicDamage: 50
+  magicSprite: {fileID: 2425061157241486487, guid: 4e4d5bd34608fd34a907909fa5e0e470,
+    type: 3}
+  magicAnimation: {fileID: 9100000, guid: 1f7c39fc21d1baf49b22a3da06d00678, type: 2}
+  effectLength: 1
+  soundEffect: 2
+  buffEffect: 
