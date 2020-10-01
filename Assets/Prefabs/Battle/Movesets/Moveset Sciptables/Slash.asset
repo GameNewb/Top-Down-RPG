@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed689766a6a1bd6469d796f1ef7fba53, type: 3}
   m_Name: Slash
   m_EditorClassIdentifier: 
-  magicName: Slash
-  magicDescription: SRASHU
-  magicCost: 0
-  magicDamage: 20
-  magicSprite: {fileID: 4070633334820566229, guid: 4e4d5bd34608fd34a907909fa5e0e470,
+  skillName: Slash
+  skillDescription: Cut em all!
+  skillCost: 0
+  skillDamage: 20
+  skillSprite: {fileID: 4070633334820566229, guid: 4e4d5bd34608fd34a907909fa5e0e470,
     type: 3}
-  magicAnimation: {fileID: 9100000, guid: 93b9202480b280d448c7b78928b86c34, type: 2}
+  skillAnimation: {fileID: 9100000, guid: 93b9202480b280d448c7b78928b86c34, type: 2}
   effectLength: 0.5
   soundEffect: 3
   buffEffect: 

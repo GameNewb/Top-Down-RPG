@@ -95,22 +95,25 @@ public class BattleManagerHelper
     }
 
     // Function to initialize the magic data prefab
-    public void InitializeMagicData(GameObject magicObject, MagicScriptable magicScriptable)
+    public void InitializeSkillData(GameObject skillObject, SkillScriptable skillScriptable, GameObject currentUser, GameObject targetUser)
     {
         // Set sorting layers
-        magicObject.GetComponent<SpriteRenderer>().sortingLayerName = "Battle Characters";
-        magicObject.GetComponent<SpriteRenderer>().sortingOrder = 2;
+        skillObject.GetComponent<SpriteRenderer>().sortingLayerName = "Battle Characters";
+        skillObject.GetComponent<SpriteRenderer>().sortingOrder = 2;
 
-        // Set appropriate magic properties
-        magicObject.GetComponent<MagicProperties>().magicName = magicScriptable.magicName;
-        magicObject.GetComponent<MagicProperties>().magicDescription = magicScriptable.magicDescription;
-        magicObject.GetComponent<MagicProperties>().magicCost = magicScriptable.magicCost;
-        magicObject.GetComponent<MagicProperties>().magicDamage = magicScriptable.magicDamage;
-        magicObject.GetComponent<MagicProperties>().magicSprite = magicScriptable.magicSprite;
-        magicObject.GetComponent<MagicProperties>().effectLength = magicScriptable.effectLength;
-        magicObject.GetComponent<MagicProperties>().soundEffect = magicScriptable.soundEffect;
-        magicObject.GetComponent<MagicProperties>().magicAnimation = magicScriptable.magicAnimation;
-        magicObject.GetComponent<Animator>().runtimeAnimatorController = magicScriptable.magicAnimation;
-       
+        // Set appropriate skill properties
+        skillObject.GetComponent<SkillProperties>().skillName = skillScriptable.skillName;
+        skillObject.GetComponent<SkillProperties>().skillDescription = skillScriptable.skillDescription;
+        skillObject.GetComponent<SkillProperties>().skillCost = skillScriptable.skillCost;
+        skillObject.GetComponent<SkillProperties>().skillDamage = skillScriptable.skillDamage;
+        skillObject.GetComponent<SkillProperties>().skillSprite = skillScriptable.skillSprite;
+        skillObject.GetComponent<SkillProperties>().effectLength = skillScriptable.effectLength;
+        skillObject.GetComponent<SkillProperties>().soundEffect = skillScriptable.soundEffect;
+        skillObject.GetComponent<SkillProperties>().skillAnimation = skillScriptable.skillAnimation;
+        skillObject.GetComponent<Animator>().runtimeAnimatorController = skillScriptable.skillAnimation;
+
+        // Set current and target user
+        skillObject.GetComponent<SkillProperties>().currentUser = currentUser;
+        skillObject.GetComponent<SkillProperties>().targetUser = targetUser;
     }
 }

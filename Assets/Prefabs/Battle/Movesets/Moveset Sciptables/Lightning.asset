@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed689766a6a1bd6469d796f1ef7fba53, type: 3}
   m_Name: Lightning
   m_EditorClassIdentifier: 
-  magicName: Lightning
-  magicDescription: Zeus' bolt!
-  magicCost: 10
-  magicDamage: 80
-  magicSprite: {fileID: -365430052784356160, guid: 4e4d5bd34608fd34a907909fa5e0e470,
+  skillName: Lightning
+  skillDescription: Zeus' fury!
+  skillCost: 10
+  skillDamage: 80
+  skillSprite: {fileID: -365430052784356160, guid: 4e4d5bd34608fd34a907909fa5e0e470,
     type: 3}
-  magicAnimation: {fileID: 9100000, guid: 5e79d9416890f2048b8965b368c70ad0, type: 2}
+  skillAnimation: {fileID: 9100000, guid: 5e79d9416890f2048b8965b368c70ad0, type: 2}
   effectLength: 1
   soundEffect: 3
-  buffEffect: 
+  buffEffect: {fileID: 0}

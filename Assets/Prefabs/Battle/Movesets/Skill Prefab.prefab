@@ -112,12 +112,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e2351796ebf7474683dc28cc6cc4536, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  magicName: 
-  magicDescription: 
-  magicCost: 0
-  magicDamage: 0
-  magicSprite: {fileID: 0}
-  magicAnimation: {fileID: 0}
+  skillName: 
+  skillDescription: 
+  skillCost: 0
+  skillDamage: 0
+  skillSprite: {fileID: 0}
+  skillAnimation: {fileID: 0}
   effectLength: 0
   soundEffect: 0
   buffEffect: 

@@ -36,8 +36,8 @@ public class BattleManager : MonoBehaviour
     // Attack sets and effect
     [Header("Movesets")]
     public BattleMoveset[] movesets;
-    public MagicScriptable[] magicMovesets;
-    public GameObject magicPrefab;
+    public SkillScriptable[] skillMovesets;
+    public GameObject skillPrefab;
     public GameObject enemyParticleEffect;
 
     public BattleDamageNumber damageNumberEffect;
@@ -367,13 +367,16 @@ public class BattleManager : MonoBehaviour
         int movesetPower = 0;
         string moveName = "Slash";
 
-        for (int i = 0; i < movesets.Length; i++)
+        for (int i = 0; i < skillMovesets.Length; i++)
         {
-            if (movesets[i].movesetName == activeCombatants[currentTurn].GetComponent<ScriptableObjectProperties>().movesAvailable[selectAttack])
+            if (skillMovesets[i].skillName == activeCombatants[currentTurn].GetComponent<ScriptableObjectProperties>().movesAvailable[selectAttack])
             {
-                Instantiate(movesets[i].movesetEffect, activeCombatants[selectedTarget].transform.position, activeCombatants[selectedTarget].transform.rotation);
-                movesetPower = movesets[i].movesetDamage;
-                moveName = movesets[i].movesetName;
+                // Create effect
+                GameObject skillObj = Instantiate(skillPrefab, activeCombatants[selectedTarget].transform.position, activeCombatants[selectedTarget].transform.rotation);
+                bmHelper.InitializeSkillData(skillObj, skillMovesets[i], activeCombatants[currentTurn], activeCombatants[selectedTarget]);
+
+                movesetPower = skillMovesets[i].skillDamage;
+                moveName = skillMovesets[i].skillName;
             }
         }
 
@@ -388,25 +391,16 @@ public class BattleManager : MonoBehaviour
     public void PlayerAttack(string moveName, int selectedTarget)
     {
         int movesetPower = 0;
-
-        /*for (int i = 0; i < movesets.Length; i++)
-        {
-            if (movesets[i].movesetName == moveName)
-            {
-                Instantiate(movesets[i].movesetEffect, activeCombatants[selectedTarget].transform.position, activeCombatants[selectedTarget].transform.rotation);
-                movesetPower = movesets[i].movesetDamage;
-            }
-        }*/
-
+        
         // Instantiate the magic scriptable
-        for (int i = 0; i < magicMovesets.Length; i++)
+        for (int i = 0; i < skillMovesets.Length; i++)
         {
-            if (magicMovesets[i].magicName == moveName)
+            if (skillMovesets[i].skillName == moveName)
             {
-                GameObject magicObj = Instantiate(magicPrefab, activeCombatants[selectedTarget].transform.position, activeCombatants[selectedTarget].transform.rotation);
-                bmHelper.InitializeMagicData(magicObj, magicMovesets[i]);
+                GameObject skillObj = Instantiate(skillPrefab, activeCombatants[selectedTarget].transform.position, activeCombatants[selectedTarget].transform.rotation);
+                bmHelper.InitializeSkillData(skillObj, skillMovesets[i], activeCombatants[currentTurn], activeCombatants[selectedTarget]);
 
-                movesetPower = magicMovesets[i].magicDamage;
+                movesetPower = skillMovesets[i].skillDamage;
             }
         }
 
@@ -597,13 +591,13 @@ public class BattleManager : MonoBehaviour
                 magicButtons[i].nameText.text = battlerMoveset[i];
 
                 // TODO: Optimize
-                for (int j = 0; j < magicMovesets.Length; j++)
+                for (int j = 0; j < skillMovesets.Length; j++)
                 {
-                    if (magicMovesets[j].magicName == magicButtons[i].spellName)
+                    if (skillMovesets[j].skillName == magicButtons[i].spellName)
                     {
-                        magicButtons[i].spellCost = magicMovesets[j].magicCost;
+                        magicButtons[i].spellCost = skillMovesets[j].skillCost;
                         magicButtons[i].costText.text = magicButtons[i].spellCost.ToString();
-                        magicButtons[i].image.sprite = magicMovesets[j].magicSprite;
+                        magicButtons[i].image.sprite = skillMovesets[j].skillSprite;
                     }
                 }
             }

@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed689766a6a1bd6469d796f1ef7fba53, type: 3}
   m_Name: Ice
   m_EditorClassIdentifier: 
-  magicName: Ice
-  magicDescription: Spell used to freeze enemies
-  magicCost: 8
-  magicDamage: 65
-  magicSprite: {fileID: -1494889948778580247, guid: 4e4d5bd34608fd34a907909fa5e0e470,
+  skillName: Ice
+  skillDescription: ICE ICE BABY
+  skillCost: 8
+  skillDamage: 65
+  skillSprite: {fileID: -1494889948778580247, guid: 4e4d5bd34608fd34a907909fa5e0e470,
     type: 3}
-  magicAnimation: {fileID: 9100000, guid: 8faf62bd0eb32454fac64c62d0d3c031, type: 2}
+  skillAnimation: {fileID: 9100000, guid: 8faf62bd0eb32454fac64c62d0d3c031, type: 2}
   effectLength: 1.2
   soundEffect: 2
   buffEffect: 
