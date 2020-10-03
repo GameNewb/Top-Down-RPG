@@ -13,6 +13,7 @@ public class BattleDamageNumber : MonoBehaviour
     public float placementJitter = 2f;
 
     private Color yellowColor = new Color(0.8f, 0.8f, 0f);
+    private Color greenColor = new Color(0f, 0.8f, 0.6f);
 
     // Start is called before the first frame update
     void Start()
@@ -28,7 +29,17 @@ public class BattleDamageNumber : MonoBehaviour
 
     public void SetDamage(int damageAmount)
     {
-        damageText.text = damageAmount.ToString();
+        // Set to "+" if it's a heal
+        if (damageAmount < 0)
+        {
+            damageText.text = damageAmount.ToString().Replace("-","+");
+            damageText.color = greenColor;
+        }
+        else
+        {
+            damageText.text = damageAmount.ToString();
+        }
+
         transform.position += new Vector3(Random.Range(-placementJitter*1.5f, placementJitter*1.5f), Random.Range(-placementJitter, placementJitter), 0f);
     }
 

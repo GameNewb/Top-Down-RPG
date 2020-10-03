@@ -401,6 +401,12 @@ public class BattleManager : MonoBehaviour
                 bmHelper.InitializeSkillData(skillObj, skillMovesets[i], activeCombatants[currentTurn], activeCombatants[selectedTarget]);
 
                 movesetPower = skillMovesets[i].skillDamage;
+
+                // Check if healing skill
+                if (skillMovesets[i].isHealingSkill)
+                {
+                    movesetPower = -(movesetPower);
+                }
             }
         }
 

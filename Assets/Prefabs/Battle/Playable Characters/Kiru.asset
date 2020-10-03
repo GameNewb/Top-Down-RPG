@@ -35,6 +35,7 @@ MonoBehaviour:
   movesAvailable:
   - Ice
   - Poison
+  - Heal
   objectSpriteRenderer: {fileID: 0}
   deadSprite: {fileID: 8138726566797790806, guid: 4f26dc743bb390249a018791054bf48f,
     type: 3}

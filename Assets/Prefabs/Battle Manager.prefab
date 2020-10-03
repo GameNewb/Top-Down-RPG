@@ -3157,6 +3157,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3a20fa43207a71343bb5523e512814e4, type: 2}
   - {fileID: 11400000, guid: a6d5e380fc949bc4aa7d53ad97ebf582, type: 2}
   - {fileID: 11400000, guid: 3a20fa43207a71343bb5523e512814e4, type: 2}
+  - {fileID: 11400000, guid: 926bf8490961f4643be140c0224de3cb, type: 2}
   skillPrefab: {fileID: 2989370589289725581, guid: 826d3579b5aa4a547adff9920c58b07e,
     type: 3}
   enemyParticleEffect: {fileID: 7870986734292537290, guid: 63407d87610c06944bf8dc311dbf8f43,

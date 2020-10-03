@@ -110,6 +110,7 @@ public class BattleManagerHelper
         skillObject.GetComponent<SkillProperties>().effectLength = skillScriptable.effectLength;
         skillObject.GetComponent<SkillProperties>().soundEffect = skillScriptable.soundEffect;
         skillObject.GetComponent<SkillProperties>().skillAnimation = skillScriptable.skillAnimation;
+        skillObject.GetComponent<SkillProperties>().isHealingSkill = skillScriptable.isHealingSkill;
         skillObject.GetComponent<Animator>().runtimeAnimatorController = skillScriptable.skillAnimation;
 
         // Set current and target user
