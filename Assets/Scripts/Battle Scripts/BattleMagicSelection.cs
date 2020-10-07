@@ -7,6 +7,7 @@ public class BattleMagicSelection : MonoBehaviour
 {
     public string spellName;
     public int spellCost;
+    public bool targetsPlayer;
     public Image image;
     public Text nameText;
     public Text costText;
@@ -32,7 +33,7 @@ public class BattleMagicSelection : MonoBehaviour
         if (currentMP >= spellCost)
         {
             bmInstance.magicMenu.SetActive(false);
-            bmInstance.OpenTargetMenu(spellName);
+            bmInstance.OpenTargetMenu(spellName, targetsPlayer);
             bmInstance.activeCombatants[bmInstance.currentTurn].GetComponent<ScriptableObjectProperties>().currentMP -= spellCost;
         }
         else

@@ -537,34 +537,46 @@ public class BattleManager : MonoBehaviour
         // Update player UI stats
         this.UpdateUIStats();
     }
+
+    // Function to be called when "Attack" is clicked
+    public void OpenSingleAttackMenu(string moveName)
+    {
+        this.OpenTargetMenu(moveName, false);
+    }
     
     // Function that opens the target menu when player attacks
-    public void OpenTargetMenu(string moveName)
+    public void OpenTargetMenu(string moveName, bool targetsPlayer)
     {
         targetMenu.SetActive(true);
 
-        List<int> enemies = new List<int>();
+        List<int> skillTargets = new List<int>();
 
         for (int i = 0; i < activeCombatants.Count; i++)
         {
-            // Add enemy to target list
-            if (!activeCombatants[i].GetComponent<ScriptableObjectProperties>().isPlayer)
+            bool player = activeCombatants[i].GetComponent<ScriptableObjectProperties>().isPlayer;
+
+            // Add enemy or player to target list depending on the skill
+            if (targetsPlayer && player)
             {
-                enemies.Add(i);
+                skillTargets.Add(i);
+            }
+            else if (!targetsPlayer && !player)
+            {
+                skillTargets.Add(i);
             }
         }
 
         for (int i = 0; i < targetButtons.Length; i++)
         {
-            if (enemies.Count > i)
+            if (skillTargets.Count > i)
             {
                 targetButtons[i].gameObject.SetActive(true);
                 targetButtons[i].moveName = moveName;
-                targetButtons[i].activeCombatantTarget = enemies[i];
-                targetButtons[i].targetName.text = activeCombatants[enemies[i]].GetComponent<ScriptableObjectProperties>().objectName;
+                targetButtons[i].activeCombatantTarget = skillTargets[i];
+                targetButtons[i].targetName.text = activeCombatants[skillTargets[i]].GetComponent<ScriptableObjectProperties>().objectName;
 
                 // Disable targeting for dead enemies
-                if (activeCombatants[enemies[i]].GetComponent<ScriptableObjectProperties>().hasDied)
+                if (activeCombatants[skillTargets[i]].GetComponent<ScriptableObjectProperties>().hasDied)
                 {
                     targetButtons[i].GetComponentInParent<Button>().interactable = false;
                 }
@@ -604,6 +616,9 @@ public class BattleManager : MonoBehaviour
                         magicButtons[i].spellCost = skillMovesets[j].skillCost;
                         magicButtons[i].costText.text = magicButtons[i].spellCost.ToString();
                         magicButtons[i].image.sprite = skillMovesets[j].skillSprite;
+
+                        // If healing spell, set property to true
+                        magicButtons[i].targetsPlayer = skillMovesets[j].isHealingSkill ? true : false;
                     }
                 }
             }
